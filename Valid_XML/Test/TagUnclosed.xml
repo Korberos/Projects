@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<XML_File>
+	<Variable>5</Variable>
+	<String>Hello, World</String>
+  <!-- COMMENT TEST
+    Check this out!
+  COMMENT TEST -->
+	<Variable_List>
+		<Variable>3</Variable>
+		<Variable>9<Variable>
+		<Variable>15</Variable>
+	</Variable_List>
+</XML_File>

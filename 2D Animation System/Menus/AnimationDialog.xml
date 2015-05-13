@@ -1,0 +1,10 @@
+<MenuDialog>
+  <TextButton Name="TextButtonTest">
+    <Template>Standard</Template>
+    <Width>160</Width>
+    <Height>26</Height>
+    <PositionX>100</PositionX>
+    <PositionY>20</PositionY>
+    <Text></Text>
+  </TextButton>
+</MenuDialog>

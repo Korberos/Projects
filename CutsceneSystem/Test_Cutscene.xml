@@ -1,0 +1,21 @@
+<Cutscene>
+  <ElementCount>4</ElementCount>
+  <ElementList>
+    <Entry>
+      <Sprite>Cutscene_Sprite_1.png</Sprite>
+      <Sprite></Sprite>
+    </Entry>
+    <Entry>
+      <Sprite>Cutscene_Sprite_2.png</Sprite>
+      <Sprite></Sprite>
+    </Entry>
+    <Entry>
+      <Sprite>Cutscene_Sprite_3.png</Sprite>
+      <Sprite></Sprite>
+    </Entry>
+    <Entry>
+      <Sprite>Cutscene_Sprite_4.png</Sprite>
+      <Sprite></Sprite>
+    </Entry>
+  </ElementList>
+</Cutscene>

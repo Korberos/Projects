@@ -1,0 +1,234 @@
+<MenuDialog>
+  <TextButton Name="UpdateDatabaseButton">
+    <Template>Standard</Template>
+    <Width>500</Width>
+    <Height>26</Height>
+    <PositionX>500</PositionX>
+    <PositionY>700</PositionY>
+    <Text>Update Database</Text>
+  </TextButton>
+  <CheckBox Name="CheckBox_0">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>60</PositionX>
+    <PositionY>60</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_1">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>120</PositionX>
+    <PositionY>60</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_2">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>180</PositionX>
+    <PositionY>60</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_3">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>240</PositionX>
+    <PositionY>60</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_4">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>300</PositionX>
+    <PositionY>60</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_5">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>360</PositionX>
+    <PositionY>60</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_6">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>420</PositionX>
+    <PositionY>60</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_7">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>480</PositionX>
+    <PositionY>60</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_8">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>60</PositionX>
+    <PositionY>120</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_9">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>120</PositionX>
+    <PositionY>120</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_10">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>180</PositionX>
+    <PositionY>120</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_11">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>240</PositionX>
+    <PositionY>120</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_12">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>300</PositionX>
+    <PositionY>120</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_13">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>360</PositionX>
+    <PositionY>120</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_14">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>420</PositionX>
+    <PositionY>120</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_15">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>480</PositionX>
+    <PositionY>120</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_16">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>60</PositionX>
+    <PositionY>180</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_17">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>120</PositionX>
+    <PositionY>180</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_18">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>180</PositionX>
+    <PositionY>180</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_19">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>240</PositionX>
+    <PositionY>180</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_20">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>300</PositionX>
+    <PositionY>180</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_21">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>360</PositionX>
+    <PositionY>180</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_22">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>420</PositionX>
+    <PositionY>180</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_23">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>480</PositionX>
+    <PositionY>180</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_24">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>60</PositionX>
+    <PositionY>240</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_25">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>120</PositionX>
+    <PositionY>240</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_26">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>180</PositionX>
+    <PositionY>240</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_27">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>240</PositionX>
+    <PositionY>240</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_28">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>300</PositionX>
+    <PositionY>240</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_29">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>360</PositionX>
+    <PositionY>240</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_30">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>420</PositionX>
+    <PositionY>240</PositionY>
+  </CheckBox>
+  <CheckBox Name="CheckBox_31">
+    <Template>Standard</Template>
+    <Width>40</Width>
+    <Height>40</Height>
+    <PositionX>480</PositionX>
+    <PositionY>240</PositionY>
+  </CheckBox>
+</MenuDialog>

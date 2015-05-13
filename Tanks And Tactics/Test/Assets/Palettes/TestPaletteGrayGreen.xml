@@ -1,0 +1,156 @@
+<ColorPalette>
+	<Width> 10 </Width>
+	<Height> 3 </Height>
+	<Palette>
+		<entry>
+			<R> 1.0 </R>
+			<G> 1.0 </G>
+			<B> 1.0 </B>
+		</entry>
+		<entry>
+			<R> 0.9 </R>
+			<G> 0.9 </G>
+			<B> 0.9 </B>
+		</entry>
+		<entry>
+			<R> 0.8 </R>
+			<G> 0.8 </G>
+			<B> 0.8 </B>
+		</entry>
+		<entry>
+			<R> 0.7 </R>
+			<G> 0.7 </G>
+			<B> 0.7 </B>
+		</entry>
+		<entry>
+			<R> 0.6 </R>
+			<G> 0.6 </G>
+			<B> 0.6 </B>
+		</entry>
+		<entry>
+			<R> 0.5 </R>
+			<G> 0.5 </G>
+			<B> 0.5 </B>
+		</entry>
+		<entry>
+			<R> 0.4 </R>
+			<G> 0.4 </G>
+			<B> 0.4 </B>
+		</entry>
+		<entry>
+			<R> 0.3 </R>
+			<G> 0.3 </G>
+			<B> 0.3 </B>
+		</entry>
+		<entry>
+			<R> 0.2 </R>
+			<G> 0.2 </G>
+			<B> 0.2 </B>
+		</entry>
+		<entry>
+			<R> 0.1 </R>
+			<G> 0.1 </G>
+			<B> 0.1 </B>
+		</entry>
+		<entry>
+			<R> 0.95 </R>
+			<G> 1.0 </G>
+			<B> 0.95 </B>
+		</entry>
+		<entry>
+			<R> 0.85 </R>
+			<G> 0.9 </G>
+			<B> 0.85 </B>
+		</entry>
+		<entry>
+			<R> 0.75 </R>
+			<G> 0.8 </G>
+			<B> 0.75 </B>
+		</entry>
+		<entry>
+			<R> 0.65 </R>
+			<G> 0.7 </G>
+			<B> 0.65 </B>
+		</entry>
+		<entry>
+			<R> 0.55 </R>
+			<G> 0.6 </G>
+			<B> 0.55 </B>
+		</entry>
+		<entry>
+			<R> 0.45 </R>
+			<G> 0.5 </G>
+			<B> 0.45 </B>
+		</entry>
+		<entry>
+			<R> 0.35 </R>
+			<G> 0.4 </G>
+			<B> 0.35 </B>
+		</entry>
+		<entry>
+			<R> 0.25 </R>
+			<G> 0.3 </G>
+			<B> 0.25 </B>
+		</entry>
+		<entry>
+			<R> 0.15 </R>
+			<G> 0.2 </G>
+			<B> 0.15 </B>
+		</entry>
+		<entry>
+			<R> 0.05 </R>
+			<G> 0.1 </G>
+			<B> 0.05 </B>
+		</entry>
+		<entry>
+			<R> 0.85 </R>
+			<G> 1.0 </G>
+			<B> 0.85 </B>
+		</entry>
+		<entry>
+			<R> 0.75 </R>
+			<G> 0.9 </G>
+			<B> 0.75 </B>
+		</entry>
+		<entry>
+			<R> 0.65 </R>
+			<G> 0.8 </G>
+			<B> 0.65 </B>
+		</entry>
+		<entry>
+			<R> 0.55 </R>
+			<G> 0.7 </G>
+			<B> 0.55 </B>
+		</entry>
+		<entry>
+			<R> 0.45 </R>
+			<G> 0.6 </G>
+			<B> 0.45 </B>
+		</entry>
+		<entry>
+			<R> 0.35 </R>
+			<G> 0.5 </G>
+			<B> 0.35 </B>
+		</entry>
+		<entry>
+			<R> 0.25 </R>
+			<G> 0.4 </G>
+			<B> 0.25 </B>
+		</entry>
+		<entry>
+			<R> 0.15 </R>
+			<G> 0.3 </G>
+			<B> 0.15 </B>
+		</entry>
+		<entry>
+			<R> 0.20.05 </R>
+			<G> 0.2 </G>
+			<B> 0.05 </B>
+		</entry>
+		<entry>
+			<R> 0.0 </R>
+			<G> 0.1 </G>
+			<B> 0.0 </B>
+		</entry>
+	</Palette>
+</ColorPalette>

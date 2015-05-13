@@ -1,0 +1,42 @@
+<MenuDialog>
+
+	<TextButton Name="JoinRandomLobbyButton">
+		<Template> Standard </Template>
+		<Width> 274 </Width>
+		<Height> 42 </Height>
+		<PositionX> 740 </PositionX>
+		<PositionY> 570 </PositionY>
+		<Text> Join Random Lobby </Text>
+		<Font> Arial-12 </Font>
+	</TextButton>
+	
+  <TextButton Name="JoinRandomBattleButton">
+    <Template> Standard </Template>
+    <Width> 274 </Width>
+    <Height> 42 </Height>
+    <PositionX> 740 </PositionX>
+    <PositionY> 620 </PositionY>
+    <Text> Join Random Battle </Text>
+    <Font> Arial-12 </Font>
+  </TextButton>
+
+  <TextButton Name="CreateCustomBattleButton">
+    <Template> Standard </Template>
+    <Width> 274 </Width>
+    <Height> 42 </Height>
+    <PositionX> 740 </PositionX>
+    <PositionY> 670 </PositionY>
+    <Text> Create Custom Battle </Text>
+    <Font> Arial-12 </Font>
+  </TextButton>
+  
+  <TextButton Name="CharacterMenuButton">
+    <Template> Standard </Template>
+    <Width> 274 </Width>
+    <Height> 42 </Height>
+    <PositionX> 740 </PositionX>
+    <PositionY> 720 </PositionY>
+    <Text> Return to Character Menu </Text>
+    <Font> Arial-12 </Font>
+  </TextButton>
+</MenuDialog>

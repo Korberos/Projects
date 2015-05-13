@@ -1,0 +1,35 @@
+Lobby Menu Dialog
+====================
+
+Activate:
+	- Load a menu dialog into the MenuGUI system
+	- Cancel the script call if the loading fails
+	- Reference parts of the MenuGUI into stored variables
+	- Send a message (requesting the map list)
+	- Register events to menu elements
+	- Set data on menu elements
+
+Deactivate:
+	- Deactivate the menu dialog (called on the main class)
+
+Input:
+	- Call the Input function (called on the main class)
+
+Update:
+	- Call the Update function (called on the main class)
+	- Take in a float and pass it to the Update function
+
+Render2D:
+	- Render text using a text reference and calling math based on 	a vector and set variables	
+
+Render3D:
+	- Call the Render3D function (called on the main class)
+
+Escalate_Message:
+	- Escalate messages which were assigned on Activate
+
+MISC:
+	- Change the dialog currently enabled
+	- Process message data
+	- Send message data to map system and menu GUI
+	- Add a created data type to a stored data array

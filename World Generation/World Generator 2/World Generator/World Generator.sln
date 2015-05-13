@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "World Generator", "World Generator\World Generator.vcproj", "{BFEAE6E9-445B-45F5-BCFE-77961AA1BA20}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFEAE6E9-445B-45F5-BCFE-77961AA1BA20}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BFEAE6E9-445B-45F5-BCFE-77961AA1BA20}.Debug|Win32.Build.0 = Debug|Win32
+		{BFEAE6E9-445B-45F5-BCFE-77961AA1BA20}.Release|Win32.ActiveCfg = Release|Win32
+		{BFEAE6E9-445B-45F5-BCFE-77961AA1BA20}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

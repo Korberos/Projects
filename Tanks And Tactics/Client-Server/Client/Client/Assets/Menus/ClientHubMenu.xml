@@ -1,0 +1,218 @@
+<MenuDialog>
+
+	<Frame Name="BarracksDialogFrame">
+		<Template> Standard </Template>
+		<Width> 640 </Width>
+		<Height> 610 </Height>
+		<PositionX> 10 </PositionX>
+		<PositionY> 10 </PositionY>
+		<Moveable> False </Moveable>
+		<Elements>
+
+			<TextBlock Name="ActiveUnitsTextBlock">
+				<Width> 200 </Width>
+				<Height> 20 </Height>
+				<PositionX> 100 </PositionX>
+				<PositionY> 36 </PositionY>
+				<Font> Arial-12 </Font>
+				<Text> Test </Text>
+				<Justification> Center </Justification>
+				<Rows> 1 </Rows>
+			</TextBlock>
+
+			<Texture Name="ActiveUnitPreviewTexture">
+				<Width> 64 </Width>
+				<Height> 128 </Height>
+				<PositionX> 30 </PositionX>
+				<PositionY> 60 </PositionY>
+				<Texture> Assets/Images/LobbyLeader.png </Texture>
+			</Texture>
+			
+			<TextBlock Name="ReserveUnitsTextBlock">
+				<Width> 200 </Width>
+				<Height> 20 </Height>
+				<PositionX> 360 </PositionX>
+				<PositionY> 36 </PositionY>
+				<Font> Arial-12 </Font>
+				<Text> Test </Text>
+				<Justification> Center </Justification>
+				<Rows> 1 </Rows>
+			</TextBlock>
+			
+			<ListBox Name="ActiveUnitsListBox">
+				<Template> Standard </Template>
+				<Width> 200 </Width>
+				<Height> 280 </Height>
+				<PositionX> 100 </PositionX>
+				<PositionY> 60 </PositionY>
+				<DirectionalButtonsX> 250 </DirectionalButtonsX>
+				<DirectionalButtonsY> 0 </DirectionalButtonsY>
+				<UpButtonW> 20 </UpButtonW>
+				<UpButtonH> 20 </UpButtonH>
+				<DownButtonW> 20 </DownButtonW>
+				<DownButtonH> 20 </DownButtonH>
+				<BarColumnW> 20 </BarColumnW>
+				<EntryHeight> 24 </EntryHeight>
+				<SpaceBetweenEntries> 2 </SpaceBetweenEntries>
+				<Entries> </Entries>
+				<Justification> Left </Justification>
+				<Font> Arial-12 </Font>
+			</ListBox>
+
+			<ListBox Name="ReserveUnitsListBox">
+				<Template> Standard </Template>
+				<Width> 200 </Width>
+				<Height> 280 </Height>
+				<PositionX> 360 </PositionX>
+				<PositionY> 60 </PositionY>
+				<DirectionalButtonsX> 250 </DirectionalButtonsX>
+				<DirectionalButtonsY> 0 </DirectionalButtonsY>
+				<UpButtonW> 20 </UpButtonW>
+				<UpButtonH> 20 </UpButtonH>
+				<DownButtonW> 20 </DownButtonW>
+				<DownButtonH> 20 </DownButtonH>
+				<BarColumnW> 20 </BarColumnW>
+				<EntryHeight> 24 </EntryHeight>
+				<SpaceBetweenEntries> 2 </SpaceBetweenEntries>
+				<Entries> </Entries>
+				<Justification> Left </Justification>
+				<Font> Arial-12 </Font>
+			</ListBox>
+
+			<Texture Name="ReserveUnitPreviewTexture">
+				<Width> 64 </Width>
+				<Height> 128 </Height>
+				<PositionX> 570 </PositionX>
+				<PositionY> 60 </PositionY>
+				<Texture> Assets/Images/LobbyLeader.png </Texture>
+			</Texture>
+
+			<Frame Name="BarracksStatusFrame">
+				<Template> Standard </Template>
+				<Width> 600 </Width>
+				<Height> 38 </Height>
+				<PositionX> 20 </PositionX>
+				<PositionY> 444 </PositionY>
+				<Moveable> False </Moveable>
+				<Elements>
+					
+					<TextBlock Name="BarracksStatusTextBlock">
+						<Width> 592 </Width>
+						<Height> 20 </Height>
+						<PositionX> 24 </PositionX>
+						<PositionY> 462 </PositionY>
+						<Font> Arial-12 </Font>
+						<Text> Test Update </Text>
+						<Justification> Left </Justification>
+						<Rows> 1 </Rows>
+					</TextBlock>
+					
+				</Elements>
+			</Frame>
+				
+		</Elements>
+	</Frame>
+
+	<Frame Name="SummonerDialogFrame">
+		<Template> Standard </Template>
+		<Width> 300 </Width>
+		<Height> 400 </Height>
+		<PositionX> 10 </PositionX>
+		<PositionY> 10 </PositionY>
+		<Moveable> False </Moveable>
+		<Elements>
+
+			<TextBlock Name="UnitTypeTextBlock">
+				<Width> 200 </Width>
+				<Height> 20 </Height>
+				<PositionX> 20 </PositionX>
+				<PositionY> 32 </PositionY>
+				<Font> Arial-12 </Font>
+				<Text> Unit Type: </Text>
+				<Justification> Left </Justification>
+				<Rows> 1 </Rows>
+			</TextBlock>
+
+			<ListBox Name="UnitTypesListBox">
+				<Template> Standard </Template>
+				<Width> 280 </Width>
+				<Height> 280 </Height>
+				<PositionX> 20 </PositionX>
+				<PositionY> 50 </PositionY>
+				<DirectionalButtonsX> 250 </DirectionalButtonsX>
+				<DirectionalButtonsY> 0 </DirectionalButtonsY>
+				<UpButtonW> 20 </UpButtonW>
+				<UpButtonH> 20 </UpButtonH>
+				<DownButtonW> 20 </DownButtonW>
+				<DownButtonH> 20 </DownButtonH>
+				<BarColumnW> 20 </BarColumnW>
+				<EntryHeight> 24 </EntryHeight>
+				<SpaceBetweenEntries> 2 </SpaceBetweenEntries>
+				<Entries> </Entries>
+				<Justification> Left </Justification>
+				<Font> Arial-12 </Font>
+			</ListBox>
+
+			<TextButton Name="NextStepTextButton">
+				<Template> Standard </Template>
+				<Width> 280 </Width>
+				<Height> 26 </Height>
+				<PositionX> 20 </PositionX>
+				<PositionY> 340 </PositionY>
+				<Text> Next Step </Text>
+				<Font> Arial-12 </Font>
+			</TextButton>
+
+		</Elements>
+	</Frame>
+
+	<TextButton Name="CancelDialogTextButton">
+		<Template> Standard </Template>
+		<Width> 274 </Width>
+		<Height> 42 </Height>
+		<PositionX> 740 </PositionX>
+		<PositionY> 720 </PositionY>
+		<Text> Cancel </Text>
+		<Font> Arial-12 </Font>
+	</TextButton>
+	
+	<TextButton Name="JoinRandomLobbyButton">
+		<Template> Standard </Template>
+		<Width> 274 </Width>
+		<Height> 42 </Height>
+		<PositionX> 740 </PositionX>
+		<PositionY> 570 </PositionY>
+		<Text> Join Random Lobby </Text>
+		<Font> Arial-12 </Font>
+	</TextButton>
+	
+  <TextButton Name="JoinRandomBattleButton">
+    <Template> Standard </Template>
+    <Width> 274 </Width>
+    <Height> 42 </Height>
+    <PositionX> 740 </PositionX>
+    <PositionY> 620 </PositionY>
+    <Text> Join Random Battle </Text>
+    <Font> Arial-12 </Font>
+  </TextButton>
+
+  <TextButton Name="CreateCustomBattleButton">
+    <Template> Standard </Template>
+    <Width> 274 </Width>
+    <Height> 42 </Height>
+    <PositionX> 740 </PositionX>
+    <PositionY> 670 </PositionY>
+    <Text> Create Custom Battle </Text>
+    <Font> Arial-12 </Font>
+  </TextButton>
+  
+  <TextButton Name="CharacterMenuButton">
+    <Template> Standard </Template>
+    <Width> 274 </Width>
+    <Height> 42 </Height>
+    <PositionX> 740 </PositionX>
+    <PositionY> 720 </PositionY>
+    <Text> Return to Character Menu </Text>
+    <Font> Arial-12 </Font>
+  </TextButton>
+</MenuDialog>

@@ -1,0 +1,27 @@
+<MenuDialog>
+  <TextButton Name="InitClientButton">
+    <Template>Standard</Template>
+    <Width>240</Width>
+    <Height>26</Height>
+    <PositionX>20</PositionX>
+    <PositionY>20</PositionY>
+    <Text>Initiate Client Mode</Text>
+  </TextButton>
+  <TextButton Name="InitServerButton">
+    <Template>Standard</Template>
+    <Width>240</Width>
+    <Height>26</Height>
+    <PositionX>20</PositionX>
+    <PositionY>60</PositionY>
+    <Text>Initiate Server Mode</Text>
+  </TextButton>
+  <TextBlock Name="StatusText">
+    <Width>512</Width>
+    <Height>26</Height>
+    <PositionX>20</PositionX>
+    <PositionY>100</PositionY>
+    <Text>Status Text</Text>
+    <Justification>Left</Justification>
+    <Rows>3</Rows>
+  </TextBlock>
+</MenuDialog>

@@ -1,0 +1,291 @@
+<MenuDialog>
+	
+	<!-- Show the lobby customization options (will be invisible to non-leaders) -->
+	<Frame Name="CustomOptionsFrame">
+		<Template> Standard </Template>
+		<Width> 400 </Width>
+		<Height> 200 </Height>
+		<PositionX> 10 </PositionX>
+		<PositionY> 30 </PositionY>
+		<Moveable> True </Moveable>
+		<Elements>
+			
+			<TextBlock Name="CustomizeLobbyText">
+				<Width> 240 </Width>
+				<Height> 36 </Height>
+				<PositionX> 10 </PositionX>
+				<PositionY> 10 </PositionY>
+				<Font> Arial-12 </Font>
+				<Text> Create a custom lobby: </Text>
+				<Justification> Left </Justification>
+				<Rows> 1 </Rows>
+			</TextBlock>
+
+			<TextBlock Name="BattleNameText">
+				<Width> 120 </Width>
+				<Height> 28 </Height>
+				<PositionX> 20 </PositionX>
+				<PositionY> 60 </PositionY>
+				<Font> Arial-12 </Font>
+				<Text> Battle Name: </Text>
+				<Justification> Left </Justification>
+				<Rows> 1 </Rows>
+			</TextBlock>
+
+			<EditBox Name="BattleNameEditBox">
+				<Template> Standard </Template>
+				<Width> 200 </Width>
+				<Height> 26 </Height>
+				<PositionX> 120 </PositionX>
+				<PositionY> 54 </PositionY>
+				<Font> Arial-12 </Font>
+				<Text> </Text>
+				<Justification> Left </Justification>
+			</EditBox>
+
+			<TextBlock Name="BattleTypeText">
+				<Width> 120 </Width>
+				<Height> 28 </Height>
+				<PositionX> 20 </PositionX>
+				<PositionY> 92 </PositionY>
+				<Font> Arial-12 </Font>
+				<Text> Battle Type: </Text>
+				<Justification> Left </Justification>
+				<Rows> 1 </Rows>
+			</TextBlock>
+
+			<DropDown Name="BattleTypeDropDown">
+				<Template> Standard </Template>
+				<Width> 224 </Width>
+				<Height> 28 </Height>
+				<PositionX> 120 </PositionX>
+				<PositionY> 86 </PositionY>
+				<DropDownX> 202 </DropDownX>
+				<DropDownY> 8 </DropDownY>
+				<DropDownW> 12 </DropDownW>
+				<DropDownH> 12 </DropDownH>
+				<Entries>
+					<entry> Deathmatch </entry>
+				</Entries>
+				<Justification> Left </Justification>
+				<Font> Arial-12 </Font>
+			</DropDown>
+
+			<TextBlock Name="MapText">
+				<Width> 240 </Width>
+				<Height> 36 </Height>
+				<PositionX> 20 </PositionX>
+				<PositionY> 124 </PositionY>
+				<Font> Arial-12 </Font>
+				<Text> Map: </Text>
+				<Justification> Left </Justification>
+				<Rows> 1 </Rows>
+			</TextBlock>
+
+			<DropDown Name="MapDropDown">
+				<Template> Standard </Template>
+				<Width> 260 </Width>
+				<Height> 28 </Height>
+				<PositionX> 120 </PositionX>
+				<PositionY> 118 </PositionY>
+				<DropDownX> 238 </DropDownX>
+				<DropDownY> 8 </DropDownY>
+				<DropDownW> 12 </DropDownW>
+				<DropDownH> 12 </DropDownH>
+				<Entries></Entries>
+				<Justification> Left </Justification>
+				<Font> Arial-12 </Font>
+			</DropDown>
+
+			<TextBlock Name="PlayersTypeText">
+				<Width> 240 </Width>
+				<Height> 36 </Height>
+				<PositionX> 20 </PositionX>
+				<PositionY> 156 </PositionY>
+				<Font> Arial-12 </Font>
+				<Text> Players: </Text>
+				<Justification> Left </Justification>
+				<Rows> 1 </Rows>
+			</TextBlock>
+
+			<DropDown Name="PlayersTypeDropDown">
+				<Template> Standard </Template>
+				<Width> 160 </Width>
+				<Height> 28 </Height>
+				<PositionX> 120 </PositionX>
+				<PositionY> 150 </PositionY>
+				<DropDownX> 138 </DropDownX>
+				<DropDownY> 8 </DropDownY>
+				<DropDownW> 12 </DropDownW>
+				<DropDownH> 12 </DropDownH>
+				<Entries>
+					<entry> 1 versus 1 </entry>
+					<entry> 2 versus 2 </entry>
+					<entry> 3 player brawl </entry>
+					<entry> 4 player brawl </entry>
+				</Entries>
+				<Justification> Left </Justification>
+				<Font> Arial-12 </Font>
+			</DropDown>
+
+			<TextButton Name="StartLobbyButton">
+				<Template> Standard </Template>
+				<Width> 180 </Width>
+				<Height> 28 </Height>
+				<PositionX> 20 </PositionX>
+				<PositionY> 190 </PositionY>
+				<Text> Start Lobby </Text>
+				<Font> Arial-12 </Font>
+			</TextButton>
+
+			<TextButton Name="CancelLobbyButton">
+				<Template> Standard </Template>
+				<Width> 180 </Width>
+				<Height> 28 </Height>
+				<PositionX> 220 </PositionX>
+				<PositionY> 190 </PositionY>
+				<Text> Cancel </Text>
+				<Font> Arial-12 </Font>
+			</TextButton>
+
+		</Elements>
+	</Frame>
+
+	<!-- Show the lobby info frame (visible to non-leaders) -->
+	<Frame Name="LobbyInfoFrame">
+		<Template> Standard </Template>
+		<Width> 270 </Width>
+		<Height> 120 </Height>
+		<PositionX> 710 </PositionX>
+		<PositionY> 30 </PositionY>
+		<Moveable> False </Moveable>
+		<Elements>
+			
+			<TextBlock Name="CustomizeLobbyText">
+				<Width> 240 </Width>
+				<Height> 36 </Height>
+				<PositionX> 710 </PositionX>
+				<PositionY> 10 </PositionY>
+				<Font> Arial-12 </Font>
+				<Text> Lobby Info: </Text>
+				<Justification> Left </Justification>
+				<Rows> 1 </Rows>
+			</TextBlock>
+
+			<TextBlock Name="LobbyNameTextBlock">
+				<Width> 270 </Width>
+				<Height> 26 </Height>
+				<PositionX> 720 </PositionX>
+				<PositionY> 54 </PositionY>
+				<Font> Arial-12 </Font>
+				<Text> LOBBY_NAME </Text>
+				<Justification> Left </Justification>
+				<Rows> 1 </Rows>
+			</TextBlock>
+
+			<TextBlock Name="MapNameTextBlock">
+				<Width> 270 </Width>
+				<Height> 26 </Height>
+				<PositionX> 720 </PositionX>
+				<PositionY> 76 </PositionY>
+				<Font> Arial-12 </Font>
+				<Text> MAP_NAME </Text>
+				<Justification> Left </Justification>
+				<Rows> 1 </Rows>
+			</TextBlock>
+
+			<TextBlock Name="BattleTypeTextBlock">
+				<Width> 270 </Width>
+				<Height> 20 </Height>
+				<PositionX> 720 </PositionX>
+				<PositionY> 98 </PositionY>
+				<Font> Arial-12 </Font>
+				<Text> BATTLE_TYPE </Text>
+				<Justification> Left </Justification>
+				<Rows> 1 </Rows>
+			</TextBlock>
+
+			<TextBlock Name="PlayersTypeTextBlock">
+				<Width> 270 </Width>
+				<Height> 20 </Height>
+				<PositionX> 720 </PositionX>
+				<PositionY> 120 </PositionY>
+				<Font> Arial-12 </Font>
+				<Text> PLAYERS_TYPE </Text>
+				<Justification> Left </Justification>
+				<Rows> 1 </Rows>
+			</TextBlock>
+
+			<TextButton Name="CustomizeLobbyButton">
+				<Template> Standard </Template>
+				<Width> 180 </Width>
+				<Height> 28 </Height>
+				<PositionX> 710 </PositionX>
+				<PositionY> 160 </PositionY>
+				<Text> Customize </Text>
+				<Font> Arial-12 </Font>
+			</TextButton>
+
+		</Elements>
+	</Frame>
+
+	<ListBox Name="PlayerListBox">
+		<Template> Standard </Template>
+		<Width> 270 </Width>
+		<Height> 320 </Height>
+		<PositionX> 710 </PositionX>
+		<PositionY> 200 </PositionY>
+		<DirectionalButtonsX> 250 </DirectionalButtonsX>
+		<DirectionalButtonsY> 0 </DirectionalButtonsY>
+		<UpButtonW> 20 </UpButtonW>
+		<UpButtonH> 20 </UpButtonH>
+		<DownButtonW> 20 </DownButtonW>
+		<DownButtonH> 20 </DownButtonH>
+		<BarColumnW> 20 </BarColumnW>
+		<EntryHeight> 24 </EntryHeight>
+		<SpaceBetweenEntries> 2 </SpaceBetweenEntries>
+		<Entries> </Entries>
+		<Justification> Left </Justification>
+		<Font> Arial-12 </Font>
+	</ListBox>
+
+	<Texture Name="LobbyLeaderSymbol">
+		<Width> 32 </Width>
+		<Height> 32 </Height>
+		<PositionX> 670 </PositionX>
+		<PositionY> 160 </PositionY>
+		<Texture> Assets/Images/LobbyLeader.png </Texture>
+	</Texture>
+	
+	<EditBox Name="ChatInputEditBox">
+		<Template> Standard </Template>
+		<Width> 680 </Width>
+		<Height> 26 </Height>
+		<PositionX> 20 </PositionX>
+		<PositionY> 580 </PositionY>
+		<Text> </Text>
+		<Font> Arial-12 </Font>
+		<Justification> Left </Justification>
+	</EditBox>
+
+	<TextButton Name="EnterTextButton">
+		<Template> Standard </Template>
+		<Width> 120 </Width>
+		<Height> 26 </Height>
+		<PositionX> 710 </PositionX>
+		<PositionY> 580 </PositionY>
+		<Text> Enter Text </Text>
+		<Font> Arial-12 </Font>
+	</TextButton>
+
+	<TextButton Name="StartGameTextButton">
+		<Template> Standard </Template>
+		<Width> 120 </Width>
+		<Height> 26 </Height>
+		<PositionX> 860 </PositionX>
+		<PositionY> 580 </PositionY>
+		<Text> Start Game </Text>
+		<Font> Arial-12 </Font>
+	</TextButton>
+	
+</MenuDialog>

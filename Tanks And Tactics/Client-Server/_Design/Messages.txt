@@ -1,0 +1,22 @@
+Battle Update Message
+====================
+
+BATTLE_INFORMATION_UPDATE
+- Battle Name
+- Battle Type
+- Player Type
+- Map Data
+
+BATTLE_PLAYER_UPDATE
+- Player List Size
+- Player Names
+- Player Types
+- Player Loadouts (if known)
+
+BATTLE_CHAT_UPDATE
+- New chat message
+
+BATTLE_OBJECT_UPDATE
+- Object Name
+- Object Position
+- Object State

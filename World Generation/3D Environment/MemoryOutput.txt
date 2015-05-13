@@ -1,0 +1,7 @@
+Memory Situation:	NO LEAKS FOUND!
+
+Allocations Unfreed:	0
+Memory Unfreed:		0 byte(s)
+
+Maximum Allocations:	73
+Maximum Memory Used:	3562407 byte(s)

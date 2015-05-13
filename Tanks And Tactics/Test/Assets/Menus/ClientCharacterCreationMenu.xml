@@ -1,0 +1,122 @@
+<MenuDialog>
+	<TextBlock Name="ChooseYourCommanderText">
+		<Width>240</Width>
+		<Height>36</Height>
+		<PositionX>20</PositionX>
+		<PositionY>20</PositionY>
+		<Font> Arial-12 </Font>
+		<Text>Create Your Commander:</Text>
+		<Justification>Left</Justification>
+		<Rows>1</Rows>
+	</TextBlock>
+
+	<Frame Name="CharacterCreationFrame">
+		<Template> Standard </Template>
+		<Width> 728 </Width>
+		<Height> 430 </Height>
+		<PositionX> 130 </PositionX>
+		<PositionY> 64 </PositionY>
+		<Moveable> False </Moveable>
+		<Elements>
+
+			<Frame Name="CommanderTypesFrame">
+			<Template> Standard </Template>
+			<Width> 460 </Width>
+			<Height> 400 </Height>
+			<PositionX> 136 </PositionX>
+			<PositionY> 86 </PositionY>
+			<Moveable> False </Moveable>
+			<Elements>
+
+				<TextBlock Name="CommanderTypeLabel">
+					<Width> 160 </Width>
+					<Height> 26 </Height>
+					<PositionX> 146 </PositionX>
+					<PositionY> 106 </PositionY>
+					<Font> Arial-12 </Font>
+					<Text> Commander Type: </Text>
+					<Justification> Left </Justification>
+					<Rows> 1 </Rows>
+				</TextBlock>
+
+				<TextureButton Name="CommanderType1Button">
+					<Width> 440 </Width>
+					<Height> 100 </Height>
+					<PositionX> 146 </PositionX>
+					<PositionY> 150 </PositionY>
+					<Texture> Assets/Images/CommanderType1.png </Texture>
+				</TextureButton>
+
+				<TextureButton Name="CommanderType2Button">
+					<Width> 440 </Width>
+					<Height> 100 </Height>
+					<PositionX> 146 </PositionX>
+					<PositionY> 260 </PositionY>
+					<Texture> Assets/Images/CommanderType2.png </Texture>
+				</TextureButton>
+
+				<TextureButton Name="CommanderType3Button">
+					<Width> 440 </Width>
+					<Height> 100 </Height>
+					<PositionX> 146 </PositionX>
+					<PositionY> 370 </PositionY>
+					<Texture> Assets/Images/CommanderType3.png </Texture>
+				</TextureButton>
+
+				<TextureButton Name="CommanderTypeSelection">
+					<Width> 440 </Width>
+					<Height> 100 </Height>
+					<PositionX> 146 </PositionX>
+					<PositionY> 150 </PositionY>
+					<Texture> Assets/Images/CommanderTypeSelector.png </Texture>
+				</TextureButton>
+
+			</Elements>
+		</Frame>
+      
+      <EditBox Name="CharacterNameBox">
+			<Template> Standard </Template>
+			<Width> 160 </Width>
+			<Height> 26 </Height>
+			<PositionX> 660 </PositionX>
+			<PositionY> 160 </PositionY>
+			<Font> Arial-12 </Font>
+			<Text> </Text>
+			<Justification> Left </Justification>
+      </EditBox>
+
+      <TextButton Name="CreateCommanderButton">
+			<Template> Standard </Template>
+			<Width> 160 </Width>
+			<Height> 36 </Height>
+			<PositionX> 660 </PositionX>
+			<PositionY> 200 </PositionY>
+			<Font> Arial-12 </Font>
+			<Text> Create Commander </Text>
+      </TextButton>
+      
+		</Elements>
+	</Frame>
+  
+	<TextButton Name="CharacterMenuButton">
+		<Template>Standard</Template>
+		<Width>274</Width>
+		<Height>48</Height>
+		<PositionX>740</PositionX>
+		<PositionY>690</PositionY>
+		<Text>Return to Character Menu</Text>
+		<Font> Arial-12 </Font>
+	</TextButton>
+
+	<TextBlock Name="StatusText">
+		<Width>512</Width>
+		<Height>26</Height>
+		<PositionX>508</PositionX>
+		<PositionY>744</PositionY>
+		<Font> Arial-12 </Font>
+		<Text>STATUS_TEXT</Text>
+		<Justification>Right</Justification>
+		<Rows>1</Rows>
+	</TextBlock>
+  
+</MenuDialog>

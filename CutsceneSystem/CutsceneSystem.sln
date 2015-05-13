@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CutsceneSystem", "CutsceneSystem.vcproj", "{321507C4-5632-4500-BE38-605A4EF3978F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{321507C4-5632-4500-BE38-605A4EF3978F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{321507C4-5632-4500-BE38-605A4EF3978F}.Debug|Win32.Build.0 = Debug|Win32
+		{321507C4-5632-4500-BE38-605A4EF3978F}.Release|Win32.ActiveCfg = Release|Win32
+		{321507C4-5632-4500-BE38-605A4EF3978F}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

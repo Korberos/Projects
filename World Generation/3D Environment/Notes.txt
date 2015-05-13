@@ -1,0 +1,6 @@
+- Front End buttons were created at www.buttonator.com
+	- Aldine, 14
+	- 120 x 24
+	- Text color black
+
+- Ask Richard wright about the REVERSE_RATIO fix and what caused the problem

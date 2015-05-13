@@ -1,0 +1,151 @@
+<MenuDialog>
+  <TextBlock Name="ChooseYourCommanderText">
+    <Width>240</Width>
+    <Height>36</Height>
+    <PositionX>20</PositionX>
+    <PositionY>20</PositionY>
+    <Font> Arial-12 </Font>
+    <Text>Choose Your Commander:</Text>
+    <Justification>Left</Justification>
+    <Rows>1</Rows>
+  </TextBlock>
+  
+  <TextureButton Name="Commander_01">
+    <Width>228</Width>
+    <Height>430</Height>
+    <PositionX>130</PositionX>
+    <PositionY>64</PositionY>
+    <Texture> Assets/Images/CommanderImage0.png </Texture>
+  </TextureButton>
+
+  <TextBlock Name="Commander_01_Name">
+    <Width> 228 </Width>
+    <Height> 32 </Height>
+    <PositionX> 130 </PositionX>
+    <PositionY> 500 </PositionY>
+    <Font> Arial-12 </Font>
+    <Text> </Text>
+    <Justification> Center </Justification>
+    <Rows> 1 </Rows>
+  </TextBlock>
+
+  <TextureButton Name="Commander_02">
+    <Width>228</Width>
+    <Height>430</Height>
+    <PositionX>380</PositionX>
+    <PositionY>64</PositionY>
+    <Texture> Assets/Images/CommanderImage0.png </Texture>
+  </TextureButton>
+
+  <TextBlock Name="Commander_02_Name">
+    <Width> 228 </Width>
+    <Height> 32 </Height>
+    <PositionX> 380 </PositionX>
+    <PositionY> 500 </PositionY>
+    <Font> Arial-12 </Font>
+    <Text> </Text>
+    <Justification> Center </Justification>
+    <Rows> 1 </Rows>
+  </TextBlock>
+
+  <TextureButton Name="Commander_03">
+    <Width>228</Width>
+    <Height>430</Height>
+    <PositionX>630</PositionX>
+    <PositionY>64</PositionY>
+    <Texture> Assets/Images/CommanderImage0.png </Texture>
+  </TextureButton>
+
+  <TextBlock Name="Commander_03_Name">
+    <Width> 228 </Width>
+    <Height> 32 </Height>
+    <PositionX> 630 </PositionX>
+    <PositionY> 500 </PositionY>
+    <Font> Arial-12 </Font>
+    <Text> </Text>
+    <Justification> Center </Justification>
+    <Rows> 1 </Rows>
+  </TextBlock>
+
+  <TextureButton Name="Commander_Selection">
+    <Width>228</Width>
+    <Height>430</Height>
+    <PositionX>118</PositionX>
+    <PositionY>64</PositionY>
+    <Texture> Assets/Images/CommanderSelection.png </Texture>
+  </TextureButton>
+
+  <TextButton Name="CreateCommanderButton">
+    <Template>Standard</Template>
+    <Width>204</Width>
+    <Height>36</Height>
+    <PositionX>130</PositionX>
+    <PositionY>440</PositionY>
+    <Text> Create Commander </Text>
+    <Font> Arial-12 </Font>
+  </TextButton>
+  
+  <TextButton Name="DeleteCommanderButton">
+    <Template>Standard</Template>
+    <Width>252</Width>
+    <Height>36</Height>
+    <PositionX>224</PositionX>
+    <PositionY>516</PositionY>
+    <Text> Delete Commander </Text>
+    <Font> Arial-12 </Font>
+  </TextButton>
+  
+  <TextButton Name="PlayCommanderButton">
+    <Template> Standard </Template>
+    <Width> 252 </Width>
+    <Height> 36 </Height>
+    <PositionX> 482 </PositionX>
+    <PositionY> 516 </PositionY>
+    <Text> Play Commander </Text>
+    <Font> Arial-12 </Font>
+  </TextButton>
+  
+  <TextButton Name="MainMenuButton">
+    <Template> Standard </Template>
+    <Width> 274 </Width>
+    <Height> 48 </Height>
+    <PositionX> 740 </PositionX>
+    <PositionY> 690 </PositionY>
+    <Text> Return to Main Menu </Text>
+    <Font> Arial-12 </Font>
+  </TextButton>
+
+  <Frame Name="ConfirmingCharacterDeletionFrame">
+    <Template> Standard </Template>
+    <Width> 300 </Width>
+    <Height> 140 </Height>
+    <PositionX> 362 </PositionX>
+    <PositionY> 180 </PositionY>
+    <Moveable> True </Moveable>
+    <Elements>
+      
+      <TextBlock Name="CharacterDeletionText">
+        <Width> 280 </Width>
+        <Height> 96 </Height>
+        <PositionX> 372 </PositionX>
+        <PositionY> 220 </PositionY>
+        <Font> Arial-12 </Font>
+        <Text> </Text>
+        <Justification> Center </Justification>
+        <Rows> 3 </Rows>
+      </TextBlock>
+      
+      <TextButton Name="CancelCharacterDeletionButton">
+        <Template> Standard </Template>
+        <Width> 200 </Width>
+        <Height> 32 </Height>
+        <PositionX> 412 </PositionX>
+        <PositionY> 280 </PositionY>
+        <Text> Cancel </Text>
+        <Font> Arial-12 </Font>
+      </TextButton>
+      
+    </Elements>
+  </Frame>
+  
+</MenuDialog>

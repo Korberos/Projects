@@ -1,0 +1,176 @@
+<MenuDialog>
+  <TextButton Name="Move Button">
+    <Template>Standard</Template>
+    <Width>120</Width>
+    <Height>24</Height>
+    <PositionX>360</PositionX>
+    <PositionY>600</PositionY>
+    <Text>Move</Text>
+  </TextButton>
+  <TextButton Name="Attack Button">
+    <Template>Standard</Template>
+    <Width>120</Width>
+    <Height>24</Height>
+    <PositionX>360</PositionX>
+    <PositionY>630</PositionY>
+    <Text>Attack</Text>
+  </TextButton>
+  <TextButton Name="Cancel Button">
+    <Template>Standard</Template>
+    <Width>120</Width>
+    <Height>24</Height>
+    <PositionX>360</PositionX>
+    <PositionY>660</PositionY>
+    <Text>Cancel</Text>
+  </TextButton>
+  <Frame Name="Unit Information Frame">
+    <Template>Standard</Template>
+    <Width>360</Width>
+    <Height>200</Height>
+    <PositionX>664</PositionX>
+    <PositionY>168</PositionY>
+    <Elements>
+      <TextureButton Name="Avatar Image">
+        <Texture>AvatarImage.png</Texture>
+        <Width>64</Width>
+        <Height>64</Height>
+        <PositionX>680</PositionX>
+        <PositionY>190</PositionY>
+      </TextureButton>
+      <TextBlock Name="Name Info">
+        <Width>200</Width>
+        <Height>16</Height>
+        <PositionX>760</PositionX>
+        <PositionY>196</PositionY>
+        <Text>General Carville</Text>
+        <Justification>Left</Justification>
+        <Rows>1</Rows>
+      </TextBlock>
+      <TextBlock Name="Class Info">
+        <Width>200</Width>
+        <Height>16</Height>
+        <PositionX>680</PositionX>
+        <PositionY>286</PositionY>
+        <Text>First Class Battle Tank</Text>
+        <Justification>Left</Justification>
+        <Rows>1</Rows>
+      </TextBlock>
+      <TextBlock Name="Rank Info">
+        <Width>200</Width>
+        <Height>16</Height>
+        <PositionX>680</PositionX>
+        <PositionY>310</PositionY>
+        <Text>Rank 1: General</Text>
+        <Justification>Left</Justification>
+        <Rows>1</Rows>
+      </TextBlock>
+      <TextBlock Name="Class Info">
+        <Width>200</Width>
+        <Height>16</Height>
+        <PositionX>680</PositionX>
+        <PositionY>334</PositionY>
+        <Text>Level 32</Text>
+        <Justification>Left</Justification>
+        <Rows>1</Rows>
+      </TextBlock>
+      <!--<CheckBox Name="Option 1 Checkbox">
+        <Template>Standard</Template>
+        <Width>20</Width>
+        <Height>20</Height>
+        <PositionX>560</PositionX>
+        <PositionY>146</PositionY>
+      </CheckBox>
+      <TextBlock Name="Option 2 Name">
+        <Width>220</Width>
+        <Height>22</Height>
+        <PositionX>320</PositionX>
+        <PositionY>172</PositionY>
+        <Text>Option 2 (whatever)</Text>
+        <Justification>Right</Justification>
+        <Rows>1</Rows>
+      </TextBlock>
+      <CheckBox Name="Option 2 Checkbox">
+        <Template>Standard</Template>
+        <Width>20</Width>
+        <Height>20</Height>
+        <PositionX>560</PositionX>
+        <PositionY>172</PositionY>
+      </CheckBox>
+      <TextBlock Name="Option 3 Name">
+        <Width>220</Width>
+        <Height>22</Height>
+        <PositionX>320</PositionX>
+        <PositionY>198</PositionY>
+        <Text>Option 3 (whatever)</Text>
+        <Justification>Right</Justification>
+        <Rows>1</Rows>
+      </TextBlock>
+      <CheckBox Name="Option 3 Checkbox">
+        <Template>Standard</Template>
+        <Width>20</Width>
+        <Height>20</Height>
+        <PositionX>560</PositionX>
+        <PositionY>198</PositionY>
+      </CheckBox>
+      <TextBlock Name="Option 4 Name">
+        <Width>100</Width>
+        <Height>22</Height>
+        <PositionX>230</PositionX>
+        <PositionY>240</PositionY>
+        <Text>Dropdown Title</Text>
+        <Justification>Right</Justification>
+        <Rows>1</Rows>
+      </TextBlock>
+      <DropDown Name="Option 4 Drop Down">
+        <Template>Standard</Template>
+        <Width>240</Width>
+        <Height>28</Height>
+        <PositionX>340</PositionX>
+        <PositionY>236</PositionY>
+        <DropDownX>216</DropDownX>
+        <DropDownY>6</DropDownY>
+        <DropDownW>16</DropDownW>
+        <DropDownH>16</DropDownH>
+        <Entries>
+          <Entry>Drop Down Option 1</Entry>
+          <Entry>Drop Down Option 2</Entry>
+          <Entry>Drop Down Option 3</Entry>
+          <Entry>Drop Down Option 4</Entry>
+        </Entries>
+        <Justification>Center</Justification>
+      </DropDown>
+      <TextBlock Name="Option 5 Name">
+        <Width>100</Width>
+        <Height>22</Height>
+        <PositionX>230</PositionX>
+        <PositionY>272</PositionY>
+        <Text>List Box Title</Text>
+        <Justification>Right</Justification>
+        <Rows>1</Rows>
+      </TextBlock>
+      <ListBox Name="Option 5 List Box">
+        <Template>Standard</Template>
+        <Width>240</Width>
+        <Height>96</Height>
+        <PositionX>340</PositionX>
+        <PositionY>268</PositionY>
+        <DirectionalButtonsX>220</DirectionalButtonsX>
+        <DirectionalButtonsY>6</DirectionalButtonsY>
+        <UpButtonW>16</UpButtonW>
+        <UpButtonH>16</UpButtonH>
+        <DownButtonW>16</DownButtonW>
+        <DownButtonH>16</DownButtonH>
+        <BarColumnW>16</BarColumnW>
+        <EntryHeight>28</EntryHeight>
+        <SpaceBetweenEntries>0</SpaceBetweenEntries>
+        <Entries>
+          <Entry>List Box Option 1</Entry>
+          <Entry>List Box Option 2</Entry>
+          <Entry>List Box Option 3</Entry>
+          <Entry>List Box Option 4</Entry>
+        </Entries>
+        <Justification>Center</Justification>
+      </ListBox>-->
+    </Elements>
+  </Frame>
+</MenuDialog>

@@ -1,0 +1,220 @@
+<MenuDialog>
+  <TextBlock Name="VersionText">
+    <Width> 240 </Width>
+    <Height> 26 </Height>
+    <PositionX> 776 </PositionX>
+    <PositionY> 2 </PositionY>
+    <Font> Arial-12 </Font>
+    <Text> VERSION_TEXT </Text>
+    <Justification> Right </Justification>
+    <Rows>1</Rows>
+  </TextBlock>
+  
+  <Frame Name="RegisterLoginFrame">
+    <Template> Standard </Template>
+    <Width> 270 </Width>
+    <Height> 160 </Height>
+    <PositionX> 750 </PositionX>
+    <PositionY> 578 </PositionY>
+    <Moveable> True </Moveable>
+    <Elements>
+      
+      <TextBlock Name="UsernameText">
+        <Width> 250 </Width>
+        <Height> 20 </Height>
+        <PositionX> 760 </PositionX>
+        <PositionY> 598 </PositionY>
+        <Font> Arial-12 </Font>
+        <Text> Username </Text>
+        <Justification> Left </Justification>
+        <Rows> 1 </Rows>
+      </TextBlock>
+      
+      <EditBox Name="UsernameEditBox">
+        <Template> Standard </Template>
+        <Width> 250 </Width>
+        <Height> 26 </Height>
+        <PositionX> 760 </PositionX>
+        <PositionY> 618 </PositionY>
+        <Text> </Text>
+        <Font> Arial-12 </Font>
+		  <Justification> Center </Justification>
+      </EditBox>
+      
+      <TextBlock Name="PasswordText">
+        <Width> 250 </Width>
+        <Height> 20 </Height>
+        <PositionX> 760 </PositionX>
+        <PositionY> 648 </PositionY>
+        <Font> Arial-12 </Font>
+        <Text> Password </Text>
+        <Justification> Left </Justification>
+        <Rows> 1 </Rows>
+      </TextBlock>
+      
+      <EditBox Name="PasswordEditBox">
+        <Template> Standard </Template>
+        <Width> 250 </Width>
+        <Height> 26 </Height>
+        <PositionX> 760 </PositionX>
+        <PositionY> 668 </PositionY>
+        <Text> </Text>
+        <Font> Arial-12 </Font>
+		  <Justification> Center </Justification>
+      </EditBox>
+      
+      <TextButton Name="RegisterButton">
+        <Template> Standard </Template>
+        <Width> 120 </Width>
+        <Height> 26 </Height>
+        <PositionX> 760 </PositionX>
+        <PositionY> 708 </PositionY>
+        <Text> Register </Text>
+        <Font> Arial-12 </Font>
+      </TextButton>
+      
+      <TextButton Name="LoginButton">
+        <Template> Standard </Template>
+        <Width> 120 </Width>
+        <Height> 26 </Height>
+        <PositionX> 890 </PositionX>
+        <PositionY> 708 </PositionY>
+        <Text> Login </Text>
+        <Font> Arial-12 </Font>
+      </TextButton>
+      
+    </Elements>
+  </Frame>
+  
+  <TextButton Name="RequestNewsFeedButton">
+    <Template> Standard </Template>
+    <Width> 240 </Width>
+    <Height> 26 </Height>
+    <PositionX> 20 </PositionX>
+    <PositionY> 140 </PositionY>
+    <Text> Request News Feed </Text>
+    <Font> Arial-12 </Font>
+  </TextButton>
+  
+  <Frame Name="NewsFeedFrame">
+    <Template> Standard </Template>
+    <Width> 360 </Width>
+    <Height> 480 </Height>
+    <PositionX> 10 </PositionX>
+    <PositionY> 278 </PositionY>
+    <Moveable> True </Moveable>
+    <Elements>
+      
+      <TextBlock Name="NewsFeed1_Headline">
+        <Width> 340 </Width>
+        <Height> 26 </Height>
+        <PositionX> 20 </PositionX>
+        <PositionY> 298 </PositionY>
+        <Font> Arial-12 </Font>
+        <Text> HEADLINE_1 </Text>
+        <Justification> Left </Justification>
+        <Rows> 1 </Rows>
+      </TextBlock>
+      
+      <TextBlock Name="NewsFeed1_Body">
+        <Width> 340 </Width>
+        <Height> 26 </Height>
+        <PositionX> 20 </PositionX>
+        <PositionY> 318 </PositionY>
+        <Font> Arial-12 </Font>
+        <Text> BODY_1 </Text>
+        <Justification> Left </Justification>
+        <Rows> 3 </Rows>
+      </TextBlock>
+      
+      <TextBlock Name="NewsFeed2_Headline">
+        <Width> 340 </Width>
+        <Height> 26 </Height>
+        <PositionX> 20 </PositionX>
+        <PositionY> 382 </PositionY>
+        <Font> Arial-12 </Font>
+        <Text> HEADLINE_1 </Text>
+        <Justification> Left </Justification>
+        <Rows> 1 </Rows>
+      </TextBlock>
+      
+      <TextBlock Name="NewsFeed2_Body">
+        <Width> 340 </Width>
+        <Height> 26 </Height>
+        <PositionX> 20 </PositionX>
+        <PositionY> 402 </PositionY>
+        <Font> Arial-12 </Font>
+        <Text> BODY_1 </Text>
+        <Justification> Left </Justification>
+        <Rows>3</Rows>
+      </TextBlock>
+      
+      <TextBlock Name="NewsFeed3_Headline">
+        <Width> 340 </Width>
+        <Height> 26 </Height>
+        <PositionX> 20 </PositionX>
+        <PositionY> 466 </PositionY>
+        <Font> Arial-12 </Font>
+        <Text> HEADLINE_1 </Text>
+        <Justification> Left </Justification>
+        <Rows> 1 </Rows>
+      </TextBlock>
+      
+      <TextBlock Name="NewsFeed3_Body">
+        <Width> 340 </Width>
+        <Height> 26 </Height>
+        <PositionX> 20 </PositionX>
+        <PositionY> 486 </PositionY>
+        <Font> Arial-12 </Font>
+        <Text> BODY_1 </Text>
+        <Justification> Left </Justification>
+        <Rows> 3 </Rows>
+      </TextBlock>
+      
+      <TextBlock Name="NewsFeed4_Headline">
+        <Width> 340 </Width>
+        <Height> 26 </Height>
+        <PositionX> 20 </PositionX>
+        <PositionY> 550 </PositionY>
+        <Font> Arial-12 </Font>
+        <Text> HEADLINE_1 </Text>
+        <Justification> Left </Justification>
+        <Rows> 1 </Rows>
+      </TextBlock>
+      
+      <TextBlock Name="NewsFeed4_Body">
+        <Width> 340 </Width>
+        <Height> 26 </Height>
+        <PositionX> 20 </PositionX>
+        <PositionY> 570 </PositionY>
+        <Font> Arial-12 </Font>
+        <Text> BODY_1 </Text>
+        <Justification> Left </Justification>
+        <Rows> 3 </Rows>
+      </TextBlock>
+      
+      <TextBlock Name="NewsFeed5_Headline">
+        <Width> 340 </Width>
+        <Height> 26 </Height>
+        <PositionX> 20 </PositionX>
+        <PositionY> 634 </PositionY>
+        <Font> Arial-12 </Font>
+        <Text> HEADLINE_1 </Text>
+        <Justification> Left </Justification>
+        <Rows> 1 </Rows>
+      </TextBlock>
+      
+      <TextBlock Name="NewsFeed5_Body">
+        <Width> 340 </Width>
+        <Height> 26 </Height>
+        <PositionX> 20 </PositionX>
+        <PositionY> 654 </PositionY>
+        <Font> Arial-12 </Font>
+        <Text> BODY_1 </Text>
+        <Justification> Left </Justification>
+        <Rows> 3 </Rows>
+      </TextBlock>
+      
+    </Elements>
+  </Frame>
+</MenuDialog>

@@ -1,0 +1,6 @@
+<MapList>
+	<MapEntry>
+		<Name> Test Map 01 </Name>
+		<File> Assets/Maps/TestMap1.xml </File>
+	</MapEntry>
+</MapList>

@@ -1,0 +1,85 @@
+<MenuDialog>
+	<TextureButton Name="TextureButtonTest">
+		<Texture>TestButtonImage.png</Texture>
+		<Width>180</Width>
+    <Height>120</Height>
+    <PositionX>400</PositionX>
+    <PositionY>80</PositionY>
+	</TextureButton>
+  <Frame Name="FrameTest">
+    <Template>Standard</Template>
+    <Width>100</Width>
+    <Height>100</Height>
+    <PositionX>10</PositionX>
+    <PositionY>10</PositionY>
+    <Elements>
+      <CheckBox Name="CheckBoxTest">
+        <Template>Standard</Template>
+        <Width>20</Width>
+        <Height>20</Height>
+        <PositionX>30</PositionX>
+        <PositionY>30</PositionY>
+      </CheckBox>
+    </Elements>
+  </Frame>
+  <TextButton Name="TextButtonTest">
+    <Template>Standard</Template>
+    <Width>500</Width>
+    <Height>26</Height>
+    <PositionX>100</PositionX>
+    <PositionY>400</PositionY>
+    <Text></Text>
+  </TextButton>
+  <DropDown Name="DropDownTest">
+    <Template>Standard</Template>
+    <Width>240</Width>
+    <Height>28</Height>
+    <PositionX>60</PositionX>
+    <PositionY>480</PositionY>
+    <DropDownX>216</DropDownX>
+    <DropDownY>6</DropDownY>
+    <DropDownW>16</DropDownW>
+    <DropDownH>16</DropDownH>
+    <Entries>
+      <Entry>TestString0</Entry>
+    </Entries>
+    <Justification>Center</Justification>
+  </DropDown>
+  <TextBlock Name="TextBlockTest">
+    <Width>260</Width>
+    <Height>28</Height>
+    <PositionX>100</PositionX>
+    <PositionY>300</PositionY>
+    <Text></Text>
+    <Justification>Center</Justification>
+    <Rows>4</Rows>
+  </TextBlock>
+  <ListBox Name="ListBoxTest">
+    <Template>Standard</Template>
+    <Width>240</Width>
+    <Height>128</Height>
+    <PositionX>400</PositionX>
+    <PositionY>480</PositionY>
+    <DirectionalButtonsX>220</DirectionalButtonsX>
+    <DirectionalButtonsY>6</DirectionalButtonsY>
+    <UpButtonW>16</UpButtonW>
+    <UpButtonH>16</UpButtonH>
+    <DownButtonW>16</DownButtonW>
+    <DownButtonH>16</DownButtonH>
+    <BarColumnW>16</BarColumnW>
+    <EntryHeight>28</EntryHeight>
+    <SpaceBetweenEntries>0</SpaceBetweenEntries>
+    <Entries>
+      <Entry>TestString0</Entry>
+      <Entry>TestString1</Entry>
+    </Entries>
+    <Justification>Center</Justification>
+  </ListBox>
+  <EditBox Name="EditBoxTest">
+    <Template>Standard</Template>
+    <Width>500</Width>
+    <Height>26</Height>
+    <PositionX>100</PositionX>
+    <PositionY>500</PositionY>
+  </EditBox>
+</MenuDialog>

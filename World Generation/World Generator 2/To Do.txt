@@ -1,0 +1,3 @@
+- Implement picking on the terrain.
+	- Move the player sphere accordingly.
+	- Utilize ground clamping but not terrain following

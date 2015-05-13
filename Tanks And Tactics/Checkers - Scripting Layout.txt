@@ -1,0 +1,83 @@
+//  NOTES:
+//
+//  "Modifier" is a member variable places on the object. All Modifiers have "Type" and "Value". Their "Type" determines the validity of the values you attempt to put into them.
+//  "Action" is a function that can be called, and which does a certain thing. Usually these alter the values of modifiers or check for statuses of modifiers and call other actions
+//  "Trigger" is a type of event that the object will listen for and it's actions determine what it will do at those triggers
+//
+//  Note:  Movement needs to have a check for the positions that the object can move. Perhaps an "Action" can create the list of possible positions and then when you actually move, 
+//  another function would reposition the object and then go off to check for jumping and end the turn if necessary (if you can perform another jump, don't end the turn)
+//
+//=====
+
+<World name="Checkers">
+	<Type> Square Grid </Type>
+	<Width> 8 </Width>
+	<Height> 8 </Height>
+</World>
+
+<Object name="Pawn">
+	<Modifiers>
+		<MouseOver type="Boolean"> False </MouseOver>
+		<Selected type="Boolean"> False </Selected>
+	</Modifiers>
+
+	<Actions>
+		<Select> Selected = True </Select>
+		<Deselect> Selected = False </Deselect>
+		<Move> /*TODO*/ </Move>
+	</Actions>
+
+	<Triggers>
+		<Click>
+			<Conditional name="MouseOver == True"> Select </Conditional>
+
+			<Conditional name="MouseOver == False">
+				<Conditional name="Selected == True"> Move </Conditional>
+				<Unconditional> Deselect </Unconditional>
+			</Conditional>
+		</Click>
+	</Triggers>
+</Object>
+
+
+
+[Objects:Pawn]
+{
+	[Modifier:MouseOver]
+	{
+		Type: Boolean
+		Value: False
+	}
+
+	[Modifier:Selected]
+	{
+		Type: Boolean
+		Value: False
+	}
+	
+	[Action:Selection]
+	{
+		Selected = True
+	}
+	
+	[Action:DeSelection]
+	{
+		Selected = False
+	}
+
+	[Trigger:Click]
+	{
+		[StatusCheck:MouseOver]
+		{
+			Status: True
+			CallAction: Selection
+		}
+
+		[StatusCheck:MouseOver]
+		{
+			Status: False
+			CallAction: Move
+			CallAction: DeSelection
+		}
+	}
+}

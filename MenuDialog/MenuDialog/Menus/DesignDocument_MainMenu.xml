@@ -1,0 +1,51 @@
+<MenuDialog>
+  <TextButton Name="New Game Button">
+    <Template>Standard</Template>
+    <Width>240</Width>
+    <Height>32</Height>
+    <PositionX>720</PositionX>
+    <PositionY>400</PositionY>
+    <Text>New Game</Text>
+  </TextButton>
+  <TextButton Name="Continue Game Button">
+    <Template>Standard</Template>
+    <Width>240</Width>
+    <Height>32</Height>
+    <PositionX>720</PositionX>
+    <PositionY>450</PositionY>
+    <Text>Continue Game</Text>
+  </TextButton>
+  <TextButton Name="Online Play Button">
+    <Template>Standard</Template>
+    <Width>240</Width>
+    <Height>32</Height>
+    <PositionX>720</PositionX>
+    <PositionY>500</PositionY>
+    <Text>Online Play</Text>
+  </TextButton>
+  <TextButton Name="Options Button">
+    <Template>Standard</Template>
+    <Width>240</Width>
+    <Height>32</Height>
+    <PositionX>720</PositionX>
+    <PositionY>550</PositionY>
+    <Text>Options</Text>
+  </TextButton>
+  <TextButton Name="Exit Button">
+    <Template>Standard</Template>
+    <Width>240</Width>
+    <Height>32</Height>
+    <PositionX>720</PositionX>
+    <PositionY>600</PositionY>
+    <Text>Exit Game</Text>
+  </TextButton>
+  <TextBlock Name="Scene Note">
+    <Width>200</Width>
+    <Height>32</Height>
+    <PositionX>200</PositionX>
+    <PositionY>200</PositionY>
+    <Text>[Background image or animation]</Text>
+    <Justification>Center</Justification>
+    <Rows>1</Rows>
+  </TextBlock>
+</MenuDialog>

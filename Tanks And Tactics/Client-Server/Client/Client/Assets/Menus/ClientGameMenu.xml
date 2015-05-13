@@ -1,0 +1,175 @@
+<MenuDialog>
+	<TextButton Name="HubMenuButton">
+		<Template>Standard</Template>
+		<Width>274</Width>
+		<Height>42</Height>
+		<PositionX>740</PositionX>
+		<PositionY>720</PositionY>
+		<Text>Return to Hub</Text>
+		<Font> Arial-12 </Font>
+	</TextButton>
+
+	<TextBlock Name="CurrentTurnTextBlock">
+		<Width> 260 </Width>
+		<Height> 26 </Height>
+		<PositionX> 756 </PositionX>
+		<PositionY> 40 </PositionY>
+		<Font> Arial-12 </Font>
+		<Text>  </Text>
+		<Justification> Right </Justification>
+		<Rows> 1 </Rows>
+	</TextBlock>
+
+	<TextButton Name="EndTurnTextButton">
+		<Template>Standard</Template>
+		<Width> 160 </Width>
+		<Height> 26 </Height>
+		<PositionX> 860 </PositionX>
+		<PositionY> 10 </PositionY>
+		<Text> End Turn </Text>
+		<Font> Arial-12 </Font>
+	</TextButton>
+
+	<Frame Name="UnitOptionsFrame">
+		<Template> Standard </Template>
+		<Width> 200 </Width>
+		<Height> 240 </Height>
+		<PositionX> 100 </PositionX>
+		<PositionY> 100 </PositionY>
+		<Moveable> True </Moveable>
+		<Elements>
+
+			<TextBlock Name="UnitNameTextBlock">
+				<Width> 180 </Width>
+				<Height> 22 </Height>
+				<PositionX> 110 </PositionX>
+				<PositionY> 120 </PositionY>
+				<Font> Arial-12 </Font>
+				<Text> Unit Name: </Text>
+				<Justification> Left </Justification>
+				<Rows> 1 </Rows>
+			</TextBlock>
+
+			<TextBlock Name="UnitTypeTextBlock">
+				<Width> 180 </Width>
+				<Height> 22 </Height>
+				<PositionX> 110 </PositionX>
+				<PositionY> 142 </PositionY>
+				<Font> Arial-12 </Font>
+				<Text> Unit Type: </Text>
+				<Justification> Left </Justification>
+				<Rows> 1 </Rows>
+			</TextBlock>
+
+			<TextBlock Name="UnitLevelTextBlock">
+				<Width> 180 </Width>
+				<Height> 22 </Height>
+				<PositionX> 110 </PositionX>
+				<PositionY> 164 </PositionY>
+				<Font> Arial-12 </Font>
+				<Text> Unit Level: </Text>
+				<Justification> Left </Justification>
+				<Rows> 1 </Rows>
+			</TextBlock>
+
+			<TextBlock Name="UnitSpeedTextBlock">
+				<Width> 180 </Width>
+				<Height> 22 </Height>
+				<PositionX> 110 </PositionX>
+				<PositionY> 186 </PositionY>
+				<Font> Arial-12 </Font>
+				<Text> Unit Speed: </Text>
+				<Justification> Left </Justification>
+				<Rows> 1 </Rows>
+			</TextBlock>
+
+			<TextButton Name="MoveButton">
+				<Template> Standard </Template>
+				<Width> 180 </Width>
+				<Height> 26 </Height>
+				<PositionX> 110 </PositionX>
+				<PositionY> 280 </PositionY>
+				<Text> Move </Text>
+				<Font> Arial-12 </Font>
+			</TextButton>
+
+			<TextButton Name="AttackButton">
+				<Template> Standard </Template>
+				<Width> 180 </Width>
+				<Height> 26 </Height>
+				<PositionX> 110 </PositionX>
+				<PositionY> 310 </PositionY>
+				<Text> Attack </Text>
+				<Font> Arial-12 </Font>
+			</TextButton>
+      
+		</Elements>
+	</Frame>
+
+	<Frame Name="ChatBoxFrame">
+		<Template> Standard </Template>
+		<Width> 830 </Width>
+		<Height> 610 </Height>
+		<PositionX> 10 </PositionX>
+		<PositionY> 10 </PositionY>
+		<Moveable> False </Moveable>
+		<Elements>
+
+			<EditBox Name="ChatInputEditBox">
+				<Template> Standard </Template>
+				<Width> 680 </Width>
+				<Height> 26 </Height>
+				<PositionX> 20 </PositionX>
+				<PositionY> 580 </PositionY>
+				<Text> </Text>
+				<Font> Arial-12 </Font>
+				<Justification> Left </Justification>
+			</EditBox>
+
+			<TextButton Name="EnterTextButton">
+				<Template> Standard </Template>
+				<Width> 120 </Width>
+				<Height> 26 </Height>
+				<PositionX> 710 </PositionX>
+				<PositionY> 580 </PositionY>
+				<Text> Enter Text </Text>
+				<Font> Arial-12 </Font>
+			</TextButton>
+
+		</Elements>
+	</Frame>
+
+	<TextButton Name="ToggleChatVisibleButton">
+		<Template> Standard </Template>
+		<Width> 120 </Width>
+		<Height> 26 </Height>
+		<PositionX> 840 </PositionX>
+		<PositionY> 580 </PositionY>
+		<Text> CHAT TOGGLE </Text>
+		<Font> Arial-12 </Font>
+	</TextButton>
+
+	<Frame Name="ScoreboardFrame">
+		<Template> Standard </Template>
+		<Width> 830 </Width>
+		<Height> 610 </Height>
+		<PositionX> 10 </PositionX>
+		<PositionY> 10 </PositionY>
+		<Moveable> False </Moveable>
+		<Elements>
+			
+			<TextBlock Name="WinnerOrLoserTextBlock">
+				<Width> 140 </Width>
+				<Height> 26 </Height>
+				<PositionX> 690 </PositionX>
+				<PositionY> 42 </PositionY>
+				<Font> Arial-12 </Font>
+				<Text> WINNER OR LOSER </Text>
+				<Justification> Right </Justification>
+				<Rows> 1 </Rows>
+			</TextBlock>
+			
+		</Elements>
+	</Frame>
+
+</MenuDialog>
