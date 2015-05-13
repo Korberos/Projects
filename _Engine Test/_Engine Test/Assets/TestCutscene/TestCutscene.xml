@@ -1,0 +1,266 @@
+<!--
+This is a test cutscene file. It loads in a scene that has a teacher describing the engine 
+to a student and going through a few features that can be tested after the scene
+-->
+
+<Cutscene>
+	<!--
+	Actors are cutscene objects that will be created when the cutscene is loaded. They will take 
+	certain actions based on the events listed later.
+	-->
+	<Actors>
+		<Actor> TextBoxBG </Actor>
+		<Actor> Teacher </Actor>
+		<Actor> Student </Actor>
+		<Actor> Dialogue </Actor>
+	</Actors>
+
+	<!--
+	Resources are the resources that will be used within the scene. They will be loaded when the 
+	cutscene is loaded, then automatically freed from memory after the scene ends.
+	-->
+	<Resources>
+		<Resource type="Sprite">
+			<Name> Teacher01Sprite </Name>
+			<Asset> Assets/Cutscene/Teacher01.png </Asset>
+		</Resource>
+
+		<Resource type="Sprite">
+			<Name> Student01Sprite </Name>
+			<Asset> Assets/Cutscene/Student01.png </Asset>
+		</Resource>
+
+		<Resource type="Sound">
+			<Name> TeacherHelloSound </Name>
+			<Asset> Assets/Cutscene/TeacherHelloSound.wav </Asset>
+		</Resource>
+
+		<Resource type="Sprite">
+			<Name> TextBoxBGSprite </Name>
+			<Asset> Assets/Cutscene/TextBoxBG.png </Asset>
+		</Resource>
+
+		<Resource type="Font">
+			<Name> DialogueFont </Name>
+			<Asset> DialogueFont </Asset>
+		</Resource>
+	</Resources>
+
+	<!--
+	Events determine what happens and when in the cutscene. Each event has a trigger, a type, and some specific data
+	that allows the system to enact the event.
+	
+	The first thing to note is the "type" label in the Event header. This determines how the system will interpret the 
+	event and what data it will be looking for. All Events require a Trigger. PassMethod and EndingEvent tags are always 
+	optional. Different types require different data in addition to these. Valid types and requirements are as follows:
+		- SpriteChange (Requires Target, Asset)
+		- WarpTo (Requires Target, X, Y)
+		- MoveTo (Requires Target, X, Y, and Time)
+		- SoundPlay (Requires Asset)
+		- Wait (Requires Time)
+		- Alpha (Requires Time and Asset)
+		
+	A Trigger can be of several types. Any event with a trigger type of "Start" occurs when the scene starts. You can also 
+	put a time (in seconds) in as a trigger. It is suggested you use a floating point number. Putting 0.0 would be almost 
+	the same as putting "Start" in, since they would both begin just after the timer started counting. Every event has the 
+	ability to have an ending event as well, which can trigger other events. For example, if an event's EndingEvent is put 
+	in as "Surprise" and another event has a trigger of "Surprise", the event with that trigger will go off as soon as the 
+	other event ends. Take note that putting "Start" in as an ending trigger is not valid.
+	
+	A PassMethod is a way by which the player ends the event. Much like Triggers, this can be a method name, an amount of 
+	time, or a trigger. In this way, you could have an event which passes another event when it ends. Advanced use of the 
+	system will make this a bit clearer.
+	
+	The EndingEvent sends out an event call after the event ends. This can be used to trigger a new event by naming a string 
+	and then using it as a Trigger in another event. Putting in "EndScene" for this will end the scene after the event.
+	
+	A Target is the actor that this event will occur with. Certain events will not require an actor. For example, if the 
+	Asset is a sound file, it will not need an actor. The event will just play the sound. An example that requires an actor 
+	is seen below. The Asset is a sprite, so it looks for the actor and assigns the sprite to it.
+	
+	X and Y are the x and y coordinates on screen. They are used when moving an Actor to a position on screen.
+	(NOTE: Both numbers should be signed integers)
+	
+	Time is the amount of time that an event will take to occur. For example, in a MoveTo event, it is the time it takes the 
+	Actor to reach it's specified destination.
+	
+	The Asset is the label of the resource that is used in the event. Given the asset type, the cutscene will determine if 
+	it needs to assign the resource to an actor or utilize it in some other way. The asset can also be used to store a value.
+	-->
+	<Events>
+		<Event type="WarpTo">
+			<Trigger> Start </Trigger>
+			<EndingEvent> TeacherAssignSprite </EndingEvent>
+			<Target> Teacher </Target>
+			<X> -256 </X>
+			<Y> 360 </Y>
+		</Event>
+
+		<Event type="WarpTo">
+			<Trigger> Start </Trigger>
+			<EndingEvent> StudentAssignSprite </EndingEvent>
+			<Target> Student </Target>
+			<X> 1024 </X>
+			<Y> 360 </Y>
+		</Event>
+
+		<Event type="WarpTo">
+			<Trigger> Start </Trigger>
+			<EndingEvent> TextBoxBGAssignSprite </EndingEvent>
+			<Target> TextBoxBG </Target>
+			<X> 0 </X>
+			<Y> 450 </Y>
+		</Event>
+		
+		<Event type="SpriteChange">
+			<Trigger> TeacherAssignSprite </Trigger>
+			<EndingEvent> TeacherAppear </EndingEvent>
+			<Target> Teacher </Target>
+			<Asset> Teacher01Sprite </Asset>
+		</Event>
+
+		<Event type="SpriteChange">
+			<Trigger> StudentAssignSprite </Trigger>
+			<EndingEvent> </EndingEvent>
+			<Target> Student </Target>
+			<Asset> Student01Sprite </Asset>
+		</Event>
+
+		<Event type="SpriteChange">
+			<Trigger> TextBoxBGAssignSprite </Trigger>
+			<EndingEvent> TextBoxBGAlphaNull </EndingEvent>
+			<Target> TextBoxBG </Target>
+			<Asset> TextBoxBGSprite </Asset>
+		</Event>
+
+		<Event type="Alpha">
+			<Trigger> TextBoxBGAlphaNull </Trigger>
+			<EndingEvent> </EndingEvent>
+			<Target> TextBoxBG </Target>
+			<Time> 0.0 </Time>
+			<Asset> 0.0f </Asset>
+		</Event>
+
+		<Event type="MoveTo">
+			<Trigger> TeacherAppear </Trigger>
+			<EndingEvent> TeacherHello </EndingEvent>
+			<Target> Teacher </Target>
+			<X> 0 </X>
+			<Y> 320 </Y>
+			<Time> 0.55 </Time>
+		</Event>
+
+		<Event type="Alpha">
+			<Trigger> TeacherHello </Trigger>
+			<EndingEvent> ShowMessage01 </EndingEvent>
+			<Target> TextBoxBG </Target>
+			<Time> 0.4 </Time>
+			<Asset> 1.0f </Asset>
+		</Event>
+
+		<Event type="SoundPlay">
+			<Trigger> TeacherHello </Trigger>
+			<EndingEvent> </EndingEvent>
+			<Asset> TeacherHelloSound </Asset>
+			<Time> 1.0 </Time>
+		</Event>
+
+		<Event type="WarpTo">
+			<Trigger> TeacherHello </Trigger>
+			<EndingEvent> </EndingEvent>
+			<Target> Dialogue </Target>
+			<X> 300 </X>
+			<Y> 500 </Y>
+		</Event>
+
+		<Event type="SetFont">
+			<Trigger> ShowMessage01 </Trigger>
+			<EndingEvent> </EndingEvent>
+			<Target> Dialogue </Target>
+			<Asset> DialogueFont </Asset>
+		</Event>
+
+		<Event type="SetText">
+			<Trigger> ShowMessage01 </Trigger>
+			<EndingEvent> Message01Length </EndingEvent>
+			<Target> DialogueFont </Target>
+			<Asset> Student! Report! </Asset>
+			<Time> 0.0 </Time>
+		</Event>
+
+		<Event type="Wait">
+			<Trigger> Message01Length </Trigger>
+			<EndingEvent> EraseMessage01 </EndingEvent>
+			<Time> 1.6 </Time>
+		</Event>
+
+		<Event type="SetText">
+			<Trigger> EraseMessage01 </Trigger>
+			<EndingEvent> StudentAppear </EndingEvent>
+			<Target> DialogueFont </Target>
+			<Asset></Asset>
+		</Event>
+
+		<Event type="MoveTo">
+			<Trigger> StudentAppear </Trigger>
+			<EndingEvent> ShowMessage02 </EndingEvent>
+			<Target> Student </Target>
+			<X> 796 </X>
+			<Y> 320 </Y>
+			<Time> 0.55 </Time>
+		</Event>
+
+		<Event type="SetText">
+			<Trigger> ShowMessage02 </Trigger>
+			<EndingEvent> Message02Length </EndingEvent>
+			<Target> DialogueFont </Target>
+			<Asset> Yes Ma'am. How can I help you today? </Asset>
+			<Time> 0.0 </Time>
+		</Event>
+
+		<Event type="Wait">
+			<Trigger> Message02Length </Trigger>
+			<EndingEvent> EraseMessage02 </EndingEvent>
+			<Time> 1.6 </Time>
+		</Event>
+
+		<Event type="SetText">
+			<Trigger> EraseMessage02 </Trigger>
+			<EndingEvent> WaitToLeave </EndingEvent>
+			<Target> DialogueFont </Target>
+			<Asset></Asset>
+		</Event>
+
+		<Event type="Wait">
+			<Trigger> WaitToLeave </Trigger>
+			<EndingEvent> TextBoxDisappear </EndingEvent>
+			<Time> 1.0 </Time>
+		</Event>
+
+		<Event type="Alpha">
+			<Trigger> TextBoxDisappear </Trigger>
+			<EndingEvent> TeacherDisappear </EndingEvent>
+			<Target> TextBoxBG </Target>
+			<Time> 0.4 </Time>
+			<Asset> 0.0f </Asset>
+		</Event>
+
+		<Event type="MoveTo">
+			<Trigger> TeacherDisappear </Trigger>
+			<EndingEvent> StudentDisappear </EndingEvent>
+			<Target> Teacher </Target>
+			<X> -256 </X>
+			<Y> 360 </Y>
+			<Time> 0.55 </Time>
+		</Event>
+
+		<Event type="MoveTo">
+			<Trigger> StudentDisappear </Trigger>
+			<EndingEvent> EndScene </EndingEvent>
+			<Target> Student </Target>
+			<X> 1024 </X>
+			<Y> 360 </Y>
+			<Time> 0.55 </Time>
+		</Event>
+	</Events>
+</Cutscene>

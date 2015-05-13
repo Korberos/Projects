@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{02378AB3-0AF6-4643-89C0-360D2D5E9BD8}</ProjectGuid>
+    <RootNamespace>_EngineTest</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Users\Drew\Documents\Visual Studio Includes\SFML-2.1\include;C:\Users\Drew\Documents\Visual Studio 2010\Projects\_Engine Git;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Drew\Documents\Visual Studio Includes\SFML-2.1\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>C:\Users\Drew\Documents\Visual Studio Includes\SFML-2.1\include;C:\Users\Drew\Documents\Visual Studio 2010\Projects\_Engine Git;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LibraryPath>C:\Users\Drew\Documents\Visual Studio Includes\SFML-2.1\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\_Engine Git\BinaryExport.h" />
+    <ClInclude Include="..\..\_Engine Git\Collision\LineToTriangle.h" />
+    <ClInclude Include="..\..\_Engine Git\Cutscene.h" />
+    <ClInclude Include="..\..\_Engine Git\DebugConsole.h" />
+    <ClInclude Include="..\..\_Engine Git\DebugTools.h" />
+    <ClInclude Include="..\..\_Engine Git\DialogController.h" />
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_CheckBox.h" />
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_DropDown.h" />
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_EditBox.h" />
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_Frame.h" />
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_ListBox.h" />
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_TextBlock.h" />
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_TextButton.h" />
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_Texture.h" />
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_TextureButton.h" />
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\MenuElementsList.h" />
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\MenuGUI.h" />
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\MenuGUIElement.h" />
+    <ClInclude Include="..\..\_Engine Git\Engine.h" />
+    <ClInclude Include="..\..\_Engine Git\FontController.h" />
+    <ClInclude Include="..\..\_Engine Git\InputSystem.h" />
+    <ClInclude Include="..\..\_Engine Git\Libraries\RapidXML\rapidxml.hpp" />
+    <ClInclude Include="..\..\_Engine Git\Libraries\RapidXML\rapidxml_iterators.hpp" />
+    <ClInclude Include="..\..\_Engine Git\Libraries\RapidXML\rapidxml_print.hpp" />
+    <ClInclude Include="..\..\_Engine Git\Libraries\RapidXML\rapidxml_utils.hpp" />
+    <ClInclude Include="..\..\_Engine Git\Libraries\RapidXML\XMLWrapper.h" />
+    <ClInclude Include="..\..\_Engine Git\Libraries\SimpleMD5\SimpleMD5.h" />
+    <ClInclude Include="..\..\_Engine Git\MegaFile.h" />
+    <ClInclude Include="..\..\_Engine Git\OpenGLCamera.h" />
+    <ClInclude Include="..\..\_Engine Git\OpenGL\GLee.h" />
+    <ClInclude Include="..\..\_Engine Git\OpenGL\GLFrame.h" />
+    <ClInclude Include="..\..\_Engine Git\OpenGL\gltools.h" />
+    <ClInclude Include="..\..\_Engine Git\OpenGL\math3d.h" />
+    <ClInclude Include="..\..\_Engine Git\OpenGL\OGL_Includes.h" />
+    <ClInclude Include="..\..\_Engine Git\OpenGL\wglext.h" />
+    <ClInclude Include="..\..\_Engine Git\RandomNumbers.h" />
+    <ClInclude Include="..\..\_Engine Git\Renderable.h" />
+    <ClInclude Include="..\..\_Engine Git\RenderablePrimitives.h" />
+    <ClInclude Include="..\..\_Engine Git\SignalSystem.h" />
+    <ClInclude Include="..\..\_Engine Git\SimpleLogger.h" />
+    <ClInclude Include="..\..\_Engine Git\Sprite.h" />
+    <ClInclude Include="..\..\_Engine Git\StringToValue.h" />
+    <ClInclude Include="..\..\_Engine Git\TaskScheduler.h" />
+    <ClInclude Include="..\..\_Engine Git\TextureController.h" />
+    <ClInclude Include="..\..\_Engine Git\Vector3.h" />
+    <ClInclude Include="..\..\_Engine Git\WindowManager.h" />
+    <ClInclude Include="..\..\_Engine Git\WinsockWrapper\CBuffer.h" />
+    <ClInclude Include="..\..\_Engine Git\WinsockWrapper\CSocket.h" />
+    <ClInclude Include="..\..\_Engine Git\WinsockWrapper\CTools.h" />
+    <ClInclude Include="..\..\_Engine Git\WinsockWrapper\WinsockWrapper.h" />
+    <ClInclude Include="..\..\_Engine Git\WorldController.h" />
+    <ClInclude Include="MainProgram.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\_Engine Git\BinaryExport.cpp" />
+    <ClCompile Include="..\..\_Engine Git\Collision\LineToTriangle.cpp" />
+    <ClCompile Include="..\..\_Engine Git\Cutscene.cpp" />
+    <ClCompile Include="..\..\_Engine Git\DebugConsole.cpp" />
+    <ClCompile Include="..\..\_Engine Git\DebugTools.cpp" />
+    <ClCompile Include="..\..\_Engine Git\DialogController.cpp" />
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_CheckBox.cpp" />
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_DropDown.cpp" />
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_EditBox.cpp" />
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_Frame.cpp" />
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_ListBox.cpp" />
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_TextBlock.cpp" />
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_TextButton.cpp" />
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_Texture.cpp" />
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_TextureButton.cpp" />
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\MenuGUI.cpp" />
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\MenuGUIElement.cpp" />
+    <ClCompile Include="..\..\_Engine Git\Engine.cpp" />
+    <ClCompile Include="..\..\_Engine Git\FontController.cpp" />
+    <ClCompile Include="..\..\_Engine Git\InputSystem.cpp" />
+    <ClCompile Include="..\..\_Engine Git\Libraries\SimpleMD5\SimpleMD5.cpp" />
+    <ClCompile Include="..\..\_Engine Git\OpenGLCamera.cpp" />
+    <ClCompile Include="..\..\_Engine Git\OpenGL\math3d.cpp" />
+    <ClCompile Include="..\..\_Engine Git\RandomNumbers.cpp" />
+    <ClCompile Include="..\..\_Engine Git\RenderablePrimitives.cpp" />
+    <ClCompile Include="..\..\_Engine Git\WindowManager.cpp" />
+    <ClCompile Include="..\..\_Engine Git\SimpleLogger.cpp" />
+    <ClCompile Include="..\..\_Engine Git\StringToValue.cpp" />
+    <ClCompile Include="..\..\_Engine Git\TextureController.cpp" />
+    <ClCompile Include="..\..\_Engine Git\WinsockWrapper\CBuffer.cpp" />
+    <ClCompile Include="..\..\_Engine Git\WinsockWrapper\CSocket.cpp" />
+    <ClCompile Include="..\..\_Engine Git\WinsockWrapper\CTools.cpp" />
+    <ClCompile Include="..\..\_Engine Git\WinsockWrapper\md5.cpp" />
+    <ClCompile Include="..\..\_Engine Git\WinsockWrapper\WinsockWrapper.cpp" />
+    <ClCompile Include="..\..\_Engine Git\WorldController.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainProgram.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

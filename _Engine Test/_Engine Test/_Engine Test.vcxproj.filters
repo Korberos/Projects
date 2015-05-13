@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Engine">
+      <UniqueIdentifier>{07127560-591d-470a-9690-85d7364a789e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Collision">
+      <UniqueIdentifier>{0849c5ee-41cb-4e43-a1b8-58baffd26ff7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\DialogSystem">
+      <UniqueIdentifier>{541f12ad-6a93-4ac3-9d43-49945cf0d7e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\DialogSystem\Elements">
+      <UniqueIdentifier>{6ba7faf3-70db-4781-8a15-bcb6bae1c64c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\OpenGL">
+      <UniqueIdentifier>{bcb8cbf5-8740-4919-947e-0e6a0681f4ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\WinsockWrapper">
+      <UniqueIdentifier>{3fd45272-4588-4dad-afdd-1889e3a3ca5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine">
+      <UniqueIdentifier>{b780cebf-2197-44a8-aec4-43e104af1a78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\WinsockWrapper">
+      <UniqueIdentifier>{a404ba02-97f4-4f6d-8826-9a89c2e37dc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\OpenGL">
+      <UniqueIdentifier>{6255901e-681f-4b35-b6e3-e6520a62cfef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\DialogSystem">
+      <UniqueIdentifier>{2fd4b116-0e65-42e0-8194-f13a39ffa61c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\DialogSystem\Elements">
+      <UniqueIdentifier>{5b45cada-fcf1-4d08-a8d5-161d3cc43b03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Collision">
+      <UniqueIdentifier>{5aac7e17-d712-4de8-84dd-feb5717202f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Libraries">
+      <UniqueIdentifier>{0cfc8772-5dbc-480b-8661-983eb19ba32e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Libraries\RapidXML">
+      <UniqueIdentifier>{6d21f33a-172f-4e17-8b01-7d4bc24042a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Libraries\SimpleMD5">
+      <UniqueIdentifier>{9bd15f13-5695-428d-8903-47749a615315}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\_Engine Git\BinaryExport.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\DebugConsole.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\DebugTools.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\DialogController.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\Engine.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\FontController.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\InputSystem.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\MegaFile.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\OpenGLCamera.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\RandomNumbers.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\Renderable.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\RenderablePrimitives.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\SignalSystem.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\SimpleLogger.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\Sprite.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\StringToValue.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\TaskScheduler.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\TextureController.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\Vector3.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\WorldController.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\Collision\LineToTriangle.h">
+      <Filter>Header Files\Engine\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\MenuElementsList.h">
+      <Filter>Header Files\Engine\DialogSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\MenuGUI.h">
+      <Filter>Header Files\Engine\DialogSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\MenuGUIElement.h">
+      <Filter>Header Files\Engine\DialogSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_ListBox.h">
+      <Filter>Header Files\Engine\DialogSystem\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_TextBlock.h">
+      <Filter>Header Files\Engine\DialogSystem\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_TextButton.h">
+      <Filter>Header Files\Engine\DialogSystem\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_Texture.h">
+      <Filter>Header Files\Engine\DialogSystem\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_TextureButton.h">
+      <Filter>Header Files\Engine\DialogSystem\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_CheckBox.h">
+      <Filter>Header Files\Engine\DialogSystem\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_DropDown.h">
+      <Filter>Header Files\Engine\DialogSystem\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_EditBox.h">
+      <Filter>Header Files\Engine\DialogSystem\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_Frame.h">
+      <Filter>Header Files\Engine\DialogSystem\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\OpenGL\math3d.h">
+      <Filter>Header Files\Engine\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\OpenGL\OGL_Includes.h">
+      <Filter>Header Files\Engine\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\OpenGL\wglext.h">
+      <Filter>Header Files\Engine\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\OpenGL\GLee.h">
+      <Filter>Header Files\Engine\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\OpenGL\GLFrame.h">
+      <Filter>Header Files\Engine\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\OpenGL\gltools.h">
+      <Filter>Header Files\Engine\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\WinsockWrapper\CBuffer.h">
+      <Filter>Header Files\Engine\WinsockWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\WinsockWrapper\CSocket.h">
+      <Filter>Header Files\Engine\WinsockWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\WinsockWrapper\CTools.h">
+      <Filter>Header Files\Engine\WinsockWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\WinsockWrapper\WinsockWrapper.h">
+      <Filter>Header Files\Engine\WinsockWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\WindowManager.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="MainProgram.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\Libraries\RapidXML\rapidxml_utils.hpp">
+      <Filter>Header Files\Engine\Libraries\RapidXML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\Libraries\RapidXML\rapidxml.hpp">
+      <Filter>Header Files\Engine\Libraries\RapidXML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\Libraries\RapidXML\rapidxml_iterators.hpp">
+      <Filter>Header Files\Engine\Libraries\RapidXML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\Libraries\RapidXML\rapidxml_print.hpp">
+      <Filter>Header Files\Engine\Libraries\RapidXML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\Libraries\RapidXML\XMLWrapper.h">
+      <Filter>Header Files\Engine\Libraries\RapidXML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\Libraries\SimpleMD5\SimpleMD5.h">
+      <Filter>Header Files\Engine\Libraries\SimpleMD5</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\_Engine Git\Cutscene.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\_Engine Git\Collision\LineToTriangle.cpp">
+      <Filter>Source Files\Engine\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\MenuGUI.cpp">
+      <Filter>Source Files\Engine\DialogSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\MenuGUIElement.cpp">
+      <Filter>Source Files\Engine\DialogSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_ListBox.cpp">
+      <Filter>Source Files\Engine\DialogSystem\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_TextBlock.cpp">
+      <Filter>Source Files\Engine\DialogSystem\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_TextButton.cpp">
+      <Filter>Source Files\Engine\DialogSystem\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_Texture.cpp">
+      <Filter>Source Files\Engine\DialogSystem\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_TextureButton.cpp">
+      <Filter>Source Files\Engine\DialogSystem\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_CheckBox.cpp">
+      <Filter>Source Files\Engine\DialogSystem\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_DropDown.cpp">
+      <Filter>Source Files\Engine\DialogSystem\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_EditBox.cpp">
+      <Filter>Source Files\Engine\DialogSystem\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\DialogSystem\Elements\MenuElement_Frame.cpp">
+      <Filter>Source Files\Engine\DialogSystem\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\OpenGL\math3d.cpp">
+      <Filter>Source Files\Engine\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\WinsockWrapper\WinsockWrapper.cpp">
+      <Filter>Source Files\Engine\WinsockWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\WinsockWrapper\CBuffer.cpp">
+      <Filter>Source Files\Engine\WinsockWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\WinsockWrapper\CSocket.cpp">
+      <Filter>Source Files\Engine\WinsockWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\WinsockWrapper\CTools.cpp">
+      <Filter>Source Files\Engine\WinsockWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\WinsockWrapper\md5.cpp">
+      <Filter>Source Files\Engine\WinsockWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\BinaryExport.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\DebugConsole.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\DebugTools.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\DialogController.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\Engine.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\FontController.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\InputSystem.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\OpenGLCamera.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\RandomNumbers.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\RenderablePrimitives.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\SimpleLogger.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\StringToValue.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\TextureController.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\WorldController.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\WindowManager.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="MainProgram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\Libraries\SimpleMD5\SimpleMD5.cpp">
+      <Filter>Header Files\Engine\Libraries\SimpleMD5</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\_Engine Git\Cutscene.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
