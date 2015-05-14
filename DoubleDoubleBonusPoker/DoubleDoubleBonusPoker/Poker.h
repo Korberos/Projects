@@ -3,29 +3,72 @@
 #include <vector>
 #include <algorithm>
 
-int GetSuit(int card)   { return (card / 13); }
-int GetFace(int card)   { return (card % 13); }
+unsigned char GetSuit(unsigned char card)   { return (card / 13); }
+unsigned char GetFace(unsigned char card)   { return (card % 13); }
 
 #define HAND_TYPE_COUNT 14
 std::pair<std::string, int> WinningHands[HAND_TYPE_COUNT];
 int WinningValue[HAND_TYPE_COUNT];
 
-typedef bool (*HandCheckType)(int i1, int i2, int i3, int i4, int i5);
+typedef bool (*HandCheckType)(unsigned char i1, unsigned char i2, unsigned char i3, unsigned char i4, unsigned char i5);
 std::vector<HandCheckType> HandCheckList;
 
 #define MAX_RIVER_LAYOUTS 2598960
+#define MAX_RIVER_LAYOUTS_BITFLAG_SIZE (MAX_RIVER_LAYOUTS / 8)
 double HandValueData[MAX_RIVER_LAYOUTS];
 char HandBestMoveData[MAX_RIVER_LAYOUTS]; // Bitflag for hold or muck on each of the five cards
 
-char Move(bool b1, bool b2, bool b3, bool b4, bool b5)
+struct River
+{
+	River() {}
+
+	River(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5) : 
+		Card1(c1),
+		Card2(c2),
+		Card3(c3),
+		Card4(c4),
+		Card5(c5),
+		BestMove(0),
+		AverageReturn(-1.0)
+	{}
+
+	unsigned char Card1;
+	unsigned char Card2;
+	unsigned char Card3;
+	unsigned char Card4;
+	unsigned char Card5;
+	unsigned char BestMove;
+	double AverageReturn;
+};
+
+struct OutputDataFormat
+{
+	OutputDataFormat()
+	{
+		memset(FinishedDataBitFlag, 0, MAX_RIVER_LAYOUTS_BITFLAG_SIZE);
+		memset(RiverList, 0, MAX_RIVER_LAYOUTS * sizeof(River));
+	}
+
+	unsigned char FinishedDataBitFlag[MAX_RIVER_LAYOUTS_BITFLAG_SIZE];
+	River RiverList[MAX_RIVER_LAYOUTS];
+};
+
+OutputDataFormat OutputData;
+
+unsigned char CreateMove(bool b1, bool b2, bool b3, bool b4, bool b5)
 {
 	return (b1 ? 1 : 0) + (b2 ? 2 : 0) + (b3 ? 4 : 0) + (b4 ? 8 : 0) + (b5 ? 16 : 0);
+}
+
+void SetFinishedBitFlag(int index)
+{
+	OutputData.FinishedDataBitFlag[index / 8] |= (1 << (index % 8));
 }
 
 char FaceCharacters[13] = { '2', '3', '4', '5', '6', '7', '8' ,'9', 'T', 'J', 'Q', 'K', 'A' };
 char SuitCharacters[4] = { 'D', 'S', 'C', 'H' };
 
-std::string DescribeHand(int c1, int c2, int c3, int c4, int c5)
+std::string DescribeHand(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
 	std::string description = "";
 	description += FaceCharacters[c1 % 13];
@@ -45,7 +88,7 @@ std::string DescribeHand(int c1, int c2, int c3, int c4, int c5)
 	return description;
 }
 
-std::string DescribeMove(char move)
+std::string DescribeMove(unsigned char move)
 {
 	std::string description = "";
 	description += ((move & 1) ? "H" : "X");
@@ -56,28 +99,11 @@ std::string DescribeMove(char move)
 	return description;
 }
 
-struct River
-{
-	River(int c1, int c2, int c3, int c4, int c5) : 
-		Card1(c1),
-		Card2(c2),
-		Card3(c3),
-		Card4(c4),
-		Card5(c5)
-	{}
-
-	int Card1;
-	int Card2;
-	int Card3;
-	int Card4;
-	int Card5;
-};
-
-typedef double (*HandPotentialCheck)(int i1, int i2, int i3, int i4, int i5);
-typedef std::vector< std::pair<HandPotentialCheck, char> > HandPotentialCheckListType;
+typedef double (*HandPotentialCheck)(unsigned char i1, unsigned char i2, unsigned char i3, unsigned char i4, unsigned char i5);
+typedef std::vector< std::pair<HandPotentialCheck, unsigned char> > HandPotentialCheckListType;
 HandPotentialCheckListType HandPotentialCheckList;
 
-bool IsFourAceWithTwoThreeFour(int i1, int i2, int i3, int i4, int i5)
+bool IsFourAceWithTwoThreeFour(unsigned char i1, unsigned char i2, unsigned char i3, unsigned char i4, unsigned char i5)
 {
 	int aceCount = 0;
 	int twothreefourCount = 0;
@@ -96,9 +122,9 @@ bool IsFourAceWithTwoThreeFour(int i1, int i2, int i3, int i4, int i5)
 	return (aceCount == 4 && twothreefourCount == 1);
 }
 
-bool IsRoyalFlush(int i1, int i2, int i3, int i4, int i5)
+bool IsRoyalFlush(unsigned char i1, unsigned char i2, unsigned char i3, unsigned char i4, unsigned char i5)
 {
-	int suit = GetSuit(i1);
+	unsigned char suit = GetSuit(i1);
 	if (suit != GetSuit(i2)) return false;
 	if (suit != GetSuit(i3)) return false;
 	if (suit != GetSuit(i4)) return false;
@@ -113,7 +139,7 @@ bool IsRoyalFlush(int i1, int i2, int i3, int i4, int i5)
     return true;
 }
 
-bool IsFourTwosThreesFoursWithAce(int i1, int i2, int i3, int i4, int i5)
+bool IsFourTwosThreesFoursWithAce(unsigned char i1, unsigned char i2, unsigned char i3, unsigned char i4, unsigned char i5)
 {
 	int twoCount = 0;
 	int threeCount = 0;
@@ -148,7 +174,7 @@ bool IsFourTwosThreesFoursWithAce(int i1, int i2, int i3, int i4, int i5)
 	return (fourTwosThreeFours && (aceCount == 1));
 }
 
-bool IsFourAces(int i1, int i2, int i3, int i4, int i5)
+bool IsFourAces(unsigned char i1, unsigned char i2, unsigned char i3, unsigned char i4, unsigned char i5)
 {
 	int aceCount = 0;
 
@@ -161,9 +187,9 @@ bool IsFourAces(int i1, int i2, int i3, int i4, int i5)
 	return (aceCount == 4);
 }
 
-bool IsStraightFlush(int i1, int i2, int i3, int i4, int i5)
+bool IsStraightFlush(unsigned char i1, unsigned char i2, unsigned char i3, unsigned char i4, unsigned char i5)
 {
-	int suit = GetSuit(i1);
+	unsigned char suit = GetSuit(i1);
 	if (suit != GetSuit(i2)) return false;
 	if (suit != GetSuit(i3)) return false;
 	if (suit != GetSuit(i4)) return false;
@@ -177,7 +203,7 @@ bool IsStraightFlush(int i1, int i2, int i3, int i4, int i5)
 	return true;
 }
 
-bool IsFourTwosThreesFours(int i1, int i2, int i3, int i4, int i5)
+bool IsFourTwosThreesFours(unsigned char i1, unsigned char i2, unsigned char i3, unsigned char i4, unsigned char i5)
 {
 	int twoCount = 0;
 	int threeCount = 0;
@@ -204,11 +230,11 @@ bool IsFourTwosThreesFours(int i1, int i2, int i3, int i4, int i5)
 	return ((twoCount == 4) || (threeCount == 4) || (fourCount == 4));
 }
 
-bool IsFourFivesThruKings(int i1, int i2, int i3, int i4, int i5)
+bool IsFourFivesThruKings(unsigned char i1, unsigned char i2, unsigned char i3, unsigned char i4, unsigned char i5)
 {
 	int counts[9] = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
-	for (int i = 0; i < 9; ++i)
+	for (unsigned char i = 0; i < 9; ++i)
 	{
 		if (GetFace(i1) == i + 3) counts[i] += 1;
 		if (GetFace(i2) == i + 3) counts[i] += 1;
@@ -222,11 +248,11 @@ bool IsFourFivesThruKings(int i1, int i2, int i3, int i4, int i5)
 	return false;
 }
 
-bool IsFullHouse(int i1, int i2, int i3, int i4, int i5)
+bool IsFullHouse(unsigned char i1, unsigned char i2, unsigned char i3, unsigned char i4, unsigned char i5)
 {
 	int counts[13] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	
-	for (int i = 0; i < 13; ++i)
+	for (unsigned char i = 0; i < 13; ++i)
 	{
 		if (GetFace(i1) == i) counts[i] += 1;
 		if (GetFace(i2) == i) counts[i] += 1;
@@ -237,7 +263,7 @@ bool IsFullHouse(int i1, int i2, int i3, int i4, int i5)
 
 	bool two = false;
 	bool three = false;
-	for (int i = 0; i < 13; ++i)
+	for (unsigned char i = 0; i < 13; ++i)
 	{
 		two		|= (counts[i] == 2);
 		three	|= (counts[i] == 3);
@@ -246,9 +272,9 @@ bool IsFullHouse(int i1, int i2, int i3, int i4, int i5)
 	return (two && three);
 }
 
-bool IsFlush(int i1, int i2, int i3, int i4, int i5)
+bool IsFlush(unsigned char i1, unsigned char i2, unsigned char i3, unsigned char i4, unsigned char i5)
 {
-	int suit = GetSuit(i1);
+	unsigned char suit = GetSuit(i1);
 	if (suit != GetSuit(i2)) return false;
 	if (suit != GetSuit(i3)) return false;
 	if (suit != GetSuit(i4)) return false;
@@ -257,7 +283,7 @@ bool IsFlush(int i1, int i2, int i3, int i4, int i5)
 	return true;
 }
 
-bool IsStraight(int i1, int i2, int i3, int i4, int i5)
+bool IsStraight(unsigned char i1, unsigned char i2, unsigned char i3, unsigned char i4, unsigned char i5)
 {
 	if (GetFace(i1) != GetFace(i2) - 1) return false;
 	if (GetFace(i2) != GetFace(i3) - 1) return false;
@@ -267,7 +293,7 @@ bool IsStraight(int i1, int i2, int i3, int i4, int i5)
 	return true;
 }
 
-bool IsThreeOfAKind(int i1, int i2, int i3, int i4, int i5)
+bool IsThreeOfAKind(unsigned char i1, unsigned char i2, unsigned char i3, unsigned char i4, unsigned char i5)
 {
 	int counts[13] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	
@@ -277,13 +303,13 @@ bool IsThreeOfAKind(int i1, int i2, int i3, int i4, int i5)
 	counts[GetFace(i4)] += 1;
 	counts[GetFace(i5)] += 1;
 
-	for (int i = 0; i < 13; ++i)
+	for (unsigned char i = 0; i < 13; ++i)
 		if (counts[i] == 3) return true;
 
 	return false;
 }
 
-bool IsTwoPair(int i1, int i2, int i3, int i4, int i5)
+bool IsTwoPair(unsigned char i1, unsigned char i2, unsigned char i3, unsigned char i4, unsigned char i5)
 {
 	int counts[13] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	
@@ -294,14 +320,14 @@ bool IsTwoPair(int i1, int i2, int i3, int i4, int i5)
 	counts[GetFace(i5)] += 1;
 
 	int pairs = 0;
-	for (int i = 0; i < 13; ++i)
+	for (unsigned char i = 0; i < 13; ++i)
 		if (counts[i] == 2)
 			pairs += 1;
 
 	return (pairs == 2);
 }
 
-bool IsJacksOrBetter(int i1, int i2, int i3, int i4, int i5)
+bool IsJacksOrBetter(unsigned char i1, unsigned char i2, unsigned char i3, unsigned char i4, unsigned char i5)
 {
 	int counts[13] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	
@@ -314,26 +340,25 @@ bool IsJacksOrBetter(int i1, int i2, int i3, int i4, int i5)
 	return ((counts[9] == 2) || (counts[10] == 2) || (counts[11] == 2) || (counts[12] == 2));
 }
 
-bool IsNothing(int i1, int i2, int i3, int i4, int i5)
+bool IsNothing(unsigned char i1, unsigned char i2, unsigned char i3, unsigned char i4, unsigned char i5)
 {
 	return true;
 }
 
 //  NOTE: This function (and this function only) does not require the card indices to be in ascending order
-double CheckHand(int i1, int i2, int i3, int i4, int i5)
+double CheckHand(unsigned char i1, unsigned char i2, unsigned char i3, unsigned char i4, unsigned char i5)
 {
-	//std::vector<int> hand;
-	//hand.push_back(i1);
-	//hand.push_back(i2);
-	//hand.push_back(i3);
-	//hand.push_back(i4);
-	//hand.push_back(i5);
-	//std::sort(hand.begin(), hand.end());
+	std::vector<unsigned char> hand;
+	hand.push_back(i1);
+	hand.push_back(i2);
+	hand.push_back(i3);
+	hand.push_back(i4);
+	hand.push_back(i5);
+	std::sort(hand.begin(), hand.end());
 
 	for (int i = 0; i < HAND_TYPE_COUNT; ++i)
 	{
-		//if ((*HandCheckList[i])(hand[0], hand[1], hand[2], hand[3], hand[4]))
-		if ((*HandCheckList[i])(i1, i2, i3, i4, i5))
+		if ((*HandCheckList[i])(hand[0], hand[1], hand[2], hand[3], hand[4]))
 		{
 			WinningHands[i].second += 1;
 			return double(WinningValue[i]);
@@ -343,10 +368,10 @@ double CheckHand(int i1, int i2, int i3, int i4, int i5)
 	return 0.0;
 }
 
-double CheckPotentialXHHHH(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialXHHHH(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -358,7 +383,7 @@ double CheckPotentialXHHHH(int c1, int c2, int c3, int c4, int c5)
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
 		totalChecks += 1.0;
 		totalReturn += CheckHand((*iter1), c2, c3, c4, c5);
@@ -367,10 +392,10 @@ double CheckPotentialXHHHH(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialHXHHH(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialHXHHH(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -382,7 +407,7 @@ double CheckPotentialHXHHH(int c1, int c2, int c3, int c4, int c5)
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
 		totalChecks += 1.0;
 		totalReturn += CheckHand(c1, (*iter1), c3, c4, c5);
@@ -391,10 +416,10 @@ double CheckPotentialHXHHH(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialHHXHH(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialHHXHH(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -406,7 +431,7 @@ double CheckPotentialHHXHH(int c1, int c2, int c3, int c4, int c5)
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
 		totalChecks += 1.0;
 		totalReturn += CheckHand(c1, c2, (*iter1), c4, c5);
@@ -415,10 +440,10 @@ double CheckPotentialHHXHH(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialHHHXH(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialHHHXH(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -430,7 +455,7 @@ double CheckPotentialHHHXH(int c1, int c2, int c3, int c4, int c5)
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
 		totalChecks += 1.0;
 		totalReturn += CheckHand(c1, c2, c3, (*iter1), c5);
@@ -439,10 +464,10 @@ double CheckPotentialHHHXH(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialHHHHX(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialHHHHX(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -454,7 +479,7 @@ double CheckPotentialHHHHX(int c1, int c2, int c3, int c4, int c5)
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
 		totalChecks += 1.0;
 		totalReturn += CheckHand(c1, c2, c3, c4, (*iter1));
@@ -463,10 +488,10 @@ double CheckPotentialHHHHX(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialXXHHH(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialXXHHH(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -476,13 +501,13 @@ double CheckPotentialXXHHH(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
 
@@ -494,10 +519,10 @@ double CheckPotentialXXHHH(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialXHXHH(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialXHXHH(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -507,13 +532,13 @@ double CheckPotentialXHXHH(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
 
@@ -525,10 +550,10 @@ double CheckPotentialXHXHH(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialXHHXH(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialXHHXH(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -538,13 +563,13 @@ double CheckPotentialXHHXH(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
 
@@ -556,10 +581,10 @@ double CheckPotentialXHHXH(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialXHHHX(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialXHHHX(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -569,13 +594,13 @@ double CheckPotentialXHHHX(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
 
@@ -587,10 +612,10 @@ double CheckPotentialXHHHX(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialHXXHH(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialHXXHH(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -600,13 +625,13 @@ double CheckPotentialHXXHH(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
 
@@ -618,10 +643,10 @@ double CheckPotentialHXXHH(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialHXHXH(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialHXHXH(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -631,13 +656,13 @@ double CheckPotentialHXHXH(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
 
@@ -649,10 +674,10 @@ double CheckPotentialHXHXH(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialHXHHX(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialHXHHX(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -662,13 +687,13 @@ double CheckPotentialHXHHX(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
 
@@ -680,10 +705,10 @@ double CheckPotentialHXHHX(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialHHXXH(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialHHXXH(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -693,13 +718,13 @@ double CheckPotentialHHXXH(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
 
@@ -711,10 +736,10 @@ double CheckPotentialHHXXH(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialHHXHX(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialHHXHX(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -724,13 +749,13 @@ double CheckPotentialHHXHX(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
 
@@ -742,10 +767,10 @@ double CheckPotentialHHXHX(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialHHHXX(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialHHHXX(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -755,13 +780,13 @@ double CheckPotentialHHHXX(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
 
@@ -773,10 +798,10 @@ double CheckPotentialHHHXX(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialXXXHH(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialXXXHH(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -786,17 +811,17 @@ double CheckPotentialXXXHH(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
-	std::vector<int> potentials3 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
+	std::vector<unsigned char> potentials3 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
-			for (std::vector<int>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
+			for (std::vector<unsigned char>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
 			{
 				if ((*iter3) <= (*iter2)) continue;
 
@@ -809,10 +834,10 @@ double CheckPotentialXXXHH(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialXXHXH(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialXXHXH(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -822,17 +847,17 @@ double CheckPotentialXXHXH(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
-	std::vector<int> potentials3 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
+	std::vector<unsigned char> potentials3 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
-			for (std::vector<int>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
+			for (std::vector<unsigned char>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
 			{
 				if ((*iter3) <= (*iter2)) continue;
 
@@ -845,10 +870,10 @@ double CheckPotentialXXHXH(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialXXHHX(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialXXHHX(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -858,17 +883,17 @@ double CheckPotentialXXHHX(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
-	std::vector<int> potentials3 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
+	std::vector<unsigned char> potentials3 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
-			for (std::vector<int>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
+			for (std::vector<unsigned char>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
 			{
 				if ((*iter3) <= (*iter2)) continue;
 
@@ -881,10 +906,10 @@ double CheckPotentialXXHHX(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialXHXXH(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialXHXXH(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -894,17 +919,17 @@ double CheckPotentialXHXXH(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
-	std::vector<int> potentials3 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
+	std::vector<unsigned char> potentials3 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
-			for (std::vector<int>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
+			for (std::vector<unsigned char>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
 			{
 				if ((*iter3) <= (*iter2)) continue;
 
@@ -917,10 +942,10 @@ double CheckPotentialXHXXH(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialXHXHX(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialXHXHX(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -930,17 +955,17 @@ double CheckPotentialXHXHX(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
-	std::vector<int> potentials3 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
+	std::vector<unsigned char> potentials3 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
-			for (std::vector<int>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
+			for (std::vector<unsigned char>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
 			{
 				if ((*iter3) <= (*iter2)) continue;
 
@@ -953,10 +978,10 @@ double CheckPotentialXHXHX(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialXHHXX(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialXHHXX(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -966,17 +991,17 @@ double CheckPotentialXHHXX(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
-	std::vector<int> potentials3 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
+	std::vector<unsigned char> potentials3 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
-			for (std::vector<int>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
+			for (std::vector<unsigned char>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
 			{
 				if ((*iter3) <= (*iter2)) continue;
 
@@ -989,10 +1014,10 @@ double CheckPotentialXHHXX(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialHXXXH(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialHXXXH(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -1002,17 +1027,17 @@ double CheckPotentialHXXXH(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
-	std::vector<int> potentials3 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
+	std::vector<unsigned char> potentials3 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
-			for (std::vector<int>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
+			for (std::vector<unsigned char>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
 			{
 				if ((*iter3) <= (*iter2)) continue;
 
@@ -1025,10 +1050,10 @@ double CheckPotentialHXXXH(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialHXXHX(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialHXXHX(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -1038,17 +1063,17 @@ double CheckPotentialHXXHX(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
-	std::vector<int> potentials3 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
+	std::vector<unsigned char> potentials3 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
-			for (std::vector<int>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
+			for (std::vector<unsigned char>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
 			{
 				if ((*iter3) <= (*iter2)) continue;
 
@@ -1061,10 +1086,10 @@ double CheckPotentialHXXHX(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialHXHXX(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialHXHXX(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -1074,17 +1099,17 @@ double CheckPotentialHXHXX(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
-	std::vector<int> potentials3 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
+	std::vector<unsigned char> potentials3 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
-			for (std::vector<int>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
+			for (std::vector<unsigned char>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
 			{
 				if ((*iter3) <= (*iter2)) continue;
 
@@ -1097,10 +1122,10 @@ double CheckPotentialHXHXX(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialHHXXX(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialHHXXX(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -1110,17 +1135,17 @@ double CheckPotentialHHXXX(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
-	std::vector<int> potentials3 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
+	std::vector<unsigned char> potentials3 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
-			for (std::vector<int>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
+			for (std::vector<unsigned char>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
 			{
 				if ((*iter3) <= (*iter2)) continue;
 
@@ -1133,10 +1158,10 @@ double CheckPotentialHHXXX(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialXXXXH(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialXXXXH(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -1146,21 +1171,21 @@ double CheckPotentialXXXXH(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
-	std::vector<int> potentials3 = potentials1;
-	std::vector<int> potentials4 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
+	std::vector<unsigned char> potentials3 = potentials1;
+	std::vector<unsigned char> potentials4 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
-			for (std::vector<int>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
+			for (std::vector<unsigned char>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
 			{
 				if ((*iter3) <= (*iter2)) continue;
-				for (std::vector<int>::iterator iter4 = potentials4.begin(); iter4 != potentials4.end(); ++iter4)
+				for (std::vector<unsigned char>::iterator iter4 = potentials4.begin(); iter4 != potentials4.end(); ++iter4)
 				{
 					if ((*iter4) <= (*iter3)) continue;
 
@@ -1174,10 +1199,10 @@ double CheckPotentialXXXXH(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialXXXHX(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialXXXHX(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -1187,21 +1212,21 @@ double CheckPotentialXXXHX(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
-	std::vector<int> potentials3 = potentials1;
-	std::vector<int> potentials4 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
+	std::vector<unsigned char> potentials3 = potentials1;
+	std::vector<unsigned char> potentials4 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
-			for (std::vector<int>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
+			for (std::vector<unsigned char>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
 			{
 				if ((*iter3) <= (*iter2)) continue;
-				for (std::vector<int>::iterator iter4 = potentials4.begin(); iter4 != potentials4.end(); ++iter4)
+				for (std::vector<unsigned char>::iterator iter4 = potentials4.begin(); iter4 != potentials4.end(); ++iter4)
 				{
 					if ((*iter4) <= (*iter3)) continue;
 
@@ -1215,10 +1240,10 @@ double CheckPotentialXXXHX(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialXXHXX(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialXXHXX(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -1228,21 +1253,21 @@ double CheckPotentialXXHXX(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
-	std::vector<int> potentials3 = potentials1;
-	std::vector<int> potentials4 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
+	std::vector<unsigned char> potentials3 = potentials1;
+	std::vector<unsigned char> potentials4 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
-			for (std::vector<int>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
+			for (std::vector<unsigned char>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
 			{
 				if ((*iter3) <= (*iter2)) continue;
-				for (std::vector<int>::iterator iter4 = potentials4.begin(); iter4 != potentials4.end(); ++iter4)
+				for (std::vector<unsigned char>::iterator iter4 = potentials4.begin(); iter4 != potentials4.end(); ++iter4)
 				{
 					if ((*iter4) <= (*iter3)) continue;
 
@@ -1256,10 +1281,10 @@ double CheckPotentialXXHXX(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialXHXXX(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialXHXXX(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -1269,21 +1294,21 @@ double CheckPotentialXHXXX(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
-	std::vector<int> potentials3 = potentials1;
-	std::vector<int> potentials4 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
+	std::vector<unsigned char> potentials3 = potentials1;
+	std::vector<unsigned char> potentials4 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
-			for (std::vector<int>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
+			for (std::vector<unsigned char>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
 			{
 				if ((*iter3) <= (*iter2)) continue;
-				for (std::vector<int>::iterator iter4 = potentials4.begin(); iter4 != potentials4.end(); ++iter4)
+				for (std::vector<unsigned char>::iterator iter4 = potentials4.begin(); iter4 != potentials4.end(); ++iter4)
 				{
 					if ((*iter4) <= (*iter3)) continue;
 
@@ -1297,10 +1322,10 @@ double CheckPotentialXHXXX(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialHXXXX(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialHXXXX(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -1310,21 +1335,21 @@ double CheckPotentialHXXXX(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
-	std::vector<int> potentials3 = potentials1;
-	std::vector<int> potentials4 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
+	std::vector<unsigned char> potentials3 = potentials1;
+	std::vector<unsigned char> potentials4 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
-			for (std::vector<int>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
+			for (std::vector<unsigned char>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
 			{
 				if ((*iter3) <= (*iter2)) continue;
-				for (std::vector<int>::iterator iter4 = potentials4.begin(); iter4 != potentials4.end(); ++iter4)
+				for (std::vector<unsigned char>::iterator iter4 = potentials4.begin(); iter4 != potentials4.end(); ++iter4)
 				{
 					if ((*iter4) <= (*iter3)) continue;
 
@@ -1338,10 +1363,10 @@ double CheckPotentialHXXXX(int c1, int c2, int c3, int c4, int c5)
 	return totalReturn / totalChecks;
 }
 
-double CheckPotentialXXXXX(int c1, int c2, int c3, int c4, int c5)
+double CheckPotentialXXXXX(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5)
 {
-	std::vector<int> potentials1;
-	for (int i = 0; i < 52; ++i)
+	std::vector<unsigned char> potentials1;
+	for (unsigned char i = 0; i < 52; ++i)
 	{
 		if (i == c1) continue;
 		if (i == c2) continue;
@@ -1351,25 +1376,25 @@ double CheckPotentialXXXXX(int c1, int c2, int c3, int c4, int c5)
 		potentials1.push_back(i);
 	}
 	
-	std::vector<int> potentials2 = potentials1;
-	std::vector<int> potentials3 = potentials1;
-	std::vector<int> potentials4 = potentials1;
-	std::vector<int> potentials5 = potentials1;
+	std::vector<unsigned char> potentials2 = potentials1;
+	std::vector<unsigned char> potentials3 = potentials1;
+	std::vector<unsigned char> potentials4 = potentials1;
+	std::vector<unsigned char> potentials5 = potentials1;
 
 	double totalReturn = 0.0;
 	double totalChecks = 0.0;
-	for (std::vector<int>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
+	for (std::vector<unsigned char>::iterator iter1 = potentials1.begin(); iter1 != potentials1.end(); ++iter1)
 	{
-		for (std::vector<int>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
+		for (std::vector<unsigned char>::iterator iter2 = potentials2.begin(); iter2 != potentials2.end(); ++iter2)
 		{
 			if ((*iter2) <= (*iter1)) continue;
-			for (std::vector<int>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
+			for (std::vector<unsigned char>::iterator iter3 = potentials3.begin(); iter3 != potentials3.end(); ++iter3)
 			{
 				if ((*iter3) <= (*iter2)) continue;
-				for (std::vector<int>::iterator iter4 = potentials4.begin(); iter4 != potentials4.end(); ++iter4)
+				for (std::vector<unsigned char>::iterator iter4 = potentials4.begin(); iter4 != potentials4.end(); ++iter4)
 				{
 					if ((*iter4) <= (*iter3)) continue;
-					for (std::vector<int>::iterator iter5 = potentials5.begin(); iter5 != potentials5.end(); ++iter5)
+					for (std::vector<unsigned char>::iterator iter5 = potentials5.begin(); iter5 != potentials5.end(); ++iter5)
 					{
 						if ((*iter5) <= (*iter4)) continue;
 
@@ -1487,57 +1512,51 @@ void InitializeStatistics()
 	/**/
 
 	//  HAND POTENTIAL CHECKS
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckHand, Move(true, true, true, true, true)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialXHHHH, Move(false, true, true, true, true)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialHXHHH, Move(true, false, true, true, true)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialHHXHH, Move(true, true, false, true, true)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialHHHXH, Move(true, true, true, false, true)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialHHHHX, Move(true, true, true, true, false)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialXXHHH, Move(false, false, true, true, true)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialXHXHH, Move(false, true, false, true, true)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialXHHXH, Move(false, true, true, false, true)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialXHHHX, Move(false, true, true, true, false)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialHXXHH, Move(true, false, false, true, true)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialHXHXH, Move(true, false, true, false, true)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialHXHHX, Move(true, false, true, true, false)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialHHXXH, Move(true, true, false, false, true)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialHHXHX, Move(true, true, false, true, false)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialHHHXX, Move(true, true, true, false, false)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialXXXHH, Move(false, false, false, true, true)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialXXHXH, Move(false, false, true, false, true)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialXXHHX, Move(false, false, true, true, false)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialXHXXH, Move(false, true, false, false, true)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialXHXHX, Move(false, true, false, true, false)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialXHHXX, Move(false, true, true, false, false)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialHXXXH, Move(true, false, false, false, true)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialHXXHX, Move(true, false, false, true, false)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialHXHXX, Move(true, false, true, false, false)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialHHXXX, Move(true, true, false, false, false)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialXXXXH, Move(false, false, false, false, true)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialXXXHX, Move(false, false, false, true, false)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialXXHXX, Move(false, false, true, false, false)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialXHXXX, Move(false, true, false, false, false)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialHXXXX, Move(true, false, false, false, false)));
-	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, char>(&CheckPotentialXXXXX, Move(false, false, false, false, false)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckHand, CreateMove(true, true, true, true, true)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialXHHHH, CreateMove(false, true, true, true, true)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialHXHHH, CreateMove(true, false, true, true, true)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialHHXHH, CreateMove(true, true, false, true, true)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialHHHXH, CreateMove(true, true, true, false, true)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialHHHHX, CreateMove(true, true, true, true, false)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialXXHHH, CreateMove(false, false, true, true, true)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialXHXHH, CreateMove(false, true, false, true, true)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialXHHXH, CreateMove(false, true, true, false, true)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialXHHHX, CreateMove(false, true, true, true, false)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialHXXHH, CreateMove(true, false, false, true, true)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialHXHXH, CreateMove(true, false, true, false, true)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialHXHHX, CreateMove(true, false, true, true, false)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialHHXXH, CreateMove(true, true, false, false, true)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialHHXHX, CreateMove(true, true, false, true, false)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialHHHXX, CreateMove(true, true, true, false, false)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialXXXHH, CreateMove(false, false, false, true, true)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialXXHXH, CreateMove(false, false, true, false, true)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialXXHHX, CreateMove(false, false, true, true, false)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialXHXXH, CreateMove(false, true, false, false, true)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialXHXHX, CreateMove(false, true, false, true, false)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialXHHXX, CreateMove(false, true, true, false, false)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialHXXXH, CreateMove(true, false, false, false, true)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialHXXHX, CreateMove(true, false, false, true, false)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialHXHXX, CreateMove(true, false, true, false, false)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialHHXXX, CreateMove(true, true, false, false, false)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialXXXXH, CreateMove(false, false, false, false, true)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialXXXHX, CreateMove(false, false, false, true, false)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialXXHXX, CreateMove(false, false, true, false, false)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialXHXXX, CreateMove(false, true, false, false, false)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialHXXXX, CreateMove(true, false, false, false, false)));
+	HandPotentialCheckList.push_back(std::pair<HandPotentialCheck, unsigned char>(&CheckPotentialXXXXX, CreateMove(false, false, false, false, false)));
 }
 
-char DetermineBestMove(River& river, double& averagePay)
+void DetermineBestMove(River& river)
 {
-	char returnMove = 0;
-
-	double returnValue = 0;
 	for (HandPotentialCheckListType::iterator iter = HandPotentialCheckList.begin(); iter != HandPotentialCheckList.end(); ++iter)
 	{
 		double value = (*iter).first(river.Card1, river.Card2, river.Card3, river.Card4, river.Card5);
-		if (value > returnValue)
+		if (value > river.AverageReturn)
 		{
-			returnValue = value;
-			returnMove = (*iter).second;
+			river.AverageReturn = value;
+			river.BestMove = (*iter).second;
 		}
 	}
-
-	averagePay = returnValue;
-	return returnMove;
 }
 
 void OutputStatistics()
