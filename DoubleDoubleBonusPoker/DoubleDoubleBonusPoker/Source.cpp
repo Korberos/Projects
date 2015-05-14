@@ -75,15 +75,29 @@ void DetermineBestMoves()
 						DetermineBestMove(newRiver);
 						OutputData.RiverList[iterator - 1] = newRiver;
 
-						WriteBestPlayData(iterator, currentCounter);
-						cout << "The best move for hand #" << ++currentCounter << " - " << DescribeHand(i1, i2, i3, i4, i5) << " is " << DescribeMove(newRiver.BestMove) << std::endl;
+						WriteBestPlayData(iterator, ++currentCounter);
+						cout << "The best move for hand #" << currentCounter << " - " << DescribeHand(i1, i2, i3, i4, i5) << " is " << DescribeMove(newRiver.BestMove) << std::endl;
 					}
 
     OutputStatistics();
 }
 
+void TestFunc()
+{
+	LoadBestPlayData();
+	for (int i = 0; i < MAX_RIVER_LAYOUTS; ++i)
+	{
+		if (OutputData.RiverList[i].AverageReturn < 0.0)
+		{
+			//  TODO: From here, I can load a list of indices that need loading. Then, send them out and accept messages with the solved rivers.
+			return;
+		}
+	}
+}
+
 void main()
 {
+	//TestFunc();
     InitializeStatistics();
 	LoadBestPlayData();
 	LoadDataFile();

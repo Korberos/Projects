@@ -20,7 +20,15 @@ char HandBestMoveData[MAX_RIVER_LAYOUTS]; // Bitflag for hold or muck on each of
 
 struct River
 {
-	River() {}
+	River() : 
+		Card1(0),
+		Card2(0),
+		Card3(0),
+		Card4(0),
+		Card5(0),
+		BestMove(0),
+		AverageReturn(-1.0)
+	{}
 
 	River(unsigned char c1, unsigned char c2, unsigned char c3, unsigned char c4, unsigned char c5) : 
 		Card1(c1),
@@ -46,7 +54,6 @@ struct OutputDataFormat
 	OutputDataFormat()
 	{
 		memset(FinishedDataBitFlag, 0, MAX_RIVER_LAYOUTS_BITFLAG_SIZE);
-		memset(RiverList, 0, MAX_RIVER_LAYOUTS * sizeof(River));
 	}
 
 	unsigned char FinishedDataBitFlag[MAX_RIVER_LAYOUTS_BITFLAG_SIZE];
