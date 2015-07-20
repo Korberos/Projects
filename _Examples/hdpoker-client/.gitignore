@@ -1,0 +1,24 @@
+proj.android/libs/
+proj.android/obj/
+
+proj.win32/*.opensdf
+proj.win32/*.sdf
+proj.win32/*.suo
+
+cocos2d/cocos/2d/Debug.win32/
+cocos2d/cocos/editor-support/spine/proj.win32/Debug.win32/
+cocos2d/external/Box2D/proj.win32/Debug.win32/
+proj.win32/Debug.win32/
+
+cocos2d/cocos/2d/Release.win32/
+cocos2d/cocos/editor-support/spine/proj.win32/Release.win32/
+cocos2d/external/Box2D/proj.win32/Release.win32/
+proj.win32/Release.win32/
+
+cocos2d/build/build/cocos2d_libs.build/
+proj.ios_mac/build/hdpoker.build/Debug-iphonesimulator/
+
+proj.ios_mac/hdpoker.xcodeproj/xcuserdata/
+proj.ios_mac/hdpoker.xcodeproj/project.xcworkspace/xcuserdata/
+proj.ios_mac/hdpoker.xcodeproj/xcuserdata/nous.xcuserdatad/
+proj.ios_mac/hdpoker iOS.ipa
