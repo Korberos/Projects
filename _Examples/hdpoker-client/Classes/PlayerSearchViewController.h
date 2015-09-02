@@ -7,6 +7,7 @@
 #include "AvatarView.h"
 #include "UI/UICheckbox.h"
 #include "ui/UIEditBox/UIEditBox.h"
+#include "Text.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
@@ -23,10 +24,10 @@ public:
 
 class SearchResultsTableView : public cocos2d::extension::TableView {
 public:
-    static SearchResultsTableView* create(const Size& size, PokerApi* api) {
+    static SearchResultsTableView* create(const Size& size, GameController* game) {
         auto search = SearchResultsTableView::create();
         search->initWithViewSize(size);
-        search->_api = api;
+        search->_game = game;
         return search;
     }
     
@@ -39,12 +40,12 @@ public:
         }
     }
     
-    PokerApi* getApi() { return _api; }
+    GameController* getGame() { return _game; }
     
 private:
     CREATE_FUNC(SearchResultsTableView)
     AddFriendCallback _callback;
-    PokerApi *_api;
+    GameController *_game;
 };
 
 class PlayerSearchResultRowView : public cocos2d::extension::TableViewCell {
@@ -60,25 +61,25 @@ public:
             return false;
         }
         
-        auto background = Sprite::create("sprites/background-player-search.png");
+        auto background = Sprite::create("background-player-search.png");
         background->setAnchorPoint(Vec2(0, 0));
         addChild(background);
         
         _avatar = AvatarView::create();
         _avatar->setPosition(Vec2(32, 10));
-        _avatar->setScale(.3);
+        _avatar->setScale(0.3f);
 //        _avatar->setClippingRegion(Rect(0, 0, 40, 40));
 //        _avatar->setClippingEnabled(true);
         addChild(_avatar);
         
-        _name = cocos2d::Label::createWithTTF("", UniSansBold, 24);
+        _name = Text::create("", UniSansBold, 24);
         _name->setPosition(Vec2(80, 45));
         _name->setAnchorPoint(Vec2(0, 0));
         addChild(_name);
         
-        _addPlayer = CheckBox::create("sprites/button-add-friend.png", "");
+        _addPlayer = CheckBox::create("button-add-friend.png", "");
         _addPlayer->setPosition(Vec2(400, 46));
-        _addPlayer->setZoomScale(-.05);
+        _addPlayer->setZoomScale(-0.05f);
         _addPlayer->addClickEventListener([=](Ref*) {
             _tableView->addFriend(getIdx());
         });
@@ -89,8 +90,7 @@ public:
     
     void update(const PlayerSearchResult& playerResult) {
         _name->setString(playerResult.name.c_str());
-        _avatar->clearAvatar();
-        _avatar->loadAvatar(_tableView->getApi(), playerResult.avatarId.c_str(), 0);
+        _avatar->loadAvatar(_tableView->getGame(), playerResult.avatarId.c_str(), 0);
     }
     
 private:

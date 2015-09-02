@@ -7,4 +7,5 @@ public:
     std::string userId;
     bool isOnline;
     bool isFriend;  // is pending request?
+	int unreadChat;	// number of pending chat messages
 };

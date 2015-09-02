@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ModalLayer.h"
 #include "cocos2d.h"
 
 class TableModel;
@@ -7,9 +8,11 @@ class GameModel;
 
 namespace cocos2d { namespace ui { class Slider; } }
 
-class BuyInView : public cocos2d::Node {
+class BuyInView : public ModalLayer {
 public:
-    static BuyInView* create(int time, const TableModel* model, const GameModel*);
+	static BuyInView* create(int time, const TableModel* model, const GameModel*);
+
+	virtual void onModalLayerTouched() override {}
     
     typedef std::function<void(int64_t buyInAmount, bool autoRebuy)> BuyInClickedCallback;
     typedef std::function<void()> BuyInDismissedCallback;
@@ -25,6 +28,7 @@ private:
     
     BuyInDismissedCallback _buyInDismissedCallback;
     BuyInClickedCallback _buyInClickedCallback;
+
     cocos2d::ui::Slider *_slider;
     int64_t _minBuyIn;
     int64_t _maxBuyIn;

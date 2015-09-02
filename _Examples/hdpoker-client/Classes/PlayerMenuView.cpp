@@ -1,15 +1,18 @@
+#include "JoinInviteViewController.h"
 #include "PlayerMenuView.h"
 #include "UI/UIButton.h"
 #include "Shared.h"
+#include "Text.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
 
-PlayerMenuView* PlayerMenuView::create(GameController* game, const std::string& playerName, const std::string& playerAvatarID, const cocos2d::Vec2& position) {
+PlayerMenuView* PlayerMenuView::create(GameController* game, const std::string& playerName, const std::string& playerUserID, const std::string& playerAvatarID, const cocos2d::Vec2& position) {
     auto menu = PlayerMenuView::create();
     menu->setPosition(position);
 	menu->showMenu();
 	menu->setName(playerName);
+	menu->setUserID(playerUserID);
 	menu->setAvatarID(playerAvatarID);
 	menu->_game = game;
     return menu;
@@ -17,32 +20,41 @@ PlayerMenuView* PlayerMenuView::create(GameController* game, const std::string& 
 
 Node* PlayerMenuView::getContent() {
     auto content = Node::create();
-    _name = Label::createWithTTF("WHEREATMI", UniSansRegular, 20);
+    _name = Text::create("", UniSansRegular, 20);
     _name->setColor(Color3B(32, 74, 94));
     _name->setPosition(Vec2(104, 248));
     _name->setAlignment(TextHAlignment::CENTER);
     content->addChild(_name);
     
-    auto profile = Button::create("sprites/button-menu-profile.png", "");
-    profile->setZoomScale(-.05);
+    auto profile = Button::create("button-menu-profile.png", "");
+    profile->setZoomScale(-0.05f);
     profile->setPosition(Vec2(104, 204));
 	profile->addClickEventListener([=](Ref*) {
-		loadProfileMenu(_name->getString(), _avatarID);
+        Director::getInstance()->getRunningScene()->addChild(ProfileViewController::create(_game, _name->getString(), _userID, _avatarID));
+        removeFromParent();
 	});
     content->addChild(profile);
     
-    auto invite = Button::create("sprites/button-menu-invite.png", "");
-    invite->setZoomScale(-.05);
+    auto invite = Button::create("button-menu-invite.png", "");
+    invite->setZoomScale(-0.05f);
     invite->setPosition(Vec2(104, 148));
+	invite->addClickEventListener([=](Ref*) {
+		Director::getInstance()->getRunningScene()->addChild(JoinInviteViewController::create(JoinInviteViewController::INVITE, _game, _name->getString(), _userID, _avatarID));
+		removeFromParent();
+	});
     content->addChild(invite);
     
-    auto join = Button::create("sprites/button-menu-join.png", "");
-    join->setZoomScale(-.05);
+    auto join = Button::create("button-menu-join.png", "");
+    join->setZoomScale(-0.05f);
     join->setPosition(Vec2(104, 93));
-    content->addChild(join);
+	join->addClickEventListener([=](Ref*) {
+		Director::getInstance()->getRunningScene()->addChild(JoinInviteViewController::create(JoinInviteViewController::JOIN, _game, _name->getString(), _userID, _avatarID));
+		removeFromParent();
+	});
+	content->addChild(join);
     
-    auto unfriend = Button::create("sprites/button-menu-unfriend.png", "");
-    unfriend->setZoomScale(-.05);
+    auto unfriend = Button::create("button-menu-unfriend.png", "");
+    unfriend->setZoomScale(-0.05f);
     unfriend->setPosition(Vec2(104, 38));
     content->addChild(unfriend);
     
@@ -51,12 +63,4 @@ Node* PlayerMenuView::getContent() {
 
 void PlayerMenuView::setName(const std::string& name) {
     _name->setString(name);
-}
-
-void PlayerMenuView::loadProfileMenu(const std::string& name, const std::string& avatarID) {
-	_profile = ProfileView::create(_game, name, avatarID);
-	_profile->setAnchorPoint(Vec2(1.045, 1.065));
-	auto size = getContentSize();
-	_profile->setPosition(size.width / 2, size.height / 2);
-	addChild(_profile);
 }

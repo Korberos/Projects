@@ -8,11 +8,11 @@ using namespace cocos2d::extension;
 
 const char* SavedServerKey = "ServerSelectorViewController_Server";
 
-ServerSelectorViewController* ServerSelectorViewController::create(GameController* game) {
+ServerSelectorViewController* ServerSelectorViewController::create(GameController* game, const cocos2d::Size& size) {
     auto controller = ServerSelectorViewController::create();
     controller->_selectedIndex = -1;
     controller->_game = game;
-    controller->buildView();
+    controller->buildView(size);
     return controller;
 }
 
@@ -32,29 +32,30 @@ void ServerSelectorViewController::tableCellTouched(cocos2d::extension::TableVie
     
     static_cast<ServerRowView*>(cell)->setToggled(true);
     
-    _selectedIndex = cell->getIdx();
+    _selectedIndex = static_cast<int>(cell->getIdx());
     
     // Save as default
     UserDefault::getInstance()->setStringForKey(SavedServerKey, _dataSource[_selectedIndex].name);
     UserDefault::getInstance()->flush();
 }
 
-void ServerSelectorViewController::buildView() {
-    _serverList = TableView::create(&_dataSource, Size(183, 640));
+void ServerSelectorViewController::buildView(const cocos2d::Size& size) {
+    _serverList = TableView::create(&_dataSource, size);
     _serverList->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
     _serverList->setDelegate(this);
-    _dataSource.setCellSize(Size(300/2, 78 * .6));
+    _dataSource.setCellSize(Size(size.width, PT(48)));
     addChild(_serverList);
 }
 
 void ServerSelectorViewController::loadServerList() {
-    _game->getApi()->getServerList([=] (const Message* message) {
+    _game->getApi()->getServerList(bind1(this, [=] (ServerSelectorViewController*, const Message* message) {
         if (message->isSuccess()) {
             auto savedServer = UserDefault::getInstance()->getStringForKey(SavedServerKey);
             
             auto &data = message->getData();
             auto &servers = data["servers"];
-            for (auto i = 0; i < servers.Size(); i++) {
+			int numServers = servers.Size();
+			for (auto i = 0; i < numServers; i++) {
                 Server server;
                 server.name = servers[i]["name"].GetString();
                 server.gameServerAddress = servers[i]["gameServerAddr"].GetString();
@@ -69,5 +70,5 @@ void ServerSelectorViewController::loadServerList() {
             // Reload the view
             _serverList->reloadData();
         }
-    });
+    }));
 }

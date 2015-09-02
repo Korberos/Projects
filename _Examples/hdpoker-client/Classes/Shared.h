@@ -2,6 +2,8 @@
 
 #include <string>
 #include "cocos2d.h"
+#include "os.h"
+#include "Scale.h"
 
 std::string shortStyleNumber(int64_t num);
 
@@ -36,13 +38,15 @@ extern const char *const UniSansRegular;
 
 template <typename T> std::string numberWithCommas(T number) {
     std::string numWithCommas = std::to_string(number);
-    int insertPosition = numWithCommas.length() - 3;
+    int insertPosition = static_cast<int>(numWithCommas.length()) - 3;
     while (insertPosition > 0) {
         numWithCommas.insert(insertPosition, ",");
         insertPosition -= 3;
     }
     return numWithCommas;
 }
+
+std::string toUpper(const char* str);
 
 std::chrono::milliseconds::rep getTimeInMilliseconds();
 
@@ -51,3 +55,7 @@ float containScale(cocos2d::Size size, cocos2d::Size containerSize);
 cocos2d::Size containSize(cocos2d::Size objectSize, cocos2d::Size containerSize);
 
 void playNotImplemented();
+
+const char *getTierName(const int tier);
+int getTierFromElo(const int eloPoints);
+int getBaseEloPoints(const int tier);

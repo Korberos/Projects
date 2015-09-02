@@ -7,11 +7,13 @@ class GameController;
 class TableActionMenuView;
 class TableSettingsMenuView;
 class TableViewController;
+class VotingViewController;
 namespace cocos2d { namespace ui { class Button; } }
 
 class CasinoTableContainerView : public cocos2d::Node {
 public:
     static CasinoTableContainerView* create(GameController* game);
+    ~CasinoTableContainerView();
     
     typedef std::function<void(CasinoTableContainerView*)> CloseCallback;
     void setCloseCallback(const CloseCallback& callback);
@@ -33,9 +35,11 @@ private:
     
     TableActionMenuView *_actionMenu;
     TableSettingsMenuView *_settingsMenu;
+	VotingViewController *_votingMenu;
     
     cocos2d::ui::Button *_closeButton;
-    cocos2d::Node *_tableLayer; 
+    cocos2d::Node *_tableLayer;
+    cocos2d::Node *_hudLayer;
     
     GameController *_game;
 };

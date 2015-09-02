@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14D34922BF98AFFF4D01BAAE /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C02D4AD8AFB7CCCBACE82BAF /* AdSupport.framework */; };
 		1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */; };
 		1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		337E4D8A9AEC3AABCD57DE05 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B54AA19401E64319364051 /* FBSDKLoginKit.framework */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
 		503AE10017EB989F00D1A890 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FB17EB989F00D1A890 /* AppController.mm */; };
 		503AE10117EB989F00D1A890 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FC17EB989F00D1A890 /* main.m */; };
@@ -46,7 +48,15 @@
 		521A8EA919F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
+		55A5452D85672FC7E96B3CE7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C02D4AD8AFB7CCCBACE82BAF /* AdSupport.framework */; };
+		59B541B7AF65EA87B729235E /* sdkbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01A84803B3A1FDA7D74731B9 /* sdkbox.framework */; };
+		61304202854B607F95C86795 /* PluginFacebook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92FF4D67BBDCC7C9C2F4A434 /* PluginFacebook.framework */; };
+		66D94BEDBC728E7ED7398651 /* PluginFacebook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92FF4D67BBDCC7C9C2F4A434 /* PluginFacebook.framework */; };
+		712A4502B983F2224D820B0E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE145CB8E7EAE64B75F1DFD /* FBSDKCoreKit.framework */; };
+		7F2144B3B708A6EEBE31BA10 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C755467B9CA336EDC0BCB6F3 /* FBSDKShareKit.framework */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
+		837E448D93351F61663BF2BF /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE145CB8E7EAE64B75F1DFD /* FBSDKCoreKit.framework */; };
+		8B254DF28EC20E600D81DBF4 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C755467B9CA336EDC0BCB6F3 /* FBSDKShareKit.framework */; };
 		952E21E01B401A400095AA31 /* ActionButtonsView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E21B01B401A400095AA31 /* ActionButtonsView.cpp */; };
 		952E21E11B401A400095AA31 /* ActionButtonsView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E21B01B401A400095AA31 /* ActionButtonsView.cpp */; };
 		952E21E21B401A400095AA31 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E21B21B401A400095AA31 /* AppDelegate.cpp */; };
@@ -79,8 +89,8 @@
 		952E21FD1B401A400095AA31 /* GameModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E21CC1B401A400095AA31 /* GameModel.cpp */; };
 		952E21FE1B401A400095AA31 /* LoginViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E21CE1B401A400095AA31 /* LoginViewController.cpp */; };
 		952E21FF1B401A400095AA31 /* LoginViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E21CE1B401A400095AA31 /* LoginViewController.cpp */; };
-		952E22001B401A400095AA31 /* NameplateView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E21D01B401A400095AA31 /* NameplateView.cpp */; };
-		952E22011B401A400095AA31 /* NameplateView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E21D01B401A400095AA31 /* NameplateView.cpp */; };
+		952E22001B401A400095AA31 /* ThirdPersonNameplateView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E21D01B401A400095AA31 /* ThirdPersonNameplateView.cpp */; };
+		952E22011B401A400095AA31 /* ThirdPersonNameplateView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E21D01B401A400095AA31 /* ThirdPersonNameplateView.cpp */; };
 		952E22021B401A400095AA31 /* Network.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E21D21B401A400095AA31 /* Network.cpp */; };
 		952E22031B401A400095AA31 /* Network.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E21D21B401A400095AA31 /* Network.cpp */; };
 		952E22041B401A400095AA31 /* PlayerWinView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E21D41B401A400095AA31 /* PlayerWinView.cpp */; };
@@ -107,32 +117,67 @@
 		952E22231B40E1CF0095AA31 /* TableSettingsMenuView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E22201B40E1CF0095AA31 /* TableSettingsMenuView.cpp */; };
 		952E22261B421E1D0095AA31 /* ServerSelectorViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E22241B421E1D0095AA31 /* ServerSelectorViewController.cpp */; };
 		952E22271B421E1D0095AA31 /* ServerSelectorViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E22241B421E1D0095AA31 /* ServerSelectorViewController.cpp */; };
-		952E22291B4220C90095AA31 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 952E22281B4220C90095AA31 /* README.md */; };
-		952E222A1B4220C90095AA31 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 952E22281B4220C90095AA31 /* README.md */; };
 		952E22341B4285E40095AA31 /* CoverflowView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E22331B4285E40095AA31 /* CoverflowView.cpp */; };
 		952E22351B4285F70095AA31 /* CoverflowView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E22331B4285E40095AA31 /* CoverflowView.cpp */; };
-		952E22501B429AEB0095AA31 /* Back.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E223A1B429AEB0095AA31 /* Back.cpp */; };
+		952E22501B429AEB0095AA31 /* Back.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E223A1B429AEB0095AA31 /* Back.cpp */; settings = {COMPILER_FLAGS = "-Wunsequenced"; }; };
 		952E22511B429AEB0095AA31 /* Back.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E223A1B429AEB0095AA31 /* Back.cpp */; };
-		952E22521B429AEB0095AA31 /* Bounce.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E223C1B429AEB0095AA31 /* Bounce.cpp */; };
+		952E22521B429AEB0095AA31 /* Bounce.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E223C1B429AEB0095AA31 /* Bounce.cpp */; settings = {COMPILER_FLAGS = "-Wunsequenced"; }; };
 		952E22531B429AEB0095AA31 /* Bounce.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E223C1B429AEB0095AA31 /* Bounce.cpp */; };
-		952E22541B429AEB0095AA31 /* Circ.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E223E1B429AEB0095AA31 /* Circ.cpp */; };
-		952E22551B429AEB0095AA31 /* Circ.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E223E1B429AEB0095AA31 /* Circ.cpp */; };
-		952E22561B429AEB0095AA31 /* Cubic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E22401B429AEB0095AA31 /* Cubic.cpp */; };
+		952E22541B429AEB0095AA31 /* Circ.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E223E1B429AEB0095AA31 /* Circ.cpp */; settings = {COMPILER_FLAGS = "-Wunsequenced"; }; };
+		952E22551B429AEB0095AA31 /* Circ.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E223E1B429AEB0095AA31 /* Circ.cpp */; settings = {COMPILER_FLAGS = "-Wunsequenced"; }; };
+		952E22561B429AEB0095AA31 /* Cubic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E22401B429AEB0095AA31 /* Cubic.cpp */; settings = {COMPILER_FLAGS = "-Wunsequenced"; }; };
 		952E22571B429AEB0095AA31 /* Cubic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E22401B429AEB0095AA31 /* Cubic.cpp */; };
-		952E22581B429AEB0095AA31 /* Elastic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E22421B429AEB0095AA31 /* Elastic.cpp */; };
+		952E22581B429AEB0095AA31 /* Elastic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E22421B429AEB0095AA31 /* Elastic.cpp */; settings = {COMPILER_FLAGS = "-Wunsequenced"; }; };
 		952E22591B429AEB0095AA31 /* Elastic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E22421B429AEB0095AA31 /* Elastic.cpp */; };
-		952E225A1B429AEB0095AA31 /* Expo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E22441B429AEB0095AA31 /* Expo.cpp */; };
+		952E225A1B429AEB0095AA31 /* Expo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E22441B429AEB0095AA31 /* Expo.cpp */; settings = {COMPILER_FLAGS = "-Wunsequenced"; }; };
 		952E225B1B429AEB0095AA31 /* Expo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E22441B429AEB0095AA31 /* Expo.cpp */; };
-		952E225C1B429AEB0095AA31 /* Linear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E22461B429AEB0095AA31 /* Linear.cpp */; };
+		952E225C1B429AEB0095AA31 /* Linear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E22461B429AEB0095AA31 /* Linear.cpp */; settings = {COMPILER_FLAGS = "-Wunsequenced"; }; };
 		952E225D1B429AEB0095AA31 /* Linear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E22461B429AEB0095AA31 /* Linear.cpp */; };
-		952E225E1B429AEB0095AA31 /* Quad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E22481B429AEB0095AA31 /* Quad.cpp */; };
+		952E225E1B429AEB0095AA31 /* Quad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E22481B429AEB0095AA31 /* Quad.cpp */; settings = {COMPILER_FLAGS = "-Wunsequenced"; }; };
 		952E225F1B429AEB0095AA31 /* Quad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E22481B429AEB0095AA31 /* Quad.cpp */; };
-		952E22601B429AEB0095AA31 /* Quart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E224A1B429AEB0095AA31 /* Quart.cpp */; };
-		952E22611B429AEB0095AA31 /* Quart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E224A1B429AEB0095AA31 /* Quart.cpp */; };
-		952E22621B429AEB0095AA31 /* Quint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E224C1B429AEB0095AA31 /* Quint.cpp */; };
+		952E22601B429AEB0095AA31 /* Quart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E224A1B429AEB0095AA31 /* Quart.cpp */; settings = {COMPILER_FLAGS = "-Wunsequenced"; }; };
+		952E22611B429AEB0095AA31 /* Quart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E224A1B429AEB0095AA31 /* Quart.cpp */; settings = {COMPILER_FLAGS = "-Wunsequenced"; }; };
+		952E22621B429AEB0095AA31 /* Quint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E224C1B429AEB0095AA31 /* Quint.cpp */; settings = {COMPILER_FLAGS = "-Wunsequenced"; }; };
 		952E22631B429AEB0095AA31 /* Quint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E224C1B429AEB0095AA31 /* Quint.cpp */; };
-		952E22641B429AEB0095AA31 /* Sine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E224E1B429AEB0095AA31 /* Sine.cpp */; };
+		952E22641B429AEB0095AA31 /* Sine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E224E1B429AEB0095AA31 /* Sine.cpp */; settings = {COMPILER_FLAGS = "-Wunsequenced"; }; };
 		952E22651B429AEB0095AA31 /* Sine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952E224E1B429AEB0095AA31 /* Sine.cpp */; };
+		95489A9E1B6AD10600BDDCC3 /* ProfileInventoryView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95489A9A1B6AD10600BDDCC3 /* ProfileInventoryView.cpp */; };
+		95489A9F1B6AD10A00BDDCC3 /* ModalPromptView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95489A981B6AD10600BDDCC3 /* ModalPromptView.cpp */; };
+		95489AA01B6AD10C00BDDCC3 /* ProfileInventoryView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95489A9A1B6AD10600BDDCC3 /* ProfileInventoryView.cpp */; };
+		955645511B8B7C17005380BE /* GiftingObjectsView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9556454B1B8B7C17005380BE /* GiftingObjectsView.cpp */; };
+		955645521B8B7C17005380BE /* GiftingObjectsView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9556454B1B8B7C17005380BE /* GiftingObjectsView.cpp */; };
+		955645531B8B7C17005380BE /* GiftingPlayersView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9556454D1B8B7C17005380BE /* GiftingPlayersView.cpp */; };
+		955645541B8B7C17005380BE /* GiftingPlayersView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9556454D1B8B7C17005380BE /* GiftingPlayersView.cpp */; };
+		955645551B8B7C17005380BE /* GiftingViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9556454F1B8B7C17005380BE /* GiftingViewController.cpp */; };
+		955645561B8B7C17005380BE /* GiftingViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9556454F1B8B7C17005380BE /* GiftingViewController.cpp */; };
+		955645581B8B7D5A005380BE /* TablePlayerMenuView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 955645571B8B7D5A005380BE /* TablePlayerMenuView.cpp */; };
+		955645591B8B7D5A005380BE /* TablePlayerMenuView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 955645571B8B7D5A005380BE /* TablePlayerMenuView.cpp */; };
+		9556455C1B8CFE0E005380BE /* particles in Resources */ = {isa = PBXBuildFile; fileRef = 9556455B1B8CFE0E005380BE /* particles */; };
+		9556455D1B8CFE0E005380BE /* particles in Resources */ = {isa = PBXBuildFile; fileRef = 9556455B1B8CFE0E005380BE /* particles */; };
+		956279CD1B8D8A6B00C35CF5 /* AlertImageView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 956279CB1B8D8A6B00C35CF5 /* AlertImageView.cpp */; };
+		956279CE1B8D8A6B00C35CF5 /* AlertImageView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 956279CB1B8D8A6B00C35CF5 /* AlertImageView.cpp */; };
+		956279D11B8E08FD00C35CF5 /* WebpageView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 956279CF1B8E08FD00C35CF5 /* WebpageView.cpp */; };
+		956279D21B8E08FD00C35CF5 /* WebpageView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 956279CF1B8E08FD00C35CF5 /* WebpageView.cpp */; };
+		956279D51B8E219100C35CF5 /* HoleCardsView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 956279D31B8E219100C35CF5 /* HoleCardsView.cpp */; };
+		956279D61B8E219100C35CF5 /* HoleCardsView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 956279D31B8E219100C35CF5 /* HoleCardsView.cpp */; };
+		9566D26B1B8259AD001CB61B /* Stage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9566D2691B8259AD001CB61B /* Stage.cpp */; };
+		9566D26C1B8259AD001CB61B /* Stage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9566D2691B8259AD001CB61B /* Stage.cpp */; };
+		9566D2731B826A6B001CB61B /* BadgeView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9566D26D1B826A6B001CB61B /* BadgeView.cpp */; };
+		9566D2741B826A6B001CB61B /* BadgeView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9566D26D1B826A6B001CB61B /* BadgeView.cpp */; };
+		9566D2751B826A6B001CB61B /* LeaderboardViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9566D26F1B826A6B001CB61B /* LeaderboardViewController.cpp */; };
+		9566D2761B826A6B001CB61B /* LeaderboardViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9566D26F1B826A6B001CB61B /* LeaderboardViewController.cpp */; };
+		9566D2771B826A6B001CB61B /* NewsViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9566D2711B826A6B001CB61B /* NewsViewController.cpp */; };
+		9566D2781B826A6B001CB61B /* NewsViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9566D2711B826A6B001CB61B /* NewsViewController.cpp */; };
+		9566D27C1B8274A9001CB61B /* TableManagerViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9566D27A1B8274A9001CB61B /* TableManagerViewController.cpp */; };
+		9566D27D1B8274A9001CB61B /* TableManagerViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9566D27A1B8274A9001CB61B /* TableManagerViewController.cpp */; };
+		9566D2871B84F856001CB61B /* RegistrationView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9566D2851B84F856001CB61B /* RegistrationView.cpp */; };
+		9566D2881B84F856001CB61B /* RegistrationView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9566D2851B84F856001CB61B /* RegistrationView.cpp */; };
+		957C10981B6BD7AA002ACDCB /* JoinInviteViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 957C10961B6BD7AA002ACDCB /* JoinInviteViewController.cpp */; };
+		957C10991B6BD7B0002ACDCB /* JoinInviteViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 957C10961B6BD7AA002ACDCB /* JoinInviteViewController.cpp */; };
+		957C109E1B6C05BD002ACDCB /* GrowlViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 957C109C1B6C05BD002ACDCB /* GrowlViewController.cpp */; };
+		957C109F1B6C05BD002ACDCB /* GrowlViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 957C109C1B6C05BD002ACDCB /* GrowlViewController.cpp */; };
+		9597E1C31B967E5B0030C4FD /* AvatarCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9597E1C11B967E5B0030C4FD /* AvatarCache.cpp */; };
+		9597E1C41B967E5B0030C4FD /* AvatarCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9597E1C11B967E5B0030C4FD /* AvatarCache.cpp */; };
 		959F91DC1B42B351004C0AA4 /* SizeTo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 959F91DA1B42B351004C0AA4 /* SizeTo.cpp */; };
 		959F91DD1B42B351004C0AA4 /* SizeTo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 959F91DA1B42B351004C0AA4 /* SizeTo.cpp */; };
 		959F91E01B42BE64004C0AA4 /* TableModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 959F91DE1B42BE64004C0AA4 /* TableModel.cpp */; };
@@ -155,12 +200,77 @@
 		959F92141B46572B004C0AA4 /* ModalLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 959F92111B46572B004C0AA4 /* ModalLayer.cpp */; };
 		959F92171B4677BC004C0AA4 /* ContextMenuView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 959F92151B4677BC004C0AA4 /* ContextMenuView.cpp */; };
 		959F92181B4677BC004C0AA4 /* ContextMenuView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 959F92151B4677BC004C0AA4 /* ContextMenuView.cpp */; };
+		95BA47F71B869C0D00D54CDC /* MessageCenterController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95BA47F51B869C0D00D54CDC /* MessageCenterController.cpp */; };
+		95BA47F81B869C0D00D54CDC /* MessageCenterController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95BA47F51B869C0D00D54CDC /* MessageCenterController.cpp */; };
+		95BA47FB1B869D5700D54CDC /* GrowlView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95BA47F91B869D5700D54CDC /* GrowlView.cpp */; };
+		95BA47FC1B869D5700D54CDC /* GrowlView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95BA47F91B869D5700D54CDC /* GrowlView.cpp */; };
+		95BA47FF1B86C42300D54CDC /* OverlayMessageView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95BA47FD1B86C42300D54CDC /* OverlayMessageView.cpp */; };
+		95BA48001B86C42300D54CDC /* OverlayMessageView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95BA47FD1B86C42300D54CDC /* OverlayMessageView.cpp */; };
+		95BA48051B86CF7600D54CDC /* AchievementViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95BA48031B86CF7600D54CDC /* AchievementViewController.cpp */; };
+		95BA48061B86CF7600D54CDC /* AchievementViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95BA48031B86CF7600D54CDC /* AchievementViewController.cpp */; };
+		95BA48091B87CC1700D54CDC /* SettingsViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95BA48071B87CC1700D54CDC /* SettingsViewController.cpp */; };
+		95BA480A1B87CC1700D54CDC /* SettingsViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95BA48071B87CC1700D54CDC /* SettingsViewController.cpp */; };
+		95BA480D1B87EBB500D54CDC /* FirstPersonNameplateView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95BA480B1B87EBB500D54CDC /* FirstPersonNameplateView.cpp */; };
+		95BA480E1B87EBB500D54CDC /* FirstPersonNameplateView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95BA480B1B87EBB500D54CDC /* FirstPersonNameplateView.cpp */; };
+		95C37FE31B71882C00A745D1 /* TableThemeVotingView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95C37FDE1B71882C00A745D1 /* TableThemeVotingView.cpp */; };
+		95C37FE41B71882C00A745D1 /* TableThemeVotingView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95C37FDE1B71882C00A745D1 /* TableThemeVotingView.cpp */; };
+		95C37FE51B71882C00A745D1 /* VotingViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95C37FE11B71882C00A745D1 /* VotingViewController.cpp */; };
+		95C37FE61B71882C00A745D1 /* VotingViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95C37FE11B71882C00A745D1 /* VotingViewController.cpp */; };
+		95C37FED1B72E0B300A745D1 /* TableInviteView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95C37FEB1B72E0B300A745D1 /* TableInviteView.cpp */; };
+		95C37FEE1B72E0B300A745D1 /* TableInviteView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95C37FEB1B72E0B300A745D1 /* TableInviteView.cpp */; };
 		95C3C6211B487244005EEA85 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95C3C6201B487244005EEA85 /* Icon@2x.png */; };
 		95C3C6231B49E397005EEA85 /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 95C3C6221B49E397005EEA85 /* Icon-144.png */; };
+		95CED1791B7D217C00A8F5F3 /* Scale.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95CED1781B7D217C00A8F5F3 /* Scale.cpp */; };
+		95CED17A1B7D217C00A8F5F3 /* Scale.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95CED1781B7D217C00A8F5F3 /* Scale.cpp */; };
+		95CED17C1B7D23D100A8F5F3 /* Text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95CED17B1B7D23D100A8F5F3 /* Text.cpp */; };
+		95CED17D1B7D23D100A8F5F3 /* Text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95CED17B1B7D23D100A8F5F3 /* Text.cpp */; };
+		95CED1801B7D67C500A8F5F3 /* StoreViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95CED17E1B7D67C500A8F5F3 /* StoreViewController.cpp */; };
+		95CED1811B7D67C500A8F5F3 /* StoreViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95CED17E1B7D67C500A8F5F3 /* StoreViewController.cpp */; };
 		95D369A91B3C948B00A46FC0 /* sprites in Resources */ = {isa = PBXBuildFile; fileRef = 95D369A81B3C948B00A46FC0 /* sprites */; };
 		95D369AA1B3C948B00A46FC0 /* sprites in Resources */ = {isa = PBXBuildFile; fileRef = 95D369A81B3C948B00A46FC0 /* sprites */; };
 		95D369BC1B3CCD7200A46FC0 /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = 95D369BB1B3CCD7200A46FC0 /* sounds */; };
 		95D369BD1B3CCD7200A46FC0 /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = 95D369BB1B3CCD7200A46FC0 /* sounds */; };
+		95F0AEA61B674584005637F7 /* ProfileHandsView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F0AEA51B674584005637F7 /* ProfileHandsView.cpp */; };
+		95F0AEAB1B6745AB005637F7 /* ProfileViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F0AEA91B6745AB005637F7 /* ProfileViewController.cpp */; };
+		95F0AEAD1B67FB86005637F7 /* ProfileHandsView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F0AEA51B674584005637F7 /* ProfileHandsView.cpp */; };
+		95F0AEAE1B67FB8B005637F7 /* ProfileViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F0AEA91B6745AB005637F7 /* ProfileViewController.cpp */; };
+		95F0AEBF1B680ADC005637F7 /* ProfileFriendsView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F0AEBB1B680ADC005637F7 /* ProfileFriendsView.cpp */; };
+		95F0AEC01B680AE2005637F7 /* ProfileFriendsView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F0AEBB1B680ADC005637F7 /* ProfileFriendsView.cpp */; };
+		95F0AEC91B683453005637F7 /* CountryView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F0AEC41B683453005637F7 /* CountryView.cpp */; };
+		95F0AECA1B683453005637F7 /* CountryView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F0AEC41B683453005637F7 /* CountryView.cpp */; };
+		95F0AECB1B683453005637F7 /* XPBarView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F0AEC71B683453005637F7 /* XPBarView.cpp */; };
+		95F0AECC1B683453005637F7 /* XPBarView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F0AEC71B683453005637F7 /* XPBarView.cpp */; };
+		95F0AED21B69CEAF005637F7 /* ProfileAchievementsView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F0AED01B69CEAF005637F7 /* ProfileAchievementsView.cpp */; };
+		95F0AED31B69CEAF005637F7 /* ProfileAchievementsView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F0AED01B69CEAF005637F7 /* ProfileAchievementsView.cpp */; };
+		95F0AED71B69DE00005637F7 /* ReplayerViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F0AED51B69DE00005637F7 /* ReplayerViewController.cpp */; };
+		95F0AED81B69DE00005637F7 /* ReplayerViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F0AED51B69DE00005637F7 /* ReplayerViewController.cpp */; };
+		95F263DF1B8E7A9600B6EF08 /* TableGiftView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F263DB1B8E7A9600B6EF08 /* TableGiftView.cpp */; };
+		95F263E01B8E7A9600B6EF08 /* TableGiftView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F263DB1B8E7A9600B6EF08 /* TableGiftView.cpp */; };
+		95F263E11B8E7A9600B6EF08 /* TooltipView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F263DD1B8E7A9600B6EF08 /* TooltipView.cpp */; };
+		95F263E21B8E7A9600B6EF08 /* TooltipView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F263DD1B8E7A9600B6EF08 /* TooltipView.cpp */; };
+		95F263FD1B90DD5000B6EF08 /* TableChatViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F263F91B90DD5000B6EF08 /* TableChatViewController.cpp */; };
+		95F263FE1B90DD5000B6EF08 /* TableChatViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F263F91B90DD5000B6EF08 /* TableChatViewController.cpp */; };
+		95F263FF1B90DD5000B6EF08 /* FreeChipsViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F263FB1B90DD5000B6EF08 /* FreeChipsViewController.cpp */; };
+		95F264001B90DD5000B6EF08 /* FreeChipsViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F263FB1B90DD5000B6EF08 /* FreeChipsViewController.cpp */; };
+		95F264071B91019800B6EF08 /* TableInfoPlayersView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F264011B91019800B6EF08 /* TableInfoPlayersView.cpp */; };
+		95F264081B91019800B6EF08 /* TableInfoPlayersView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F264011B91019800B6EF08 /* TableInfoPlayersView.cpp */; };
+		95F264091B91019800B6EF08 /* TableInfoViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F264031B91019800B6EF08 /* TableInfoViewController.cpp */; };
+		95F2640A1B91019800B6EF08 /* TableInfoViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F264031B91019800B6EF08 /* TableInfoViewController.cpp */; };
+		95F2640B1B91019800B6EF08 /* TierImageView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F264051B91019800B6EF08 /* TierImageView.cpp */; };
+		95F2640C1B91019800B6EF08 /* TierImageView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F264051B91019800B6EF08 /* TierImageView.cpp */; };
+		95FE9A7F1B94F1BC009633C3 /* CountryMapping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95FE9A7D1B94F1BC009633C3 /* CountryMapping.cpp */; };
+		95FE9A801B94F1BC009633C3 /* CountryMapping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95FE9A7D1B94F1BC009633C3 /* CountryMapping.cpp */; };
+		95FE9A831B950377009633C3 /* TableInfoHandsView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95FE9A811B950377009633C3 /* TableInfoHandsView.cpp */; };
+		95FE9A841B950377009633C3 /* TableInfoHandsView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95FE9A811B950377009633C3 /* TableInfoHandsView.cpp */; };
+		95FE9A871B950C39009633C3 /* sdkbox_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 95FE9A861B950C39009633C3 /* sdkbox_config.json */; };
+		95FE9A881B950C39009633C3 /* sdkbox_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 95FE9A861B950C39009633C3 /* sdkbox_config.json */; };
+		95FE9A931B9539ED009633C3 /* FacebookController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95FE9A911B9539ED009633C3 /* FacebookController.cpp */; };
+		95FE9A941B9539ED009633C3 /* FacebookController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95FE9A911B9539ED009633C3 /* FacebookController.cpp */; };
+		95FE9A971B95567F009633C3 /* InviteFriendsViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95FE9A951B95567F009633C3 /* InviteFriendsViewController.cpp */; };
+		95FE9A981B95567F009633C3 /* InviteFriendsViewController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95FE9A951B95567F009633C3 /* InviteFriendsViewController.cpp */; };
+		95FE9A9B1B9556E5009633C3 /* Http.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95FE9A991B9556E5009633C3 /* Http.cpp */; };
+		95FE9A9C1B9556E5009633C3 /* Http.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95FE9A991B9556E5009633C3 /* Http.cpp */; };
+		A4424ED7BFA972109BF4640F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B54AA19401E64319364051 /* FBSDKLoginKit.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -168,6 +278,7 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		FD5A48548D5430ADB263287A /* sdkbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01A84803B3A1FDA7D74731B9 /* sdkbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,12 +313,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01A84803B3A1FDA7D74731B9 /* sdkbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = sdkbox.framework; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* hdpoker iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hdpoker iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3DE145CB8E7EAE64B75F1DFD /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503AE0FA17EB989F00D1A890 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ios/AppController.h; sourceTree = SOURCE_ROOT; };
@@ -244,17 +357,18 @@
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		952E21B01B401A400095AA31 /* ActionButtonsView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActionButtonsView.cpp; sourceTree = "<group>"; };
+		92FF4D67BBDCC7C9C2F4A434 /* PluginFacebook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PluginFacebook.framework; sourceTree = "<group>"; };
+		952E21B01B401A400095AA31 /* ActionButtonsView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = ActionButtonsView.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		952E21B11B401A400095AA31 /* ActionButtonsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionButtonsView.h; sourceTree = "<group>"; };
-		952E21B21B401A400095AA31 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
+		952E21B21B401A400095AA31 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = AppDelegate.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		952E21B31B401A400095AA31 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		952E21B41B401A400095AA31 /* AvatarView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AvatarView.cpp; sourceTree = "<group>"; };
 		952E21B51B401A400095AA31 /* AvatarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarView.h; sourceTree = "<group>"; };
-		952E21B61B401A400095AA31 /* BetStackView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BetStackView.cpp; sourceTree = "<group>"; };
+		952E21B61B401A400095AA31 /* BetStackView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = BetStackView.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		952E21B71B401A400095AA31 /* BetStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BetStackView.h; sourceTree = "<group>"; };
 		952E21B81B401A400095AA31 /* BoardCardsView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoardCardsView.cpp; sourceTree = "<group>"; };
 		952E21B91B401A400095AA31 /* BoardCardsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardCardsView.h; sourceTree = "<group>"; };
-		952E21BA1B401A400095AA31 /* CardView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CardView.cpp; sourceTree = "<group>"; };
+		952E21BA1B401A400095AA31 /* CardView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = CardView.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		952E21BB1B401A400095AA31 /* CardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardView.h; sourceTree = "<group>"; };
 		952E21BC1B401A400095AA31 /* CasinoTableContainerView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CasinoTableContainerView.cpp; sourceTree = "<group>"; };
 		952E21BD1B401A400095AA31 /* CasinoTableContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CasinoTableContainerView.h; sourceTree = "<group>"; };
@@ -262,7 +376,7 @@
 		952E21BF1B401A400095AA31 /* CasinoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CasinoViewController.h; sourceTree = "<group>"; };
 		952E21C01B401A400095AA31 /* ChatBubbleView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChatBubbleView.cpp; sourceTree = "<group>"; };
 		952E21C11B401A400095AA31 /* ChatBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatBubbleView.h; sourceTree = "<group>"; };
-		952E21C21B401A400095AA31 /* ChatInputView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChatInputView.cpp; sourceTree = "<group>"; };
+		952E21C21B401A400095AA31 /* ChatInputView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = ChatInputView.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		952E21C31B401A400095AA31 /* ChatInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatInputView.h; sourceTree = "<group>"; };
 		952E21C41B401A400095AA31 /* DashboardViewController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DashboardViewController.cpp; sourceTree = "<group>"; };
 		952E21C51B401A400095AA31 /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
@@ -276,8 +390,8 @@
 		952E21CD1B401A400095AA31 /* GameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameModel.h; sourceTree = "<group>"; };
 		952E21CE1B401A400095AA31 /* LoginViewController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoginViewController.cpp; sourceTree = "<group>"; };
 		952E21CF1B401A400095AA31 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		952E21D01B401A400095AA31 /* NameplateView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NameplateView.cpp; sourceTree = "<group>"; };
-		952E21D11B401A400095AA31 /* NameplateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameplateView.h; sourceTree = "<group>"; };
+		952E21D01B401A400095AA31 /* ThirdPersonNameplateView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ThirdPersonNameplateView.cpp; sourceTree = "<group>"; };
+		952E21D11B401A400095AA31 /* ThirdPersonNameplateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdPersonNameplateView.h; sourceTree = "<group>"; };
 		952E21D21B401A400095AA31 /* Network.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Network.cpp; sourceTree = "<group>"; };
 		952E21D31B401A400095AA31 /* Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
 		952E21D41B401A400095AA31 /* PlayerWinView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerWinView.cpp; sourceTree = "<group>"; };
@@ -329,16 +443,58 @@
 		952E224D1B429AEB0095AA31 /* Quint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quint.h; sourceTree = "<group>"; };
 		952E224E1B429AEB0095AA31 /* Sine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sine.cpp; sourceTree = "<group>"; };
 		952E224F1B429AEB0095AA31 /* Sine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sine.h; sourceTree = "<group>"; };
+		95489A981B6AD10600BDDCC3 /* ModalPromptView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ModalPromptView.cpp; sourceTree = "<group>"; };
+		95489A991B6AD10600BDDCC3 /* ModalPromptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalPromptView.h; sourceTree = "<group>"; };
+		95489A9A1B6AD10600BDDCC3 /* ProfileInventoryView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProfileInventoryView.cpp; sourceTree = "<group>"; };
+		95489A9B1B6AD10600BDDCC3 /* ProfileInventoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileInventoryView.h; sourceTree = "<group>"; };
+		95489A9C1B6AD10600BDDCC3 /* QuadVectorDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadVectorDataSource.h; sourceTree = "<group>"; };
+		955645481B8A5F06005380BE /* NameplateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NameplateView.h; sourceTree = "<group>"; };
+		9556454B1B8B7C17005380BE /* GiftingObjectsView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GiftingObjectsView.cpp; sourceTree = "<group>"; };
+		9556454C1B8B7C17005380BE /* GiftingObjectsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftingObjectsView.h; sourceTree = "<group>"; };
+		9556454D1B8B7C17005380BE /* GiftingPlayersView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GiftingPlayersView.cpp; sourceTree = "<group>"; };
+		9556454E1B8B7C17005380BE /* GiftingPlayersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftingPlayersView.h; sourceTree = "<group>"; };
+		9556454F1B8B7C17005380BE /* GiftingViewController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GiftingViewController.cpp; sourceTree = "<group>"; };
+		955645501B8B7C17005380BE /* GiftingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftingViewController.h; sourceTree = "<group>"; };
+		955645571B8B7D5A005380BE /* TablePlayerMenuView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TablePlayerMenuView.cpp; sourceTree = "<group>"; };
+		9556455A1B8B7D9F005380BE /* TablePlayerMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TablePlayerMenuView.h; sourceTree = "<group>"; };
+		9556455B1B8CFE0E005380BE /* particles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = particles; sourceTree = "<group>"; };
+		956279CB1B8D8A6B00C35CF5 /* AlertImageView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlertImageView.cpp; sourceTree = "<group>"; };
+		956279CC1B8D8A6B00C35CF5 /* AlertImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertImageView.h; sourceTree = "<group>"; };
+		956279CF1B8E08FD00C35CF5 /* WebpageView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WebpageView.cpp; sourceTree = "<group>"; };
+		956279D01B8E08FD00C35CF5 /* WebpageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebpageView.h; sourceTree = "<group>"; };
+		956279D31B8E219100C35CF5 /* HoleCardsView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HoleCardsView.cpp; sourceTree = "<group>"; };
+		956279D41B8E219100C35CF5 /* HoleCardsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoleCardsView.h; sourceTree = "<group>"; };
+		9566D2691B8259AD001CB61B /* Stage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stage.cpp; sourceTree = "<group>"; };
+		9566D26A1B8259AD001CB61B /* Stage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stage.h; sourceTree = "<group>"; };
+		9566D26D1B826A6B001CB61B /* BadgeView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BadgeView.cpp; sourceTree = "<group>"; };
+		9566D26E1B826A6B001CB61B /* BadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeView.h; sourceTree = "<group>"; };
+		9566D26F1B826A6B001CB61B /* LeaderboardViewController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LeaderboardViewController.cpp; sourceTree = "<group>"; };
+		9566D2701B826A6B001CB61B /* LeaderboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderboardViewController.h; sourceTree = "<group>"; };
+		9566D2711B826A6B001CB61B /* NewsViewController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NewsViewController.cpp; sourceTree = "<group>"; };
+		9566D2721B826A6B001CB61B /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
+		9566D2791B8274A9001CB61B /* Observable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Observable.h; sourceTree = "<group>"; };
+		9566D27A1B8274A9001CB61B /* TableManagerViewController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TableManagerViewController.cpp; sourceTree = "<group>"; };
+		9566D27B1B8274A9001CB61B /* TableManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableManagerViewController.h; sourceTree = "<group>"; };
+		9566D27E1B83A81C001CB61B /* Callback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Callback.h; sourceTree = "<group>"; };
+		9566D2851B84F856001CB61B /* RegistrationView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RegistrationView.cpp; sourceTree = "<group>"; };
+		9566D2861B84F856001CB61B /* RegistrationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationView.h; sourceTree = "<group>"; };
+		957C10961B6BD7AA002ACDCB /* JoinInviteViewController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JoinInviteViewController.cpp; sourceTree = "<group>"; };
+		957C10971B6BD7AA002ACDCB /* JoinInviteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinInviteViewController.h; sourceTree = "<group>"; };
+		957C109C1B6C05BD002ACDCB /* GrowlViewController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GrowlViewController.cpp; sourceTree = "<group>"; };
+		957C109D1B6C05BD002ACDCB /* GrowlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowlViewController.h; sourceTree = "<group>"; };
+		957C10A01B6C3139002ACDCB /* os.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = os.h; sourceTree = "<group>"; };
+		9597E1C11B967E5B0030C4FD /* AvatarCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AvatarCache.cpp; sourceTree = "<group>"; };
+		9597E1C21B967E5B0030C4FD /* AvatarCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarCache.h; sourceTree = "<group>"; };
 		959F91DA1B42B351004C0AA4 /* SizeTo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SizeTo.cpp; sourceTree = "<group>"; };
 		959F91DB1B42B351004C0AA4 /* SizeTo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeTo.h; sourceTree = "<group>"; };
 		959F91DE1B42BE64004C0AA4 /* TableModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TableModel.cpp; sourceTree = "<group>"; };
 		959F91DF1B42BE64004C0AA4 /* TableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableModel.h; sourceTree = "<group>"; };
-		959F91E21B434178004C0AA4 /* AlertView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlertView.cpp; sourceTree = "<group>"; };
+		959F91E21B434178004C0AA4 /* AlertView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = AlertView.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		959F91E31B434178004C0AA4 /* AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertView.h; sourceTree = "<group>"; };
-		959F91E61B43DD56004C0AA4 /* BuyInView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BuyInView.cpp; sourceTree = "<group>"; };
+		959F91E61B43DD56004C0AA4 /* BuyInView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = BuyInView.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		959F91E71B43DD56004C0AA4 /* BuyInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyInView.h; sourceTree = "<group>"; };
-		959F91F21B449273004C0AA4 /* ChatViewController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChatViewController.cpp; sourceTree = "<group>"; };
-		959F91F31B449273004C0AA4 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		959F91F21B449273004C0AA4 /* ChatViewController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = ChatViewController.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		959F91F31B449273004C0AA4 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ChatViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		959F91F71B449C5A004C0AA4 /* VectorDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VectorDataSource.h; sourceTree = "<group>"; };
 		959F91FB1B451489004C0AA4 /* LoadingView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadingView.cpp; sourceTree = "<group>"; };
 		959F91FC1B451489004C0AA4 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
@@ -351,15 +507,86 @@
 		959F920E1B464D2A004C0AA4 /* PlayerMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerMenuView.h; sourceTree = "<group>"; };
 		959F92111B46572B004C0AA4 /* ModalLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ModalLayer.cpp; sourceTree = "<group>"; };
 		959F92121B46572B004C0AA4 /* ModalLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalLayer.h; sourceTree = "<group>"; };
-		959F92151B4677BC004C0AA4 /* ContextMenuView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ContextMenuView.cpp; sourceTree = "<group>"; };
+		959F92151B4677BC004C0AA4 /* ContextMenuView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = ContextMenuView.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		959F92161B4677BC004C0AA4 /* ContextMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextMenuView.h; sourceTree = "<group>"; };
+		95BA47F51B869C0D00D54CDC /* MessageCenterController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MessageCenterController.cpp; sourceTree = "<group>"; };
+		95BA47F61B869C0D00D54CDC /* MessageCenterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCenterController.h; sourceTree = "<group>"; };
+		95BA47F91B869D5700D54CDC /* GrowlView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GrowlView.cpp; sourceTree = "<group>"; };
+		95BA47FA1B869D5700D54CDC /* GrowlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowlView.h; sourceTree = "<group>"; };
+		95BA47FD1B86C42300D54CDC /* OverlayMessageView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OverlayMessageView.cpp; sourceTree = "<group>"; };
+		95BA47FE1B86C42300D54CDC /* OverlayMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayMessageView.h; sourceTree = "<group>"; };
+		95BA48031B86CF7600D54CDC /* AchievementViewController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchievementViewController.cpp; sourceTree = "<group>"; };
+		95BA48041B86CF7600D54CDC /* AchievementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementViewController.h; sourceTree = "<group>"; };
+		95BA48071B87CC1700D54CDC /* SettingsViewController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SettingsViewController.cpp; sourceTree = "<group>"; };
+		95BA48081B87CC1700D54CDC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		95BA480B1B87EBB500D54CDC /* FirstPersonNameplateView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FirstPersonNameplateView.cpp; sourceTree = "<group>"; };
+		95BA480C1B87EBB500D54CDC /* FirstPersonNameplateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstPersonNameplateView.h; sourceTree = "<group>"; };
+		95C37FDE1B71882C00A745D1 /* TableThemeVotingView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TableThemeVotingView.cpp; sourceTree = "<group>"; };
+		95C37FDF1B71882C00A745D1 /* TableThemeVotingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableThemeVotingView.h; sourceTree = "<group>"; };
+		95C37FE01B71882C00A745D1 /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
+		95C37FE11B71882C00A745D1 /* VotingViewController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VotingViewController.cpp; sourceTree = "<group>"; };
+		95C37FE21B71882C00A745D1 /* VotingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VotingViewController.h; sourceTree = "<group>"; };
+		95C37FEB1B72E0B300A745D1 /* TableInviteView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TableInviteView.cpp; sourceTree = "<group>"; };
+		95C37FEC1B72E0B300A745D1 /* TableInviteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableInviteView.h; sourceTree = "<group>"; };
 		95C3C6201B487244005EEA85 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		95C3C6221B49E397005EEA85 /* Icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-144.png"; sourceTree = "<group>"; };
+		95CED1761B7D1E6800A8F5F3 /* Text.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Text.h; sourceTree = "<group>"; };
+		95CED1771B7D202100A8F5F3 /* Scale.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Scale.h; sourceTree = "<group>"; };
+		95CED1781B7D217C00A8F5F3 /* Scale.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scale.cpp; sourceTree = "<group>"; };
+		95CED17B1B7D23D100A8F5F3 /* Text.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Text.cpp; sourceTree = "<group>"; };
+		95CED17E1B7D67C500A8F5F3 /* StoreViewController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StoreViewController.cpp; sourceTree = "<group>"; };
+		95CED17F1B7D67C500A8F5F3 /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
 		95D369A81B3C948B00A46FC0 /* sprites */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sprites; sourceTree = "<group>"; };
 		95D369BB1B3CCD7200A46FC0 /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sounds; sourceTree = "<group>"; };
+		95F0AEA51B674584005637F7 /* ProfileHandsView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProfileHandsView.cpp; sourceTree = "<group>"; };
+		95F0AEA81B6745AB005637F7 /* ProfileHandsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileHandsView.h; sourceTree = "<group>"; };
+		95F0AEA91B6745AB005637F7 /* ProfileViewController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProfileViewController.cpp; sourceTree = "<group>"; };
+		95F0AEAA1B6745AB005637F7 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		95F0AEBA1B680ADC005637F7 /* DoubleVectorDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubleVectorDataSource.h; sourceTree = "<group>"; };
+		95F0AEBB1B680ADC005637F7 /* ProfileFriendsView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProfileFriendsView.cpp; sourceTree = "<group>"; };
+		95F0AEBC1B680ADC005637F7 /* ProfileFriendsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileFriendsView.h; sourceTree = "<group>"; };
+		95F0AEBE1B680ADC005637F7 /* TableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableDataSource.h; sourceTree = "<group>"; };
+		95F0AEC41B683453005637F7 /* CountryView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountryView.cpp; sourceTree = "<group>"; };
+		95F0AEC51B683453005637F7 /* CountryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryView.h; sourceTree = "<group>"; };
+		95F0AEC61B683453005637F7 /* LevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelView.h; sourceTree = "<group>"; };
+		95F0AEC71B683453005637F7 /* XPBarView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XPBarView.cpp; sourceTree = "<group>"; };
+		95F0AEC81B683453005637F7 /* XPBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPBarView.h; sourceTree = "<group>"; };
+		95F0AECF1B69CEAF005637F7 /* AchievementModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementModel.h; sourceTree = "<group>"; };
+		95F0AED01B69CEAF005637F7 /* ProfileAchievementsView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProfileAchievementsView.cpp; sourceTree = "<group>"; };
+		95F0AED11B69CEAF005637F7 /* ProfileAchievementsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileAchievementsView.h; sourceTree = "<group>"; };
+		95F0AED51B69DE00005637F7 /* ReplayerViewController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReplayerViewController.cpp; sourceTree = "<group>"; };
+		95F0AED61B69DE00005637F7 /* ReplayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplayerViewController.h; sourceTree = "<group>"; };
+		95F263DB1B8E7A9600B6EF08 /* TableGiftView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TableGiftView.cpp; sourceTree = "<group>"; };
+		95F263DC1B8E7A9600B6EF08 /* TableGiftView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableGiftView.h; sourceTree = "<group>"; };
+		95F263DD1B8E7A9600B6EF08 /* TooltipView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TooltipView.cpp; sourceTree = "<group>"; };
+		95F263DE1B8E7A9600B6EF08 /* TooltipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TooltipView.h; sourceTree = "<group>"; };
+		95F263F91B90DD5000B6EF08 /* TableChatViewController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TableChatViewController.cpp; sourceTree = "<group>"; };
+		95F263FA1B90DD5000B6EF08 /* TableChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableChatViewController.h; sourceTree = "<group>"; };
+		95F263FB1B90DD5000B6EF08 /* FreeChipsViewController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FreeChipsViewController.cpp; sourceTree = "<group>"; };
+		95F263FC1B90DD5000B6EF08 /* FreeChipsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeChipsViewController.h; sourceTree = "<group>"; };
+		95F264011B91019800B6EF08 /* TableInfoPlayersView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TableInfoPlayersView.cpp; sourceTree = "<group>"; };
+		95F264021B91019800B6EF08 /* TableInfoPlayersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableInfoPlayersView.h; sourceTree = "<group>"; };
+		95F264031B91019800B6EF08 /* TableInfoViewController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TableInfoViewController.cpp; sourceTree = "<group>"; };
+		95F264041B91019800B6EF08 /* TableInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableInfoViewController.h; sourceTree = "<group>"; };
+		95F264051B91019800B6EF08 /* TierImageView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TierImageView.cpp; sourceTree = "<group>"; };
+		95F264061B91019800B6EF08 /* TierImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TierImageView.h; sourceTree = "<group>"; };
+		95FE9A7D1B94F1BC009633C3 /* CountryMapping.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CountryMapping.cpp; sourceTree = "<group>"; };
+		95FE9A7E1B94F1BC009633C3 /* CountryMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryMapping.h; sourceTree = "<group>"; };
+		95FE9A811B950377009633C3 /* TableInfoHandsView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TableInfoHandsView.cpp; sourceTree = "<group>"; };
+		95FE9A821B950377009633C3 /* TableInfoHandsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableInfoHandsView.h; sourceTree = "<group>"; };
+		95FE9A861B950C39009633C3 /* sdkbox_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sdkbox_config.json; sourceTree = "<group>"; };
+		95FE9A911B9539ED009633C3 /* FacebookController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FacebookController.cpp; sourceTree = "<group>"; };
+		95FE9A921B9539ED009633C3 /* FacebookController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookController.h; sourceTree = "<group>"; };
+		95FE9A951B95567F009633C3 /* InviteFriendsViewController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InviteFriendsViewController.cpp; sourceTree = "<group>"; };
+		95FE9A961B95567F009633C3 /* InviteFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteFriendsViewController.h; sourceTree = "<group>"; };
+		95FE9A991B9556E5009633C3 /* Http.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Http.cpp; sourceTree = "<group>"; };
+		95FE9A9A1B9556E5009633C3 /* Http.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Http.h; sourceTree = "<group>"; };
+		A5B54AA19401E64319364051 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C02D4AD8AFB7CCCBACE82BAF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/AdSupport.framework; sourceTree = DEVELOPER_DIR; };
+		C755467B9CA336EDC0BCB6F3 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -383,6 +610,12 @@
 				D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */,
 				D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */,
 				D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */,
+				59B541B7AF65EA87B729235E /* sdkbox.framework in Frameworks */,
+				61304202854B607F95C86795 /* PluginFacebook.framework in Frameworks */,
+				837E448D93351F61663BF2BF /* FBSDKCoreKit.framework in Frameworks */,
+				A4424ED7BFA972109BF4640F /* FBSDKLoginKit.framework in Frameworks */,
+				8B254DF28EC20E600D81DBF4 /* FBSDKShareKit.framework in Frameworks */,
+				55A5452D85672FC7E96B3CE7 /* AdSupport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +634,12 @@
 				5087E76917EB910900C73F5D /* OpenAL.framework in Frameworks */,
 				5087E76A17EB910900C73F5D /* AVFoundation.framework in Frameworks */,
 				5087E76B17EB910900C73F5D /* AudioToolbox.framework in Frameworks */,
+				FD5A48548D5430ADB263287A /* sdkbox.framework in Frameworks */,
+				66D94BEDBC728E7ED7398651 /* PluginFacebook.framework in Frameworks */,
+				712A4502B983F2224D820B0E /* FBSDKCoreKit.framework in Frameworks */,
+				337E4D8A9AEC3AABCD57DE05 /* FBSDKLoginKit.framework in Frameworks */,
+				7F2144B3B708A6EEBE31BA10 /* FBSDKShareKit.framework in Frameworks */,
+				14D34922BF98AFFF4D01BAAE /* AdSupport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +714,12 @@
 				BF170DB012928DE900B8313A /* OpenGLES.framework */,
 				BF1C47EA1293683800B63C5D /* QuartzCore.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				01A84803B3A1FDA7D74731B9 /* sdkbox.framework */,
+				92FF4D67BBDCC7C9C2F4A434 /* PluginFacebook.framework */,
+				3DE145CB8E7EAE64B75F1DFD /* FBSDKCoreKit.framework */,
+				A5B54AA19401E64319364051 /* FBSDKLoginKit.framework */,
+				C755467B9CA336EDC0BCB6F3 /* FBSDKShareKit.framework */,
+				C02D4AD8AFB7CCCBACE82BAF /* AdSupport.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -482,6 +727,8 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				95FE9A861B950C39009633C3 /* sdkbox_config.json */,
+				9556455B1B8CFE0E005380BE /* particles */,
 				95D369BB1B3CCD7200A46FC0 /* sounds */,
 				95D369A81B3C948B00A46FC0 /* sprites */,
 				521A8EA819F11F5000D177D7 /* fonts */,
@@ -499,8 +746,6 @@
 				959F920B1B46439E004C0AA4 /* Model */,
 				959F92091B46433E004C0AA4 /* Views */,
 				959F920A1B464371004C0AA4 /* ViewControllers */,
-				959F92111B46572B004C0AA4 /* ModalLayer.cpp */,
-				959F92121B46572B004C0AA4 /* ModalLayer.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -588,10 +833,14 @@
 			children = (
 				952E21B01B401A400095AA31 /* ActionButtonsView.cpp */,
 				952E21B11B401A400095AA31 /* ActionButtonsView.h */,
+				956279CB1B8D8A6B00C35CF5 /* AlertImageView.cpp */,
+				956279CC1B8D8A6B00C35CF5 /* AlertImageView.h */,
 				959F91E21B434178004C0AA4 /* AlertView.cpp */,
 				959F91E31B434178004C0AA4 /* AlertView.h */,
 				952E21B41B401A400095AA31 /* AvatarView.cpp */,
 				952E21B51B401A400095AA31 /* AvatarView.h */,
+				9566D26D1B826A6B001CB61B /* BadgeView.cpp */,
+				9566D26E1B826A6B001CB61B /* BadgeView.h */,
 				952E21B61B401A400095AA31 /* BetStackView.cpp */,
 				952E21B71B401A400095AA31 /* BetStackView.h */,
 				952E21B81B401A400095AA31 /* BoardCardsView.cpp */,
@@ -606,26 +855,76 @@
 				952E21C11B401A400095AA31 /* ChatBubbleView.h */,
 				952E21C21B401A400095AA31 /* ChatInputView.cpp */,
 				952E21C31B401A400095AA31 /* ChatInputView.h */,
+				959F92151B4677BC004C0AA4 /* ContextMenuView.cpp */,
+				959F92161B4677BC004C0AA4 /* ContextMenuView.h */,
+				95F0AEC41B683453005637F7 /* CountryView.cpp */,
+				95F0AEC51B683453005637F7 /* CountryView.h */,
 				952E22331B4285E40095AA31 /* CoverflowView.cpp */,
 				952E22311B427E720095AA31 /* CoverflowView.h */,
+				95BA480B1B87EBB500D54CDC /* FirstPersonNameplateView.cpp */,
+				95BA480C1B87EBB500D54CDC /* FirstPersonNameplateView.h */,
+				9556454B1B8B7C17005380BE /* GiftingObjectsView.cpp */,
+				9556454C1B8B7C17005380BE /* GiftingObjectsView.h */,
+				9556454D1B8B7C17005380BE /* GiftingPlayersView.cpp */,
+				9556454E1B8B7C17005380BE /* GiftingPlayersView.h */,
+				95BA47F91B869D5700D54CDC /* GrowlView.cpp */,
+				95BA47FA1B869D5700D54CDC /* GrowlView.h */,
+				956279D31B8E219100C35CF5 /* HoleCardsView.cpp */,
+				956279D41B8E219100C35CF5 /* HoleCardsView.h */,
+				95F0AEC61B683453005637F7 /* LevelView.h */,
 				959F91FB1B451489004C0AA4 /* LoadingView.cpp */,
 				959F91FC1B451489004C0AA4 /* LoadingView.h */,
-				952E21D01B401A400095AA31 /* NameplateView.cpp */,
-				952E21D11B401A400095AA31 /* NameplateView.h */,
+				959F92111B46572B004C0AA4 /* ModalLayer.cpp */,
+				959F92121B46572B004C0AA4 /* ModalLayer.h */,
+				95489A981B6AD10600BDDCC3 /* ModalPromptView.cpp */,
+				95489A991B6AD10600BDDCC3 /* ModalPromptView.h */,
+				955645481B8A5F06005380BE /* NameplateView.h */,
+				95BA47FD1B86C42300D54CDC /* OverlayMessageView.cpp */,
+				95BA47FE1B86C42300D54CDC /* OverlayMessageView.h */,
+				959F920D1B464D2A004C0AA4 /* PlayerMenuView.cpp */,
+				959F920E1B464D2A004C0AA4 /* PlayerMenuView.h */,
 				952E21D41B401A400095AA31 /* PlayerWinView.cpp */,
 				952E21D51B401A400095AA31 /* PlayerWinView.h */,
 				952E21D81B401A400095AA31 /* PotView.cpp */,
 				952E21D91B401A400095AA31 /* PotView.h */,
+				95F0AED01B69CEAF005637F7 /* ProfileAchievementsView.cpp */,
+				95F0AED11B69CEAF005637F7 /* ProfileAchievementsView.h */,
+				95F0AEBB1B680ADC005637F7 /* ProfileFriendsView.cpp */,
+				95F0AEBC1B680ADC005637F7 /* ProfileFriendsView.h */,
+				95F0AEA51B674584005637F7 /* ProfileHandsView.cpp */,
+				95F0AEA81B6745AB005637F7 /* ProfileHandsView.h */,
+				95489A9A1B6AD10600BDDCC3 /* ProfileInventoryView.cpp */,
+				95489A9B1B6AD10600BDDCC3 /* ProfileInventoryView.h */,
 				952E21DA1B401A400095AA31 /* RaiseSliderView.cpp */,
 				952E21DB1B401A400095AA31 /* RaiseSliderView.h */,
+				9566D2851B84F856001CB61B /* RegistrationView.cpp */,
+				9566D2861B84F856001CB61B /* RegistrationView.h */,
 				952E221C1B40D4440095AA31 /* TableActionMenuView.cpp */,
 				952E221D1B40D4440095AA31 /* TableActionMenuView.h */,
+				95F263DB1B8E7A9600B6EF08 /* TableGiftView.cpp */,
+				95F263DC1B8E7A9600B6EF08 /* TableGiftView.h */,
+				95FE9A811B950377009633C3 /* TableInfoHandsView.cpp */,
+				95FE9A821B950377009633C3 /* TableInfoHandsView.h */,
+				95F264011B91019800B6EF08 /* TableInfoPlayersView.cpp */,
+				95F264021B91019800B6EF08 /* TableInfoPlayersView.h */,
+				95C37FEB1B72E0B300A745D1 /* TableInviteView.cpp */,
+				95C37FEC1B72E0B300A745D1 /* TableInviteView.h */,
+				955645571B8B7D5A005380BE /* TablePlayerMenuView.cpp */,
+				9556455A1B8B7D9F005380BE /* TablePlayerMenuView.h */,
 				952E22201B40E1CF0095AA31 /* TableSettingsMenuView.cpp */,
 				952E22211B40E1CF0095AA31 /* TableSettingsMenuView.h */,
-				959F920D1B464D2A004C0AA4 /* PlayerMenuView.cpp */,
-				959F920E1B464D2A004C0AA4 /* PlayerMenuView.h */,
-				959F92151B4677BC004C0AA4 /* ContextMenuView.cpp */,
-				959F92161B4677BC004C0AA4 /* ContextMenuView.h */,
+				95C37FDE1B71882C00A745D1 /* TableThemeVotingView.cpp */,
+				95C37FDF1B71882C00A745D1 /* TableThemeVotingView.h */,
+				952E21D01B401A400095AA31 /* ThirdPersonNameplateView.cpp */,
+				952E21D11B401A400095AA31 /* ThirdPersonNameplateView.h */,
+				95F264051B91019800B6EF08 /* TierImageView.cpp */,
+				95F264061B91019800B6EF08 /* TierImageView.h */,
+				95F263DD1B8E7A9600B6EF08 /* TooltipView.cpp */,
+				95F263DE1B8E7A9600B6EF08 /* TooltipView.h */,
+				956279CF1B8E08FD00C35CF5 /* WebpageView.cpp */,
+				956279D01B8E08FD00C35CF5 /* WebpageView.h */,
+				95F0AEC71B683453005637F7 /* XPBarView.cpp */,
+				95F0AEC81B683453005637F7 /* XPBarView.h */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -633,24 +932,58 @@
 		959F920A1B464371004C0AA4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				95BA48031B86CF7600D54CDC /* AchievementViewController.cpp */,
+				95BA48041B86CF7600D54CDC /* AchievementViewController.h */,
 				952E21BE1B401A400095AA31 /* CasinoViewController.cpp */,
 				952E21BF1B401A400095AA31 /* CasinoViewController.h */,
 				959F91F21B449273004C0AA4 /* ChatViewController.cpp */,
 				959F91F31B449273004C0AA4 /* ChatViewController.h */,
 				952E21C41B401A400095AA31 /* DashboardViewController.cpp */,
 				952E21C51B401A400095AA31 /* DashboardViewController.h */,
+				95F263FB1B90DD5000B6EF08 /* FreeChipsViewController.cpp */,
+				95F263FC1B90DD5000B6EF08 /* FreeChipsViewController.h */,
 				959F92041B45D837004C0AA4 /* FriendsViewController.cpp */,
 				959F92051B45D837004C0AA4 /* FriendsViewController.h */,
+				9556454F1B8B7C17005380BE /* GiftingViewController.cpp */,
+				955645501B8B7C17005380BE /* GiftingViewController.h */,
+				957C109C1B6C05BD002ACDCB /* GrowlViewController.cpp */,
+				957C109D1B6C05BD002ACDCB /* GrowlViewController.h */,
+				95FE9A951B95567F009633C3 /* InviteFriendsViewController.cpp */,
+				95FE9A961B95567F009633C3 /* InviteFriendsViewController.h */,
+				957C10961B6BD7AA002ACDCB /* JoinInviteViewController.cpp */,
+				957C10971B6BD7AA002ACDCB /* JoinInviteViewController.h */,
+				9566D26F1B826A6B001CB61B /* LeaderboardViewController.cpp */,
+				9566D2701B826A6B001CB61B /* LeaderboardViewController.h */,
 				952E21CE1B401A400095AA31 /* LoginViewController.cpp */,
 				952E21CF1B401A400095AA31 /* LoginViewController.h */,
+				95BA47F51B869C0D00D54CDC /* MessageCenterController.cpp */,
+				95BA47F61B869C0D00D54CDC /* MessageCenterController.h */,
+				9566D2711B826A6B001CB61B /* NewsViewController.cpp */,
+				9566D2721B826A6B001CB61B /* NewsViewController.h */,
 				959F91FF1B454FEC004C0AA4 /* PlayerSearchViewController.cpp */,
 				959F92001B454FEC004C0AA4 /* PlayerSearchViewController.h */,
+				95F0AEA91B6745AB005637F7 /* ProfileViewController.cpp */,
+				95F0AEAA1B6745AB005637F7 /* ProfileViewController.h */,
+				95F0AED51B69DE00005637F7 /* ReplayerViewController.cpp */,
+				95F0AED61B69DE00005637F7 /* ReplayerViewController.h */,
 				952E22241B421E1D0095AA31 /* ServerSelectorViewController.cpp */,
 				952E22251B421E1D0095AA31 /* ServerSelectorViewController.h */,
+				95BA48071B87CC1700D54CDC /* SettingsViewController.cpp */,
+				95BA48081B87CC1700D54CDC /* SettingsViewController.h */,
 				952E22101B4050A90095AA31 /* SocialViewController.cpp */,
 				952E22111B4050A90095AA31 /* SocialViewController.h */,
+				95CED17E1B7D67C500A8F5F3 /* StoreViewController.cpp */,
+				95CED17F1B7D67C500A8F5F3 /* StoreViewController.h */,
+				95F263F91B90DD5000B6EF08 /* TableChatViewController.cpp */,
+				95F263FA1B90DD5000B6EF08 /* TableChatViewController.h */,
+				95F264031B91019800B6EF08 /* TableInfoViewController.cpp */,
+				95F264041B91019800B6EF08 /* TableInfoViewController.h */,
+				9566D27A1B8274A9001CB61B /* TableManagerViewController.cpp */,
+				9566D27B1B8274A9001CB61B /* TableManagerViewController.h */,
 				952E21DE1B401A400095AA31 /* TableViewController.cpp */,
 				952E21DF1B401A400095AA31 /* TableViewController.h */,
+				95C37FE11B71882C00A745D1 /* VotingViewController.cpp */,
+				95C37FE21B71882C00A745D1 /* VotingViewController.h */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -658,6 +991,7 @@
 		959F920B1B46439E004C0AA4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				95F0AECF1B69CEAF005637F7 /* AchievementModel.h */,
 				959F92081B45F364004C0AA4 /* FriendModel.h */,
 				952E21CC1B401A400095AA31 /* GameModel.cpp */,
 				952E21CD1B401A400095AA31 /* GameModel.h */,
@@ -670,26 +1004,47 @@
 		959F920C1B4643C2004C0AA4 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				952E22391B429AEB0095AA31 /* easings */,
+				9597E1C11B967E5B0030C4FD /* AvatarCache.cpp */,
+				9597E1C21B967E5B0030C4FD /* AvatarCache.h */,
+				9566D27E1B83A81C001CB61B /* Callback.h */,
+				95FE9A7D1B94F1BC009633C3 /* CountryMapping.cpp */,
+				95FE9A7E1B94F1BC009633C3 /* CountryMapping.h */,
 				952E21C61B401A400095AA31 /* Dispatch.cpp */,
 				952E21C71B401A400095AA31 /* Dispatch.h */,
+				95F0AEBA1B680ADC005637F7 /* DoubleVectorDataSource.h */,
 				952E21C81B401A400095AA31 /* Downloader.cpp */,
 				952E21C91B401A400095AA31 /* Downloader.h */,
 				952E22141B40A4430095AA31 /* DragGestureRecognizer.cpp */,
 				952E22151B40A4430095AA31 /* DragGestureRecognizer.h */,
+				952E22391B429AEB0095AA31 /* easings */,
+				95FE9A911B9539ED009633C3 /* FacebookController.cpp */,
+				95FE9A921B9539ED009633C3 /* FacebookController.h */,
 				952E21CA1B401A400095AA31 /* GameController.cpp */,
 				952E21CB1B401A400095AA31 /* GameController.h */,
+				95FE9A991B9556E5009633C3 /* Http.cpp */,
+				95FE9A9A1B9556E5009633C3 /* Http.h */,
 				952E21D21B401A400095AA31 /* Network.cpp */,
 				952E21D31B401A400095AA31 /* Network.h */,
+				9566D2791B8274A9001CB61B /* Observable.h */,
+				957C10A01B6C3139002ACDCB /* os.h */,
 				952E22181B40A4560095AA31 /* PanGestureRecognizer.cpp */,
 				952E22191B40A4560095AA31 /* PanGestureRecognizer.h */,
 				952E21D61B401A400095AA31 /* PokerApi.cpp */,
 				952E21D71B401A400095AA31 /* PokerApi.h */,
+				95489A9C1B6AD10600BDDCC3 /* QuadVectorDataSource.h */,
+				95CED1781B7D217C00A8F5F3 /* Scale.cpp */,
+				95CED1771B7D202100A8F5F3 /* Scale.h */,
 				952E21DC1B401A400095AA31 /* Shared.cpp */,
 				952E21DD1B401A400095AA31 /* Shared.h */,
 				959F91DA1B42B351004C0AA4 /* SizeTo.cpp */,
 				959F91DB1B42B351004C0AA4 /* SizeTo.h */,
+				9566D2691B8259AD001CB61B /* Stage.cpp */,
+				9566D26A1B8259AD001CB61B /* Stage.h */,
+				95F0AEBE1B680ADC005637F7 /* TableDataSource.h */,
+				95CED17B1B7D23D100A8F5F3 /* Text.cpp */,
+				95CED1761B7D1E6800A8F5F3 /* Text.h */,
 				959F91F71B449C5A004C0AA4 /* VectorDataSource.h */,
+				95C37FE01B71882C00A745D1 /* Version.h */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -796,7 +1151,9 @@
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				95FE9A871B950C39009633C3 /* sdkbox_config.json in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
+				9556455C1B8CFE0E005380BE /* particles in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-180.png in Resources */,
 				95D369BC1B3CCD7200A46FC0 /* sounds in Resources */,
@@ -823,7 +1180,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9556455D1B8CFE0E005380BE /* particles in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
+				95FE9A881B950C39009633C3 /* sdkbox_config.json in Resources */,
 				95D369BD1B3CCD7200A46FC0 /* sounds in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
 				95D369AA1B3C948B00A46FC0 /* sprites in Resources */,
@@ -837,20 +1196,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				956279D51B8E219100C35CF5 /* HoleCardsView.cpp in Sources */,
+				956279D11B8E08FD00C35CF5 /* WebpageView.cpp in Sources */,
 				959F91E41B434178004C0AA4 /* AlertView.cpp in Sources */,
 				952E22261B421E1D0095AA31 /* ServerSelectorViewController.cpp in Sources */,
 				952E21E61B401A400095AA31 /* BetStackView.cpp in Sources */,
 				959F91DC1B42B351004C0AA4 /* SizeTo.cpp in Sources */,
+				9566D26B1B8259AD001CB61B /* Stage.cpp in Sources */,
 				952E21FA1B401A400095AA31 /* GameController.cpp in Sources */,
+				9566D2771B826A6B001CB61B /* NewsViewController.cpp in Sources */,
 				952E22621B429AEB0095AA31 /* Quint.cpp in Sources */,
+				9566D2731B826A6B001CB61B /* BadgeView.cpp in Sources */,
 				952E22601B429AEB0095AA31 /* Quart.cpp in Sources */,
 				952E22081B401A400095AA31 /* PotView.cpp in Sources */,
+				955645551B8B7C17005380BE /* GiftingViewController.cpp in Sources */,
+				95F0AECB1B683453005637F7 /* XPBarView.cpp in Sources */,
 				959F92011B454FEC004C0AA4 /* PlayerSearchViewController.cpp in Sources */,
 				959F92131B46572B004C0AA4 /* ModalLayer.cpp in Sources */,
+				95F263E11B8E7A9600B6EF08 /* TooltipView.cpp in Sources */,
 				952E22561B429AEB0095AA31 /* Cubic.cpp in Sources */,
+				9566D27C1B8274A9001CB61B /* TableManagerViewController.cpp in Sources */,
+				9566D2751B826A6B001CB61B /* LeaderboardViewController.cpp in Sources */,
+				95F263FD1B90DD5000B6EF08 /* TableChatViewController.cpp in Sources */,
 				959F91E01B42BE64004C0AA4 /* TableModel.cpp in Sources */,
+				95F264091B91019800B6EF08 /* TableInfoViewController.cpp in Sources */,
 				952E221E1B40D4440095AA31 /* TableActionMenuView.cpp in Sources */,
+				95F264071B91019800B6EF08 /* TableInfoPlayersView.cpp in Sources */,
+				95F0AED71B69DE00005637F7 /* ReplayerViewController.cpp in Sources */,
+				9597E1C31B967E5B0030C4FD /* AvatarCache.cpp in Sources */,
+				95BA47FF1B86C42300D54CDC /* OverlayMessageView.cpp in Sources */,
 				952E220E1B401A400095AA31 /* TableViewController.cpp in Sources */,
+				95CED1801B7D67C500A8F5F3 /* StoreViewController.cpp in Sources */,
+				95F0AEBF1B680ADC005637F7 /* ProfileFriendsView.cpp in Sources */,
+				955645511B8B7C17005380BE /* GiftingObjectsView.cpp in Sources */,
 				952E21F41B401A400095AA31 /* DashboardViewController.cpp in Sources */,
 				952E225C1B429AEB0095AA31 /* Linear.cpp in Sources */,
 				959F91E81B43DD56004C0AA4 /* BuyInView.cpp in Sources */,
@@ -858,9 +1236,19 @@
 				959F92171B4677BC004C0AA4 /* ContextMenuView.cpp in Sources */,
 				952E225A1B429AEB0095AA31 /* Expo.cpp in Sources */,
 				952E22641B429AEB0095AA31 /* Sine.cpp in Sources */,
+				95F0AEA61B674584005637F7 /* ProfileHandsView.cpp in Sources */,
+				95F0AEAB1B6745AB005637F7 /* ProfileViewController.cpp in Sources */,
+				95BA480D1B87EBB500D54CDC /* FirstPersonNameplateView.cpp in Sources */,
+				95F263FF1B90DD5000B6EF08 /* FreeChipsViewController.cpp in Sources */,
+				95C37FE31B71882C00A745D1 /* TableThemeVotingView.cpp in Sources */,
+				95FE9A9B1B9556E5009633C3 /* Http.cpp in Sources */,
+				95FE9A831B950377009633C3 /* TableInfoHandsView.cpp in Sources */,
+				955645581B8B7D5A005380BE /* TablePlayerMenuView.cpp in Sources */,
 				952E21F21B401A400095AA31 /* ChatInputView.cpp in Sources */,
+				95FE9A971B95567F009633C3 /* InviteFriendsViewController.cpp in Sources */,
 				959F920F1B464D2A004C0AA4 /* PlayerMenuView.cpp in Sources */,
 				952E22581B429AEB0095AA31 /* Elastic.cpp in Sources */,
+				95BA48051B86CF7600D54CDC /* AchievementViewController.cpp in Sources */,
 				952E21EA1B401A400095AA31 /* CardView.cpp in Sources */,
 				952E21F01B401A400095AA31 /* ChatBubbleView.cpp in Sources */,
 				952E21F61B401A400095AA31 /* Dispatch.cpp in Sources */,
@@ -868,10 +1256,13 @@
 				952E220A1B401A400095AA31 /* RaiseSliderView.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				952E220C1B401A400095AA31 /* Shared.cpp in Sources */,
+				95BA47FB1B869D5700D54CDC /* GrowlView.cpp in Sources */,
 				952E22521B429AEB0095AA31 /* Bounce.cpp in Sources */,
 				952E22061B401A400095AA31 /* PokerApi.cpp in Sources */,
 				952E22041B401A400095AA31 /* PlayerWinView.cpp in Sources */,
-				952E22001B401A400095AA31 /* NameplateView.cpp in Sources */,
+				952E22001B401A400095AA31 /* ThirdPersonNameplateView.cpp in Sources */,
+				957C10981B6BD7AA002ACDCB /* JoinInviteViewController.cpp in Sources */,
+				95C37FED1B72E0B300A745D1 /* TableInviteView.cpp in Sources */,
 				959F91FD1B451489004C0AA4 /* LoadingView.cpp in Sources */,
 				952E22501B429AEB0095AA31 /* Back.cpp in Sources */,
 				952E225E1B429AEB0095AA31 /* Quad.cpp in Sources */,
@@ -879,17 +1270,32 @@
 				952E22161B40A4430095AA31 /* DragGestureRecognizer.cpp in Sources */,
 				952E22221B40E1CF0095AA31 /* TableSettingsMenuView.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				95BA48091B87CC1700D54CDC /* SettingsViewController.cpp in Sources */,
+				956279CD1B8D8A6B00C35CF5 /* AlertImageView.cpp in Sources */,
+				95489A9E1B6AD10600BDDCC3 /* ProfileInventoryView.cpp in Sources */,
 				952E21E81B401A400095AA31 /* BoardCardsView.cpp in Sources */,
+				95F0AED21B69CEAF005637F7 /* ProfileAchievementsView.cpp in Sources */,
+				95CED17C1B7D23D100A8F5F3 /* Text.cpp in Sources */,
 				952E22341B4285E40095AA31 /* CoverflowView.cpp in Sources */,
 				952E21FC1B401A400095AA31 /* GameModel.cpp in Sources */,
 				959F92061B45D837004C0AA4 /* FriendsViewController.cpp in Sources */,
+				95CED1791B7D217C00A8F5F3 /* Scale.cpp in Sources */,
+				955645531B8B7C17005380BE /* GiftingPlayersView.cpp in Sources */,
+				957C109E1B6C05BD002ACDCB /* GrowlViewController.cpp in Sources */,
 				952E21E21B401A400095AA31 /* AppDelegate.cpp in Sources */,
+				95F0AEC91B683453005637F7 /* CountryView.cpp in Sources */,
 				952E21FE1B401A400095AA31 /* LoginViewController.cpp in Sources */,
+				95C37FE51B71882C00A745D1 /* VotingViewController.cpp in Sources */,
+				95F2640B1B91019800B6EF08 /* TierImageView.cpp in Sources */,
 				952E21E01B401A400095AA31 /* ActionButtonsView.cpp in Sources */,
+				95BA47F71B869C0D00D54CDC /* MessageCenterController.cpp in Sources */,
+				95FE9A931B9539ED009633C3 /* FacebookController.cpp in Sources */,
+				95F263DF1B8E7A9600B6EF08 /* TableGiftView.cpp in Sources */,
 				952E22541B429AEB0095AA31 /* Circ.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
-				952E22291B4220C90095AA31 /* README.md in Sources */,
 				952E21EC1B401A400095AA31 /* CasinoTableContainerView.cpp in Sources */,
+				9566D2871B84F856001CB61B /* RegistrationView.cpp in Sources */,
+				95FE9A7F1B94F1BC009633C3 /* CountryMapping.cpp in Sources */,
 				952E21F81B401A400095AA31 /* Downloader.cpp in Sources */,
 				952E22021B401A400095AA31 /* Network.cpp in Sources */,
 				952E21E41B401A400095AA31 /* AvatarView.cpp in Sources */,
@@ -902,60 +1308,108 @@
 			buildActionMask = 2147483647;
 			files = (
 				952E22171B40A4430095AA31 /* DragGestureRecognizer.cpp in Sources */,
+				95BA480A1B87CC1700D54CDC /* SettingsViewController.cpp in Sources */,
 				959F91FE1B451489004C0AA4 /* LoadingView.cpp in Sources */,
 				952E22091B401A400095AA31 /* PotView.cpp in Sources */,
 				952E21F91B401A400095AA31 /* Downloader.cpp in Sources */,
 				952E221F1B40D4440095AA31 /* TableActionMenuView.cpp in Sources */,
+				95F2640C1B91019800B6EF08 /* TierImageView.cpp in Sources */,
+				95F0AEAE1B67FB8B005637F7 /* ProfileViewController.cpp in Sources */,
 				952E22651B429AEB0095AA31 /* Sine.cpp in Sources */,
 				952E221B1B40A4560095AA31 /* PanGestureRecognizer.cpp in Sources */,
+				956279CE1B8D8A6B00C35CF5 /* AlertImageView.cpp in Sources */,
+				95489A9F1B6AD10A00BDDCC3 /* ModalPromptView.cpp in Sources */,
+				95BA48001B86C42300D54CDC /* OverlayMessageView.cpp in Sources */,
+				95FE9A941B9539ED009633C3 /* FacebookController.cpp in Sources */,
 				952E21ED1B401A400095AA31 /* CasinoTableContainerView.cpp in Sources */,
 				952E21F71B401A400095AA31 /* Dispatch.cpp in Sources */,
+				957C10991B6BD7B0002ACDCB /* JoinInviteViewController.cpp in Sources */,
+				955645591B8B7D5A005380BE /* TablePlayerMenuView.cpp in Sources */,
+				956279D61B8E219100C35CF5 /* HoleCardsView.cpp in Sources */,
 				952E21E11B401A400095AA31 /* ActionButtonsView.cpp in Sources */,
+				95F264001B90DD5000B6EF08 /* FreeChipsViewController.cpp in Sources */,
+				9597E1C41B967E5B0030C4FD /* AvatarCache.cpp in Sources */,
 				959F92101B464D2A004C0AA4 /* PlayerMenuView.cpp in Sources */,
-				952E22011B401A400095AA31 /* NameplateView.cpp in Sources */,
+				95C37FE61B71882C00A745D1 /* VotingViewController.cpp in Sources */,
+				95F0AEC01B680AE2005637F7 /* ProfileFriendsView.cpp in Sources */,
+				952E22011B401A400095AA31 /* ThirdPersonNameplateView.cpp in Sources */,
 				952E22611B429AEB0095AA31 /* Quart.cpp in Sources */,
 				959F91DD1B42B351004C0AA4 /* SizeTo.cpp in Sources */,
 				952E22631B429AEB0095AA31 /* Quint.cpp in Sources */,
+				95BA480E1B87EBB500D54CDC /* FirstPersonNameplateView.cpp in Sources */,
+				95BA47F81B869C0D00D54CDC /* MessageCenterController.cpp in Sources */,
 				952E22231B40E1CF0095AA31 /* TableSettingsMenuView.cpp in Sources */,
+				957C109F1B6C05BD002ACDCB /* GrowlViewController.cpp in Sources */,
 				959F91E11B42BE64004C0AA4 /* TableModel.cpp in Sources */,
 				952E22351B4285F70095AA31 /* CoverflowView.cpp in Sources */,
 				952E21E51B401A400095AA31 /* AvatarView.cpp in Sources */,
+				95FE9A981B95567F009633C3 /* InviteFriendsViewController.cpp in Sources */,
 				952E21EF1B401A400095AA31 /* CasinoViewController.cpp in Sources */,
+				9566D2761B826A6B001CB61B /* LeaderboardViewController.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				9566D26C1B8259AD001CB61B /* Stage.cpp in Sources */,
+				95CED17A1B7D217C00A8F5F3 /* Scale.cpp in Sources */,
+				9566D2881B84F856001CB61B /* RegistrationView.cpp in Sources */,
 				959F92071B45D837004C0AA4 /* FriendsViewController.cpp in Sources */,
+				95CED17D1B7D23D100A8F5F3 /* Text.cpp in Sources */,
+				956279D21B8E08FD00C35CF5 /* WebpageView.cpp in Sources */,
+				95FE9A801B94F1BC009633C3 /* CountryMapping.cpp in Sources */,
 				952E225D1B429AEB0095AA31 /* Linear.cpp in Sources */,
+				95BA48061B86CF7600D54CDC /* AchievementViewController.cpp in Sources */,
 				952E22511B429AEB0095AA31 /* Back.cpp in Sources */,
+				955645521B8B7C17005380BE /* GiftingObjectsView.cpp in Sources */,
 				952E22591B429AEB0095AA31 /* Elastic.cpp in Sources */,
 				952E22131B4050A90095AA31 /* SocialViewController.cpp in Sources */,
 				952E22051B401A400095AA31 /* PlayerWinView.cpp in Sources */,
+				95CED1811B7D67C500A8F5F3 /* StoreViewController.cpp in Sources */,
 				959F92141B46572B004C0AA4 /* ModalLayer.cpp in Sources */,
 				952E22031B401A400095AA31 /* Network.cpp in Sources */,
+				95489AA01B6AD10C00BDDCC3 /* ProfileInventoryView.cpp in Sources */,
+				95F0AED31B69CEAF005637F7 /* ProfileAchievementsView.cpp in Sources */,
+				9566D2781B826A6B001CB61B /* NewsViewController.cpp in Sources */,
 				952E22551B429AEB0095AA31 /* Circ.cpp in Sources */,
+				95F0AECA1B683453005637F7 /* CountryView.cpp in Sources */,
+				95F264081B91019800B6EF08 /* TableInfoPlayersView.cpp in Sources */,
 				952E22571B429AEB0095AA31 /* Cubic.cpp in Sources */,
 				952E21F31B401A400095AA31 /* ChatInputView.cpp in Sources */,
+				95F263FE1B90DD5000B6EF08 /* TableChatViewController.cpp in Sources */,
 				959F92181B4677BC004C0AA4 /* ContextMenuView.cpp in Sources */,
 				952E21EB1B401A400095AA31 /* CardView.cpp in Sources */,
+				95F2640A1B91019800B6EF08 /* TableInfoViewController.cpp in Sources */,
 				952E21FF1B401A400095AA31 /* LoginViewController.cpp in Sources */,
 				952E21FD1B401A400095AA31 /* GameModel.cpp in Sources */,
+				9566D27D1B8274A9001CB61B /* TableManagerViewController.cpp in Sources */,
 				952E21E31B401A400095AA31 /* AppDelegate.cpp in Sources */,
+				9566D2741B826A6B001CB61B /* BadgeView.cpp in Sources */,
+				95F263E01B8E7A9600B6EF08 /* TableGiftView.cpp in Sources */,
+				95C37FEE1B72E0B300A745D1 /* TableInviteView.cpp in Sources */,
 				959F91E91B43DD56004C0AA4 /* BuyInView.cpp in Sources */,
 				952E21FB1B401A400095AA31 /* GameController.cpp in Sources */,
+				95F0AECC1B683453005637F7 /* XPBarView.cpp in Sources */,
 				959F91E51B434178004C0AA4 /* AlertView.cpp in Sources */,
 				952E225F1B429AEB0095AA31 /* Quad.cpp in Sources */,
-				952E222A1B4220C90095AA31 /* README.md in Sources */,
 				952E21E71B401A400095AA31 /* BetStackView.cpp in Sources */,
+				95FE9A841B950377009633C3 /* TableInfoHandsView.cpp in Sources */,
+				95BA47FC1B869D5700D54CDC /* GrowlView.cpp in Sources */,
+				95F0AED81B69DE00005637F7 /* ReplayerViewController.cpp in Sources */,
 				952E220D1B401A400095AA31 /* Shared.cpp in Sources */,
 				952E225B1B429AEB0095AA31 /* Expo.cpp in Sources */,
 				959F91F51B449273004C0AA4 /* ChatViewController.cpp in Sources */,
+				955645541B8B7C17005380BE /* GiftingPlayersView.cpp in Sources */,
 				952E220F1B401A400095AA31 /* TableViewController.cpp in Sources */,
 				959F92021B454FEC004C0AA4 /* PlayerSearchViewController.cpp in Sources */,
 				952E22531B429AEB0095AA31 /* Bounce.cpp in Sources */,
+				95F263E21B8E7A9600B6EF08 /* TooltipView.cpp in Sources */,
+				955645561B8B7C17005380BE /* GiftingViewController.cpp in Sources */,
+				95FE9A9C1B9556E5009633C3 /* Http.cpp in Sources */,
+				95C37FE41B71882C00A745D1 /* TableThemeVotingView.cpp in Sources */,
 				952E22271B421E1D0095AA31 /* ServerSelectorViewController.cpp in Sources */,
 				952E22071B401A400095AA31 /* PokerApi.cpp in Sources */,
 				952E21F11B401A400095AA31 /* ChatBubbleView.cpp in Sources */,
 				952E21E91B401A400095AA31 /* BoardCardsView.cpp in Sources */,
 				952E220B1B401A400095AA31 /* RaiseSliderView.cpp in Sources */,
 				952E21F51B401A400095AA31 /* DashboardViewController.cpp in Sources */,
+				95F0AEAD1B67FB86005637F7 /* ProfileHandsView.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -979,8 +1433,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gaming Arts LLC (K8K66SZS7G)";
 				COMPRESS_PNG_FILES = NO;
+				FRAMEWORK_SEARCH_PATHS = "\"/Users/nous/Documents/hdpoker-client/proj.ios_mac/\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -999,13 +1454,20 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"sdkbox.framework\"",
+					"\"PluginFacebook.framework\"",
+					"\"FBSDKCoreKit.framework\"",
+					"\"FBSDKLoginKit.framework\"",
+					"\"FBSDKShareKit.framework\"",
+				);
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 					"$(inherited)",
 				);
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "efb2ef23-42b9-4158-827e-035bfc8d93b5";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
@@ -1017,8 +1479,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gaming Arts LLC (K8K66SZS7G)";
 				COMPRESS_PNG_FILES = NO;
+				FRAMEWORK_SEARCH_PATHS = "\"/Users/nous/Documents/hdpoker-client/proj.ios_mac/\"";
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ios/Prefix.pch;
@@ -1035,13 +1498,20 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"sdkbox.framework\"",
+					"\"PluginFacebook.framework\"",
+					"\"FBSDKCoreKit.framework\"",
+					"\"FBSDKLoginKit.framework\"",
+					"\"FBSDKShareKit.framework\"",
+				);
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 					"$(inherited)",
 				);
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "efb2ef23-42b9-4158-827e-035bfc8d93b5";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
@@ -1056,6 +1526,7 @@
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				FRAMEWORK_SEARCH_PATHS = "\"/Users/nous/Documents/hdpoker-client/proj.ios_mac/\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1073,7 +1544,14 @@
 					"$(SRCROOT)/../cocos2d/external/glfw3/include/mac",
 				);
 				INFOPLIST_FILE = mac/Info.plist;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"sdkbox.framework\"",
+					"\"PluginFacebook.framework\"",
+					"\"FBSDKCoreKit.framework\"",
+					"\"FBSDKLoginKit.framework\"",
+					"\"FBSDKShareKit.framework\"",
+				);
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_MAC_BEGIN)",
 					"$(_COCOS_LIB_MAC_END)",
@@ -1090,6 +1568,7 @@
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				FRAMEWORK_SEARCH_PATHS = "\"/Users/nous/Documents/hdpoker-client/proj.ios_mac/\"";
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mac/Prefix.pch;
@@ -1105,7 +1584,14 @@
 					"$(SRCROOT)/../cocos2d/external/glfw3/include/mac",
 				);
 				INFOPLIST_FILE = mac/Info.plist;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"sdkbox.framework\"",
+					"\"PluginFacebook.framework\"",
+					"\"FBSDKCoreKit.framework\"",
+					"\"FBSDKLoginKit.framework\"",
+					"\"FBSDKShareKit.framework\"",
+				);
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_MAC_BEGIN)",
 					"$(_COCOS_LIB_MAC_END)",
@@ -1121,8 +1607,10 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "\"/Users/nous/Documents/hdpoker-client/proj.ios_mac/\"";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = NO;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../cocos2d",
@@ -1142,7 +1630,14 @@
 					"$(SRCROOT)/../lib/openssl-1.0.2c/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../lib/boost_1_58_0/lib";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/../lib/boost_1_58_0/lib",
+					"\"sdkbox.framework\"",
+					"\"PluginFacebook.framework\"",
+					"\"FBSDKCoreKit.framework\"",
+					"\"FBSDKLoginKit.framework\"",
+					"\"FBSDKShareKit.framework\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
@@ -1158,7 +1653,9 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				FRAMEWORK_SEARCH_PATHS = "\"/Users/nous/Documents/hdpoker-client/proj.ios_mac/\"";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = NO;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../cocos2d",
@@ -1178,7 +1675,14 @@
 					"$(SRCROOT)/../lib/openssl-1.0.2c/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../lib/boost_1_58_0/lib";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/../lib/boost_1_58_0/lib",
+					"\"sdkbox.framework\"",
+					"\"PluginFacebook.framework\"",
+					"\"FBSDKCoreKit.framework\"",
+					"\"FBSDKLoginKit.framework\"",
+					"\"FBSDKShareKit.framework\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";

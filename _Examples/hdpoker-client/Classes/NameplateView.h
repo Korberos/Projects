@@ -1,41 +1,28 @@
-#pragma once 
+#pragma once
 
 #include "cocos2d.h"
 
-class ProgressTimer;
-class CardView;
+namespace cocos2d { namespace ui { class Button; } }
 
 class NameplateView : public cocos2d::Node {
 public:
-    CREATE_FUNC(NameplateView);
-    virtual bool init() override;
+    void setPlayerID(std::string playerID) { _playerID = playerID; }
+    void setAvatarID(std::string avatarID) { _avatarID = avatarID; }
     
-    void setName(const char* name);
-    void setChips(int64_t chips);
-    void setActive(bool active);
-    void setFlag(const char* action, bool hide = true);
-    void clearFlag(float animationDelay);
-	void showHoleCard(const int index, const char* card);
-	void clearHoleCards();
-    void dim();
-    void undim();
+    virtual void setName(const char* name) = 0;
+    virtual void setChips(int64_t chips) = 0;
+    virtual void setActive(bool active) = 0;
+    virtual void setFlag(const char* action, bool hide = true) = 0;
+    virtual void clearFlag(float animationDelay) = 0;
+    virtual void showHoleCard(const int index, const char* card) = 0;
+    virtual void clearHoleCards() = 0;
+    virtual void dim() = 0;
+    virtual void undim() = 0;
+    virtual void startTimer(float duration) = 0;
+    virtual void cancelTimer() = 0;
     
-    void startTimer(float duration);
-    void cancelTimer();
-    
-private:
-    cocos2d::ProgressTimer *_progress;
-    
-    cocos2d::Node *_flagContainer;
-    
-    cocos2d::Label *_flag;
-    
-    cocos2d::Sprite *_plate;
-    cocos2d::Sprite *_activePlate;
-    
-    cocos2d::Label *_playerName;
-    cocos2d::Label *_chips;
-    
-	cocos2d::Sprite *_cardShadow;
-    CardView* _holeCard[2];
+protected:
+    // Temporary!
+    std::string _playerID;
+    std::string _avatarID;
 };

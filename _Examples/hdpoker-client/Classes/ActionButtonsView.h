@@ -29,7 +29,7 @@ public:
     typedef std::function<void(Action, int64_t betAmount)> ActionCallback;
     
     void setActionCallback(const ActionCallback& callback);
-    void showActions(bool canCall, bool canBet, bool canRaise, int64_t minRaiseBet, int64_t maxRaiseBet, int64_t sliderPot);
+    void showActions(bool canCall, bool canBet, bool canRaise, int64_t minRaiseBet, int64_t maxRaiseBet, int64_t pot);
     void hideActions();
     
     PreselectAction getPreselectAction() const;

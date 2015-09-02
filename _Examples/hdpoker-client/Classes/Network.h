@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Callback.h"
 #include <boost/function.hpp>
 #include <boost/asio.hpp>
 #include <json/document.h>
@@ -20,6 +21,8 @@ public:
     //            return (*_document)[name];
     //        }
     
+    const std::string& getRaw() const { return _json; }
+    
 private:
     Document _document;
     std::string _json; 
@@ -33,9 +36,11 @@ public:
     
     // typedef rapidjson::Document Message;
     typedef std::function<void(bool)> ConnectCallback;
-    typedef boost::function<void(const Message* data)> MessageCallback;
+    typedef Callback<void(const Message* data)> MessageCallback;
     
     void connect(const char *address, int port, const ConnectCallback& connect);
+    void disconnect();
+    
     void write(const char *data);
     
     void run();
@@ -44,7 +49,8 @@ public:
     
     void send(const char *action, const char *arguments, const MessageCallback& callback);
     
-    void onMessage(const MessageCallback& callback);
+    // To remove a message handler, call `disconnect()` on the returned connection
+    boost::signals2::connection addMessageHandler(const MessageCallback& callback);
     
 private:
     boost::asio::io_service _ioService;
@@ -52,11 +58,22 @@ private:
     boost::asio::ip::tcp::resolver _resolver;
     boost::asio::io_service::work _work;
     
-    MessageCallback _messageCallback;
+    typedef Signal<void(const Message* data)> MessageSignal;
+    
+    MessageSignal _messageSignal;
     
     void readSome(const boost::system::error_code &ec, std::size_t bytes_transferred);
 
-    std::map<std::string, MessageCallback> _pendingActionCallbacks;
+    // Pending action callbacks contain entries that have been written to the wire and we are awaiting a response (only one write per action at a time)
+    std::map<std::string, boost::shared_ptr<MessageSignal>> _pendingActionCallbacks;
+    
+    // The write queue contains entries that have not been written to the wire yet
+    class WriteQueueEntry {
+    public:
+        std::string message;
+        boost::shared_ptr<MessageSignal> callback;
+    };
+    std::map<std::string, std::list<WriteQueueEntry>> _writeQueue;
     
     char _readBuffer[128 * 1000]; // 128k -- getCasinoTableList is around 25k sometimes...
     int _readBufferSize;

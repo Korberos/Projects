@@ -11,10 +11,18 @@ public:
     virtual void setPosition(float x, float y);
     
     virtual void showMenu();
+	virtual void flipMenu();
+	virtual void moveMenuY(float yDelta);
+	
+	cocos2d::Vec2 getContentAnchorPoint();
     
     virtual cocos2d::Node* getContent() = 0;
     
-private:
-    cocos2d::Node *_content;
+protected:
+	cocos2d::Node *_content;
     cocos2d::Sprite *_background;
+    cocos2d::Sprite *_arrow;
+
+private:
+	bool flipped;
 };

@@ -15,97 +15,111 @@ bool TableSettingsMenuView::init() {
     }
     
     const int spacing = 5;
-    const float zoomFactor = -.08;
+    const float zoomFactor = -0.08f;
     
     // Button left-center is at origin
-    auto button = Button::create("sprites/button-table-settings.png", "");
-    button->setAnchorPoint(Vec2(0, .5));
-    addChild(button);
-    
-    auto background = Sprite::create("sprites/background-table-settings.png");
-    background->setAnchorPoint(Vec2(0, .5));
-    background->setPositionX(80);
-    addChild(background);
-    
-    auto autoRebuy = CheckBox::create("sprites/button-autorebuy-on.png", "sprites/button-autorebuy-off.png");
-    autoRebuy->setZoomScale(zoomFactor);
-    autoRebuy->setPositionX(200);
-    autoRebuy->addClickEventListener([=] (Ref*) {
+    auto button = Button::create("button-table-settings.png", "");
+	button->setAnchorPoint(Vec2(0, .5));
+	button->setZoomScale(-.05f);
+    button->addClickEventListener([=](Ref*) {
         if (_callback) {
-            _callback(autoRebuy->isSelected() ? AutoRebuyOn : AutoRebuyOff);
+            _callback(TableSettings);
         }
     });
-    addChild(autoRebuy);
+    addChild(button);
     
-    auto lastHand = Button::create("sprites/button-last-hand.png", "");
-    lastHand->setZoomScale(zoomFactor);
-    lastHand->setPositionX(autoRebuy->getPositionX() + autoRebuy->getContentSize().width + spacing);
-    lastHand->addClickEventListener([=] (Ref*) {
+    _background = Sprite::create("background-table-settings.png");
+    _background->setAnchorPoint(Vec2(0, .5));
+    _background->setPositionX(80);
+    addChild(_background);
+    
+    _autoRebuy = CheckBox::create("button-autorebuy-on.png", "button-autorebuy-off.png");
+    _autoRebuy->setZoomScale(zoomFactor);
+    _autoRebuy->setPositionX(200);
+    _autoRebuy->addClickEventListener([=] (Ref*) {
+        if (_callback) {
+            _callback(_autoRebuy->isSelected() ? AutoRebuyOn : AutoRebuyOff);
+        }
+    });
+    addChild(_autoRebuy);
+    
+    _lastHand = Button::create("button-last-hand.png", "");
+    _lastHand->setZoomScale(zoomFactor);
+    _lastHand->setPositionX(_autoRebuy->getPositionX() + _autoRebuy->getContentSize().width + spacing);
+    _lastHand->addClickEventListener([=] (Ref*) {
         if (_callback) {
             _callback(LastHand);
         }
     });
-    addChild(lastHand);
+    addChild(_lastHand);
     
-    auto settings = Button::create("sprites/button-settings.png", "");
-    settings->setZoomScale(zoomFactor);
-    settings->setPositionX(lastHand->getPositionX() + lastHand->getContentSize().width + spacing);
-    settings->addClickEventListener([=] (Ref*) {
+    _settings = Button::create("button-settings.png", "");
+    _settings->setZoomScale(zoomFactor);
+    _settings->setPositionX(_lastHand->getPositionX() + _lastHand->getContentSize().width + spacing);
+    _settings->addClickEventListener([=] (Ref*) {
         if (_callback) {
-            _callback(Global);
+            _callback(GlobalSettings);
         }
     });
-    addChild(settings);
+    addChild(_settings);
     
-    auto store = Button::create("sprites/button-store.png", "");
-    store->setZoomScale(zoomFactor);
-    store->setPositionX(settings->getPositionX() + settings->getContentSize().width + spacing);
-    store->addClickEventListener([=] (Ref*) {
+    _store = Button::create("button-store.png", "");
+    _store->setZoomScale(zoomFactor);
+    _store->setPositionX(_settings->getPositionX() + _settings->getContentSize().width + spacing);
+    _store->addClickEventListener([=] (Ref*) {
         if (_callback) {
             _callback(Store);
         }
     });
-    addChild(store);
+    addChild(_store);
     
     _menuOpen = false;
-    background->setVisible(false);
-    autoRebuy->setVisible(false);
-    lastHand->setVisible(false);
-    settings->setVisible(false);
-    store->setVisible(false);
+    _background->setVisible(false);
+    _autoRebuy->setVisible(false);
+    _lastHand->setVisible(false);
+    _settings->setVisible(false);
+    _store->setVisible(false);
     button->addClickEventListener([=] (Ref*) {
         if (!_menuOpen) {
-            background->setVisible(true);
-            autoRebuy->setVisible(true);
-            lastHand->setVisible(true);
-            settings->setVisible(true);
-            store->setVisible(true);
-            background->setOpacity(0);
-            autoRebuy->setOpacity(0);
-            lastHand->setOpacity(0);
-            settings->setOpacity(0);
-            store->setOpacity(0);
-            background->runAction(FadeIn::create(.15));
-            autoRebuy->runAction(Sequence::createWithTwoActions(DelayTime::create(.1), FadeIn::create(.2)));
-            lastHand->runAction(Sequence::createWithTwoActions(DelayTime::create(.14), FadeIn::create(.2)));
-            settings->runAction(Sequence::createWithTwoActions(DelayTime::create(.18), FadeIn::create(.2)));
-            store->runAction(Sequence::createWithTwoActions(DelayTime::create(.22), FadeIn::create(.2)));
-        } else {
-            background->stopAllActions();
-            autoRebuy->stopAllActions();
-            lastHand->stopAllActions();
-            settings->stopAllActions();
-            store->stopAllActions();
+            _menuOpen = true;
+            _background->setVisible(true);
+            _autoRebuy->setVisible(true);
+            _lastHand->setVisible(true);
+            _settings->setVisible(true);
+            _store->setVisible(true);
+            _background->setOpacity(0);
+            _autoRebuy->setOpacity(0);
+            _lastHand->setOpacity(0);
+            _settings->setOpacity(0);
+            _store->setOpacity(0);
+            _background->runAction(FadeIn::create(0.15f));
+            _autoRebuy->runAction(Sequence::createWithTwoActions(DelayTime::create(0.1f), FadeIn::create(0.2f)));
+            _lastHand->runAction(Sequence::createWithTwoActions(DelayTime::create(0.14f), FadeIn::create(0.2f)));
+            _settings->runAction(Sequence::createWithTwoActions(DelayTime::create(0.18f), FadeIn::create(0.2f)));
+            _store->runAction(Sequence::createWithTwoActions(DelayTime::create(0.22f), FadeIn::create(0.2f)));
             
-            background->setVisible(false);
-            autoRebuy->setVisible(false);
-            lastHand->setVisible(false);
-            settings->setVisible(false);
-            store->setVisible(false);
+            if (_callback) {
+                _callback(Opened);
+            }
+        } else {
+            dismiss();
         }
-        
-        _menuOpen = !_menuOpen;
     });
     
     return true;
+}
+
+void TableSettingsMenuView::dismiss() {
+    _menuOpen = false;
+    _background->stopAllActions();
+    _autoRebuy->stopAllActions();
+    _lastHand->stopAllActions();
+    _settings->stopAllActions();
+    _store->stopAllActions();
+    
+    _background->setVisible(false);
+    _autoRebuy->setVisible(false);
+    _lastHand->setVisible(false);
+    _settings->setVisible(false);
+    _store->setVisible(false);
 }

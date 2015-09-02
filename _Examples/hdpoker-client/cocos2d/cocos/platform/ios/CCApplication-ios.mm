@@ -52,6 +52,7 @@ int Application::run()
 {
     if (applicationDidFinishLaunching()) 
     {
+        [UIApplication sharedApplication].idleTimerDisabled = YES;
         [[CCDirectorCaller sharedDirectorCaller] startMainLoop];
     }
     return 0;

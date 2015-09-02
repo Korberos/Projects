@@ -1,14 +1,20 @@
 #include "GameModel.h"
 
-GameModel::GameModel() : _chips(0), _gold(0) {
+using namespace GameModelUpdate;
+
+GameModel::GameModel() : _chips(0), _gems(0), _xp(0), _level(0), _tier(-1), _tierDelta(0) {
+}
+
+void GameModel::reset() {
+	_friends.clear();
 }
 
 int64_t GameModel::getChips() const {
     return _chips;
 }
 
-int64_t GameModel::getGold() const {
-    return _gold;
+int64_t GameModel::getGems() const {
+    return _gems;
 }
 
 std::string GameModel::getUserId() const {
@@ -17,6 +23,22 @@ std::string GameModel::getUserId() const {
 
 int GameModel::getXp() const {
     return _xp;
+}
+
+int GameModel::getNextXp() const {
+    return _nextXp;
+}
+
+int GameModel::getElo() const {
+    return _elo;
+}
+
+int GameModel::getTier() const {
+    return _tier;
+}
+
+int GameModel::getTierDelta() const {
+	return _tierDelta;
 }
 
 int GameModel::getLevel() const {
@@ -60,12 +82,28 @@ GameModel::Messages GameModel::getMessagesForUser(const std::string& userId) {
     return _messages[userId];
 }
 
+GameModel::Achievements& GameModel::getAchievements() {
+	return _achievements;
+}
+
+TableThemes& GameModel::getLocalTableThemes() {
+	return _localTableThemes;
+}
+
+GiftObjects& GameModel::getGifts() {
+	return _giftingObjects;
+}
+
 std::string GameModel::getAuthServer() {
     return _authServerAddress;
 }
 
 std::string GameModel::getGameServer() {
     return _gameServerAddress;
+}
+
+std::string GameModel::getSessionID() {
+	return _sessionID;
 }
 
 void GameModel::setUserId(const std::string& userId) {
@@ -77,14 +115,34 @@ void GameModel::setChips(int64_t chips) {
     notify(Chips);
 }
 
-void GameModel::setGold(int64_t gold) {
-    _gold = gold;
-    notify(Gold);
+void GameModel::setGems(int64_t gems) {
+    _gems = gems;
+    notify(Gems);
 }
 
 void GameModel::setXp(int xp) {
     _xp = xp;
     notify(Xp);
+}
+
+void GameModel::setNextXp(int xp) {
+    _nextXp = xp;
+    notify(NextXp);
+}
+
+void GameModel::setElo(int elo) {
+    _elo = elo;
+    notify(Elo);
+}
+
+void GameModel::setTier(int tier) {
+	if (_tier != -1) _tierDelta = tier - _tier;
+    _tier = tier;
+    notify(Tier);
+}
+
+void GameModel::setTierDelta(int delta) {
+	_tierDelta = delta;
 }
 
 void GameModel::setLevel(int level) {
@@ -109,6 +167,7 @@ void GameModel::setCurrentAvatarId(const std::string& avatarId) {
 
 void GameModel::setName(const std::string &name) {
     _name = name;
+    notify(Name);
 }
 
 void GameModel::setOnRemoveTable(const TableRemovedCallback& callback) {
@@ -123,28 +182,21 @@ void GameModel::setAuthServer(const std::string& authServerAddress) {
     _authServerAddress = authServerAddress;
 }
 
-void GameModel::addMessageFromUser(const std::string& userId, const std::string& message) {
-    _messages[userId].push_back(message);
+void GameModel::setSessionID(const std::string& sessionID) {
+	_sessionID = sessionID;
+}
+
+void GameModel::addMessageFromUser(const std::string& friendId, bool isFromMe, const std::string& message) {
+    Message msg;
+    msg.isFromMe = isFromMe;
+    msg.message = message;
+    _messages[friendId].push_back(msg);
+    
+    notify(ChatMessage);
 }
 
 void GameModel::removeTable(TableViewController *table) {
     if (_tableRemovedCallback) {
         _tableRemovedCallback(table);
-    }
-}
-
-void GameModel::addListener(void* target, const UpdateCallback& callback) {
-    _listeners[target].push_back(callback);
-}
-
-void GameModel::removeListenersForTarget(void* target) {
-    _listeners[target].clear();
-}
-
-void GameModel::notify(Changed what) {
-    for (auto &entry: _listeners) {
-        for (auto i = 0; i < entry.second.size(); i++) {
-            entry.second[i](what, this);
-        }
     }
 }

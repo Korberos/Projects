@@ -1,362 +1,224 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="win32">
-      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="resource">
-      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src">
-      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\easings">
-      <UniqueIdentifier>{49dcd259-8e86-49a1-bbfe-6c730f3d87f0}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="..\Classes\ActionButtonsView.cpp" />
+    <ClCompile Include="..\Classes\AlertView.cpp" />
+    <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\AvatarView.cpp" />
+    <ClCompile Include="..\Classes\BetStackView.cpp" />
+    <ClCompile Include="..\Classes\BoardCardsView.cpp" />
+    <ClCompile Include="..\Classes\BuyInView.cpp" />
+    <ClCompile Include="..\Classes\CardView.cpp" />
+    <ClCompile Include="..\Classes\CasinoTableContainerView.cpp" />
+    <ClCompile Include="..\Classes\CasinoViewController.cpp" />
+    <ClCompile Include="..\Classes\ChatBubbleView.cpp" />
+    <ClCompile Include="..\Classes\ChatInputView.cpp" />
+    <ClCompile Include="..\Classes\ChatViewController.cpp" />
+    <ClCompile Include="..\Classes\ContextMenuView.cpp" />
+    <ClCompile Include="..\Classes\CountryView.cpp" />
+    <ClCompile Include="..\Classes\CoverflowView.cpp" />
+    <ClCompile Include="..\Classes\DashboardViewController.cpp" />
+    <ClCompile Include="..\Classes\Dispatch.cpp" />
+    <ClCompile Include="..\Classes\Downloader.cpp" />
+    <ClCompile Include="..\Classes\DragGestureRecognizer.cpp" />
+    <ClCompile Include="..\Classes\easings\Back.cpp" />
+    <ClCompile Include="..\Classes\easings\Bounce.cpp" />
+    <ClCompile Include="..\Classes\easings\Circ.cpp" />
+    <ClCompile Include="..\Classes\easings\Cubic.cpp" />
+    <ClCompile Include="..\Classes\easings\Elastic.cpp" />
+    <ClCompile Include="..\Classes\easings\Expo.cpp" />
+    <ClCompile Include="..\Classes\easings\Linear.cpp" />
+    <ClCompile Include="..\Classes\easings\Quad.cpp" />
+    <ClCompile Include="..\Classes\easings\Quart.cpp" />
+    <ClCompile Include="..\Classes\easings\Quint.cpp" />
+    <ClCompile Include="..\Classes\easings\Sine.cpp" />
+    <ClCompile Include="..\Classes\FriendsViewController.cpp" />
+    <ClCompile Include="..\Classes\GameController.cpp" />
+    <ClCompile Include="..\Classes\GameModel.cpp" />
+    <ClCompile Include="..\Classes\LoadingView.cpp" />
+    <ClCompile Include="..\Classes\LoginViewController.cpp" />
+    <ClCompile Include="..\Classes\ModalLayer.cpp" />
+    <ClCompile Include="..\Classes\ModalPromptView.cpp" />
+    <ClCompile Include="..\Classes\Network.cpp" />
+    <ClCompile Include="..\Classes\PanGestureRecognizer.cpp" />
+    <ClCompile Include="..\Classes\PlayerMenuView.cpp" />
+    <ClCompile Include="..\Classes\PlayerSearchViewController.cpp" />
+    <ClCompile Include="..\Classes\PlayerWinView.cpp" />
+    <ClCompile Include="..\Classes\PokerApi.cpp" />
+    <ClCompile Include="..\Classes\PotView.cpp" />
+    <ClCompile Include="..\Classes\ProfileAchievementsView.cpp" />
+    <ClCompile Include="..\Classes\ProfileFriendsView.cpp" />
+    <ClCompile Include="..\Classes\ProfileHandsView.cpp" />
+    <ClCompile Include="..\Classes\ProfileViewController.cpp" />
+    <ClCompile Include="..\Classes\RaiseSliderView.cpp" />
+    <ClCompile Include="..\Classes\ServerSelectorViewController.cpp" />
+    <ClCompile Include="..\Classes\Shared.cpp" />
+    <ClCompile Include="..\Classes\SizeTo.cpp" />
+    <ClCompile Include="..\Classes\SocialViewController.cpp" />
+    <ClCompile Include="..\Classes\TableActionMenuView.cpp" />
+    <ClCompile Include="..\Classes\TableModel.cpp" />
+    <ClCompile Include="..\Classes\TableSettingsMenuView.cpp" />
+    <ClCompile Include="..\Classes\TableViewController.cpp" />
+    <ClCompile Include="..\Classes\XPBarView.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\Classes\ProfileInventoryView.cpp" />
+    <ClCompile Include="..\Classes\JoinInviteViewController.cpp" />
+    <ClCompile Include="..\Classes\VotingViewController.cpp" />
+    <ClCompile Include="..\Classes\TableThemeVotingView.cpp" />
+    <ClCompile Include="..\Classes\ReplayerViewController.cpp" />
+    <ClCompile Include="..\Classes\TableInviteView.cpp" />
+    <ClCompile Include="..\Classes\NewsViewController.cpp" />
+    <ClCompile Include="..\Classes\TableManagerViewController.cpp" />
+    <ClCompile Include="..\Classes\LeaderboardViewController.cpp" />
+    <ClCompile Include="..\Classes\Text.cpp" />
+    <ClCompile Include="..\Classes\Scale.cpp" />
+    <ClCompile Include="..\Classes\RegistrationView.cpp" />
+    <ClCompile Include="..\Classes\Stage.cpp" />
+    <ClCompile Include="..\Classes\AchievementViewController.cpp" />
+    <ClCompile Include="..\Classes\MessageCenterController.cpp" />
+    <ClCompile Include="..\Classes\GrowlView.cpp" />
+    <ClCompile Include="..\Classes\GrowlViewController.cpp" />
+    <ClCompile Include="..\Classes\OverlayMessageView.cpp" />
+    <ClCompile Include="..\Classes\GiftingViewController.cpp" />
+    <ClCompile Include="..\Classes\GiftingObjectsView.cpp" />
+    <ClCompile Include="..\Classes\GiftingPlayersView.cpp" />
+    <ClCompile Include="..\Classes\TablePlayerMenuView.cpp" />
+    <ClCompile Include="..\Classes\SettingsViewController.cpp" />
+    <ClCompile Include="..\Classes\FirstPersonNameplateView.cpp" />
+    <ClCompile Include="..\Classes\ThirdPersonNameplateView.cpp" />
+    <ClCompile Include="..\Classes\AlertImageView.cpp" />
+    <ClCompile Include="..\Classes\FreeChipsViewController.cpp" />
+    <ClCompile Include="..\Classes\WebpageView.cpp" />
+    <ClCompile Include="..\Classes\HoleCardsView.cpp" />
+    <ClCompile Include="..\Classes\TableGiftView.cpp" />
+    <ClCompile Include="..\Classes\TooltipView.cpp" />
+    <ClCompile Include="..\Classes\BadgeView.cpp" />
+    <ClCompile Include="..\Classes\TierImageView.cpp" />
+    <ClCompile Include="..\Classes\TableInfoViewController.cpp" />
+    <ClCompile Include="..\Classes\TableChatViewController.cpp" />
+    <ClCompile Include="..\Classes\TableInfoPlayersView.cpp" />
+    <ClCompile Include="..\Classes\TableInfoHandsView.cpp" />
+    <ClCompile Include="..\Classes\CountryMapping.cpp" />
+    <ClCompile Include="..\Classes\FacebookController.cpp" />
+    <ClCompile Include="..\Classes\Http.cpp" />
+    <ClCompile Include="..\Classes\InviteFriendsViewController.cpp" />
+    <ClCompile Include="..\Classes\AvatarCache.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>win32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\ActionButtonsView.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\AppDelegate.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\AvatarView.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\BetStackView.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\BoardCardsView.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\CardView.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\CasinoTableContainerView.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\CasinoViewController.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\ChatBubbleView.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\ChatInputView.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\DashboardViewController.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Dispatch.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Downloader.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\DragGestureRecognizer.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\GameController.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\GameModel.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\LoginViewController.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\NameplateView.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Network.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\PanGestureRecognizer.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\PlayerWinView.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\PokerApi.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\PotView.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\RaiseSliderView.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Shared.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SocialViewController.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\TableActionMenuView.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\TableSettingsMenuView.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\TableViewController.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\CoverflowView.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\ServerSelectorViewController.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SizeTo.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\TableModel.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\easings\Back.cpp">
-      <Filter>src\easings</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\easings\Bounce.cpp">
-      <Filter>src\easings</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\easings\Circ.cpp">
-      <Filter>src\easings</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\easings\Cubic.cpp">
-      <Filter>src\easings</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\easings\Elastic.cpp">
-      <Filter>src\easings</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\easings\Expo.cpp">
-      <Filter>src\easings</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\easings\Linear.cpp">
-      <Filter>src\easings</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\easings\Quad.cpp">
-      <Filter>src\easings</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\easings\Quart.cpp">
-      <Filter>src\easings</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\easings\Quint.cpp">
-      <Filter>src\easings</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\easings\Sine.cpp">
-      <Filter>src\easings</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\AlertView.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\BuyInView.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\ChatViewController.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\ContextMenuView.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\FriendsViewController.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\LoadingView.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\ModalLayer.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\PlayerMenuView.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\PlayerSearchViewController.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\ProfileView.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
+    <ClInclude Include="..\Classes\AchievementModel.h" />
+    <ClInclude Include="..\Classes\ActionButtonsView.h" />
+    <ClInclude Include="..\Classes\AlertView.h" />
+    <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\AvatarView.h" />
+    <ClInclude Include="..\Classes\BetStackView.h" />
+    <ClInclude Include="..\Classes\BoardCardsView.h" />
+    <ClInclude Include="..\Classes\BuyInView.h" />
+    <ClInclude Include="..\Classes\CardView.h" />
+    <ClInclude Include="..\Classes\CasinoTableContainerView.h" />
+    <ClInclude Include="..\Classes\CasinoViewController.h" />
+    <ClInclude Include="..\Classes\ChatBubbleView.h" />
+    <ClInclude Include="..\Classes\ChatInputView.h" />
+    <ClInclude Include="..\Classes\ChatViewController.h" />
+    <ClInclude Include="..\Classes\ContextMenuView.h" />
+    <ClInclude Include="..\Classes\CountryView.h" />
+    <ClInclude Include="..\Classes\CoverflowView.h" />
+    <ClInclude Include="..\Classes\DashboardViewController.h" />
+    <ClInclude Include="..\Classes\Dispatch.h" />
+    <ClInclude Include="..\Classes\DoubleVectorDataSource.h" />
+    <ClInclude Include="..\Classes\Downloader.h" />
+    <ClInclude Include="..\Classes\DragGestureRecognizer.h" />
+    <ClInclude Include="..\Classes\easings\Back.h" />
+    <ClInclude Include="..\Classes\easings\Bounce.h" />
+    <ClInclude Include="..\Classes\easings\Circ.h" />
+    <ClInclude Include="..\Classes\easings\Cubic.h" />
+    <ClInclude Include="..\Classes\easings\Elastic.h" />
+    <ClInclude Include="..\Classes\easings\Expo.h" />
+    <ClInclude Include="..\Classes\easings\Linear.h" />
+    <ClInclude Include="..\Classes\easings\Quad.h" />
+    <ClInclude Include="..\Classes\easings\Quart.h" />
+    <ClInclude Include="..\Classes\easings\Quint.h" />
+    <ClInclude Include="..\Classes\easings\Sine.h" />
+    <ClInclude Include="..\Classes\FriendModel.h" />
+    <ClInclude Include="..\Classes\FriendsViewController.h" />
+    <ClInclude Include="..\Classes\GameController.h" />
+    <ClInclude Include="..\Classes\GameModel.h" />
+    <ClInclude Include="..\Classes\LevelView.h" />
+    <ClInclude Include="..\Classes\LoadingView.h" />
+    <ClInclude Include="..\Classes\LoginViewController.h" />
+    <ClInclude Include="..\Classes\ModalLayer.h" />
+    <ClInclude Include="..\Classes\ModalPromptView.h" />
+    <ClInclude Include="..\Classes\NameplateView.h" />
+    <ClInclude Include="..\Classes\Network.h" />
+    <ClInclude Include="..\Classes\PanGestureRecognizer.h" />
+    <ClInclude Include="..\Classes\PlayerMenuView.h" />
+    <ClInclude Include="..\Classes\PlayerSearchViewController.h" />
+    <ClInclude Include="..\Classes\PlayerWinView.h" />
+    <ClInclude Include="..\Classes\PokerApi.h" />
+    <ClInclude Include="..\Classes\PotView.h" />
+    <ClInclude Include="..\Classes\ProfileAchievementsView.h" />
+    <ClInclude Include="..\Classes\ProfileFriendsView.h" />
+    <ClInclude Include="..\Classes\ProfileHandsView.h" />
+    <ClInclude Include="..\Classes\ProfileViewController.h" />
+    <ClInclude Include="..\Classes\RaiseSliderView.h" />
+    <ClInclude Include="..\Classes\ServerSelectorViewController.h" />
+    <ClInclude Include="..\Classes\Shared.h" />
+    <ClInclude Include="..\Classes\SizeTo.h" />
+    <ClInclude Include="..\Classes\SocialViewController.h" />
+    <ClInclude Include="..\Classes\TableActionMenuView.h" />
+    <ClInclude Include="..\Classes\TableDataSource.h" />
+    <ClInclude Include="..\Classes\TableModel.h" />
+    <ClInclude Include="..\Classes\TableSettingsMenuView.h" />
+    <ClInclude Include="..\Classes\TableViewController.h" />
+    <ClInclude Include="..\Classes\VectorDataSource.h" />
+    <ClInclude Include="..\Classes\XPBarView.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="..\Classes\QuadVectorDataSource.h" />
+    <ClInclude Include="..\Classes\ProfileInventoryView.h" />
+    <ClInclude Include="..\Classes\JoinInviteViewController.h" />
+    <ClInclude Include="..\Classes\VotingViewController.h" />
+    <ClInclude Include="..\Classes\TableThemeVotingView.h" />
+    <ClInclude Include="..\Classes\ReplayerViewController.h" />
+    <ClInclude Include="..\Classes\TableInviteView.h" />
+    <ClInclude Include="..\Classes\NewsViewController.h" />
+    <ClInclude Include="..\Classes\LeaderboardViewController.h" />
+    <ClInclude Include="..\Classes\Observable.h" />
+    <ClInclude Include="..\Classes\TableManagerViewController.h" />
+    <ClInclude Include="..\Classes\Text.h" />
+    <ClInclude Include="..\Classes\Scale.h" />
+    <ClInclude Include="..\Classes\RegistrationView.h" />
+    <ClInclude Include="..\Classes\Callback.h" />
+    <ClInclude Include="..\Classes\GiftingViewController.h" />
+    <ClInclude Include="..\Classes\GiftingObjectsView.h" />
+    <ClInclude Include="..\Classes\GiftingPlayersView.h" />
+    <ClInclude Include="..\Classes\TablePlayerMenuView.h" />
+    <ClInclude Include="..\Classes\Stage.h" />
+    <ClInclude Include="..\Classes\AchievementViewController.h" />
+    <ClInclude Include="..\Classes\MessageCenterController.h" />
+    <ClInclude Include="..\Classes\GrowlView.h" />
+    <ClInclude Include="..\Classes\GrowlViewController.h" />
+    <ClInclude Include="..\Classes\OverlayMessageView.h" />
+    <ClInclude Include="..\Classes\SettingsViewController.h" />
+    <ClInclude Include="..\Classes\FirstPersonNameplateView.h" />
+    <ClInclude Include="..\Classes\ThirdPersonNameplateView.h" />
+    <ClInclude Include="..\Classes\AlertImageView.h" />
+    <ClInclude Include="..\Classes\FreeChipsViewController.h" />
+    <ClInclude Include="..\Classes\WebpageView.h" />
+    <ClInclude Include="..\Classes\HoleCardsView.h" />
+    <ClInclude Include="..\Classes\TableGiftView.h" />
+    <ClInclude Include="..\Classes\TooltipView.h" />
+    <ClInclude Include="..\Classes\BadgeView.h" />
+    <ClInclude Include="..\Classes\TierImageView.h" />
+    <ClInclude Include="..\Classes\TableInfoViewController.h" />
+    <ClInclude Include="..\Classes\TableChatViewController.h" />
+    <ClInclude Include="..\Classes\TableInfoPlayersView.h" />
+    <ClInclude Include="..\Classes\TableInfoHandsView.h" />
+    <ClInclude Include="..\Classes\CountryMapping.h" />
+    <ClInclude Include="..\Classes\FacebookController.h" />
+    <ClInclude Include="..\Classes\Http.h" />
+    <ClInclude Include="..\Classes\InviteFriendsViewController.h" />
+    <ClInclude Include="..\Classes\AvatarCache.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main.h">
-      <Filter>win32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\ActionButtonsView.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AppDelegate.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AvatarView.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\BetStackView.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\BoardCardsView.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CardView.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CasinoTableContainerView.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CasinoViewController.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\ChatBubbleView.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\ChatInputView.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\DashboardViewController.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Dispatch.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Downloader.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\DragGestureRecognizer.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GameController.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GameModel.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\LoginViewController.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\NameplateView.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Network.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\PanGestureRecognizer.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\PlayerWinView.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\PokerApi.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\PotView.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\RaiseSliderView.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Shared.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SocialViewController.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\TableActionMenuView.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\TableSettingsMenuView.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\TableViewController.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CoverflowView.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\ServerSelectorViewController.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SizeTo.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\TableModel.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\easings\Back.h">
-      <Filter>src\easings</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\easings\Bounce.h">
-      <Filter>src\easings</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\easings\Circ.h">
-      <Filter>src\easings</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\easings\Cubic.h">
-      <Filter>src\easings</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\easings\Elastic.h">
-      <Filter>src\easings</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\easings\Expo.h">
-      <Filter>src\easings</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\easings\Linear.h">
-      <Filter>src\easings</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\easings\Quad.h">
-      <Filter>src\easings</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\easings\Quart.h">
-      <Filter>src\easings</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\easings\Quint.h">
-      <Filter>src\easings</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\easings\Sine.h">
-      <Filter>src\easings</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AlertView.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\BuyInView.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\ChatViewController.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\ContextMenuView.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\FriendModel.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\FriendsViewController.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\LoadingView.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\ModalLayer.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\PlayerMenuView.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\PlayerSearchViewController.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\VectorDataSource.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\ProfileView.h">
-      <Filter>src</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="game.rc">
-      <Filter>resource</Filter>
-    </ResourceCompile>
+    <ResourceCompile Include="game.rc" />
   </ItemGroup>
 </Project>

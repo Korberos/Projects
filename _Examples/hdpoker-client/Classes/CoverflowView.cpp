@@ -7,7 +7,7 @@ const int spacing = 120;
 const float startX = 300;
 const float endX = 700;
 const float range = endX - startX;
-const float animationDuration = .15;
+const float animationDuration = 0.15f;
 const Vec2 animationRange(100, 100);
 const char* animationKey = "CoverflowPage";
 
@@ -115,7 +115,7 @@ void CoverflowView::updateNodePosition(int index, cocos2d::Node *node) {
         if (node->getUserData() != (void*)1) {
             node->setUserData((void*)1);       // denote already animating
             node->runAction(FadeOut::create(animationDuration));
-            node->runAction(ScaleTo::create(animationDuration, 1.2));
+            node->runAction(ScaleTo::create(animationDuration, 1.2f));
             node->runAction(MoveBy::create(animationDuration, Vec2(0, -animationRange.y + (rand() % (int)animationRange.y))));
         }
     } else if (delta < endX) {

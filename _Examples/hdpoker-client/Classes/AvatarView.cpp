@@ -1,110 +1,90 @@
 #include "AvatarView.h"
 #include "Downloader.h"
-#include "PokerApi.h"
+#include "GameController.h"
 #include "Network.h"
+#include "os.h"
+#include "AvatarCache.h"
 
 using namespace cocos2d;
 
+AvatarView::AvatarView() : _bakeSprite(nullptr), _isBaked(false) {}
 AvatarView::~AvatarView() {
-    cancelOutstandingWork();
+    stopAndClearAvatar();
 }
 
-void AvatarView::loadAvatar(PokerApi *api, const std::string& avatarId, int rotation) {
+void AvatarView::bake(const Rect& view, float scale) {
+    _isBaked = true;
+    
+    addReadyHandler([=] {
+        
+//        auto clipper = ClippingNode::create();
+//        clipper->setAnchorPoint(Point(0.5, 0.5));
+//        clipper->setPosition(Point(100, 100));
+//        clipper->setStencil(stencil);
+//        clipper->setInverted(true);
+        
+        _bakeSprite = RenderTexture::create(view.size.width, view.size.height, Texture2D::PixelFormat::RGBA8888);//, GL_DEPTH24_STENCIL8_OES);
+
+        setScale(scale);
+        _bakeSprite->begin();
+            visit();
+        _bakeSprite->end();
+        setScale(1);
+        
+        removeAllChildren();
+        addChild(_bakeSprite);
+    });
+}
+
+void AvatarView::bakePortrait() {
+    bake(Rect(0, 0, 80, 50), .3);
+}
+
+void AvatarView::addReadyHandler(const ReadyCallback& callback) {
+    _readySignal.connect(callback);
+}
+
+void AvatarView::loadAvatar(GameController *game, const std::string& avatarId, int rotation) {
     if (avatarId.empty()) {
         return;
     }
     
-    std::vector<std::string> avatarIds;
-    avatarIds.push_back(avatarId);
-    api->playerLoadAvatars(avatarIds, [=] (const Message* message) {
-        if (message->isSuccess()) {
-            auto &data = message->getData()["result"]["avatarDatas"];
-            
-            auto count = data.Size();
-            for (auto i = 0; i < count; i++) {
-                auto &items = data[i]["items"];
-                
-                std::string avatarId = data[i]["id"].GetString();
-                
-                std::vector<AvatarView::Item> avatarItems;
-                auto faceId = -1;
-                
-                for (auto i = 0; i < items.Size(); i++) {
-                    AvatarView::Item item;
-                    item.id = items[i]["id"].GetInt();
-                    item.type = items[i]["type"].GetString();
-                    
-                    if (item.type == "face") {
-                        // When you get a face.. also load the body & arms
-                        faceId = item.id;
-                    }
-                    
-                    if (item.type != "hairHat") {
-                        avatarItems.push_back(item);
-                    } else {
-                        
-                        // AI8 pixel format not supported on iOS
-//                        AvatarView::Item itemHair;
-//                        itemHair.id = items[i]["id"].GetInt();
-//                        itemHair.type = "hair";
-//                        if (items[i].HasMember("color")) {
-//                            item.color = items[i]["color"].GetUint();
-//                        } else {
-//                            item.color = 0xFFFFFFFF;
-//                        }
-//                        avatarItems.push_back(itemHair);
-                        
-                        AvatarView::Item itemHat;
-                        itemHat.id = items[i]["id"].GetInt();
-                        itemHat.type = "hat";
-                        avatarItems.push_back(itemHat);
-                    }
-                    
-                }
-                
-                if (faceId != -1) {
-                    AvatarView::Item body;
-                    body.id = faceId;
-                    body.type = "body";
-                    avatarItems.push_back(body);
-                    
-                    AvatarView::Item arms;
-                    arms.id = faceId;
-                    arms.type = "arms";
-                    avatarItems.push_back(arms);
-                }
-                
-                loadAvatar(rotation, avatarItems);
-            }
-        }
-    });
+    game->getAvatarCache()->loadAvatar(avatarId, bind2(this, [=](const AvatarView*, const std::string& avatarId, const AvatarCache::AvatarItems& items) {
+        loadAvatar(items, rotation);
+    }));
 }
-        
-void AvatarView::loadAvatar(int rotation, const std::vector<Item>& items) {
-    removeAllChildren();
+
+void AvatarView::loadAvatar(const AvatarCache::AvatarItems& items, int rotation) {
+    stopAndClearAvatar();
+    ensureNotBaked();
+    _loadCount = static_cast<int>(items.size());
     
     for (auto& item: items) {
         
-        auto zIndex = 10;
+        auto zIndex = 100;
         if (item.type == "body") {
             zIndex = 0;
         } else if (item.type == "face") {
-            zIndex = 1;
+            zIndex = 10;
         } else if (item.type == "bottom") {
-            zIndex = 2;
+            zIndex = 20;
         } else if (item.type == "top") {
-            zIndex = 3;
+            zIndex = 30;
+        } else if (item.type == "arms") {
+            zIndex = 40;
+        } else if (item.type == "sleeves") {
+            zIndex = 50;
         } else if (item.type == "head") {
-            zIndex = 4;
+            zIndex = 60;
         } else if (item.type == "hair") {
-            zIndex = 5;
+            zIndex = 70;
         } else if (item.type == "hat") {
-            zIndex = 6;
+            zIndex = 80;
         }
         
         auto url = std::string("http://play.qa.hdpoker.com/common/library/avatars/default/") + item.type + std::string("_") + std::to_string(item.id) + std::string("_r") + std::to_string(rotation) + std::string(".png");
         
-        auto token = Downloader::getSpriteFromUrl(url, [=](Sprite *sprite) {
+        auto cancelationToken = Downloader::getSpriteFromUrl(url, [=](Sprite *sprite, const std::string& path, bool wasCached) {
             if (sprite) {
                 sprite->setAnchorPoint(Vec2(.5, .5));
                 sprite->getTexture()->setAliasTexParameters();
@@ -114,24 +94,40 @@ void AvatarView::loadAvatar(int rotation, const std::vector<Item>& items) {
                     sprite->setColor(Color3B((item.color & 0xFF000000) >> 24, (item.color & 0x00FF0000) >> 16, (item.color & 0x0000FF00) >> 8));
                 }
                 
-                sprite->setOpacity(0);
-                sprite->runAction(FadeIn::create(.3));
-         
-                // TODO - need method to cancel
+                if (!wasCached) {
+                    sprite->setOpacity(0);
+                    sprite->runAction(EaseExponentialOut::create(FadeIn::create(0.25f)));
+                }
+                
                 addChild(sprite, zIndex);
             }
+            
+            _loadCount--;
+            if (_loadCount == 0) {
+                CCLOG("Avatar ready!");
+                _readySignal();
+                if (!_bakeSprite && _isBaked) {
+                    // Assume rebake portrait
+                    bakePortrait();
+                }
+            }
         });
-        _cancelTokens.push_back(token);
+        
+        _requests.push_back(cancelationToken);
     }
 }
 
-void AvatarView::cancelOutstandingWork() {
-    for (auto token : _cancelTokens) {
-        token.disconnect();
+void AvatarView::ensureNotBaked() {
+    if (_bakeSprite) {
+        _bakeSprite->removeFromParent();
+        _bakeSprite = nullptr;
     }
 }
 
-void AvatarView::clearAvatar() {
-    cancelOutstandingWork();
+void AvatarView::stopAndClearAvatar() {
+    for (auto &token : _requests) {
+        token->cancel();
+    }
+    _requests.clear();
     removeAllChildren();
 }

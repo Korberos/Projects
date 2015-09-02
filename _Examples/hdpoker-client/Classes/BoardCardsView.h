@@ -16,8 +16,15 @@ public:
     void showTurn(const char *card);
     void showRiver(const char *card);
     
+    void highlightMatchingCards(const std::vector<std::string>& cards);
+    void clearHighlight();
+    
 private:
     std::vector<CardView*> _cards;
+    std::vector<CardView*> _shadows;
+//    std::vector<CardView*> _highlights;
     
     void presentCard(int index, const char *card, float startDelay, float waitDelay, float fallDelay, float flipSpeed, float fallDuration, cocos2d::Point endLocation, bool animate);
+    
+    void highlightCard(int index);
 };

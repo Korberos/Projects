@@ -3,11 +3,23 @@
 #include "network/HttpClient.h"
 #include <xxhash/xxhash.h>
 #include <boost/make_shared.hpp>
+#include "os.h"
+#include "Callback.h"
 
 using namespace cocos2d;
 using namespace cocos2d::network;
 
-CancellationToken Downloader::getSpriteFromUrl(const std::string &url, const DownloadCallback::slot_type& callback) {
+_CancelationToken::_CancelationToken(const boost::signals2::connection& connection) : _connection(connection) {}
+
+void _CancelationToken::cancel() {
+    _connection.disconnect();
+}
+
+bool _CancelationToken::isCancelled() const {
+    return !_connection.connected();
+}
+
+CancelationToken Downloader::getSpriteFromUrl(const std::string &url, const DownloadCallback& callback) {
     
     auto cachePath = FileUtils::getInstance()->getWritablePath() + "cache/";
     if (!FileUtils::getInstance()->isDirectoryExist(cachePath)) {
@@ -19,46 +31,70 @@ CancellationToken Downloader::getSpriteFromUrl(const std::string &url, const Dow
     auto hash = std::to_string(XXH32(url.c_str(), static_cast<int>(url.length()), 1337)) + extension;
     auto path = cachePath + hash;
     
-    auto signal = std::make_shared<DownloadCallback>();
-    auto cancelToken = signal->connect(callback);
-    
-//    auto cancelToken = boost::make_shared<_CancellationToken>();
+    auto signal = std::make_shared<DownloadSignal>();
+    auto connection = signal->connect(callback);
+    auto cancelToken = boost::make_shared<_CancelationToken>(connection);
     
     if (FileUtils::getInstance()->isFileExist(path)) {
+        
+        // From disk...
         Director::getInstance()->getTextureCache()->addImageAsync(path, [=](Texture2D *texture) {
+            if (cancelToken->isCancelled()) {
+                CCLOG("Cancelled: Disk");
+                return;
+            }
+            
             if (texture) {
-                (*signal)(Sprite::createWithTexture(texture));
+				(*signal)(Sprite::createWithTexture(texture), path, true);
             } else {
-                (*signal)(nullptr);
+				(*signal)(nullptr, path, true);
             }
         });
     } else {
         
         // Download...
-        
         HttpRequest *request = new HttpRequest();
         request->setUrl(url.c_str());
         request->setRequestType(HttpRequest::Type::GET);
         request->setResponseCallback([=](HttpClient* client, HttpResponse* response) {
+
+            // With cancelation tokens, we want to ensure successful downloads are cached to disk...
+            
             if (!response || !response->isSucceed() || response->getResponseCode() != 200) {
-                (*signal)(nullptr);
+                if (cancelToken->isCancelled()) {
+                    return;
+                }
+                (*signal)(nullptr, path, false);
             } else {
                 auto buffer = response->getResponseData();
                 auto image = new Image();
                 if (image) {
-                    image->initWithImageData((unsigned char*)&(buffer->front()), buffer->size());
+                    bool isValidImage = image->initWithImageData((unsigned char*)&(buffer->front()), buffer->size());
+                    if (isValidImage) {
+                        image->saveToFile(path, false);
                     
-                    CCLOG("%s", url.c_str());
-                    image->saveToFile(path, false);
-                    delete image;
-                    
-                    Director::getInstance()->getTextureCache()->addImageAsync(path, [=](Texture2D *texture) {
-                        if (texture) {
-                            (*signal)(Sprite::createWithTexture(texture));
-                        } else {
-                            (*signal)(nullptr);
+                        if (cancelToken->isCancelled()) {
+                            return;
                         }
-                    });
+                        Director::getInstance()->getTextureCache()->addImageAsync(path, [=](Texture2D *texture) {
+                            if (cancelToken->isCancelled()) {
+                                return;
+                            }
+                            
+                            if (texture) {
+                                (*signal)(Sprite::createWithTexture(texture), path, false);
+                            } else {
+                                (*signal)(nullptr, path, false);
+                            }
+                        });
+                    } else {
+                        if (cancelToken->isCancelled()) {
+                            return;
+                        }
+                        
+                        (*signal)(nullptr, path, false);
+                    }
+                    delete image;
                 }
             }
         });

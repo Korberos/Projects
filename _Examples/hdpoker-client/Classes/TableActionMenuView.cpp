@@ -1,4 +1,5 @@
 #include "TableActionMenuView.h"
+#include "TableViewController.h"
 #include "UI/UIButton.h"
 #include "UI/UICheckbox.h"
 
@@ -9,12 +10,12 @@ void TableActionMenuView::setClickCallback(const ClickOptionCallback &callback) 
     _callback = callback;
 }
 
-void TableActionMenuView::setIsSittingOut(bool sittingOut) {
-    _sitInOut->setSelected(sittingOut);
+void TableActionMenuView::setSitIn(bool sittingIn) {
+    _sitInOut->setSelected(!sittingIn);
 }
 
-void TableActionMenuView::hide() {
-    // TODO Hide the buttons
+void TableActionMenuView::setTableView(TableViewController *tableView) {
+	_tableView = tableView;
 }
 
 bool TableActionMenuView::init() {
@@ -25,19 +26,20 @@ bool TableActionMenuView::init() {
     // Setup global tap listener to dismiss menu
     
     const int spacing = 5;
-    const float zoomFactor = -.08;
+    const float zoomFactor = -0.05f;
     
     // Button left-center is at origin
-    auto button = Button::create("sprites/button-table-actions.png", "");
+    auto button = Button::create("button-table-actions.png", "");
     button->setAnchorPoint(Vec2(0, .5));
+	button->setZoomScale(-.05f);
     addChild(button);
     
-    auto background = Sprite::create("sprites/background-table-actions.png");
-    background->setAnchorPoint(Vec2(0, .5));
-    background->setPositionX(80);
-    addChild(background);
+    _background = Sprite::create("background-table-actions.png");
+    _background->setAnchorPoint(Vec2(0, .5));
+    _background->setPositionX(80);
+    addChild(_background);
     
-    _sitInOut = CheckBox::create("sprites/button-sitout.png", "sprites/button-sitin.png");
+    _sitInOut = CheckBox::create("button-sitout.png", "button-sitin.png");
     _sitInOut->setZoomScale(0);
     _sitInOut->setPositionX(200);
     _sitInOut->setOpacity(0);
@@ -49,91 +51,103 @@ bool TableActionMenuView::init() {
     addChild(_sitInOut);
 
     
-    auto standUp = Button::create("sprites/button-standup.png", "");
-    standUp->setZoomScale(zoomFactor);
-    standUp->setPositionX(_sitInOut->getPositionX() + _sitInOut->getContentSize().width + spacing);
-    standUp->addClickEventListener([=] (Ref*) {
+    _standUp = Button::create("button-standup.png", "");
+    _standUp->setZoomScale(zoomFactor);
+    _standUp->setPositionX(_sitInOut->getPositionX() + _sitInOut->getContentSize().width + spacing);
+    _standUp->addClickEventListener([=] (Ref*) {
         if (_callback) {
             _callback(StandUp);
         }
     });
-    addChild(standUp);
+    addChild(_standUp);
     
-    auto addChips = Button::create("sprites/button-add-chips.png", "");
-    addChips->setZoomScale(zoomFactor);
-    addChips->setPositionX(standUp->getPositionX() + standUp->getContentSize().width + spacing);
-    addChips->addClickEventListener([=] (Ref*) {
+    _addChips = Button::create("button-add-chips.png", "");
+    _addChips->setZoomScale(zoomFactor);
+    _addChips->setPositionX(_standUp->getPositionX() + _standUp->getContentSize().width + spacing);
+    _addChips->addClickEventListener([=] (Ref*) {
         if (_callback) {
             _callback(AddChips);
         }
     });
-    addChild(addChips);
+    addChild(_addChips);
     
-    auto jump = Button::create("sprites/button-jump.png", "");
-    jump->setZoomScale(zoomFactor);
-    jump->setPositionX(addChips->getPositionX() + addChips->getContentSize().width + spacing);
-    jump->addClickEventListener([=] (Ref*) {
+    _jump = Button::create("button-jump.png", "");
+    _jump->setZoomScale(zoomFactor);
+    _jump->setPositionX(_addChips->getPositionX() + _addChips->getContentSize().width + spacing);
+    _jump->addClickEventListener([=] (Ref*) {
         if (_callback) {
             _callback(Jump);
         }
     });
-    addChild(jump);
+    addChild(_jump);
     
-    auto leave = Button::create("sprites/button-leave.png", "");
-    leave->setZoomScale(zoomFactor);
-    leave->setPositionX(jump->getPositionX() + jump->getContentSize().width + spacing);
-    leave->addClickEventListener([=] (Ref*) {
+    _leaveTable = Button::create("button-leave.png", "");
+    _leaveTable->setZoomScale(zoomFactor);
+    _leaveTable->setPositionX(_jump->getPositionX() + _jump->getContentSize().width + spacing);
+    _leaveTable->addClickEventListener([=] (Ref*) {
         if (_callback) {
             _callback(Leave);
         }
     });
-    addChild(leave);
+    addChild(_leaveTable);
     
+	_tableView = nullptr;
     _menuOpen = false;
-    background->setVisible(false);
+    _background->setVisible(false);
     _sitInOut->setVisible(false);
-    standUp->setVisible(false);
-    addChips->setVisible(false);
-    jump->setVisible(false);
-    leave->setVisible(false);
+    _standUp->setVisible(false);
+    _addChips->setVisible(false);
+    _jump->setVisible(false);
+    _leaveTable->setVisible(false);
     button->addClickEventListener([=] (Ref*) {
         if (!_menuOpen) {
-            background->setVisible(true);
-            _sitInOut->setVisible(true);
-            standUp->setVisible(true);
-            addChips->setVisible(true);
-            jump->setVisible(true);
-            leave->setVisible(true);
-            background->setOpacity(0);
+            _background->setVisible(true);
+			if (_tableView && _tableView->getModel()->getMySeat() >= 0) {
+				_sitInOut->setVisible(true);
+				_standUp->setVisible(true);
+				_addChips->setVisible(true);
+				_jump->setVisible(true);
+			}
+            _leaveTable->setVisible(true);
+            _background->setOpacity(0);
             _sitInOut->setOpacity(0);
-            standUp->setOpacity(0);
-            addChips->setOpacity(0);
-            jump->setOpacity(0);
-            leave->setOpacity(0);
-            background->runAction(FadeIn::create(.15));
-            _sitInOut->runAction(Sequence::createWithTwoActions(DelayTime::create(.1), FadeIn::create(.2)));
-            standUp->runAction(Sequence::createWithTwoActions(DelayTime::create(.14), FadeIn::create(.2)));
-            addChips->runAction(Sequence::createWithTwoActions(DelayTime::create(.18), FadeIn::create(.2)));
-            jump->runAction(Sequence::createWithTwoActions(DelayTime::create(.22), FadeIn::create(.2)));
-            leave->runAction(Sequence::createWithTwoActions(DelayTime::create(.26), FadeIn::create(.2)));
-        } else {
-            background->stopAllActions();
-            _sitInOut->stopAllActions();
-            standUp->stopAllActions();
-            addChips->stopAllActions();
-            jump->stopAllActions();
-            leave->stopAllActions();
+            _standUp->setOpacity(0);
+            _addChips->setOpacity(0);
+            _jump->setOpacity(0);
+            _leaveTable->setOpacity(0);
+            _background->runAction(FadeIn::create(0.15f));
+            _sitInOut->runAction(Sequence::createWithTwoActions(DelayTime::create(0.1f), FadeIn::create(0.2f)));
+            _standUp->runAction(Sequence::createWithTwoActions(DelayTime::create(0.14f), FadeIn::create(0.2f)));
+            _addChips->runAction(Sequence::createWithTwoActions(DelayTime::create(0.18f), FadeIn::create(0.2f)));
+            _jump->runAction(Sequence::createWithTwoActions(DelayTime::create(0.22f), FadeIn::create(0.2f)));
+            _leaveTable->runAction(Sequence::createWithTwoActions(DelayTime::create(0.26f), FadeIn::create(0.2f)));
             
-            background->setVisible(false);
-            _sitInOut->setVisible(false);
-            standUp->setVisible(false);
-            addChips->setVisible(false);
-            jump->setVisible(false);
-            leave->setVisible(false);
+            _menuOpen = true;
+            if (_callback) {
+                _callback(Opened);
+            }
+        } else {
+            dismiss();
         }
-        
-        _menuOpen = !_menuOpen;
     });
     
     return true;
+}
+
+void TableActionMenuView::dismiss() {
+    _menuOpen = false;
+    
+    _background->stopAllActions();
+    _sitInOut->stopAllActions();
+    _standUp->stopAllActions();
+    _addChips->stopAllActions();
+    _jump->stopAllActions();
+    _leaveTable->stopAllActions();
+    
+    _background->setVisible(false);
+    _sitInOut->setVisible(false);
+    _standUp->setVisible(false);
+    _addChips->setVisible(false);
+    _jump->setVisible(false);
+    _leaveTable->setVisible(false);
 }

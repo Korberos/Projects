@@ -3,20 +3,14 @@
 #include <json/writer.h>
 #include <json/stringbuffer.h>
 #include "Dispatch.h"
-#include "network/HttpClient.h"
 #include "GameController.h"
 #include "Network.h"
-
-using namespace cocos2d::network;
+#include "Http.h"
 
 PokerApi::CommandCallback NullCallback = [](const Message* message) {};
 
-PokerApi::PokerApi(GameController* game) : _network(game->getNetwork()), _game(game) {
-}
-
-Network* PokerApi::getNetwork() {
-    return _network;
-}
+PokerApi::PokerApi(GameController* game) : _network(game->getNetwork()), _game(game)
+{}
 
 void PokerApi::authenticate(const char* sessionId, const char* userId, const CommandCallback &callback) {
     StringBuffer buffer;
@@ -27,6 +21,7 @@ void PokerApi::authenticate(const char* sessionId, const char* userId, const Com
         writer.String("argument");  writer.StartObject();
             writer.String("sessionID"); writer.String(sessionId);
             writer.String("userID");    writer.String(userId);
+            writer.String("forceDisconnect");   writer.Bool(true);
             writer.EndObject();
     writer.EndObject();
     _network->send("authenticate", buffer.GetString(), callback);
@@ -55,7 +50,20 @@ void PokerApi::casinoSubscribe(const CommandCallback &callback) {
     _network->send("casinoSubscribe", buffer.GetString(), callback);
 }
 
-void PokerApi::getTables(int maxTables, const CommandCallback& callback) {
+void PokerApi::casinoGetTable(const char* tableID, const CommandCallback& callback) {
+	StringBuffer buffer;
+	Writer<StringBuffer> writer(buffer);
+	writer.StartObject();
+		writer.String("action");    writer.String("casinoGetTable");
+		writer.String("argument");	
+		writer.StartObject();
+			writer.String("tableID");	writer.String(tableID);
+		writer.EndObject();
+	writer.EndObject();
+	_network->send("casinoGetTable", buffer.GetString(), callback);
+}
+
+void PokerApi::getTablesOccupied(int maxTables, bool emptyTables, bool fullTables, const CommandCallback& callback) {
     StringBuffer buffer;
     Writer<StringBuffer> writer(buffer);
     writer.StartObject();
@@ -66,11 +74,40 @@ void PokerApi::getTables(int maxTables, const CommandCallback& callback) {
         writer.String("sortMajor"); writer.String("numberSeats");
         writer.String("sortMajorAscending"); writer.Bool(false);
         writer.String("sortMinor"); writer.String("");
-        writer.String("allTables"); writer.Bool(true);
+        writer.String("allTables"); writer.Bool(fullTables);
+		writer.String("emptyTables"); writer.Bool(emptyTables);
         writer.String("lobbySubscribe"); writer.Bool(false);
     } writer.EndObject();
     writer.EndObject();
     _network->send("casinoGetTableList", buffer.GetString(), callback);
+}
+
+void PokerApi::getTables(int maxTables, const CommandCallback& callback) {
+	StringBuffer buffer;
+	Writer<StringBuffer> writer(buffer);
+	writer.StartObject();
+	writer.String("action");    writer.String("casinoGetTableList");
+	writer.String("argument");  writer.StartObject(); {
+		writer.String("page");      writer.Uint(0);
+		writer.String("pageSize");  writer.Uint(maxTables);
+		writer.String("sortMajor"); writer.String("numberSeats");
+		writer.String("sortMajorAscending"); writer.Bool(false);
+		writer.String("sortMinor"); writer.String("");
+		writer.String("allTables"); writer.Bool(true);
+		writer.String("lobbySubscribe"); writer.Bool(false);
+	} writer.EndObject();
+	writer.EndObject();
+	_network->send("casinoGetTableList", buffer.GetString(), callback);
+}
+
+void PokerApi::loadAllAchievements(const CommandCallback& callback)
+{
+	StringBuffer buffer;
+	Writer<StringBuffer> writer(buffer);
+	writer.StartObject();
+	writer.String("action");    writer.String("loadAllAchievements");
+	writer.EndObject();
+	_network->send("loadAllAchievements", buffer.GetString(), callback);
 }
 
 void PokerApi::playerLoad(const char* playerID, const CommandCallback& callback) {
@@ -83,6 +120,16 @@ void PokerApi::playerLoad(const char* playerID, const CommandCallback& callback)
     } writer.EndObject();
     writer.EndObject();
     _network->send("playerLoad", buffer.GetString(), callback);
+}
+
+void PokerApi::playerLoadPrivate(const CommandCallback& callback)
+{
+	StringBuffer buffer;
+	Writer<StringBuffer> writer(buffer);
+	writer.StartObject();
+	writer.String("action");    writer.String("playerLoadPrivate");
+	writer.EndObject();
+	_network->send("playerLoadPrivate", buffer.GetString(), callback);
 }
 
 void PokerApi::playerSearch(const char *usernameSearch, const CommandCallback &callback) {
@@ -99,11 +146,17 @@ void PokerApi::playerSearch(const char *usernameSearch, const CommandCallback &c
     _network->send("playerSearch", buffer.GetString(), callback);
 }
 
-void PokerApi::playerLoadFriends(const CommandCallback &callback) {
+void PokerApi::playerLoadFriends(const char* userId, const CommandCallback &callback) {
     StringBuffer buffer;
     Writer<StringBuffer> writer(buffer);
     writer.StartObject();
-        writer.String("action");    writer.String("playerLoadFriends");
+	writer.String("action");    writer.String("playerLoadFriends");
+	if (userId != nullptr)
+	{
+		writer.String("argument");  writer.StartObject(); {
+			writer.String("playerID");   writer.String(userId);
+		} writer.EndObject();
+	}
     writer.EndObject();
     _network->send("playerLoadFriends", buffer.GetString(), callback);
 }
@@ -154,11 +207,66 @@ void PokerApi::playerLoadHands(const char* playerID, const CommandCallback& call
 		writer.String("timeOrder");			writer.Bool(false);
 		writer.String("favoritesFirst");	writer.Bool(true);
 		writer.String("type");				writer.String("all");
-		writer.String("page");				writer.String(0);
+		writer.String("page");				writer.Int(0);
 		writer.String("pageSize");			writer.Int(10);
 	} writer.EndObject();
 	writer.EndObject();
 	_network->send("playerLoadHandIDs", buffer.GetString(), callback);
+}
+
+
+void PokerApi::playerInviteFriendToTable(const char *friendID, const char *tableID, const int seat, const CommandCallback& callback) {
+	StringBuffer buffer;
+	Writer<StringBuffer> writer(buffer);
+	writer.StartObject();
+	writer.String("action");    writer.String("playerInviteFriendToTable");
+	writer.String("argument");  writer.StartObject(); {
+		writer.String("playerID");			writer.String(friendID);
+		writer.String("tableID");			writer.String(tableID);
+		writer.String("seat");				writer.Int(seat);
+	} writer.EndObject();
+	writer.EndObject();
+	_network->send("playerInviteFriendToTable", buffer.GetString(), callback);
+}
+
+void PokerApi::playerCollectReward(const char *rewardId, const CommandCallback& callback) {
+	StringBuffer buffer;
+	Writer<StringBuffer> writer(buffer);
+	writer.StartObject();
+	writer.String("action");    writer.String("playerCollectReward");
+	writer.String("argument");  writer.StartObject(); {
+		writer.String("rewardID");			writer.String(rewardId);
+	} writer.EndObject();
+	writer.EndObject();
+	_network->send("playerCollectReward", buffer.GetString(), callback);
+}
+
+void PokerApi::tableThemeSuggestion(const char* tableID, const int themeID, const CommandCallback& callback)
+{
+	StringBuffer buffer;
+	Writer<StringBuffer> writer(buffer);
+	writer.StartObject();
+	writer.String("action");    writer.String("tableThemeSuggestion");
+	writer.String("argument");  writer.StartObject(); {
+		writer.String("themeID");   writer.Int(themeID);
+		writer.String("tableID");   writer.String(tableID);
+	} writer.EndObject();
+	writer.EndObject();
+	_network->send("tableThemeSuggestion", buffer.GetString(), callback);
+}
+
+void PokerApi::tableThemeVote(const char* tableID, const int themeID, const CommandCallback& callback)
+{
+	StringBuffer buffer;
+	Writer<StringBuffer> writer(buffer);
+	writer.StartObject();
+	writer.String("action");    writer.String("tableThemeVote");
+	writer.String("argument");  writer.StartObject(); {
+		writer.String("tableID");   writer.String(tableID);
+		writer.String("themeID");   writer.Int(themeID);
+	} writer.EndObject();
+	writer.EndObject();
+	_network->send("tableThemeVote", buffer.GetString(), callback);
 }
 
 void PokerApi::chatSubscribe(const CommandCallback& callback) {
@@ -170,7 +278,20 @@ void PokerApi::chatSubscribe(const CommandCallback& callback) {
     _network->send("chatSubscribe", buffer.GetString(), callback);
 }
 
-void PokerApi::chatMessage(const char *tableID, const char *message, const CommandCallback &callback) {
+void PokerApi::chatFriendMessage(const char* userID, const char* message, const CommandCallback& callback) {
+    StringBuffer buffer;
+    Writer<StringBuffer> writer(buffer);
+    writer.StartObject();
+    writer.String("action");    writer.String("chatMessage");
+    writer.String("argument");  writer.StartObject(); {
+        writer.String("message");   writer.String(message);
+        writer.String("friendID");   writer.String(userID);
+    } writer.EndObject();
+    writer.EndObject();
+    _network->send("chatMessage", buffer.GetString(), callback);
+}
+
+void PokerApi::chatTableMessage(const char *tableID, const char *message, const CommandCallback &callback) {
     StringBuffer buffer;
     Writer<StringBuffer> writer(buffer);
     writer.StartObject();
@@ -297,6 +418,18 @@ void PokerApi::tableAutoTopup(const char *tableId, bool enable, const CommandCal
     _network->send("tableAutoTopup", buffer.GetString(), callback);
 }
 
+void PokerApi::tableFriendSubscribed(const char *friendId, const CommandCallback& callback) {
+	StringBuffer buffer;
+	Writer<StringBuffer> writer(buffer);
+	writer.StartObject(); {
+		writer.String("action");    writer.String("tableFriendSubscribed");
+		writer.String("argument");  writer.StartObject(); {
+			writer.String("friendID");  writer.String(friendId);
+		} writer.EndObject();
+	} writer.EndObject();
+	_network->send("tableFriendSubscribed", buffer.GetString(), callback);
+}
+
 void PokerApi::playerLoadAvatars(const std::vector<std::string>& avatarIds, const CommandCallback &callback) {
     StringBuffer buffer;
     Writer<StringBuffer> writer(buffer);
@@ -311,6 +444,19 @@ void PokerApi::playerLoadAvatars(const std::vector<std::string>& avatarIds, cons
         } writer.EndObject();
     } writer.EndObject();
     _network->send("playerLoadAvatars", buffer.GetString(), callback);
+}
+
+void PokerApi::handLoad(const char* handId, const CommandCallback& callback) {
+    StringBuffer buffer;
+    Writer<StringBuffer> writer(buffer);
+    writer.StartObject(); {
+        writer.String("action");    writer.String("handLoad");
+        writer.String("argument");  writer.StartObject(); {
+            writer.String("handID");  writer.String(handId);
+            writer.String("conversion");    writer.String("event");
+        } writer.EndObject();
+    } writer.EndObject();
+    _network->send("handLoad", buffer.GetString(), callback);
 }
 
 void PokerApi::handPostAction(const char *handId, const char *action, int64_t chips, const CommandCallback& callback) {
@@ -329,6 +475,19 @@ void PokerApi::handPostAction(const char *handId, const char *action, int64_t ch
     _network->send("handPostAction", buffer.GetString(), callback);
 }
 
+void PokerApi::handShowCards(const char *handId, const CommandCallback& callback) {
+    StringBuffer buffer;
+    Writer<StringBuffer> writer(buffer);
+    writer.StartObject(); {
+        writer.String("action");    writer.String("handPostShowOrMuck");
+        writer.String("argument");  writer.StartObject(); {
+            writer.String("handID");  writer.String(handId);
+            writer.String("actionType");    writer.String("show");
+        } writer.EndObject();
+    } writer.EndObject();
+    _network->send("handPostShowOrMuck", buffer.GetString(), callback);
+}
+
 void PokerApi::playerLoadBalance(const CommandCallback &callback) {
     StringBuffer buffer;
     Writer<StringBuffer> writer(buffer);
@@ -339,87 +498,88 @@ void PokerApi::playerLoadBalance(const CommandCallback &callback) {
 }
 
 void PokerApi::getPlayersOnline(const CommandCallback& callback) {
-    HttpRequest *request = new HttpRequest();
-    request->setUrl(_game->getModel()->getAuthServer().append("/online").c_str());;
-    request->setRequestType(HttpRequest::Type::GET);
-    
-    request->setResponseCallback([=](HttpClient* client, HttpResponse* response) {
-        if (!response || !response->isSucceed() || response->getResponseCode() != 200) {
-            callback(nullptr);
-        } else {
-            auto data = response->getResponseData();
-            std::string json(data->begin(), data->end());
-            auto message = Message::create(json.c_str());
-            if (message) {
-                dispatch_main([=] {
-                    callback(message);
-                    delete message;
-                });
-            } else {
-                CCLOG("Failed to parse login response");
-            }
-        }
+    Http::get(_game->getModel()->getAuthServer().append("/online").c_str(), [=](const Message* message) {
+        dispatch_main([=] {
+            callback(message);
+            delete message;
+        });
     });
-    HttpClient::getInstance()->send(request);
-    request->release();
+}
+
+void PokerApi::getGifts(const char* sessionID, const CommandCallback& callback) {
+    Http::get((_game->getModel()->getAuthServer().append("/store/catalog/gifts?JSESSIONID=") + std::string(sessionID)).c_str(), [=](const Message* message) {
+        dispatch_main([=] {
+            callback(message);
+            delete message;
+        });
+    });
 }
 
 void PokerApi::getServerList(const CommandCallback& callback) {
-    HttpRequest *request = new HttpRequest();
-    request->setUrl("http://servers.hdpoker.com/servers");
-    request->setRequestType(HttpRequest::Type::GET);
-    
-    request->setResponseCallback([=](HttpClient* client, HttpResponse* response) {
-        if (!response || !response->isSucceed() || response->getResponseCode() != 200) {
-            callback(nullptr);
-        } else {
-            auto data = response->getResponseData();
-            std::string json(data->begin(), data->end());
-            auto message = Message::create(json.c_str());
-            if (message) {
-                dispatch_main([=] {
-                    callback(message);
-                    delete message;
-                });
-            } else {
-                CCLOG("Failed to parse server list response");
-            }
-        }
+    Http::get("http://servers.hdpoker.com/servers", [=](const Message* message) {
+        dispatch_main([=] {
+            callback(message);
+            delete message;
+        });
     });
-    HttpClient::getInstance()->send(request);
-    request->release();
 }
 
-void postJson(const char* url, const char* json, const PokerApi::CommandCallback& callback) {
-    auto request = new HttpRequest();
-    request->setUrl(url);
-    std::vector<std::string> headers;
-    headers.push_back("Content-Type: application/json");
-    request->setHeaders(headers);
-    request->setRequestType(HttpRequest::Type::POST);
-    request->setResponseCallback([=] (HttpClient* client, HttpResponse* response) {
-        
-        auto data = response->getResponseData();
-        std::string json(data->begin(), data->end());
-        
-        auto message = Message::create(json.c_str());
-        if (message) {
-            dispatch_main([=] {
-                callback(message);
-                delete message;
-            });
-        } else {
-            CCLOG("Failed to parse login response");
-        }
-    });
-    
-    request->setRequestData(json, strlen(json));
-    HttpClient::getInstance()->send(request);
-    request->release();
+void PokerApi::getCurrentEvents(const char *type, const CommandCallback& callback) {
+	StringBuffer buffer;
+	Writer<StringBuffer> writer(buffer);
+	writer.StartObject(); {
+		writer.String("action");    writer.String("getCurrentEvents");
+		writer.String("argument");  writer.StartObject(); {
+			writer.String("type");  writer.String(type);
+		} writer.EndObject();
+	} writer.EndObject();
+	_network->send("getCurrentEvents", buffer.GetString(), callback);
+}
+
+void PokerApi::playerBuyGift(const char* sessionID, const char* giftID, const char* playerID, const char* tableID, const CommandCallback& callback)
+{
+	StringBuffer buffer;
+	Writer<StringBuffer> writer(buffer);
+	writer.StartObject();
+	writer.String("sessionID");			writer.String(sessionID);
+	writer.String("productID");			writer.String(giftID);
+	writer.String("tableID");			writer.String(tableID);
+	writer.String("playerID");			writer.String(playerID);
+	writer.EndObject();
+    Http::postJson((_game->getModel()->getAuthServer().append("/store/checkout?JSESSIONID=") + std::string(sessionID)).c_str(), buffer.GetString(), callback);
 }
 
 void PokerApi::loginAsGuest(const char *fingerprint, const CommandCallback& callback) {
-    postJson(_game->getModel()->getAuthServer().append("/login/guest").c_str(), "{}", callback);
+    Http::postJson(_game->getModel()->getAuthServer().append("/login/guest").c_str(), "{}", callback);
+}
+
+void PokerApi::loginWithFacebook(const char* accessToken, const CommandCallback& callback) {
+    StringBuffer buffer;
+    Writer<StringBuffer> writer(buffer);
+    
+    writer.StartObject();
+    writer.String("provider");  writer.String("facebook");
+    writer.String("token");     writer.String(accessToken);
+    writer.EndObject();
+    
+    Http::postJson(_game->getModel()->getAuthServer().append("/login/social").c_str(), buffer.GetString(), callback);
+}
+
+void PokerApi::registerUser(const char* username, const char* password, const CommandCallback& callback) {
+    StringBuffer buffer;
+    Writer<StringBuffer> writer(buffer);
+    
+    writer.StartObject();
+    writer.String("firstName"); writer.String(username);
+    writer.String("lastName"); writer.String(username);
+    writer.String("username");  writer.String(username);
+    writer.String("email");     writer.String((username + std::string("@z4-autoreg.com")).c_str());
+    writer.String("password");  writer.String(password);
+    writer.String("birthday");  writer.String("1972-01-12");
+    writer.String("fingerprint");   writer.String("");
+    writer.EndObject();
+    
+    Http::postJson(_game->getModel()->getAuthServer().append("/register").c_str(), buffer.GetString(), callback);
 }
 
 void PokerApi::login(const char* username, const char* password, const CommandCallback& callback) {
@@ -431,5 +591,5 @@ void PokerApi::login(const char* username, const char* password, const CommandCa
     writer.String("password"); writer.String(password);
     writer.EndObject();
     
-    postJson(_game->getModel()->getAuthServer().append("/login").c_str(), buffer.GetString(), callback);
+    Http::postJson(_game->getModel()->getAuthServer().append("/login").c_str(), buffer.GetString(), callback);
 }

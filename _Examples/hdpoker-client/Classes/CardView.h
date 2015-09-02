@@ -8,14 +8,18 @@ public:
     virtual bool init() override;
     
     void setFace(const char *card);
+    const std::string& getFace() const;
+    
+    void setHighlightEnabled(bool enabled);
+    
     void showFace(bool twoDimensional = false);
-    void showBack();
+	void showBack(bool twoDimensional = false);
+    
+    // Shadow is here to abuse the setRotation3D override
+    void setIsShadow();
     
     virtual void setRotation3D(const cocos2d::Vec3& rotation) override;
-
     
-    void glow();
-    void unglow();
     void dim();
     void undim();
     
@@ -25,4 +29,9 @@ private:
     
     cocos2d::Sprite *_front;
     cocos2d::Sprite *_back;
+    cocos2d::Sprite *_highlight;
+    
+    std::string _face;
+    
+    bool _isShadow;
 };

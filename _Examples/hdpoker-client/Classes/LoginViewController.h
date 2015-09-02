@@ -24,7 +24,10 @@ private:
     
     void buildView();
     
+    void presentDashboard();
+    
     void performLogin();
+	void onRegistration();
     void connectToGame(const std::string& userID, const std::string& sessionID, const std::function<void(bool)>& callback);
     void showAlert(const char* message);
     

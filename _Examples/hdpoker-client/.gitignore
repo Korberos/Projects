@@ -18,7 +18,12 @@ proj.win32/Release.win32/
 cocos2d/build/build/cocos2d_libs.build/
 proj.ios_mac/build/hdpoker.build/Debug-iphonesimulator/
 
+proj.ios_mac/build/
+
 proj.ios_mac/hdpoker.xcodeproj/xcuserdata/
 proj.ios_mac/hdpoker.xcodeproj/project.xcworkspace/xcuserdata/
 proj.ios_mac/hdpoker.xcodeproj/xcuserdata/nous.xcuserdatad/
 proj.ios_mac/hdpoker iOS.ipa
+/proj.win32/game.aps
+
+Classes/Version.h

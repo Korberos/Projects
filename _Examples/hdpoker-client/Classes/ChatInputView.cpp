@@ -10,8 +10,7 @@ bool ChatInputView::init() {
         return false;
     }
     
-    auto message = EditBox::create(Size(473, 55), Scale9Sprite::create("sprites/textbox.png"));
-    message->setText("nous");
+    auto message = EditBox::create(Size(473, 55), Scale9Sprite::create("textbox.png"));
     message->setFontName(UniSansRegular);
     message->setFontSize(12);
     message->setFontColor(Color3B::WHITE);

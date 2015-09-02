@@ -3,9 +3,13 @@
 #include "cocos2d.h"
 #include "gui/CCScrollView/CCTableView.h"
 #include "VectorDataSource.h"
+#include "ui/UIScale9Sprite.h"
 #include "Shared.h"
+#include "Text.h"
+#include "Callback.h"
 
 using namespace cocos2d;
+using namespace cocos2d::ui;
 
 class GameController;
 
@@ -21,31 +25,27 @@ public:
 class ServerRowView : public cocos2d::extension::TableViewCell {
 public:
     static ServerRowView* create(cocos2d::extension::TableView* tableView) {
-        return ServerRowView::create();
+        auto row = ServerRowView::create();
+        row->buildView(tableView->getDataSource()->tableCellSizeForIndex(tableView, 0));
+        return row;
     }
 
-    virtual bool init() override {
-        if (!Node::init()) {
-            return false;
-        }
-        
-        auto background = Sprite::create("sprites/chat-bubble.png");
-        background->setScale(.5, .6);
+    void buildView(const cocos2d::Size& cellSize) {
+        auto background = Scale9Sprite::create("background-social-9.png");
         background->setAnchorPoint(Vec2(0, 0));
+        background->setPositionY(PT(3));
+        background->setContentSize(Size(cellSize.width, cellSize.height - PT(6)));
         addChild(background);
         
-        _name = cocos2d::Label::createWithTTF("", UniSansBold, 18);
-        _name->setPosition(Vec2(50, 15));
-        _name->setAnchorPoint(cocos2d::Vec2(0, 0));
+        _name = Text::create("", UniSansBold, 18);
+        _name->setPosition(Vec2(PT(50), cellSize.height / 2));
+        _name->setAnchorPoint(cocos2d::Vec2(0, .5));
         addChild(_name);
         
-        _toggled = Sprite::create("sprites/icon-select.png");
-        _toggled->setPosition(Vec2(15, 15));
-        _toggled->setAnchorPoint(Vec2(0, 0));
+        _toggled = Sprite::create("icon-select.png");
+        _toggled->setPosition(Vec2(PT(15), cellSize.height / 2));
         _toggled->setVisible(false);
         addChild(_toggled);
-        
-        return true;
     }
     
     void update(const Server& server) {
@@ -63,9 +63,9 @@ private:
     Sprite *_toggled;
 };
 
-class ServerSelectorViewController : public cocos2d::Node, public cocos2d::extension::TableViewDelegate {
+class ServerSelectorViewController : public cocos2d::Node, public cocos2d::extension::TableViewDelegate, public Trackable {
 public:
-    static ServerSelectorViewController* create(GameController* game);
+    static ServerSelectorViewController* create(GameController* game, const cocos2d::Size& size);
     
     const Server* getSelectedServer() const;
     void loadServerList();
@@ -73,7 +73,7 @@ public:
     
 private:
     CREATE_FUNC(ServerSelectorViewController);
-    void buildView();
+    void buildView(const cocos2d::Size& size);
     
     cocos2d::extension::TableView *_serverList;
     GameController *_game;

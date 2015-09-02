@@ -7,15 +7,23 @@ bool CardView::init() {
         return false;
     }
     
-    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("sprites/cards.plist");
+    setCascadeOpacityEnabled(true);
+    
+    _isShadow = false;
+    
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("cards.plist");
     
     _front = Sprite::create();
     _front->setVisible(false);
-    addChild(_front);
+    addChild(_front, 2);
     
-    _back = Sprite::create("sprites/card-back.png");
-    _back->setVisible(true);
-    addChild(_back);
+    _back = Sprite::create("card-back.png");
+    addChild(_back, 1);
+    
+    _highlight = Sprite::create("card-glow.png");
+    _highlight->setOpacity(200);
+    _highlight->setVisible(false);
+    addChild(_highlight, 0);
     
     setFace("As");
     _showBack();
@@ -23,12 +31,18 @@ bool CardView::init() {
     return true;
 }
 
+const std::string& CardView::getFace() const {
+    return _face;
+}
+
 void CardView::setFace(const char *card) {
+    _face = card;
+    
     auto showing = _front->isVisible();
     _front->removeFromParent();
     _front = Sprite::createWithSpriteFrameName(card);
     _front->setFlippedX(true);
-    addChild(_front);
+    addChild(_front, 2);
     
     showing ? _showFace() : _showBack();
 }
@@ -44,8 +58,15 @@ void CardView::showFace(bool twoDimensional) {
     else setRotation3D(Vec3(0, 180, 0));
 }
 
-void CardView::showBack() {
-    setRotation3D(Vec3(0, 0, 0));
+void CardView::showBack(bool twoDimensional) {
+	if (twoDimensional)
+	{
+		Mat4 mat;
+		setAdditionalTransform(&mat);
+		_showBack();
+		_front->setFlippedX(false);
+	}
+	else setRotation3D(Vec3(0, 0, 0));
 }
 
 void CardView::_showFace() {
@@ -58,25 +79,13 @@ void CardView::_showBack() {
     _back->setVisible(true);
 }
 
-void CardView::glow() {
-    //    // TODO add glows to sprite sheet
-    //    auto stencil = boost::make_shared<Sprite3D>();
-    //    //    stencil->setRotationX(-25);
-    //    stencil->initWithFile("sprites/glowborder.png");
-    //
-    //    auto glow = boost::shared_ptr<cocos::CCClippingNode>(cocos::CCClippingNode::create(stencil));
-    //    glow->setAlphaThreshold(.1);
-    //
-    //    auto highlight = boost::make_shared<cocos::CCSprite>();
-    //    highlight->initWithFile("sprites/glowhighlight.png");
-    //    highlight->setScale(2);
-    //    glow->addChild(highlight);
-    //
-    //    // TODO - cancel animation when highlight complete
-    //    highlight->runAction(boost::make_shared<cocos::CCRepeatForever>(boost::make_shared<cocos::CCRotateBy>(5, 360)));
+void CardView::setIsShadow() {
+    _isShadow = true;
+    _back->setColor(Color3B::BLACK);
 }
 
-void CardView::unglow() {
+void CardView::setHighlightEnabled(bool enabled) {
+    _highlight->setVisible(enabled);
 }
 
 void CardView::setRotation3D(const cocos2d::Vec3 &rotation) {
@@ -85,7 +94,7 @@ void CardView::setRotation3D(const cocos2d::Vec3 &rotation) {
     mat.rotateY(CC_DEGREES_TO_RADIANS(rotation.y));
     setAdditionalTransform(&mat);
     
-    if (rotation.y >= 90 && rotation.y <= 270) {
+    if (!_isShadow && rotation.y > 90 && rotation.y < 270) {
         _showFace();
     } else {
         _showBack();

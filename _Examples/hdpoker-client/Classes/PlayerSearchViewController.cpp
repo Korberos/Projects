@@ -21,25 +21,25 @@ void PlayerSearchViewController::editBoxReturn(EditBox* editBox) {
 }
 
 void PlayerSearchViewController::buildView() {
-    auto inset = Sprite::create("sprites/background-search-insert.png");
+    auto inset = Sprite::create("background-search-insert.png");
     inset->setPosition(Vec2(0, 490));
     inset->setAnchorPoint(Vec2::ZERO);
     addChild(inset);
     
-    auto searchBox = EditBox::create(Size(300, 55), Scale9Sprite::create("sprites/background-textbox.png"));
+    auto searchBox = EditBox::create(Size(300, 55), Scale9Sprite::create("background-textbox.png"));
     searchBox->setPosition(Vec2(15, 500));
     searchBox->setAnchorPoint(Vec2::ZERO);
     searchBox->setFontName(UniSansRegular);
     searchBox->setFontSize(18);
     searchBox->setFontColor(Color3B::BLACK);
     searchBox->setMaxLength(40);
-    searchBox->setReturnType(EditBox::KeyboardReturnType::DONE);
+    searchBox->setReturnType(EditBox::KeyboardReturnType::SEARCH);
     searchBox->setInputMode(EditBox::InputMode::SINGLE_LINE);
     searchBox->setDelegate(this);
     addChild(searchBox);
     
-    auto searchButton = Button::create("sprites/button-search.png", "");
-    searchButton->setZoomScale(-.05);
+    auto searchButton = Button::create("button-search.png", "");
+    searchButton->setZoomScale(-0.05f);
     searchButton->setPosition(Vec2(searchBox->getPositionX() + searchBox->getContentSize().width + 25, searchBox->getPositionY()));
     searchButton->setAnchorPoint(Vec2::ZERO);
     searchButton->addClickEventListener([=](Ref*) {
@@ -50,8 +50,8 @@ void PlayerSearchViewController::buildView() {
                 
                 if (message->isSuccess()) {
                     auto &players = message->getData()["result"]["players"];
-                    for (auto i = 0; i < players.Size(); i++) {
-                        
+					int numPlayers = static_cast<int>(players.Size());
+                    for (auto i = 0; i < numPlayers; i++) {                        
                         PlayerSearchResult player;
                         player.isAdded = players[i]["invited"].GetBool();
                         player.name = players[i]["name"].GetString();
@@ -69,7 +69,7 @@ void PlayerSearchViewController::buildView() {
     });
     addChild(searchButton);
     
-    _playerResults = SearchResultsTableView::create(Size(432, 480), _game->getApi());
+    _playerResults = SearchResultsTableView::create(Size(432, 480), _game);
     _playerResults->setDataSource(&_dataSource);
     _playerResults->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
     _playerResults->setDelegate(this);

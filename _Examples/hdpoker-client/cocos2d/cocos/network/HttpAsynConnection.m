@@ -24,6 +24,8 @@
 
 #import "HttpAsynConnection.h"
 
+// #define SHOW_HTTP_LOGS
+
 @interface HttpAsynConnection ()
 
 @property (readwrite) NSString *statusString;
@@ -61,7 +63,9 @@
 
 - (void) startRequest:(NSURLRequest *)request
 {
+    #ifdef SHOW_HTTP_LOGS
     NSLog(@"Starting to load %@", srcURL);
+    #endif
     finish = false;
 
     self.responseData = [NSMutableData data];
@@ -90,7 +94,9 @@
  **/
 - (void) connection:(NSURLConnection *)connection 
  didReceiveResponse:(NSURLResponse *)response {
+    #ifdef SHOW_HTTP_LOGS
     NSLog(@"Received response from request to url %@", srcURL);
+    #endif
     
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     //NSLog(@"All headers = %@", [httpResponse allHeaderFields]);

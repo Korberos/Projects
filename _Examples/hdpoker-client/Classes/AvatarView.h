@@ -3,28 +3,38 @@
 #include "cocos2d.h"
 #include <vector>
 #include "Downloader.h"
+#include "AvatarCache.h"
+#include "Callback.h"
 
-class PokerApi;
+class GameController;
 
-class AvatarView : public cocos2d::Node {
+class AvatarView : public cocos2d::Node, public Trackable {
 public:
     CREATE_FUNC(AvatarView);
+    AvatarView();
     ~AvatarView();
     
-    struct Item {
-        std::string type;
-        unsigned int color;
-        unsigned int id;
-        int zIndex;
-    };
-    void loadAvatar(int rotation, const std::vector<Item>& items);
+    typedef Callback<void()> ReadyCallback;
+    typedef Signal<void()> ReadySignal;
     
-    void loadAvatar(PokerApi *api, const std::string& avatarId, int rotation);
+    void addReadyHandler(const ReadyCallback& callback);
     
-    void clearAvatar();
+    void loadAvatar(const AvatarCache::AvatarItems& items, int rotation);
+    void loadAvatar(GameController *api, const std::string& avatarId, int rotation);
+    
+    void bake(const cocos2d::Rect& rect, float scale);
+    void bakePortrait();
+    
+    void stopAndClearAvatar();
     
 private:
-    void cancelOutstandingWork();
-    std::vector<CancellationToken> _cancelTokens;
+    void ensureNotBaked();
     
+    std::vector<CancelationToken> _requests;
+    
+    cocos2d::RenderTexture* _bakeSprite;
+    
+    bool _isBaked;
+    int _loadCount;
+    ReadySignal _readySignal;
 };

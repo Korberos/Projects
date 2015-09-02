@@ -18,12 +18,14 @@ bool ActionButtonsView::init() {
     // Expected parent is anchored bottom right of display
     
     _raiseSlider = RaiseSliderView::create();
+    _raiseSlider->setPosition(Vec2(10, -25));
     _raiseSlider->setVisible(false);
     
-    _commit = Button::create("sprites/slider-button-commit.png", "");
+    _commit = Button::create("slider-button-commit.png", "");
 
     // Load all the buttons
-    _raise = Button::create("sprites/button-raise.png", "");
+    _raise = Button::create("button-raise.png", "");
+    _raise->setZoomScale(0);
     _raise->setOpacity(0);
     _raise->setAnchorPoint(Vec2(1, 0));
     _raise->addClickEventListener([=](Ref*) {
@@ -32,7 +34,8 @@ bool ActionButtonsView::init() {
     });
     addChild(_raise);
     
-    _check = Button::create("sprites/button-check.png", "");
+    _check = Button::create("button-check.png", "");
+    _check->setZoomScale(0);
     _check->setOpacity(0);
     _check->setAnchorPoint(Vec2(1, 0));
     _check->setPosition(Vec2(-_raise->getContentSize().width, 0));
@@ -43,7 +46,8 @@ bool ActionButtonsView::init() {
     });
     addChild(_check);
     
-    _call = Button::create("sprites/button-call.png", "");
+    _call = Button::create("button-call.png", "");
+    _call->setZoomScale(0);
     _call->setOpacity(0);
     _call->setAnchorPoint(Vec2(1, 0));
     _call->setPosition(Vec2(-_raise->getContentSize().width, 0));
@@ -54,7 +58,8 @@ bool ActionButtonsView::init() {
     });
     addChild(_call);
     
-    _fold = Button::create("sprites/button-fold.png", "");
+    _fold = Button::create("button-fold.png", "");
+    _fold->setZoomScale(0);
     _fold->setOpacity(0);
     _fold->setAnchorPoint(Vec2(1, 0));
     _fold->setPosition(Vec2(_call->getPosition().x - _call->getContentSize().width, 0));
@@ -66,6 +71,7 @@ bool ActionButtonsView::init() {
     addChild(_fold);
     
     _commit->setVisible(false);
+    _commit->setZoomScale(0);
     _commit->setAnchorPoint(Vec2(1, 0));
     _commit->addClickEventListener([=](Ref*) {
         _commit->setVisible(false);
@@ -78,7 +84,7 @@ bool ActionButtonsView::init() {
     
     // Preselects
     
-    _preselectCallAny = CheckBox::create("sprites/button-preselect-callany-off.png", "sprites/button-preselect-callany-on.png");
+    _preselectCallAny = CheckBox::create("button-preselect-callany-off.png", "button-preselect-callany-on.png");
     _preselectCallAny->setZoomScale(0);
     _preselectCallAny->setAnchorPoint(Vec2(1, 0));
     _preselectCallAny->setOpacity(0);
@@ -89,7 +95,7 @@ bool ActionButtonsView::init() {
     });
     addChild(_preselectCallAny);
     
-    _preselectCall = CheckBox::create("sprites/button-preselect-call-off.png", "sprites/button-preselect-call-on.png");
+    _preselectCall = CheckBox::create("button-preselect-call-off.png", "button-preselect-call-on.png");
     _preselectCall->setZoomScale(0);
     _preselectCall->setAnchorPoint(Vec2(1, 0));
     _preselectCall->setPosition(Vec2(-_preselectCallAny->getContentSize().width, 0));
@@ -102,7 +108,7 @@ bool ActionButtonsView::init() {
     addChild(_preselectCall);
     
     // TODO Need asset
-    _preselectCheck = CheckBox::create("sprites/button-preselect-call-off.png", "sprites/button-preselect-call-on.png");
+    _preselectCheck = CheckBox::create("button-preselect-call-off.png", "button-preselect-call-on.png");
     _preselectCheck->setZoomScale(0);
     _preselectCheck->setAnchorPoint(Vec2(1, 0));
     _preselectCheck->setPosition(Vec2(-_preselectCallAny->getContentSize().width, 0));
@@ -114,7 +120,7 @@ bool ActionButtonsView::init() {
     });
     addChild(_preselectCheck);
     
-    _preselectCheckFold = CheckBox::create("sprites/button-preselect-fold-off.png", "sprites/button-preselect-fold-on.png");
+    _preselectCheckFold = CheckBox::create("button-preselect-fold-off.png", "button-preselect-fold-on.png");
     _preselectCheckFold->setZoomScale(0);
     _preselectCheckFold->setAnchorPoint(Vec2(1, 0));
     _preselectCheckFold->setPosition(Vec2(_preselectCall->getPosition().x - _preselectCall->getContentSize().width, 0));
@@ -167,8 +173,8 @@ void ActionButtonsView::setActionCallback(const ActionCallback &callback) {
     _callback = callback;
 }
 
-void ActionButtonsView::showActions(bool canCall, bool canBet, bool canRaise, int64_t minRaiseBet, int64_t maxRaiseBet, int64_t sliderPot) {
-    _raiseSlider->update(minRaiseBet, maxRaiseBet);
+void ActionButtonsView::showActions(bool canCall, bool canBet, bool canRaise, int64_t minRaiseBet, int64_t maxRaiseBet, int64_t pot) {
+    _raiseSlider->update(minRaiseBet, maxRaiseBet, pot);
     
     canBet = canBet ? true : canRaise;
     
@@ -189,10 +195,10 @@ void ActionButtonsView::showActions(bool canCall, bool canBet, bool canRaise, in
     _check->setPosition(Vec2(_check->getPositionX(), -buttonHeight));
     _fold->setPosition(Vec2(_fold->getPositionX(), -buttonHeight));
     
-    _raise->runAction(Sequence::create(MoveBy::create(.3, Vec2(0, buttonHeight + 20)), MoveBy::create(.1, Vec2(0, -20)), nullptr));
-    _call->runAction(Sequence::create(DelayTime::create(.1), MoveBy::create(.3, Vec2(0, buttonHeight + 20)), MoveBy::create(.1, Vec2(0, -20)), nullptr));
-    _check->runAction(Sequence::create(DelayTime::create(.1), MoveBy::create(.3, Vec2(0, buttonHeight + 20)), MoveBy::create(.1, Vec2(0, -20)), nullptr));
-    _fold->runAction(Sequence::create(DelayTime::create(.2), MoveBy::create(.3, Vec2(0, buttonHeight + 20)), MoveBy::create(.1, Vec2(0, -20)), nullptr));
+    _raise->runAction(Sequence::create(MoveBy::create(0.3f, Vec2(0, buttonHeight + 20)), MoveBy::create(0.1f, Vec2(0, -20)), nullptr));
+    _call->runAction(Sequence::create(DelayTime::create(0.1f), MoveBy::create(0.3f, Vec2(0, buttonHeight + 20)), MoveBy::create(0.1f, Vec2(0, -20)), nullptr));
+    _check->runAction(Sequence::create(DelayTime::create(0.1f), MoveBy::create(0.3f, Vec2(0, buttonHeight + 20)), MoveBy::create(0.1f, Vec2(0, -20)), nullptr));
+    _fold->runAction(Sequence::create(DelayTime::create(0.2f), MoveBy::create(0.3f, Vec2(0, buttonHeight + 20)), MoveBy::create(0.1f, Vec2(0, -20)), nullptr));
 }
 
 void ActionButtonsView::hideActions() {
@@ -218,10 +224,10 @@ void ActionButtonsView::hideActions() {
     }
     _fold->setOpacity(127);
     
-    _raise->runAction(Sequence::create(MoveBy::create(.3, Vec2(0, 20)), MoveBy::create(.5, Vec2(0, -buttonHeight)), nullptr));
-    _call->runAction(Sequence::create(DelayTime::create(.1), MoveBy::create(.3, Vec2(0, 20)), MoveBy::create(.5, Vec2(0, -buttonHeight)), nullptr));
-    _check->runAction(Sequence::create(DelayTime::create(.1), MoveBy::create(.3, Vec2(0, 20)), MoveBy::create(.5, Vec2(0, -buttonHeight)), nullptr));
-    _fold->runAction(Sequence::create(DelayTime::create(.2), MoveBy::create(.3, Vec2(0, 20)), MoveBy::create(.5, Vec2(0, -buttonHeight)), nullptr));
+    _raise->runAction(Sequence::create(MoveBy::create(0.3f, Vec2(0, 20)), MoveBy::create(0.5f, Vec2(0, -buttonHeight)), nullptr));
+    _call->runAction(Sequence::create(DelayTime::create(0.1f), MoveBy::create(0.3f, Vec2(0, 20)), MoveBy::create(0.5f, Vec2(0, -buttonHeight)), nullptr));
+    _check->runAction(Sequence::create(DelayTime::create(0.1f), MoveBy::create(0.3f, Vec2(0, 20)), MoveBy::create(0.5f, Vec2(0, -buttonHeight)), nullptr));
+    _fold->runAction(Sequence::create(DelayTime::create(0.2f), MoveBy::create(0.3f, Vec2(0, 20)), MoveBy::create(0.5f, Vec2(0, -buttonHeight)), nullptr));
 }
 
 void ActionButtonsView::showPreselects(bool canCall, int64_t chips) {
@@ -247,10 +253,10 @@ void ActionButtonsView::showPreselects(bool canCall, int64_t chips) {
     _preselectCheck->setPosition(Vec2(_preselectCheck->getPositionX(), -buttonHeight));
     _preselectCheckFold->setPosition(Vec2(_preselectCheckFold->getPositionX(), -buttonHeight));
     
-    _preselectCallAny->runAction(Sequence::create(MoveBy::create(.3, Vec2(0, buttonHeight + 20)), MoveBy::create(.1, Vec2(0, -20)), nullptr));
-    _preselectCall->runAction(Sequence::create(DelayTime::create(.1), MoveBy::create(.3, Vec2(0, buttonHeight + 20)), MoveBy::create(.1, Vec2(0, -20)), nullptr));
-    _preselectCheck->runAction(Sequence::create(DelayTime::create(.1), MoveBy::create(.3, Vec2(0, buttonHeight + 20)), MoveBy::create(.1, Vec2(0, -20)), nullptr));
-    _preselectCheckFold->runAction(Sequence::create(DelayTime::create(.2), MoveBy::create(.3, Vec2(0, buttonHeight + 20)), MoveBy::create(.1, Vec2(0, -20)), nullptr));
+    _preselectCallAny->runAction(Sequence::create(MoveBy::create(0.3f, Vec2(0, buttonHeight + 20)), MoveBy::create(0.1f, Vec2(0, -20)), nullptr));
+    _preselectCall->runAction(Sequence::create(DelayTime::create(0.1f), MoveBy::create(0.3f, Vec2(0, buttonHeight + 20)), MoveBy::create(0.1f, Vec2(0, -20)), nullptr));
+    _preselectCheck->runAction(Sequence::create(DelayTime::create(0.1f), MoveBy::create(0.3f, Vec2(0, buttonHeight + 20)), MoveBy::create(0.1f, Vec2(0, -20)), nullptr));
+    _preselectCheckFold->runAction(Sequence::create(DelayTime::create(0.2f), MoveBy::create(0.3f, Vec2(0, buttonHeight + 20)), MoveBy::create(0.1f, Vec2(0, -20)), nullptr));
 }
 
 void ActionButtonsView::hidePreselects() {

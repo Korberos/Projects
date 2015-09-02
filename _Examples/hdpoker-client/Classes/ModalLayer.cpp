@@ -2,12 +2,15 @@
 
 using namespace cocos2d;
 
+ModalLayer::ModalLayer(const cocos2d::Color4B& modalColor) : _modalColor(modalColor)
+{}
+
 ModalLayer::~ModalLayer() {
     Director::getInstance()->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 bool ModalLayer::init() {
-    if (!Layer::init()) {
+    if (!LayerColor::initWithColor(_modalColor)) {
         return false;
     }
     

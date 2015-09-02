@@ -9,7 +9,7 @@ bool LoadingView::init() {
     }
     
     // Just an image for the moment
-    auto background = Sprite::create("sprites/loading.jpg");
+    auto background = Sprite::create("loading.jpg");
     coverFill(background, getContentSize());
     addChild(background);
     
