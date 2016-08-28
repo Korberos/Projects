@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\OpenAL">
+      <UniqueIdentifier>{3d3d3127-9e37-4718-8317-f5acbc466289}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\OpenAL\Background">
+      <UniqueIdentifier>{0161c211-24a3-4ae4-90d9-ffe9a011e1ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\OpenAL\SimpleAudioLib">
+      <UniqueIdentifier>{0c696b1b-d4aa-4e86-b4d0-731633636aff}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="OpenAL\al.h">
+      <Filter>Header Files\OpenAL\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenAL\alc.h">
+      <Filter>Header Files\OpenAL\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenAL\aldlist.h">
+      <Filter>Header Files\OpenAL\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenAL\CWaves.h">
+      <Filter>Header Files\OpenAL\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenAL\efx.h">
+      <Filter>Header Files\OpenAL\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenAL\efx-creative.h">
+      <Filter>Header Files\OpenAL\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenAL\EFX-Util.h">
+      <Filter>Header Files\OpenAL\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenAL\Framework.h">
+      <Filter>Header Files\OpenAL\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenAL\LoadOAL.h">
+      <Filter>Header Files\OpenAL\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenAL\xram.h">
+      <Filter>Header Files\OpenAL\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleAudioLib\AudioEntity.h">
+      <Filter>Header Files\OpenAL\SimpleAudioLib</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleAudioLib\BaseMessageException.h">
+      <Filter>Header Files\OpenAL\SimpleAudioLib</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleAudioLib\CoreSystem.h">
+      <Filter>Header Files\OpenAL\SimpleAudioLib</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleAudioLib\CorruptedFileException.h">
+      <Filter>Header Files\OpenAL\SimpleAudioLib</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleAudioLib\InvalidPathException.h">
+      <Filter>Header Files\OpenAL\SimpleAudioLib</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleAudioLib\NoContextException.h">
+      <Filter>Header Files\OpenAL\SimpleAudioLib</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleAudioLib\NoDeviceException.h">
+      <Filter>Header Files\OpenAL\SimpleAudioLib</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="OpenAL\aldlist.cpp">
+      <Filter>Header Files\OpenAL\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenAL\CWaves.cpp">
+      <Filter>Header Files\OpenAL\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenAL\Framework.cpp">
+      <Filter>Header Files\OpenAL\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenAL\LoadOAL.cpp">
+      <Filter>Header Files\OpenAL\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleAudioLib\BaseMessageException.cpp">
+      <Filter>Header Files\OpenAL\SimpleAudioLib</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleAudioLib\CoreSystem.cpp">
+      <Filter>Header Files\OpenAL\SimpleAudioLib</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleAudioLib\AudioEntity.cpp">
+      <Filter>Header Files\OpenAL\SimpleAudioLib</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenAL_WAVs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
