@@ -30,6 +30,8 @@
 #if USING_SDL_MIXER
 #endif
 
+#include "OpenGL\GLFrame.h"
+
 #include <stdio.h>
 #include <string>
 
@@ -41,6 +43,11 @@ SDL_GLContext g_Context;
 
 //  Render flag
 bool gRender3D = true;
+
+//  GLFrame Camera
+GLFrame			Camera;
+
+int testVar = 0;
 
 //  Screen dimension constants
 const int SCREEN_WIDTH = 640;
@@ -141,6 +148,18 @@ bool Initialize()
 	return true;
 }
 
+void ResizeWindow(void)
+{
+	glViewport(0, 0, GLsizei(SCREEN_WIDTH), GLsizei(SCREEN_WIDTH));
+
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(45.0f, GLdouble(SCREEN_WIDTH) / GLdouble(SCREEN_WIDTH), 0.1f, 100.0f);
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+}
+
 void CloseProgram()
 {
 	//  Destroy the window	
@@ -148,6 +167,9 @@ void CloseProgram()
 	g_Window = nullptr;
 
 	//  Quit all SDL sub-systems
+#if USING_SDL_IMAGE
+	IMG_Quit();
+#endif
 	SDL_Quit();
 }
 
@@ -172,7 +194,7 @@ void RenderScreen()
 	gluPerspective(45.0, GLdouble(SCREEN_WIDTH) / GLdouble(SCREEN_HEIGHT), 1.0, 200.0);
 
 	//  Render the 3D quad if the bool is set to true
-	if (gRender3D)
+	if (testVar == 1 || testVar == 3)
 	{
 		glBegin(GL_QUADS);
 		glVertex3f(-0.7f, -1.5f, -50.0f);
@@ -189,21 +211,10 @@ void RenderScreen()
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	//  Render the 3D quad if the bool is set to true
-	if (gRender3D)
-	{
-		glBegin(GL_QUADS);
-		glVertex3f(-0.7f, -1.5f, -5.0f);
-		glVertex3f(0.7f, -1.5f, -5.0f);
-		glVertex3f(0.4f, -0.5f, -5.0f);
-		glVertex3f(-0.4f, -0.5f, -5.0f);
-		glEnd();
-	}
-
 	glDisable(GL_DEPTH_TEST);
 
 	//  Render the 2D quad if the bool is set to true
-	if (!gRender3D)
+	if (testVar == 2 || testVar == 3)
 	{
 		glBegin(GL_QUADS);
 		glVertex2f(100.0f, 100.0f);
@@ -250,6 +261,26 @@ int main(int argc, char* args[])
 				SDL_GetMouseState(&x, &y);
 				HandleInput(e.text.text[0], x, y);
 			}
+		}
+
+		//Set texture based on current keystate
+		testVar = 0;
+		const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
+		if (currentKeyStates[SDL_SCANCODE_UP])
+		{
+			testVar = 1;
+		}
+		else if (currentKeyStates[SDL_SCANCODE_DOWN])
+		{
+			testVar = 2;
+		}
+		else if (currentKeyStates[SDL_SCANCODE_LEFT])
+		{
+			testVar = 3;
+		}
+		else if (currentKeyStates[SDL_SCANCODE_RIGHT])
+		{
+			testVar = 4;
 		}
 
 		//Render quad
