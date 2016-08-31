@@ -1,5 +1,5 @@
 #define USING_SDL			true
-#define USING_SDL_IMAGE		false
+#define USING_SDL_IMAGE		true
 #define	USING_OPENGL		true
 #define	USING_GLU			true
 #define USING_SDL_TTF		false
@@ -12,6 +12,8 @@
 #endif
 
 #if USING_SDL_IMAGE
+	#include "SDL2\SDL_image.h"
+	#pragma comment(lib, "SDL2/SDL2_image.lib")
 #endif
 
 #if USING_OPENGL
@@ -30,28 +32,199 @@
 #if USING_SDL_MIXER
 #endif
 
-#include "OpenGL\GLFrame.h"
-
 #include <stdio.h>
 #include <string>
 
-//  The window we'll be rendering to
-SDL_Window* g_Window = nullptr;
 
-//  OpenGL context
-SDL_GLContext g_Context;
+#if USING_SDL
+	//  The window we'll be rendering to
+	SDL_Window* g_Window = nullptr;
+
+	//  OpenGL context
+	SDL_GLContext g_Context;
+
+	//The window renderer
+	SDL_Renderer* g_Renderer = NULL;
+#endif
+
+class LTexture
+{
+public:
+	//Initializes variables
+	LTexture()
+	{
+		//Initialize
+		mTexture = NULL;
+		mWidth = 0;
+		mHeight = 0;
+	}
+
+	//Deallocates memory
+	~LTexture()
+	{
+		//Deallocate
+		free();
+	}
+
+	//Loads image at specified path
+	bool loadFromFile(std::string path)
+	{
+		//Get rid of preexisting texture
+		free();
+
+		//The final texture
+		mTexture = NULL;
+
+		//Load image at specified path
+		SDL_Surface* loadedSurface = IMG_Load(path.c_str());
+		if (loadedSurface == NULL)
+		{
+			printf("Unable to load image %s! SDL_image Error: %s\n", path.c_str(), IMG_GetError());
+			return false;
+		}
+		else
+		{
+			//  Color key image
+			SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 0, 0xFF, 0xFF));
+
+			//  Create texture from surface pixels
+			mTexture = SDL_CreateTextureFromSurface(g_Renderer, loadedSurface);
+			if (mTexture == NULL)
+			{
+				printf("Unable to create texture from %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
+				return false;
+			}
+			else
+			{
+				//  Get image dimensions
+				mWidth = loadedSurface->w;
+				mHeight = loadedSurface->h;
+			}
+
+			glGenTextures(1, &mTextureID);
+			glBindTexture(GL_TEXTURE_2D, mTextureID);
+
+			int mode = (loadedSurface->format->BytesPerPixel == 4) ? GL_RGBA : GL_RGB;
+			
+			glTexImage2D(GL_TEXTURE_2D, 0, mode, loadedSurface->w, loadedSurface->h, 0, mode, GL_UNSIGNED_BYTE, loadedSurface->pixels);
+
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+			//  Get rid of the old loaded surface
+			SDL_FreeSurface(loadedSurface);
+		}
+
+		//  Return success
+		return mTexture != NULL;
+	}
+
+	//  Deallocates texture
+	void free()
+	{
+		//Free texture if it exists
+		if (mTexture != NULL)
+		{
+			SDL_DestroyTexture(mTexture);
+			mTexture = NULL;
+			mWidth = 0;
+			mHeight = 0;
+		}
+	}
+
+	//Set color modulation
+	void setColor(Uint8 red, Uint8 green, Uint8 blue)
+	{
+		//Modulate texture
+		SDL_SetTextureColorMod(mTexture, red, green, blue);
+	}
+
+	//Renders texture at given point
+	void render(int x, int y, SDL_Rect* clip = NULL)
+	{
+		//Set rendering space and render to screen
+		SDL_Rect renderQuad = { x, y, mWidth, mHeight };
+
+		//Set clip rendering dimensions
+		if (clip != NULL)
+		{
+			renderQuad.w = clip->w;
+			renderQuad.h = clip->h;
+		}
+
+		//Render to screen
+		SDL_RenderCopy(g_Renderer, mTexture, clip, &renderQuad);
+	}
+
+	void renderOpenGL(float x, float y)
+	{
+		glBindTexture(GL_TEXTURE_2D, mTextureID);
+
+		// For Ortho mode, of course
+		float Width = 100;
+		float Height = 100;
+
+		glBegin(GL_QUADS);
+			glTexCoord2f(0.0f, 0.0f); glVertex3f(x, y, 0);
+			glTexCoord2f(1.0f, 0.0f); glVertex3f(x + Width, y, 0);
+			glTexCoord2f(1.0f, 1.0f); glVertex3f(x + Width, y + Height, 0);
+			glTexCoord2f(0.0f, 1.0f); glVertex3f(x, y + Height, 0);
+		glEnd();
+	}
+
+	//Gets image dimensions
+	int getWidth() { return mWidth; }
+	int getHeight() { return mHeight; }
+
+private:
+	//The actual hardware texture
+	SDL_Texture* mTexture;
+	GLuint mTextureID;
+
+	//Image dimensions
+	int mWidth;
+	int mHeight;
+};
+
+//Scene texture
+LTexture g_TestTexture1;
+LTexture g_TestTexture2;
 
 //  Render flag
 bool gRender3D = true;
 
-//  GLFrame Camera
-GLFrame			Camera;
-
-int testVar = 0;
+int testVarFlag = 0;
 
 //  Screen dimension constants
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
+
+SDL_Texture* loadTexture(std::string path)
+{
+	//The final texture
+	SDL_Texture* newTexture = NULL;
+
+	//Load image at specified path
+	SDL_Surface* loadedSurface = IMG_Load(path.c_str());
+	if (loadedSurface == NULL)
+	{
+		printf("Unable to load image %s! SDL_image Error: %s\n", path.c_str(), IMG_GetError());
+	}
+	else
+	{
+		//Create texture from surface pixels
+		newTexture = SDL_CreateTextureFromSurface(g_Renderer, loadedSurface);
+		if (newTexture == NULL)
+		{
+			printf("Unable to create texture from %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
+		}
+
+		//Get rid of old loaded surface
+		SDL_FreeSurface(loadedSurface);
+	}
+
+	return newTexture;
+}
 
 bool InitializeOpenGL()
 {
@@ -93,6 +266,10 @@ bool InitializeOpenGL()
 		success = false;
 	}
 
+	glEnable(GL_TEXTURE_2D);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 	return success;
 }
 
@@ -116,12 +293,39 @@ bool Initialize()
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
 
+	//  Set the texture filtering to linear
+	if (!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1"))
+	{
+		printf("Warning: Linear texture filtering not enabled!");
+	}
+
 	//  Create the window
 	g_Window = SDL_CreateWindow("SDL Test", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
 	if (g_Window == nullptr)
 	{
 		printf("Window could not be created! SDL Error: %s\n", SDL_GetError());
 		return false;
+	}
+
+	//Create renderer for window
+	g_Renderer = SDL_CreateRenderer(g_Window, -1, SDL_RENDERER_ACCELERATED);
+	if (g_Renderer == NULL)
+	{
+		printf("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
+		success = false;
+	}
+	else
+	{
+		//Initialize renderer color
+		SDL_SetRenderDrawColor(g_Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+
+		//Initialize PNG loading
+		int imgFlags = IMG_INIT_PNG;
+		if (!(IMG_Init(imgFlags) & imgFlags))
+		{
+			printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
+			success = false;
+		}
 	}
 
 	//Create context
@@ -162,23 +366,43 @@ void ResizeWindow(void)
 
 void CloseProgram()
 {
+	//  Quit all SDL sub-systems
+	#if USING_SDL_IMAGE
+		IMG_Quit();
+	#endif
+
+#if USING_SDL
 	//  Destroy the window	
 	SDL_DestroyWindow(g_Window);
 	g_Window = nullptr;
 
-	//  Quit all SDL sub-systems
-#if USING_SDL_IMAGE
-	IMG_Quit();
-#endif
+	g_Renderer = nullptr;
+
 	SDL_Quit();
+#endif
 }
 
-void HandleInput(unsigned char key, int x, int y)
+void HandleTextInput(unsigned char key, int x, int y)
 {
 	//  Toggle quad rendering
 	if (key == 'q')
 	{
 		gRender3D = !gRender3D;
+	}
+}
+
+void HandleInput()
+{
+	//Set texture based on current keystate
+	testVarFlag = 0;
+	const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
+	if (currentKeyStates[SDL_SCANCODE_UP])
+	{
+		testVarFlag |= 1;
+	}
+	if (currentKeyStates[SDL_SCANCODE_DOWN])
+	{
+		testVarFlag |= 2;
 	}
 }
 
@@ -194,7 +418,7 @@ void RenderScreen()
 	gluPerspective(45.0, GLdouble(SCREEN_WIDTH) / GLdouble(SCREEN_HEIGHT), 1.0, 200.0);
 
 	//  Render the 3D quad if the bool is set to true
-	if (testVar == 1 || testVar == 3)
+	if (!(testVarFlag & 1))
 	{
 		glBegin(GL_QUADS);
 		glVertex3f(-0.7f, -1.5f, -50.0f);
@@ -214,7 +438,7 @@ void RenderScreen()
 	glDisable(GL_DEPTH_TEST);
 
 	//  Render the 2D quad if the bool is set to true
-	if (testVar == 2 || testVar == 3)
+	if (!(testVarFlag & 2))
 	{
 		glBegin(GL_QUADS);
 		glVertex2f(100.0f, 100.0f);
@@ -222,6 +446,9 @@ void RenderScreen()
 		glVertex2f(200.0f, 200.0f);
 		glVertex2f(100.0f, 200.0f);
 		glEnd();
+
+		g_TestTexture1.renderOpenGL(250.0f, 100.0f);
+		g_TestTexture2.renderOpenGL(400.0f, 100.0f);
 	}
 }
 
@@ -232,6 +459,20 @@ int main(int argc, char* args[])
 	{
 		CloseProgram();
 		return 1;
+	}
+
+	//  Load texture
+	if (!g_TestTexture1.loadFromFile("loaded1.png"))
+	{
+		printf("Failed to load texture!\n");
+		return 2;
+	}
+
+	//  Load texture
+	if (!g_TestTexture2.loadFromFile("loaded2.png"))
+	{
+		printf("Failed to load texture!\n");
+		return 3;
 	}
 
 	//  The event handler
@@ -259,29 +500,11 @@ int main(int argc, char* args[])
 			{
 				auto x = 0, y = 0;
 				SDL_GetMouseState(&x, &y);
-				HandleInput(e.text.text[0], x, y);
+				HandleTextInput(e.text.text[0], x, y);
 			}
 		}
 
-		//Set texture based on current keystate
-		testVar = 0;
-		const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
-		if (currentKeyStates[SDL_SCANCODE_UP])
-		{
-			testVar = 1;
-		}
-		else if (currentKeyStates[SDL_SCANCODE_DOWN])
-		{
-			testVar = 2;
-		}
-		else if (currentKeyStates[SDL_SCANCODE_LEFT])
-		{
-			testVar = 3;
-		}
-		else if (currentKeyStates[SDL_SCANCODE_RIGHT])
-		{
-			testVar = 4;
-		}
+		HandleInput();
 
 		//Render quad
 		RenderScreen();
@@ -290,10 +513,13 @@ int main(int argc, char* args[])
 		SDL_GL_SwapWindow(g_Window);
 	}
 
-	//Disable text input
+	g_TestTexture1.free();
+	g_TestTexture2.free();
+
+	//  Disable text input
 	SDL_StopTextInput();
 
-	//Free resources and close SDL
+	//  Free resources and close SDL
 	CloseProgram();
 
 	return 0;
