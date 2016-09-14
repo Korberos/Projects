@@ -1,1 +1,0 @@
-This example ws made to be downloaded and run without incident in Visual Studio. All library files needed are included.
