@@ -1,0 +1,11 @@
+<BinaryExportList>
+  <ExportList>
+    <int>7</int>
+    <short>23</short>
+    <char>250</char>
+    <float>1.5</float>
+    <double>1.5</double>
+    <string>test string!</string>
+  </ExportList>
+  <OutputFileName>test_output.bin</OutputFileName>
+</BinaryExportList>
