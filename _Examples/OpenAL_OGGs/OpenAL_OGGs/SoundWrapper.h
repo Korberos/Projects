@@ -122,7 +122,7 @@ private:
 
 	bool m_bVorbisInitialized;
 	std::map<int, SoundData*> soundDataList;
-	int m_bSoundPlayingCount;
+	int m_SoundPlayingCount;
 	int m_FirstIndex;
 };
 
@@ -293,7 +293,7 @@ bool SoundWrapper::playSoundFile(int soundIndex)
 		return false;
 	}
 
-	m_bSoundPlayingCount++;
+	m_SoundPlayingCount++;
 	soundData->m_SoundState = SoundData::SOUNDSTATE_PLAYING;
 
 	return true;
@@ -330,7 +330,7 @@ bool SoundWrapper::stopSoundFile(int soundIndex)
 	fn_ov_clear(&soundData->m_OggFile);
 
 	//  Decrement the sound playing count and return a success
-	m_bSoundPlayingCount--;
+	m_SoundPlayingCount--;
 	soundDataList.erase(soundIndex);
 	determineFirstIndex();
 	return true;
@@ -339,7 +339,7 @@ bool SoundWrapper::stopSoundFile(int soundIndex)
 
 bool SoundWrapper::isPlaying()
 {
-	return (m_bSoundPlayingCount > 0);
+	return (m_SoundPlayingCount > 0);
 }
 
 void SoundWrapper::Update()
@@ -369,7 +369,7 @@ void SoundWrapper::Shutdown()
 
 SoundWrapper::SoundWrapper() :
 	m_bVorbisInitialized(false),
-	m_bSoundPlayingCount(0),
+	m_SoundPlayingCount(0),
 	m_FirstIndex(0)
 {
 
