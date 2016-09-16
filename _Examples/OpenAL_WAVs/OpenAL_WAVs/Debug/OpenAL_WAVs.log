@@ -1,8 +1,0 @@
-﻿  OpenAL_WAVs.cpp
-c:\users\drew\documents\visual studio 2015\projects\openal_wavs\openal_wavs\simpleaudiolib\coresystem.h(85): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
-c:\users\drew\documents\visual studio 2015\projects\openal_wavs\openal_wavs\simpleaudiolib\coresystem.h(95): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
-c:\users\drew\documents\visual studio 2015\projects\openal_wavs\openal_wavs\simpleaudiolib\coresystem.h(166): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
-  Framework.cpp
-  Generating Code...
-  OpenAL_WAVs.vcxproj -> C:\Users\Drew\Documents\Visual Studio 2015\Projects\OpenAL_WAVs\Debug\OpenAL_WAVs.exe
-  OpenAL_WAVs.vcxproj -> C:\Users\Drew\Documents\Visual Studio 2015\Projects\OpenAL_WAVs\Debug\OpenAL_WAVs.pdb (Partial PDB)
