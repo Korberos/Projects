@@ -1,6 +1,9 @@
 #ifndef _ENGINE_
 #define _ENGINE_
 
+#define USING_OPENGL			true
+#define USING_GLU				true
+
 //  Include the external SFML libraries
 #if NDEBUG // If not in debug mode
 #pragma comment(lib,"sfml-system.lib")
@@ -12,8 +15,15 @@
 #pragma comment(lib,"sfml-graphics-d.lib")
 #endif
 
+#if USING_OPENGL
+#include <SDL_opengl.h>
 #pragma comment(lib, "opengl32.lib")
+#endif
+
+#if USING_GLU
+#include <GL/GLU.h>
 #pragma comment(lib, "glu32.lib")
+#endif
 
 #include <assert.h>
 #include <string>

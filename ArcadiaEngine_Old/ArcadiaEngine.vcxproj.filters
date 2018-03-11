@@ -20,9 +20,6 @@
     <Filter Include="Source Files\Engine\OpenGL">
       <UniqueIdentifier>{ef4b4e00-676e-4d3a-a1e2-96b325d03108}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Engine\SDL_image">
-      <UniqueIdentifier>{41720af2-0769-4782-bec1-e3615aec7cd7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Engine\WinsockWrapper">
       <UniqueIdentifier>{9dbc13f7-4339-4f4f-99f0-d3869d9c1940}</UniqueIdentifier>
     </Filter>
@@ -44,9 +41,6 @@
     </Filter>
     <Filter Include="Header Files\Engine\OpenGL">
       <UniqueIdentifier>{49f20dce-cfe4-4d65-8630-aaaea4b2d88b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Engine\SDL_image">
-      <UniqueIdentifier>{18059e9c-9756-4e11-931e-e9ac7e7e3b8a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Engine\WinsockWrapper">
       <UniqueIdentifier>{adad8fbc-2f52-4131-afbe-fddcc0464e99}</UniqueIdentifier>
@@ -88,9 +82,6 @@
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
     <ClCompile Include="Engine\SimpleLogger.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SQL_Wrapper.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
     <ClCompile Include="Engine\TextureController.cpp">
@@ -146,48 +137,6 @@
     </ClCompile>
     <ClCompile Include="Engine\OpenGL\math3d.cpp">
       <Filter>Source Files\Engine\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SDL_image\IMG.c">
-      <Filter>Source Files\Engine\SDL_image</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SDL_image\IMG_bmp.c">
-      <Filter>Source Files\Engine\SDL_image</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SDL_image\IMG_gif.c">
-      <Filter>Source Files\Engine\SDL_image</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SDL_image\IMG_jpg.c">
-      <Filter>Source Files\Engine\SDL_image</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SDL_image\IMG_lbm.c">
-      <Filter>Source Files\Engine\SDL_image</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SDL_image\IMG_pcx.c">
-      <Filter>Source Files\Engine\SDL_image</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SDL_image\IMG_png.c">
-      <Filter>Source Files\Engine\SDL_image</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SDL_image\IMG_pnm.c">
-      <Filter>Source Files\Engine\SDL_image</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SDL_image\IMG_tga.c">
-      <Filter>Source Files\Engine\SDL_image</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SDL_image\IMG_tif.c">
-      <Filter>Source Files\Engine\SDL_image</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SDL_image\IMG_xcf.c">
-      <Filter>Source Files\Engine\SDL_image</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SDL_image\IMG_xpm.c">
-      <Filter>Source Files\Engine\SDL_image</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SDL_image\IMG_xv.c">
-      <Filter>Source Files\Engine\SDL_image</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SDL_image\IMG_xxx.c">
-      <Filter>Source Files\Engine\SDL_image</Filter>
     </ClCompile>
     <ClCompile Include="Engine\WinsockWrapper\CBuffer.cpp">
       <Filter>Source Files\Engine\WinsockWrapper</Filter>
@@ -255,9 +204,6 @@
       <Filter>Header Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Sprite.h">
-      <Filter>Header Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\SQL_Wrapper.h">
       <Filter>Header Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="Engine\StringToValue.h">
@@ -331,21 +277,6 @@
     </ClInclude>
     <ClInclude Include="Engine\OpenGL\wglext.h">
       <Filter>Header Files\Engine\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\SDL_image\png.h">
-      <Filter>Header Files\Engine\SDL_image</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\SDL_image\pngconf.h">
-      <Filter>Header Files\Engine\SDL_image</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\SDL_image\SDL_image.h">
-      <Filter>Header Files\Engine\SDL_image</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\SDL_image\zconf.h">
-      <Filter>Header Files\Engine\SDL_image</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\SDL_image\zlib.h">
-      <Filter>Header Files\Engine\SDL_image</Filter>
     </ClInclude>
     <ClInclude Include="Engine\WinsockWrapper\CBuffer.h">
       <Filter>Header Files\Engine\WinsockWrapper</Filter>

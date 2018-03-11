@@ -44,15 +44,15 @@
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Drew\Documents\Visual Studio 2017\Libraries\SDL2-2.0.7\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Drew\Documents\Visual Studio 2017\Libraries\SDL2-2.0.7\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Drew\Documents\Visual Studio 2017\Libraries\SDL2-2.0.7\include;C:\Users\Drew\Documents\Visual Studio 2017\Libraries\SDL2_image\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Drew\Documents\Visual Studio 2017\Libraries\SDL2-2.0.7\lib\x86;C:\Users\Drew\Documents\Visual Studio 2017\Libraries\SDL2_image\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\Drew\Documents\Visual Studio 2017\Libraries\SDL2-2.0.7\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Drew\Documents\Visual Studio 2017\Libraries\SDL2-2.0.7\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Drew\Documents\Visual Studio 2017\Libraries\SDL2-2.0.7\include;C:\Users\Drew\Documents\Visual Studio 2017\Libraries\SDL2_image\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Drew\Documents\Visual Studio 2017\Libraries\SDL2-2.0.7\lib\x86;C:\Users\Drew\Documents\Visual Studio 2017\Libraries\SDL2_image\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -115,23 +115,8 @@
     <ClCompile Include="Engine\OpenGL\math3d.cpp" />
     <ClCompile Include="Engine\RandomNumbers.cpp" />
     <ClCompile Include="Engine\RenderablePrimitives.cpp" />
-    <ClCompile Include="Engine\SDL_image\IMG.c" />
-    <ClCompile Include="Engine\SDL_image\IMG_bmp.c" />
-    <ClCompile Include="Engine\SDL_image\IMG_gif.c" />
-    <ClCompile Include="Engine\SDL_image\IMG_jpg.c" />
-    <ClCompile Include="Engine\SDL_image\IMG_lbm.c" />
-    <ClCompile Include="Engine\SDL_image\IMG_pcx.c" />
-    <ClCompile Include="Engine\SDL_image\IMG_png.c" />
-    <ClCompile Include="Engine\SDL_image\IMG_pnm.c" />
-    <ClCompile Include="Engine\SDL_image\IMG_tga.c" />
-    <ClCompile Include="Engine\SDL_image\IMG_tif.c" />
-    <ClCompile Include="Engine\SDL_image\IMG_xcf.c" />
-    <ClCompile Include="Engine\SDL_image\IMG_xpm.c" />
-    <ClCompile Include="Engine\SDL_image\IMG_xv.c" />
-    <ClCompile Include="Engine\SDL_image\IMG_xxx.c" />
     <ClCompile Include="Engine\SDL_Surface_to_OpenGL.cpp" />
     <ClCompile Include="Engine\SimpleLogger.cpp" />
-    <ClCompile Include="Engine\SQL_Wrapper.cpp" />
     <ClCompile Include="Engine\TextureController.cpp" />
     <ClCompile Include="Engine\WinsockWrapper\CBuffer.cpp" />
     <ClCompile Include="Engine\WinsockWrapper\CSocket.cpp" />
@@ -173,17 +158,11 @@
     <ClInclude Include="Engine\RandomNumbers.h" />
     <ClInclude Include="Engine\Renderable.h" />
     <ClInclude Include="Engine\RenderablePrimitives.h" />
-    <ClInclude Include="Engine\SDL_image\png.h" />
-    <ClInclude Include="Engine\SDL_image\pngconf.h" />
-    <ClInclude Include="Engine\SDL_image\SDL_image.h" />
-    <ClInclude Include="Engine\SDL_image\zconf.h" />
-    <ClInclude Include="Engine\SDL_image\zlib.h" />
     <ClInclude Include="Engine\SDL_Surface_to_OpenGL.h" />
     <ClInclude Include="Engine\SDL_Window.h" />
     <ClInclude Include="Engine\SignalSystem.h" />
     <ClInclude Include="Engine\SimpleLogger.h" />
     <ClInclude Include="Engine\Sprite.h" />
-    <ClInclude Include="Engine\SQL_Wrapper.h" />
     <ClInclude Include="Engine\StringToValue.h" />
     <ClInclude Include="Engine\TaskScheduler.h" />
     <ClInclude Include="Engine\TextureController.h" />

@@ -1,11 +1,27 @@
 #define WINDOW_WIDTH			1024
-#define WINDOW_HEIGHT		768
-#define BUFFER_TYPE_COUNT	1
+#define WINDOW_HEIGHT			768
+#define BUFFER_TYPE_COUNT		1
 
-#pragma comment(lib, "sdlmain.lib")
-#pragma comment(lib, "sdl.lib")
+#define USING_OPENGL			true
+#define USING_GLU				true
+
+
+#pragma comment(lib, "SDL2main.lib")
+#pragma comment(lib, "SDL2.lib")
+#pragma comment(lib, "SDL2_image.lib")
 #pragma comment(lib, "opengl32.lib")
+
+
+#if USING_OPENGL
+#include <SDL_opengl.h>
+#pragma comment(lib, "opengl32.lib")
+#endif
+
+#if USING_GLU
+#include <GL/GLU.h>
 #pragma comment(lib, "glu32.lib")
+#endif
+
 
 #include "Engine/InputSystem.h"
 #include "Engine/SDL_Window.h"

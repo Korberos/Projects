@@ -129,7 +129,7 @@ BYTE* gltReadBMPBits(const char *szFileName, int *nWidth, int *nHeight)
 	DWORD dwBytes;
 
 	// Open the Bitmap file
-	hFileHandle = CreateFile(szFileName,GENERIC_READ,FILE_SHARE_READ, NULL,OPEN_EXISTING,FILE_FLAG_SEQUENTIAL_SCAN,NULL);
+	hFileHandle = CreateFile(LPCSTR(szFileName), GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_FLAG_SEQUENTIAL_SCAN, NULL);
 
 	// Check for open failure (most likely file does not exist).
 	if(hFileHandle == INVALID_HANDLE_VALUE)
