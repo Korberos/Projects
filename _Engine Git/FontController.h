@@ -29,6 +29,7 @@ class FontController;
 #include "Libraries\RapidXML\XMLWrapper.h"
 #include <unordered_map>
 #include <string>
+#include <algorithm>
 
 struct Font
 {

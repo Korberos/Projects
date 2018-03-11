@@ -123,7 +123,7 @@ void MenuGUIElement_TextBlock::Render( void )
 			break;
 		}
 
-		for ( unsigned int i = 0; i < (std::min)( Rows, SplitUpText.size() ); ++i )
+		for ( unsigned int i = 0; i < std::min<unsigned int>( Rows, SplitUpText.size() ); ++i )
 		{
 			Font->Render_Text( SplitUpText[i].c_str(), justified_x, Y + (i * Font->Get_Font_Height()), 1.0f, 1.0f, Justification == JUSTIFY_CENTER, false);
 		}

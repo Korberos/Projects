@@ -34,7 +34,7 @@ public:
 
 	~Renderable() {}
 
-	static enum RenderableType { RENDERABLE_2D, RENDERABLE_3D };
+	enum RenderableType { RENDERABLE_2D, RENDERABLE_3D };
 
 	virtual const RenderableType Get_Renderable_Type( void ) const = 0;
 	virtual void Render( void ) = 0;
