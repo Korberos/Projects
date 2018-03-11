@@ -25,20 +25,21 @@
 #include <SDL.h>
 #include <SDL_opengl.h>
 
-class SDL_Window
+class SDL_Window_Manager
 {
 	//~  Member Functions
 	private:
 		
 	public:
-		SDL_Window();
-		~SDL_Window();
+		SDL_Window_Manager();
+		~SDL_Window_Manager();
 		
 		bool	Define_Window( int width, int height, int bpp, bool full_screen, const char* title );
 		
 		// Accessors
-		inline	int		Get_Height( void )		const	{	return m_nHeight;	}
-		inline	int		Get_Width( void )		const	{	return m_nWidth;	}
+		inline	int			Get_Height( void )		const	{	return m_nHeight;	}
+		inline	int			Get_Width( void )		const	{	return m_nWidth;	}
+		inline	SDL_Window*	Get_Window( void )				{	return m_pScreen;	}
 
 		
 	//~ Member Variables
@@ -49,13 +50,13 @@ class SDL_Window
 		bool	m_bFullScreen;
 		char	m_szTitle[64];
 
-		SDL_Surface* m_pScreen;
+		SDL_Window* m_pScreen;
 
 	public:
 
 };
 
-SDL_Window::SDL_Window()
+SDL_Window_Manager::SDL_Window_Manager()
 {
 	m_nWidth = 0;
 	m_nHeight = 0;
@@ -63,19 +64,19 @@ SDL_Window::SDL_Window()
 	m_bFullScreen = false;
 }
 
-SDL_Window::~SDL_Window()
+SDL_Window_Manager::~SDL_Window_Manager()
 {
 	SDL_Quit();
 }
 
-bool SDL_Window::Define_Window( int width, int height, int bpp, bool full_screen, const char* title )
+bool SDL_Window_Manager::Define_Window( int width, int height, int bpp, bool full_screen, const char* title )
 {
 	//  If you can not initialize SDL to open a video window, return false
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) return false;
 	
 	//  Copy over the member variables for future use
-	m_nHeight		= height;
 	m_nWidth		= width;
+	m_nHeight		= height;
 	m_nBPP			= bpp;
 	m_bFullScreen	= full_screen;
 	strcpy_s( m_szTitle , strlen( title ) + 1 , title );
@@ -87,24 +88,19 @@ bool SDL_Window::Define_Window( int width, int height, int bpp, bool full_screen
 	SDL_GL_SetAttribute( SDL_GL_ALPHA_SIZE , 5 );
 	SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE , 32 );
 	SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER , 1 );
-	
-	//  Set the title of the current window
-	SDL_WM_SetCaption( title, title );
 
 	//  Create the flags to tell SDL the type of window to create
 	int nFlags = 0;
-	nFlags |= SDL_OPENGL;
-	if( full_screen == true ) nFlags |= SDL_FULLSCREEN;
+	if( full_screen == true ) nFlags |= SDL_WINDOW_FULLSCREEN;
+	nFlags |= SDL_WINDOW_OPENGL;
 
-	//  Create the window
-	m_pScreen = SDL_SetVideoMode( width , height , bpp , nFlags );
-	if ( m_pScreen == NULL ) return false;
+	m_pScreen = SDL_CreateWindow(m_szTitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, m_nWidth, m_nHeight, nFlags);
 	
 	//  Trigger a resize event for OpenGL
 	SDL_Event evResizeEvent;
-	evResizeEvent.type		= SDL_VIDEORESIZE;
-	evResizeEvent.resize.w	= width;
-	evResizeEvent.resize.h	= height;
+	evResizeEvent.type				= SDL_WINDOWEVENT_RESIZED;
+	evResizeEvent.window.data1		= width;
+	evResizeEvent.window.data2		= height;
 	SDL_PushEvent( &evResizeEvent );
 
 	return true;

@@ -52,7 +52,7 @@ int main( int argc , char* argv[] )
 #endif
 
 	//  Define the window. If the window definition fails, return a failure flag.
-	SDL_Window window;
+	SDL_Window_Manager window;
 	if ( !window.Define_Window( WINDOW_WIDTH , WINDOW_HEIGHT , 32 , false , window_name.c_str() ) )
 	{
 		assert( "Failed to define the window." && false );
@@ -151,7 +151,7 @@ int main( int argc , char* argv[] )
 		input_system->Invalidate_Old_Input();
 
 		//  Swap the buffers to display rendered data
-		SDL_GL_SwapBuffers();
+		SDL_GL_SwapWindow(window.Get_Window());
 	}
 
 	//  Shut down systems
@@ -253,9 +253,9 @@ bool SDL_ProcessEvents( InputSystem* input )
 				break;
 			}
 
-			case SDL_VIDEORESIZE:
+			case SDL_WINDOWEVENT_RESIZED:
 			{
-				Resize_View( E.resize.w , E.resize.h );
+				Resize_View( E.window.data1 , E.window.data2 );
 				break;
 			}
 

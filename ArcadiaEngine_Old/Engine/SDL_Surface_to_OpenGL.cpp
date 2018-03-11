@@ -44,13 +44,13 @@ int convert_surface( SDL_Surface *surface )
 	int w = surface->w;
 	int h = surface->h;
 
-	SDL_PixelFormat *pixf = SDL_GetVideoSurface()->format;
+	SDL_PixelFormat *pixf = surface->format;
 	SDL_Surface *image = SDL_CreateRGBSurface( SDL_SWSURFACE, w, h, 32, BMASK, GMASK, RMASK, AMASK );
 
 	error = SDL_GetError();
 	ASSERT( strlen( error ) == 0 );
 
-	SDL_SetAlpha(surface, 0, 0);
+	SDL_SetSurfaceAlphaMod(surface, 0);
 	SDL_BlitSurface( surface, NULL, image, NULL );
 
 	error = SDL_GetError();
