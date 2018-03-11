@@ -1,8 +1,8 @@
 #include "MenuElement_CheckBox.h"
 
-#include "DebugTools.h"
-#include "TextureController.h"
-#include "InputSystem.h"
+#include "../../DebugTools.h"
+#include "../../TextureController.h"
+#include "../../InputSystem.h"
 
 MenuGUIElementType_CheckBox	MenuGUIElementType_CheckBox::Instance;
 

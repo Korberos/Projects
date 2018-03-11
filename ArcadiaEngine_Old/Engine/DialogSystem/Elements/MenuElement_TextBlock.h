@@ -1,4 +1,4 @@
-#include "DialogSystem/MenuGUIElement.h"
+#include "../MenuGUIElement.h"
 
 class MenuGUIElement_TextBlock;
 struct Font;

@@ -1,9 +1,9 @@
 #include "MenuElement_Frame.h"
 
-#include "DebugTools.h"
-#include "TextureController.h"
-#include "InputSystem.h"
-#include "DialogSystem/MenuGUI.h"
+#include "../../DebugTools.h"
+#include "../../TextureController.h"
+#include "../../InputSystem.h"
+#include "../MenuGUI.h"
 
 MenuGUIElementType_Frame	MenuGUIElementType_Frame::Instance;
 

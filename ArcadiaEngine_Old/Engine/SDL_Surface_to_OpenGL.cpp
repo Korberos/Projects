@@ -38,7 +38,7 @@
 
 int convert_surface( SDL_Surface *surface )
 {
-	char* error = NULL;
+	const char* error = NULL;
 
 	// new dimensions
 	int w = surface->w;

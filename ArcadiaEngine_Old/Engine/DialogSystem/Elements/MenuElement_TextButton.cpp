@@ -1,9 +1,9 @@
 #include "MenuElement_TextButton.h"
 
-#include "DebugTools.h"
-#include "TextureController.h"
-#include "InputSystem.h"
-#include "FontController.h"
+#include "../../DebugTools.h"
+#include "../../TextureController.h"
+#include "../../InputSystem.h"
+#include "../../FontController.h"
 
 MenuGUIElementType_TextButton	MenuGUIElementType_TextButton::Instance;
 

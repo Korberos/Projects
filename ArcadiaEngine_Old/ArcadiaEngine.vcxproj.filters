@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Engine">
+      <UniqueIdentifier>{a8a4a486-814b-4710-9746-697c31391ef5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Collision">
+      <UniqueIdentifier>{8ec94c53-8a83-4548-9260-fd3cffdadfe8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\DialogSystem">
+      <UniqueIdentifier>{6582ee41-d683-43e4-b70a-d0501fa73d36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\DialogSystem\Elements">
+      <UniqueIdentifier>{170afb69-2e48-4e7a-972b-1dbb4647dbd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\OpenGL">
+      <UniqueIdentifier>{ef4b4e00-676e-4d3a-a1e2-96b325d03108}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\SDL_image">
+      <UniqueIdentifier>{41720af2-0769-4782-bec1-e3615aec7cd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\WinsockWrapper">
+      <UniqueIdentifier>{9dbc13f7-4339-4f4f-99f0-d3869d9c1940}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Engine">
+      <UniqueIdentifier>{d87ea73b-e391-4ec4-aa6d-a9fb67a74e9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Collision">
+      <UniqueIdentifier>{c21c422f-3d6a-488a-995d-8ab74f342955}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\DialogSystem">
+      <UniqueIdentifier>{802d99e2-48ff-4ebb-87e2-294550cb6b1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\DialogSystem\Elements">
+      <UniqueIdentifier>{5d583ffb-04b8-4d9a-9ef8-e3954ec4c33c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\OpenGL">
+      <UniqueIdentifier>{49f20dce-cfe4-4d65-8630-aaaea4b2d88b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\SDL_image">
+      <UniqueIdentifier>{18059e9c-9756-4e11-931e-e9ac7e7e3b8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\WinsockWrapper">
+      <UniqueIdentifier>{adad8fbc-2f52-4131-afbe-fddcc0464e99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DebugConsole.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DebugTools.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DialogController.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\FontController.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\InputSystem.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\OpenGLCamera.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\RandomNumbers.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\RenderablePrimitives.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SDL_Surface_to_OpenGL.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SimpleLogger.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SQL_Wrapper.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\TextureController.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\WorldController.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\XML_File.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Collision\LineToTriangle.cpp">
+      <Filter>Source Files\Engine\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DialogSystem\MenuGUI.cpp">
+      <Filter>Source Files\Engine\DialogSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DialogSystem\MenuGUIElement.cpp">
+      <Filter>Source Files\Engine\DialogSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DialogSystem\Elements\MenuElement_CheckBox.cpp">
+      <Filter>Source Files\Engine\DialogSystem\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DialogSystem\Elements\MenuElement_DropDown.cpp">
+      <Filter>Source Files\Engine\DialogSystem\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DialogSystem\Elements\MenuElement_EditBox.cpp">
+      <Filter>Source Files\Engine\DialogSystem\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DialogSystem\Elements\MenuElement_Frame.cpp">
+      <Filter>Source Files\Engine\DialogSystem\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DialogSystem\Elements\MenuElement_ListBox.cpp">
+      <Filter>Source Files\Engine\DialogSystem\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DialogSystem\Elements\MenuElement_TextBlock.cpp">
+      <Filter>Source Files\Engine\DialogSystem\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DialogSystem\Elements\MenuElement_TextButton.cpp">
+      <Filter>Source Files\Engine\DialogSystem\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DialogSystem\Elements\MenuElement_Texture.cpp">
+      <Filter>Source Files\Engine\DialogSystem\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DialogSystem\Elements\MenuElement_TextureButton.cpp">
+      <Filter>Source Files\Engine\DialogSystem\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\OpenGL\GLee.c">
+      <Filter>Source Files\Engine\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\OpenGL\gltools.cpp">
+      <Filter>Source Files\Engine\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\OpenGL\math3d.cpp">
+      <Filter>Source Files\Engine\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SDL_image\IMG.c">
+      <Filter>Source Files\Engine\SDL_image</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SDL_image\IMG_bmp.c">
+      <Filter>Source Files\Engine\SDL_image</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SDL_image\IMG_gif.c">
+      <Filter>Source Files\Engine\SDL_image</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SDL_image\IMG_jpg.c">
+      <Filter>Source Files\Engine\SDL_image</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SDL_image\IMG_lbm.c">
+      <Filter>Source Files\Engine\SDL_image</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SDL_image\IMG_pcx.c">
+      <Filter>Source Files\Engine\SDL_image</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SDL_image\IMG_png.c">
+      <Filter>Source Files\Engine\SDL_image</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SDL_image\IMG_pnm.c">
+      <Filter>Source Files\Engine\SDL_image</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SDL_image\IMG_tga.c">
+      <Filter>Source Files\Engine\SDL_image</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SDL_image\IMG_tif.c">
+      <Filter>Source Files\Engine\SDL_image</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SDL_image\IMG_xcf.c">
+      <Filter>Source Files\Engine\SDL_image</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SDL_image\IMG_xpm.c">
+      <Filter>Source Files\Engine\SDL_image</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SDL_image\IMG_xv.c">
+      <Filter>Source Files\Engine\SDL_image</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SDL_image\IMG_xxx.c">
+      <Filter>Source Files\Engine\SDL_image</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\WinsockWrapper\CBuffer.cpp">
+      <Filter>Source Files\Engine\WinsockWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\WinsockWrapper\CSocket.cpp">
+      <Filter>Source Files\Engine\WinsockWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\WinsockWrapper\CTools.cpp">
+      <Filter>Source Files\Engine\WinsockWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\WinsockWrapper\md5.cpp">
+      <Filter>Source Files\Engine\WinsockWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\WinsockWrapper\WinsockWrapper.cpp">
+      <Filter>Source Files\Engine\WinsockWrapper</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\BinaryExport.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\CutsceneEngine2D.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DebugConsole.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DebugTools.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DialogController.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\FontController.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\InputSystem.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\MegaFile.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\OpenGLCamera.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\RandomNumbers.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Renderable.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\RenderablePrimitives.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SDL_Surface_to_OpenGL.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SDL_Window.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SignalSystem.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SimpleLogger.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Sprite.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SQL_Wrapper.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\StringToValue.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\TaskScheduler.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\TextureController.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Vector3.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\WorldController.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\XML_File.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Collision\LineToTriangle.h">
+      <Filter>Header Files\Engine\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DialogSystem\MenuGUI.h">
+      <Filter>Header Files\Engine\DialogSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DialogSystem\MenuGUIElement.h">
+      <Filter>Header Files\Engine\DialogSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DialogSystem\Elements\MenuElement_CheckBox.h">
+      <Filter>Header Files\Engine\DialogSystem\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DialogSystem\Elements\MenuElement_DropDown.h">
+      <Filter>Header Files\Engine\DialogSystem\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DialogSystem\Elements\MenuElement_EditBox.h">
+      <Filter>Header Files\Engine\DialogSystem\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DialogSystem\Elements\MenuElement_Frame.h">
+      <Filter>Header Files\Engine\DialogSystem\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DialogSystem\Elements\MenuElement_ListBox.h">
+      <Filter>Header Files\Engine\DialogSystem\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DialogSystem\Elements\MenuElement_TextBlock.h">
+      <Filter>Header Files\Engine\DialogSystem\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DialogSystem\Elements\MenuElement_TextButton.h">
+      <Filter>Header Files\Engine\DialogSystem\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DialogSystem\Elements\MenuElement_Texture.h">
+      <Filter>Header Files\Engine\DialogSystem\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DialogSystem\Elements\MenuElement_TextureButton.h">
+      <Filter>Header Files\Engine\DialogSystem\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\OpenGL\GLee.h">
+      <Filter>Header Files\Engine\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\OpenGL\GLFrame.h">
+      <Filter>Header Files\Engine\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\OpenGL\gltools.h">
+      <Filter>Header Files\Engine\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\OpenGL\math3d.h">
+      <Filter>Header Files\Engine\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\OpenGL\OGL_Includes.h">
+      <Filter>Header Files\Engine\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\OpenGL\wglext.h">
+      <Filter>Header Files\Engine\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SDL_image\png.h">
+      <Filter>Header Files\Engine\SDL_image</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SDL_image\pngconf.h">
+      <Filter>Header Files\Engine\SDL_image</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SDL_image\SDL_image.h">
+      <Filter>Header Files\Engine\SDL_image</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SDL_image\zconf.h">
+      <Filter>Header Files\Engine\SDL_image</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SDL_image\zlib.h">
+      <Filter>Header Files\Engine\SDL_image</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\WinsockWrapper\CBuffer.h">
+      <Filter>Header Files\Engine\WinsockWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\WinsockWrapper\CSocket.h">
+      <Filter>Header Files\Engine\WinsockWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\WinsockWrapper\CTools.h">
+      <Filter>Header Files\Engine\WinsockWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\WinsockWrapper\WinsockWrapper.h">
+      <Filter>Header Files\Engine\WinsockWrapper</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

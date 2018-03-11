@@ -26,7 +26,7 @@
 #define INVALID_IMAGE -1
 
 #include <SDL_OpenGL.h>
-#include <hash_map>
+#include <unordered_map>
 #include <assert.h>
 
 #include "./SDL_Image/SDL_image.h"
@@ -70,7 +70,7 @@ private:
 	TextureController();
 	~TextureController();
 
-	typedef stdext::hash_map<int, Texture> TextureListType;
+	typedef std::unordered_map<int, Texture> TextureListType;
 	TextureListType		TextureList;
 	std::string				LoadFolder;
 

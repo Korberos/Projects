@@ -1,9 +1,9 @@
 #include "MenuElement_ListBox.h"
 
-#include "DebugTools.h"
-#include "TextureController.h"
-#include "InputSystem.h"
-#include "FontController.h"
+#include "../../DebugTools.h"
+#include "../../TextureController.h"
+#include "../../InputSystem.h"
+#include "../../FontController.h"
 
 MenuGUIElementType_ListBox	MenuGUIElementType_ListBox::Instance;
 
@@ -156,7 +156,7 @@ bool MenuGUIElement_ListBox::Input( InputResponseListType& input_responses )
 		unsigned int one_item_height = (unsigned int)(((float)(Height - DirectionalButtonsY - DownButtonH) - (DirectionalButtonsY + UpButtonH)) * one_item_percent);
 		while (true)
 		{
-			if (abs(input->Get_Mouse_Y() - ClickedY) > int(one_item_height))
+			if (std::abs(int(input->Get_Mouse_Y()) - int(ClickedY)) > int(one_item_height))
 			{
 				int index_change = int(input->Get_Mouse_Y() - ClickedY) / int(one_item_height);
 				ClickedY += index_change * int(one_item_height);

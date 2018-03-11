@@ -1,9 +1,9 @@
 #include "MenuElement_DropDown.h"
 
-#include "DebugTools.h"
-#include "TextureController.h"
-#include "InputSystem.h"
-#include "FontController.h"
+#include "../../DebugTools.h"
+#include "../../TextureController.h"
+#include "../../InputSystem.h"
+#include "../../FontController.h"
 
 MenuGUIElementType_DropDown	MenuGUIElementType_DropDown::Instance;
 

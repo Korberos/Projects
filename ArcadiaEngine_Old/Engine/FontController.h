@@ -25,7 +25,7 @@ class XML_Tag;
 class XML_File;
 class FontController;
 
-#include <hash_map>
+#include <unordered_map>
 #include <string>
 
 struct Font
@@ -67,7 +67,7 @@ private:
 	FontController();
 	~FontController();
 
-	typedef stdext::hash_map< std::string, Font > FontListType;
+	typedef std::unordered_map< std::string, Font > FontListType;
 	FontListType FontList;
 	std::string FontFolder;
 };

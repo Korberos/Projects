@@ -1,7 +1,7 @@
 #include "MenuElement_Texture.h"
 
-#include "DebugTools.h"
-#include "TextureController.h"
+#include "../../DebugTools.h"
+#include "../../TextureController.h"
 
 MenuGUIElementType_Texture	MenuGUIElementType_Texture::Instance;
 

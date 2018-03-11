@@ -1,8 +1,8 @@
 #include "MenuElement_TextureButton.h"
 
-#include "DebugTools.h"
-#include "TextureController.h"
-#include "InputSystem.h"
+#include "../../DebugTools.h"
+#include "../../TextureController.h"
+#include "../../InputSystem.h"
 
 MenuGUIElementType_TextureButton	MenuGUIElementType_TextureButton::Instance;
 

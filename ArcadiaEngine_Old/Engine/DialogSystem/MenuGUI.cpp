@@ -1,7 +1,7 @@
 #include "MenuGUI.h"
 
-#include "XML_File.h"
-#include "DebugTools.h"
+#include "../XML_File.h"
+#include "../DebugTools.h"
 
 MenuGUI::ElementTypeListType	MenuGUI::ElementTypes;
 

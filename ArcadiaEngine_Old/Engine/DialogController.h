@@ -22,7 +22,7 @@
 #ifndef _DIALOG_CONTROLLER_
 #define _DIALOG_CONTROLLER_
 
-#include <hash_map>
+#include <unordered_map>
 #include <assert.h>
 #include "TaskScheduler.h"
 #include "DebugTools.h"
@@ -109,8 +109,8 @@ protected:
 	MenuGUI* Menu;
 
 	typedef std::pair< InteractionType, HandlerEventBase* > EventType;
-	typedef stdext::hash_map< InteractionType, HandlerEventBase* > EventListType;
-	typedef stdext::hash_map< MenuGUIElement*, EventListType > EventMapType;
+	typedef std::unordered_map< InteractionType, HandlerEventBase* > EventListType;
+	typedef std::unordered_map< MenuGUIElement*, EventListType > EventMapType;
 	EventMapType EventMap;
 };
 
