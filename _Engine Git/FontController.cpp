@@ -1,10 +1,10 @@
 /*****************************************************************/
-/*	           ___                          _  _                  */
-/*	    	    / _ \                        | |(_)                 */
-/*          / /_\ \ _ __   ___   __ _   __| | _   __ _           */
-/*    	   |  _  || '__| / __| / _` | / _` || | / _` |          */
-/*	         | | | || |   | (__ | (_| || (_| || || (_| |          */
-/*	         \_| |_/|_|    \___| \__,_| \__,_||_| \__,_|          */
+/*             ___                          _  _                 */
+/*            / _ \                        | |(_)                */
+/*           / /_\ \ _ __   ___   __ _   __| | _   __ _          */
+/*           |  _  || '__| / __| / _` | / _` || | / _` |         */
+/*           | | | || |   | (__ | (_| || (_| || || (_| |         */
+/*           \_| |_/|_|    \___| \__,_| \__,_||_| \__,_|         */
 /*                                                               */
 /*                                      Engine Version 01.00.00  */
 /*****************************************************************/
@@ -43,7 +43,7 @@ void Font::Shutdown( void )
 		TextureController::Get_Instance()->Release_Texture( Texture );
 	}
 
-	for (std::hash_map<int, Character*>::iterator iter = CharacterMap.begin(); iter != CharacterMap.end(); ++iter)
+	for (std::unordered_map<int, Character*>::iterator iter = CharacterMap.begin(); iter != CharacterMap.end(); ++iter)
 	{
 		delete (*iter).second;
 	}

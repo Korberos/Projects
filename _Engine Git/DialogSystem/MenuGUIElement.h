@@ -16,7 +16,7 @@ public:
 	virtual MenuGUIElement* Create_Instance( const RapidXML_Node* element_tag ) = 0;
 };
 
-static enum InteractionType	{ IT_MOUSEOVER, IT_UNMOUSEOVER, IT_CLICK, IT_UNCLICK, IT_SELECT, IT_UNSELECT, IT_CHECK, IT_UNCHECK, IT_TEXTINPUT, IT_MOVE, IT_CONFIRM, IT_ITERATE, INTERACTION_TYPE_COUNT };
+enum InteractionType	{ IT_MOUSEOVER, IT_UNMOUSEOVER, IT_CLICK, IT_UNCLICK, IT_SELECT, IT_UNSELECT, IT_CHECK, IT_UNCHECK, IT_TEXTINPUT, IT_MOVE, IT_CONFIRM, IT_ITERATE, INTERACTION_TYPE_COUNT };
 
 class MenuGUIElement
 {
@@ -30,7 +30,7 @@ protected:
 public:
 	virtual ~MenuGUIElement() {}
 
-	static enum StatusFlagType		{ SFT_VISIBLE = 1, SFT_ENABLED = 2, SFT_FOCUSED = 4, STATUS_FLAG_TYPE_COUNT };
+	enum StatusFlagType		{ SFT_VISIBLE = 1, SFT_ENABLED = 2, SFT_FOCUSED = 4, STATUS_FLAG_TYPE_COUNT };
 
 	typedef std::pair< MenuGUIElement*, InteractionType > InputTriggerType;
 	typedef std::vector< InputTriggerType > InputResponseListType;

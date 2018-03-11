@@ -2,7 +2,7 @@
 #define _MENU_GUI_
 
 #include <vector>
-#include <hash_map>
+#include <unordered_map>
 #include <queue>
 #include "MenuGUIElement.h"
 #include "../Libraries/RapidXML/XMLWrapper.h"
@@ -35,7 +35,7 @@ public:
 	typedef std::vector< MenuGUIElement* > ElementListType;
 	typedef ElementListType::iterator ElementListIteratorType;
 
-	typedef stdext::hash_map< std::string, MenuGUIElementType* > ElementTypeListType;
+	typedef std::unordered_map< std::string, MenuGUIElementType* > ElementTypeListType;
 	typedef ElementTypeListType::iterator ElementTypeListIteratorType;
 	static ElementTypeListType ElementTypes;
 

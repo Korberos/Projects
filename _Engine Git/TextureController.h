@@ -1,10 +1,10 @@
 /*****************************************************************/
-/*	           ___                          _  _                  */
-/*	    	    / _ \                        | |(_)                 */
-/*          / /_\ \ _ __   ___   __ _   __| | _   __ _           */
-/*    	   |  _  || '__| / __| / _` | / _` || | / _` |          */
-/*	         | | | || |   | (__ | (_| || (_| || || (_| |          */
-/*	         \_| |_/|_|    \___| \__,_| \__,_||_| \__,_|          */
+/*             ___                          _  _                 */
+/*            / _ \                        | |(_)                */
+/*           / /_\ \ _ __   ___   __ _   __| | _   __ _          */
+/*           |  _  || '__| / __| / _` | / _` || | / _` |         */
+/*           | | | || |   | (__ | (_| || (_| || || (_| |         */
+/*           \_| |_/|_|    \___| \__,_| \__,_||_| \__,_|         */
 /*                                                               */
 /*                                      Engine Version 01.00.00  */
 /*****************************************************************/
@@ -26,7 +26,7 @@
 #define INVALID_IMAGE -1
 
 #include <SFML\Graphics.hpp>
-#include <hash_map>
+#include <unordered_map>
 #include <assert.h>
 
 class TextureController
@@ -67,7 +67,7 @@ private:
 	TextureController();
 	~TextureController();
 
-	typedef stdext::hash_map<int, Texture> TextureListType;
+	typedef std::unordered_map<int, Texture> TextureListType;
 	TextureListType		TextureList;
 	std::string			LoadFolder;
 

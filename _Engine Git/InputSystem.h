@@ -24,7 +24,7 @@
 
 #include <SFML\Window\Keyboard.hpp>
 #include <string>
-#include <hash_map>
+#include <unordered_map>
 
 class InputSystem
 {
@@ -49,7 +49,7 @@ class InputSystem
 		char								MouseButton[3];
 		std::string						TextString;
 
-		typedef std::hash_map<int, char> KeyboardType;
+		typedef std::unordered_map<int, char> KeyboardType;
 		KeyboardType					Keyboard;
 
 	public:

@@ -1,10 +1,10 @@
 /*****************************************************************/
-/*	           ___                          _  _                  */
-/*	    	    / _ \                        | |(_)                 */
-/*          / /_\ \ _ __   ___   __ _   __| | _   __ _           */
-/*    	   |  _  || '__| / __| / _` | / _` || | / _` |          */
-/*	         | | | || |   | (__ | (_| || (_| || || (_| |          */
-/*	         \_| |_/|_|    \___| \__,_| \__,_||_| \__,_|          */
+/*             ___                          _  _                 */
+/*            / _ \                        | |(_)                */
+/*           / /_\ \ _ __   ___   __ _   __| | _   __ _          */
+/*           |  _  || '__| / __| / _` | / _` || | / _` |         */
+/*           | | | || |   | (__ | (_| || (_| || || (_| |         */
+/*           \_| |_/|_|    \___| \__,_| \__,_||_| \__,_|         */
 /*                                                               */
 /*                                      Engine Version 01.00.00  */
 /*****************************************************************/
@@ -35,7 +35,7 @@ Cutscene::Resource*	LoadCutsceneFont( const char* name, const char* file );
 class Cutscene::Resource
 {
 public:
-	static enum Type { RES_IMAGE, RES_SOUND, RES_FONT, RESOURCE_TYPE_COUNT };
+	enum Type { RES_IMAGE, RES_SOUND, RES_FONT, RESOURCE_TYPE_COUNT };
 
 	Resource() : 
 		ResourceType( RESOURCE_TYPE_COUNT ),
@@ -87,7 +87,7 @@ public:
 class Cutscene::Event
 {
 public:
-	static enum Type { ET_SPRITECHANGE, ET_WARPTO, ET_MOVETO, ET_SOUNDPLAY, ET_WAIT, ET_ALPHA, ET_SETFONT, ET_SETTEXT, EVENT_TYPE_COUNT };
+	enum Type { ET_SPRITECHANGE, ET_WARPTO, ET_MOVETO, ET_SOUNDPLAY, ET_WAIT, ET_ALPHA, ET_SETFONT, ET_SETTEXT, EVENT_TYPE_COUNT };
 	
 	Event() : Type( EVENT_TYPE_COUNT ), Trigger( "" ), PassMethod( "" ), EndingEvent( "" ), Target( "" ), X( -1.0f ), Y( -1.0f ), Time( -1.0f ), Asset( "" ) {}
 

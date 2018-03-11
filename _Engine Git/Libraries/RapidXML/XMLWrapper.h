@@ -2,7 +2,7 @@
 #define _XML_WRAPPER_H_
 
 #include "./rapidxml_utils.hpp"
-#include <hash_map>
+#include <unordered_map>
 #include "./../SimpleMD5/SimpleMD5.h"
 
 typedef rapidxml::file<>				RapidXML_File;
@@ -52,7 +52,7 @@ private:
 	XMLWrapper()	{}
 	~XMLWrapper()	{}
 
-	typedef std::hash_map< std::string, RapidXML_File* > XMLListType;
+	typedef std::unordered_map< std::string, RapidXML_File* > XMLListType;
 	XMLListType LoadedXMLList;
 };
 

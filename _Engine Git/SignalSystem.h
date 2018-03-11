@@ -1,10 +1,10 @@
 /*****************************************************************/
-/*	           ___                          _  _                  */
-/*	    	    / _ \                        | |(_)                 */
-/*          / /_\ \ _ __   ___   __ _   __| | _   __ _           */
-/*    	   |  _  || '__| / __| / _` | / _` || | / _` |          */
-/*	         | | | || |   | (__ | (_| || (_| || || (_| |          */
-/*	         \_| |_/|_|    \___| \__,_| \__,_||_| \__,_|          */
+/*	           ___                          _  _                 */
+/*            / _ \                        | |(_)                */
+/*           / /_\ \ _ __   ___   __ _   __| | _   __ _          */
+/*           |  _  || '__| / __| / _` | / _` || | / _` |         */
+/*	         | | | || |   | (__ | (_| || (_| || || (_| |         */
+/*	         \_| |_/|_|    \___| \__,_| \__,_||_| \__,_|         */
 /*                                                               */
 /*                                      Engine Version 01.00.00  */
 /*****************************************************************/
@@ -22,7 +22,7 @@
 #ifndef _SIGNAL_MANAGER_
 #define _SIGNAL_MANAGER_
 
-#include <hash_map>
+#include <unordered_map>
 #include <vector>
 
 enum SignalType;
@@ -44,7 +44,7 @@ private:
 
 	typedef		std::vector< SignalReceiver* >									DispatchmentListType;
 	typedef		DispatchmentListType::iterator									DispatchmentListTypeIterator;
-	typedef		stdext::hash_map< SignalGenerator*, DispatchmentListType >		SignalDispatchListType;
+	typedef		std::unordered_map< SignalGenerator*, DispatchmentListType >		SignalDispatchListType;
 	typedef		SignalDispatchListType::iterator								SignalDispatchListTypeIterator;
 
 	SignalDispatchListType SignalDispatchList;

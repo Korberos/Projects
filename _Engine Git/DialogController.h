@@ -1,10 +1,10 @@
 /*****************************************************************/
-/*	           ___                          _  _                  */
-/*	    	    / _ \                        | |(_)                 */
-/*          / /_\ \ _ __   ___   __ _   __| | _   __ _           */
-/*    	   |  _  || '__| / __| / _` | / _` || | / _` |          */
-/*	         | | | || |   | (__ | (_| || (_| || || (_| |          */
-/*	         \_| |_/|_|    \___| \__,_| \__,_||_| \__,_|          */
+/*             ___                          _  _                 */
+/*            / _ \                        | |(_)                */
+/*           / /_\ \ _ __   ___   __ _   __| | _   __ _          */
+/*           |  _  || '__| / __| / _` | / _` || | / _` |         */
+/*           | | | || |   | (__ | (_| || (_| || || (_| |         */
+/*           \_| |_/|_|    \___| \__,_| \__,_||_| \__,_|         */
 /*                                                               */
 /*                                      Engine Version 01.00.00  */
 /*****************************************************************/
@@ -22,7 +22,7 @@
 #ifndef _DIALOG_CONTROLLER_
 #define _DIALOG_CONTROLLER_
 
-#include <hash_map>
+#include <unordered_map>
 #include <assert.h>
 #include "TaskScheduler.h"
 #include "DebugTools.h"
@@ -109,8 +109,8 @@ protected:
 	MenuGUI* Menu;
 
 	typedef std::pair< InteractionType, HandlerEventBase* > EventType;
-	typedef stdext::hash_map< InteractionType, HandlerEventBase* > EventListType;
-	typedef stdext::hash_map< MenuGUIElement*, EventListType > EventMapType;
+	typedef std::unordered_map< InteractionType, HandlerEventBase* > EventListType;
+	typedef std::unordered_map< MenuGUIElement*, EventListType > EventMapType;
 	EventMapType EventMap;
 };
 

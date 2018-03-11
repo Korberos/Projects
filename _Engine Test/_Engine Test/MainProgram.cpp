@@ -33,8 +33,15 @@ const bool MainProgram::Input( const float time_slice )
 	return true;
 }
 
-const bool MainProgram::Update( const float time_slice )			{ return true; }
-const bool MainProgram::Render3D( void )								{ return true; }
+const bool MainProgram::Update( const float time_slice )
+{
+	return true;
+}
+
+const bool MainProgram::Render3D( void )
+{
+	return true;
+}
 
 const bool MainProgram::Render2D( void )
 {

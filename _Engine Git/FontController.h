@@ -1,10 +1,10 @@
 /*****************************************************************/
-/*	           ___                          _  _                  */
-/*	    	    / _ \                        | |(_)                 */
-/*          / /_\ \ _ __   ___   __ _   __| | _   __ _           */
-/*    	   |  _  || '__| / __| / _` | / _` || | / _` |          */
-/*	         | | | || |   | (__ | (_| || (_| || || (_| |          */
-/*	         \_| |_/|_|    \___| \__,_| \__,_||_| \__,_|          */
+/*             ___                          _  _                 */
+/*            / _ \                        | |(_)                */
+/*           / /_\ \ _ __   ___   __ _   __| | _   __ _          */
+/*           |  _  || '__| / __| / _` | / _` || | / _` |         */
+/*           | | | || |   | (__ | (_| || (_| || || (_| |         */
+/*           \_| |_/|_|    \___| \__,_| \__,_||_| \__,_|         */
 /*                                                               */
 /*                                      Engine Version 01.00.00  */
 /*****************************************************************/
@@ -27,7 +27,7 @@ class FontController;
 
 #include "DebugTools.h"
 #include "Libraries\RapidXML\XMLWrapper.h"
-#include <hash_map>
+#include <unordered_map>
 #include <string>
 
 struct Font
@@ -46,7 +46,7 @@ public:
 		Character() : X(0), Y(0), W(0), H(0), X_Offset(0), Y_Offset(0), Advance(0) {}
 		~Character()
 		{
-			for (std::hash_map<int, SpecialKerning*>::iterator iter = SpecialKerningList.begin(); iter != SpecialKerningList.end(); ++iter)
+			for (std::unordered_map<int, SpecialKerning*>::iterator iter = SpecialKerningList.begin(); iter != SpecialKerningList.end(); ++iter)
 			{
 				delete (*iter).second;
 			}
@@ -59,7 +59,7 @@ public:
 		int Y_Offset;
 		int Advance;
 
-		std::hash_map<int, SpecialKerning*> SpecialKerningList;
+		std::unordered_map<int, SpecialKerning*> SpecialKerningList;
 	};
 
 	Font();
@@ -72,7 +72,7 @@ public:
 
 	inline unsigned int Get_Font_Height( void )	const { return Height; }
 	inline unsigned int Get_Character_Count( void ) const { return CharacterCount; }
-	inline const std::hash_map<int, Character*>& Get_Character_Map( void ) const { return CharacterMap; }
+	inline const std::unordered_map<int, Character*>& Get_Character_Map( void ) const { return CharacterMap; }
 
 	inline void SetTexture(int texture) { Texture = texture; }
 	inline void AddCharacter(unsigned int index, Character* new_character) { ASSERT(CharacterMap.find(index) == CharacterMap.end()); CharacterMap[index] = new_character; Height = std::max<int>(Height, new_character->H); }
@@ -81,7 +81,7 @@ protected:
 	static const RapidXML_Node* Get_Font_XML( const RapidXML_Doc* fontDoc );
 
 	int Texture;
-	std::hash_map<int, Character*> CharacterMap;
+	std::unordered_map<int, Character*> CharacterMap;
 	unsigned int Height;
 
 	unsigned int CharacterCount;
@@ -105,7 +105,7 @@ private:
 	FontController();
 	~FontController();
 
-	typedef stdext::hash_map< std::string, Font > FontListType;
+	typedef std::unordered_map< std::string, Font > FontListType;
 	FontListType FontList;
 	std::string FontFolder;
 };
