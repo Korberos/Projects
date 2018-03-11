@@ -40,8 +40,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\Drew\Documents\Visual Studio Includes\SFML-2.1\include;C:\Users\Drew\Documents\Visual Studio 2010\Projects\_Engine Git;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Drew\Documents\Visual Studio Includes\SFML-2.1\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Drew\Documents\Visual Studio 2017\Libraries\SFML-2.4.2\include;C:\Users\Drew\Desktop\Projects\_Engine Git;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Drew\Documents\Visual Studio 2017\Libraries\SFML-2.4.2\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>C:\Users\Drew\Documents\Visual Studio Includes\SFML-2.1\include;C:\Users\Drew\Documents\Visual Studio 2010\Projects\_Engine Git;$(IncludePath)</IncludePath>
@@ -56,6 +56,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <TargetMachine>MachineX86</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
