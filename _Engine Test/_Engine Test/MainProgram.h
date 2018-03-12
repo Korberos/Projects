@@ -4,7 +4,7 @@
 class MainProgram
 {
 public:
-	inline const int getWindowWidth( void )		{ return 1024; }
+	inline const int getWindowWidth( void )			{ return 1024; }
 	inline const int getWindowHeight( void )		{ return 768; }
 	inline const char* getWindowTitle( void )		{ return "Engine Test v0.1"; }
 
