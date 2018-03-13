@@ -23,7 +23,7 @@
 #include "TextureController.h"
 
 #include "DebugTools.h"
-//#include <SDL_image.h>
+#include "SFML\OpenGL.hpp"
 
 TextureController::TextureController()
 {
@@ -64,44 +64,38 @@ int TextureController::Load_Texture(std::string texture_file)
 		}
 	}
 
-	// Attempt to load the texture file. If it can not be loaded, return.
-	/*
-	SDL_Surface* NewSurface = IMG_Load(file_string.c_str());
-	FAIL_IF (NewSurface == NULL)
+	sf::Image img_data;
+	if (!img_data.loadFromFile(file_string))
 	{
-		SDL_FreeSurface(NewSurface);
-		return INVALID_IMAGE;
-	}
-	
-	FAIL_IF ( (NewSurface->w & (NewSurface->w - 1)) != 0 && "Texture width is not a power of 2." )
-	{
-		SDL_FreeSurface(NewSurface);
-		return INVALID_IMAGE;
+		//LOG_ERROR("Could not load '%s'.", "images/avatar.png");
+		return -1;
 	}
 
-	FAIL_IF ( (NewSurface->h & (NewSurface->h - 1)) != 0 && "Texture width is not a power of 2." )
-	{
-		SDL_FreeSurface(NewSurface);
-		return INVALID_IMAGE;
-	}
+	GLuint texture_handle;
+	glGenTextures(1, &texture_handle);
 
-	unsigned int TextureWidth = NewSurface->w;
-	unsigned int TextureHeight = NewSurface->h;
-	int image = convert_surface(NewSurface);
+	glBindTexture(GL_TEXTURE_2D, texture_handle);
 
-	SDL_FreeSurface(NewSurface);
+	glTexImage2D(
+		GL_TEXTURE_2D, 0, GL_RGBA,
+		img_data.getSize().x, img_data.getSize().y,
+		0,
+		GL_RGBA, GL_UNSIGNED_BYTE, img_data.getPixelsPtr()
+	);
 
-	// If no texture has been found, create a new one
-	TextureList.insert( std::pair<int, Texture>(image, Texture(1, TextureWidth, TextureHeight, file_string)) );
-	
-	FAIL_IF(image < 0) { return -1; }
-	*/
-	return 0;//image;
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+
+	TextureList.insert(std::pair<int, Texture>(int(texture_handle), Texture(1, img_data.getSize().x, img_data.getSize().y, file_string)));
+
+	return int(texture_handle);
 }
 
 bool TextureController::Release_Texture( int image )
 {
-	/*
 	FAIL_IF ( image == INVALID_IMAGE ) { return false; }
 	FAIL_IF( TextureList.empty() ) { return false; }
 
@@ -119,7 +113,7 @@ bool TextureController::Release_Texture( int image )
 		//  Move the last Texture in the list to this spot and pop the back
 		TextureList.erase( iter );
 	}
-	*/
+
 	return true;
 }
 
@@ -129,7 +123,7 @@ void TextureController::Draw_Texture( int image, unsigned int x, unsigned int y,
 
 	TextureListType::iterator iter = TextureList.find( image );
 	FAIL_IF ( iter == TextureList.end() ) { return; }
-	/*
+	
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, image );
@@ -145,7 +139,6 @@ void TextureController::Draw_Texture( int image, unsigned int x, unsigned int y,
 		glTexCoord2f(0.0f, 1.0f);
 		glVertex2i(x, y + int(h * scaleY));
 	glEnd();
-	*/
 }
 
 void TextureController::Draw_Texture_Part( int image, int x, int y, unsigned int part_x, unsigned int part_y, unsigned int part_w, unsigned int part_h, float alpha, float scaleX, float scaleY )
@@ -159,7 +152,7 @@ void TextureController::Draw_Texture_Part( int image, int x, int y, unsigned int
 	float Right		= (float)(part_x + part_w) / (float)Get_Texture_Width( image );
 	float Top		= (float)part_y / (float)Get_Texture_Height( image );
 	float Bottom	= (float)(part_y + part_h) / (float)Get_Texture_Height( image );
-	/*
+	
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, image);
@@ -175,5 +168,4 @@ void TextureController::Draw_Texture_Part( int image, int x, int y, unsigned int
 		glTexCoord2f(Left, Bottom);
 		glVertex2i(x, y + int(part_h * scaleY));
 	glEnd();
-	*/
 }

@@ -25,9 +25,9 @@
 #include "FontController.h"
 #include "StringToValue.h"
 
-Cutscene::Actor*		LoadCutsceneActor( const RapidXML_Node* actor_tag );
+Cutscene::Actor*	LoadCutsceneActor( const RapidXML_Node* actor_tag );
 Cutscene::Resource*	LoadCutsceneResource( const RapidXML_Node* asset_tag );
-Cutscene::Event*		LoadCutsceneEvent( const RapidXML_Node* event_tag );
+Cutscene::Event*	LoadCutsceneEvent( const RapidXML_Node* event_tag );
 Cutscene::Resource*	LoadCutsceneSprite( const char* name, const char* file );
 Cutscene::Resource*	LoadCutsceneSound( const char* name, const char* file );
 Cutscene::Resource*	LoadCutsceneFont( const char* name, const char* file );
