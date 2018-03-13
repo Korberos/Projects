@@ -9,10 +9,10 @@ to a student and going through a few features that can be tested after the scene
 	certain actions based on the events listed later.
 	-->
 	<Actors>
-		<Actor> TextBoxBG </Actor>
-		<Actor> Teacher </Actor>
-		<Actor> Student </Actor>
-		<Actor> Dialogue </Actor>
+		<Actor>TextBoxBG</Actor>
+		<Actor>Teacher</Actor>
+		<Actor>Student</Actor>
+		<Actor>Dialogue</Actor>
 	</Actors>
 
 	<!--
@@ -21,28 +21,28 @@ to a student and going through a few features that can be tested after the scene
 	-->
 	<Resources>
 		<Resource type="Sprite">
-			<Name> Teacher01Sprite </Name>
-			<Asset> Assets/Cutscene/Teacher01.png </Asset>
+			<Name>Teacher01Sprite</Name>
+			<Asset>Assets/TestCutscene/Teacher01.png</Asset>
 		</Resource>
 
 		<Resource type="Sprite">
-			<Name> Student01Sprite </Name>
-			<Asset> Assets/Cutscene/Student01.png </Asset>
+			<Name>Student01Sprite</Name>
+			<Asset>Assets/TestCutscene/Student01.png</Asset>
 		</Resource>
 
 		<Resource type="Sound">
-			<Name> TeacherHelloSound </Name>
-			<Asset> Assets/Cutscene/TeacherHelloSound.wav </Asset>
+			<Name>TeacherHelloSound</Name>
+			<Asset>Assets/TestCutscene/TeacherHelloSound.wav</Asset>
 		</Resource>
 
 		<Resource type="Sprite">
-			<Name> TextBoxBGSprite </Name>
-			<Asset> Assets/Cutscene/TextBoxBG.png </Asset>
+			<Name>TextBoxBGSprite</Name>
+			<Asset>Assets/TestCutscene/TextBoxBG.png</Asset>
 		</Resource>
 
 		<Resource type="Font">
-			<Name> DialogueFont </Name>
-			<Asset> DialogueFont </Asset>
+			<Name>DialogueFont</Name>
+			<Asset>DialogueFont</Asset>
 		</Resource>
 	</Resources>
 
@@ -89,178 +89,178 @@ to a student and going through a few features that can be tested after the scene
 	-->
 	<Events>
 		<Event type="WarpTo">
-			<Trigger> Start </Trigger>
-			<EndingEvent> TeacherAssignSprite </EndingEvent>
-			<Target> Teacher </Target>
-			<X> -256 </X>
-			<Y> 360 </Y>
+			<Trigger>Start</Trigger>
+			<EndingEvent>TeacherAssignSprite</EndingEvent>
+			<Target>Teacher</Target>
+			<X>-256</X>
+			<Y>360</Y>
 		</Event>
 
 		<Event type="WarpTo">
-			<Trigger> Start </Trigger>
-			<EndingEvent> StudentAssignSprite </EndingEvent>
-			<Target> Student </Target>
-			<X> 1024 </X>
-			<Y> 360 </Y>
+			<Trigger>Start</Trigger>
+			<EndingEvent>StudentAssignSprite</EndingEvent>
+			<Target>Student</Target>
+			<X>1024</X>
+			<Y>360</Y>
 		</Event>
 
 		<Event type="WarpTo">
-			<Trigger> Start </Trigger>
-			<EndingEvent> TextBoxBGAssignSprite </EndingEvent>
-			<Target> TextBoxBG </Target>
-			<X> 0 </X>
-			<Y> 450 </Y>
+			<Trigger>Start</Trigger>
+			<EndingEvent>TextBoxBGAssignSprite</EndingEvent>
+			<Target>TextBoxBG</Target>
+			<X>0</X>
+			<Y>450</Y>
 		</Event>
 		
 		<Event type="SpriteChange">
-			<Trigger> TeacherAssignSprite </Trigger>
-			<EndingEvent> TeacherAppear </EndingEvent>
-			<Target> Teacher </Target>
-			<Asset> Teacher01Sprite </Asset>
+			<Trigger>TeacherAssignSprite</Trigger>
+			<EndingEvent>TeacherAppear</EndingEvent>
+			<Target>Teacher</Target>
+			<Asset>Teacher01Sprite</Asset>
 		</Event>
 
 		<Event type="SpriteChange">
-			<Trigger> StudentAssignSprite </Trigger>
-			<EndingEvent> </EndingEvent>
-			<Target> Student </Target>
-			<Asset> Student01Sprite </Asset>
+			<Trigger>StudentAssignSprite</Trigger>
+			<EndingEvent></EndingEvent>
+			<Target>Student</Target>
+			<Asset>Student01Sprite</Asset>
 		</Event>
 
 		<Event type="SpriteChange">
-			<Trigger> TextBoxBGAssignSprite </Trigger>
-			<EndingEvent> TextBoxBGAlphaNull </EndingEvent>
-			<Target> TextBoxBG </Target>
-			<Asset> TextBoxBGSprite </Asset>
+			<Trigger>TextBoxBGAssignSprite</Trigger>
+			<EndingEvent>TextBoxBGAlphaNull</EndingEvent>
+			<Target>TextBoxBG</Target>
+			<Asset>TextBoxBGSprite</Asset>
 		</Event>
 
 		<Event type="Alpha">
-			<Trigger> TextBoxBGAlphaNull </Trigger>
-			<EndingEvent> </EndingEvent>
-			<Target> TextBoxBG </Target>
-			<Time> 0.0 </Time>
-			<Asset> 0.0f </Asset>
+			<Trigger>TextBoxBGAlphaNull</Trigger>
+			<EndingEvent></EndingEvent>
+			<Target>TextBoxBG</Target>
+			<Time>0.0</Time>
+			<Asset>0.0f</Asset>
 		</Event>
 
 		<Event type="MoveTo">
-			<Trigger> TeacherAppear </Trigger>
-			<EndingEvent> TeacherHello </EndingEvent>
-			<Target> Teacher </Target>
-			<X> 0 </X>
-			<Y> 320 </Y>
-			<Time> 0.55 </Time>
+			<Trigger>TeacherAppear</Trigger>
+			<EndingEvent>TeacherHello</EndingEvent>
+			<Target>Teacher</Target>
+			<X>0</X>
+			<Y>320</Y>
+			<Time>0.55</Time>
 		</Event>
 
 		<Event type="Alpha">
-			<Trigger> TeacherHello </Trigger>
-			<EndingEvent> ShowMessage01 </EndingEvent>
-			<Target> TextBoxBG </Target>
-			<Time> 0.4 </Time>
-			<Asset> 1.0f </Asset>
+			<Trigger>TeacherHello</Trigger>
+			<EndingEvent>ShowMessage01</EndingEvent>
+			<Target>TextBoxBG</Target>
+			<Time>0.4</Time>
+			<Asset>1.0f</Asset>
 		</Event>
 
 		<Event type="SoundPlay">
-			<Trigger> TeacherHello </Trigger>
-			<EndingEvent> </EndingEvent>
-			<Asset> TeacherHelloSound </Asset>
-			<Time> 1.0 </Time>
+			<Trigger>TeacherHello</Trigger>
+			<EndingEvent></EndingEvent>
+			<Asset>TeacherHelloSound</Asset>
+			<Time>1.0</Time>
 		</Event>
 
 		<Event type="WarpTo">
-			<Trigger> TeacherHello </Trigger>
-			<EndingEvent> </EndingEvent>
-			<Target> Dialogue </Target>
-			<X> 300 </X>
-			<Y> 500 </Y>
+			<Trigger>TeacherHello</Trigger>
+			<EndingEvent></EndingEvent>
+			<Target>Dialogue</Target>
+			<X>300</X>
+			<Y>500</Y>
 		</Event>
 
 		<Event type="SetFont">
-			<Trigger> ShowMessage01 </Trigger>
-			<EndingEvent> </EndingEvent>
-			<Target> Dialogue </Target>
-			<Asset> DialogueFont </Asset>
+			<Trigger>ShowMessage01</Trigger>
+			<EndingEvent></EndingEvent>
+			<Target>Dialogue</Target>
+			<Asset>DialogueFont</Asset>
 		</Event>
 
 		<Event type="SetText">
-			<Trigger> ShowMessage01 </Trigger>
-			<EndingEvent> Message01Length </EndingEvent>
-			<Target> DialogueFont </Target>
-			<Asset> Student! Report! </Asset>
-			<Time> 0.0 </Time>
+			<Trigger>ShowMessage01</Trigger>
+			<EndingEvent>Message01Length</EndingEvent>
+			<Target>DialogueFont</Target>
+			<Asset>Student! Report!</Asset>
+			<Time>0.0</Time>
 		</Event>
 
 		<Event type="Wait">
-			<Trigger> Message01Length </Trigger>
-			<EndingEvent> EraseMessage01 </EndingEvent>
-			<Time> 1.6 </Time>
+			<Trigger>Message01Length</Trigger>
+			<EndingEvent>EraseMessage01</EndingEvent>
+			<Time>1.6</Time>
 		</Event>
 
 		<Event type="SetText">
-			<Trigger> EraseMessage01 </Trigger>
-			<EndingEvent> StudentAppear </EndingEvent>
-			<Target> DialogueFont </Target>
+			<Trigger>EraseMessage01</Trigger>
+			<EndingEvent>StudentAppear</EndingEvent>
+			<Target>DialogueFont</Target>
 			<Asset></Asset>
 		</Event>
 
 		<Event type="MoveTo">
-			<Trigger> StudentAppear </Trigger>
-			<EndingEvent> ShowMessage02 </EndingEvent>
-			<Target> Student </Target>
-			<X> 796 </X>
-			<Y> 320 </Y>
-			<Time> 0.55 </Time>
+			<Trigger>StudentAppear</Trigger>
+			<EndingEvent>ShowMessage02</EndingEvent>
+			<Target>Student</Target>
+			<X>796</X>
+			<Y>320</Y>
+			<Time>0.55</Time>
 		</Event>
 
 		<Event type="SetText">
-			<Trigger> ShowMessage02 </Trigger>
-			<EndingEvent> Message02Length </EndingEvent>
-			<Target> DialogueFont </Target>
-			<Asset> Yes Ma'am. How can I help you today? </Asset>
-			<Time> 0.0 </Time>
+			<Trigger>ShowMessage02</Trigger>
+			<EndingEvent>Message02Length</EndingEvent>
+			<Target>DialogueFont</Target>
+			<Asset>Yes Ma'am. How can I help you today?</Asset>
+			<Time>0.0</Time>
 		</Event>
 
 		<Event type="Wait">
-			<Trigger> Message02Length </Trigger>
-			<EndingEvent> EraseMessage02 </EndingEvent>
-			<Time> 1.6 </Time>
+			<Trigger>Message02Length</Trigger>
+			<EndingEvent>EraseMessage02</EndingEvent>
+			<Time>1.6</Time>
 		</Event>
 
 		<Event type="SetText">
-			<Trigger> EraseMessage02 </Trigger>
-			<EndingEvent> WaitToLeave </EndingEvent>
-			<Target> DialogueFont </Target>
+			<Trigger>EraseMessage02</Trigger>
+			<EndingEvent>WaitToLeave</EndingEvent>
+			<Target>DialogueFont</Target>
 			<Asset></Asset>
 		</Event>
 
 		<Event type="Wait">
-			<Trigger> WaitToLeave </Trigger>
-			<EndingEvent> TextBoxDisappear </EndingEvent>
-			<Time> 1.0 </Time>
+			<Trigger>WaitToLeave</Trigger>
+			<EndingEvent>TextBoxDisappear</EndingEvent>
+			<Time>1.0</Time>
 		</Event>
 
 		<Event type="Alpha">
-			<Trigger> TextBoxDisappear </Trigger>
-			<EndingEvent> TeacherDisappear </EndingEvent>
-			<Target> TextBoxBG </Target>
-			<Time> 0.4 </Time>
-			<Asset> 0.0f </Asset>
+			<Trigger>TextBoxDisappear</Trigger>
+			<EndingEvent>TeacherDisappear</EndingEvent>
+			<Target>TextBoxBG</Target>
+			<Time>0.4</Time>
+			<Asset>0.0f</Asset>
 		</Event>
 
 		<Event type="MoveTo">
-			<Trigger> TeacherDisappear </Trigger>
-			<EndingEvent> StudentDisappear </EndingEvent>
-			<Target> Teacher </Target>
-			<X> -256 </X>
-			<Y> 360 </Y>
-			<Time> 0.55 </Time>
+			<Trigger>TeacherDisappear</Trigger>
+			<EndingEvent>StudentDisappear</EndingEvent>
+			<Target>Teacher</Target>
+			<X>-256</X>
+			<Y>360</Y>
+			<Time>0.55</Time>
 		</Event>
 
 		<Event type="MoveTo">
-			<Trigger> StudentDisappear </Trigger>
-			<EndingEvent> EndScene </EndingEvent>
-			<Target> Student </Target>
-			<X> 1024 </X>
-			<Y> 360 </Y>
-			<Time> 0.55 </Time>
+			<Trigger>StudentDisappear</Trigger>
+			<EndingEvent>EndScene</EndingEvent>
+			<Target>Student</Target>
+			<X>1024</X>
+			<Y>360</Y>
+			<Time>0.55</Time>
 		</Event>
 	</Events>
 </Cutscene>

@@ -18,7 +18,7 @@ int main(void)
 		// Get the time slice
 		static float time_slice;
 		static int elapsed_time[2];
-		elapsed_time[0] = clock.restart().asMilliseconds();
+		elapsed_time[0] = clock.getElapsedTime().asMilliseconds();
 		time_slice = std::max<float>( std::min<float>( float(elapsed_time[0] - elapsed_time[1]) / 1000.0f, 1.0f ), 0.0f );
 		elapsed_time[1] = elapsed_time[0];
 

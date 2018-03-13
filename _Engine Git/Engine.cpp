@@ -40,8 +40,6 @@ void Resize_View( unsigned int width, unsigned int height )
 	// Set up Projection View
 	glMatrixMode( GL_PROJECTION );
 	glLoadIdentity();
-	/**/GLfloat ratio = static_cast<float>(window_width) / static_cast<float>(window_height);
-	/**/glFrustum(-ratio, ratio, -1.f, 1.f, 1.f, 500.f);
 	gluPerspective( 60.0, (GLdouble)width / (GLdouble)height, 1.0, 100.0 );
 
 	// Set up Model View
@@ -220,6 +218,7 @@ void PreRender3DEngine()
 	glMatrixMode( GL_PROJECTION );
 	glLoadIdentity();
 	/**/GLfloat ratio = static_cast<float>(window_width) / static_cast<float>(window_height);
+	/**/gluOrtho2D(0.0f, 0.0f, 1.0f, 1.0f);
 	/**/glFrustum(-ratio, ratio, -1.f, 1.f, 1.f, 500.f);
 	gluPerspective( 60.0, (float)(window_width) / (float)(window_height), 1.0, 1000.0 );
 }
@@ -231,11 +230,12 @@ void Render3DEngine()
 
 void PreRender2DEngine()
 {
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 	//  Initiate the 2D Rendering Context
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	/**/GLfloat ratio = static_cast<float>(window_width) / static_cast<float>(window_height);
-	/**/glFrustum(-ratio, ratio, -1.f, 1.f, 1.f, 500.f);
+	gluOrtho2D(0.0f, static_cast<float>(window_width), static_cast<float>(window_height), 0.0f);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	glDisable( GL_DEPTH_TEST );

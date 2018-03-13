@@ -57,6 +57,3 @@ void PostLoopEngine();
 void ShutdownEngine();
 
 #endif
-
-//// TO-DO LIST
-// - Alter the TextureController texture list to use a hash map to determine if it already contains a texture. This should speed loading and accessing.

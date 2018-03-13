@@ -150,7 +150,7 @@ bool FontController::Load_Font( const char* font_name )
 	std::string font_name_string( font_name );
 
 	FontListType::iterator iter = FontList.find( font_name_string );
-	FAIL_IF ( "Font already exists in the list" && iter != FontList.end() ) { return false; }
+	if (iter != FontList.end()) { return true; }
 
 	std::string full_file_path( FontFolder );
 	full_file_path.append( font_name );
@@ -219,7 +219,7 @@ bool FontController::Unload_Font( const char* font_name )
 	std::string font_name_string( font_name );
 
 	FontListType::iterator iter = FontList.find( font_name_string );
-	FAIL_IF ( "Font does not exist in the list" && iter == FontList.end() ) { return false; }
+	if (iter == FontList.end() ) { return true; }
 
 	iter->second.Shutdown();
 	FontList.erase( iter );

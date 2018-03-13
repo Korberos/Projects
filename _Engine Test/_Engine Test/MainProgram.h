@@ -1,6 +1,8 @@
 #ifndef _MAIN_PROGRAM_H_
 #define _MAIN_PROGRAM_H_
 
+#include "Cutscene.h"
+
 class MainProgram
 {
 public:
@@ -15,6 +17,9 @@ public:
 	const bool Render3D( void );
 	const bool Render2D( void );
 	const bool Shutdown();
+
+private:
+	Cutscene mainCutscene;
 };
 
 #endif

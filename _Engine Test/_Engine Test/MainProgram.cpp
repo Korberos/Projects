@@ -25,6 +25,9 @@ const bool MainProgram::Initialize()
 	//  Set up the debug console with a font
 	debug_console->Set_Bitmap_Font( "Arial-12-White" );
 
+	//  Load a test dialogue
+	mainCutscene.Load("Assets/TestCutscene/TestCutscene.xml");
+
 	return true;
 }
 
@@ -35,6 +38,7 @@ const bool MainProgram::Input( const float time_slice )
 
 const bool MainProgram::Update( const float time_slice )
 {
+	mainCutscene.Update(time_slice);
 	return true;
 }
 
@@ -45,6 +49,7 @@ const bool MainProgram::Render3D( void )
 
 const bool MainProgram::Render2D( void )
 {
+	mainCutscene.Render();
 	return true;
 }
 
