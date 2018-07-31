@@ -9,7 +9,7 @@ using namespace std;
 
 bool Chat::Initialize(char* IP)
 {
-	for (int i = 0; IP[i-1] != 0; i += 1) ServerIP[i] = IP[i];
+	strcpy(ServerIP, IP);
 
 	// Connect to the given server
 	ServerSocket = tcpconnect(ServerIP, SERVER_PORT, 1);
